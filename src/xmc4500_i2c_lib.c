@@ -38,7 +38,6 @@ uint8_t _init_i2c1_ch0 (void)
     XMC_GPIO_Init (P0_11, &i2c_scl);
     XMC_GPIO_Init (P0_5, &i2c_sda);
 
-
     return 0;
 }
 

@@ -14,14 +14,17 @@
 #include <xmc4500_uart_lib.h>
 #include "lis3dh_driver.h"
 #include "xmc4500_i2c_lib.h"
+#include <string.h>
 
 #define TICKS_PER_SECOND 1000
-#define TICKS_WAIT 5000
+#define TICKS_WAIT 100
+
+#define PROTOCOL 1
 
 #define RX_BUFFER_SIZE 64
 
 uint8_t response;
-uint8_t errorcount, errorcount6D;
+uint8_t errorcountRAW, errorcount6D, errorcountInternal, errorcountSetup;
 
 void SysTick_Handler (void);
 

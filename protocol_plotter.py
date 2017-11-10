@@ -28,33 +28,58 @@ def read_from_serial():
 
 	while True:
 
-		for i in range(3):
+		try:
+
+			temp0 = str(ser.readline().strip())
+
+			pos_f = temp0.index(',') + 1
+
+			orientation = temp0[3:pos_f-1]
+
+			print("orientation =", orientation)
+
+			temp1 = temp0[pos_f:]
+
+			pos_s = temp1.index(',') + 1
+
+			temp2 = temp1[pos_s:]
+
+			pos_t = temp2.index(',') + 1
+
+			temp3 = temp2[pos_t:]
+
+			pos_e = temp3.index('$')
+
+			integer1 = int(temp1[:pos_s-1])
+
+			integer2 = int(temp2[:pos_t-1])
+
+			integer3 = int(temp3[:pos_e])
 
 			try:
 
-				temp = ser.readline()
-				temp = int(temp)
+				[data[0].append(integer1)]
+				[data[0].pop(0)]
+				[data[1].append(integer2)]
+				[data[1].pop(0)]
+				[data[2].append(integer3)]
+				[data[2].pop(0)]
 
-				try:
+			except ValueError as Ve:
 
-					[data[i].append(temp)]
-					[data[i].pop(0)]
-
-				except ValueError as Ve:
-
-					pass
-
-			except AttributeError as Ae:
-			
 				pass
 
-			except TypeError as Te:
+		except AttributeError as Ae:
 			
-				pass
+			pass
 
-			except Exception as e:
+		except TypeError as Te:
 			
-				pass
+			pass
+
+		except Exception as e:
+			
+			pass
 
 @p.plot_self
 def setval():

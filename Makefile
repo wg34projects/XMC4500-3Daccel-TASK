@@ -148,6 +148,7 @@ ifeq ($(shell echo "check_quotes"),"check_quotes")
 	CMD /C start JLinkGDBServer -Device XMC4500-1024 -if SWD
 else
 	xterm -e "JLinkGDBServer -Device XMC4500-1024 -if SWD" &
+#	sleep 1 && xterm -e "telnet localhost 2333" & 
 endif
 	$(GDB) -q $(BIN)/$(TARGET).elf $(GDB_ARGS)
 

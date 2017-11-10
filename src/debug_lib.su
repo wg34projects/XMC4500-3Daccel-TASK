@@ -1,7 +1,0 @@
-core_cm4.h:2038:26:ITM_SendChar	16	static
-core_cm4.h:2059:25:ITM_ReceiveChar	16	static
-core_cm4.h:2079:25:ITM_CheckChar	4	static
-debug_lib.c:45:6:initRetargetSwo	4	static
-debug_lib.c:96:5:_write	32	static
-stdio.h:214:5:fputc	16	static
-stdio.h:212:5:fgetc	16	static

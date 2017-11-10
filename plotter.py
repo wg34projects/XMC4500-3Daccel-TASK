@@ -33,6 +33,7 @@ def read_from_serial():
 			try:
 
 				temp = ser.readline()
+				temp = int(temp)
 
 				try:
 

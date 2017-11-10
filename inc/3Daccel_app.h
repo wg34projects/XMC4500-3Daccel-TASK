@@ -16,12 +16,12 @@
 #include "xmc4500_i2c_lib.h"
 
 #define TICKS_PER_SECOND 1000
-#define TICKS_WAIT 60000
+#define TICKS_WAIT 5000
 
 #define RX_BUFFER_SIZE 64
 
 uint8_t response;
-uint8_t errorcount;
+uint8_t errorcount, errorcount6D;
 
 void SysTick_Handler (void);
 

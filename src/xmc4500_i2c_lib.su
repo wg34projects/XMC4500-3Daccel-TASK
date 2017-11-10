@@ -1,0 +1,9 @@
+xmc_usic.h:705:22:XMC_USIC_CH_SetInputSource	16	static
+xmc_usic.h:1203:26:XMC_USIC_CH_GetReceiveBufferStatus	16	static
+xmc_usic.h:2073:22:XMC_USIC_CH_SetMode	16	static
+xmc_i2c.h:318:22:XMC_I2C_CH_Start	16	static
+xmc_i2c.h:427:22:XMC_I2C_CH_SetInputSource	16	static
+xmc_i2c.h:656:26:XMC_I2C_CH_GetStatusFlag	16	static
+xmc_i2c.h:672:22:XMC_I2C_CH_ClearStatusFlag	16	static
+xmc4500_i2c_lib.c:31:9:_init_i2c1_ch0	8	static
+xmc4500_i2c_lib.c:54:9:_i2c_xfer	32	static

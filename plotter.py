@@ -14,9 +14,10 @@ else:
 
 data = []
 i = 0
-samples = 2000
+samples = 200
 
 ser = serial.Serial('/dev/ttyUSB0', 115200)
+
 p = plotter(number_of_samples=[samples, samples, samples], total_plots=3, rows=1, cols=3, y_low_lim=-40000, y_high_lim=40000)
 
 data.append([0 for i in range(samples)])

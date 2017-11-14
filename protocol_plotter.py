@@ -4,6 +4,8 @@ import os
 import serial
 import time
 
+confirm = "g"
+
 if sys.version_info[0] < 3:
 
 	import thread
@@ -14,9 +16,9 @@ else:
 
 data = []
 i = 0
-samples = 200
+samples = 2000
 
-ser = serial.Serial('/dev/ttyUSB0', 115200)
+ser = serial.Serial('/dev/ttyUSB2', 115200)
 
 p = plotter(number_of_samples=[samples, samples, samples], total_plots=3, rows=1, cols=3, y_low_lim=-40000, y_high_lim=40000)
 
@@ -32,29 +34,32 @@ def read_from_serial():
 
 			temp0 = str(ser.readline().strip())
 
-			pos_f = temp0.index(',') + 1
+			pos_f = temp0.index(',')
 
-			orientation = temp0[3:pos_f-1]
+			orientation = temp0[3:6]
+	
+			temp1 = temp0[pos_f+1:]
 
-			print("orientation =", orientation)
+			pos_s = temp1.index(',')
+			integer1 = int(temp1[:pos_s])
 
-			temp1 = temp0[pos_f:]
+			temp2 = temp1[pos_s+1:]
 
-			pos_s = temp1.index(',') + 1
+			pos_t = temp2.index(',')
+			integer2 = int(temp2[:pos_t])
 
-			temp2 = temp1[pos_s:]
+			temp3 = temp2[pos_t+1:]
 
-			pos_t = temp2.index(',') + 1
-
-			temp3 = temp2[pos_t:]
-
-			pos_e = temp3.index('$')
-
-			integer1 = int(temp1[:pos_s-1])
-
-			integer2 = int(temp2[:pos_t-1])
-
+			pos_e = temp3.index(',')
 			integer3 = int(temp3[:pos_e])
+
+			temp4 = temp3[pos_e+1:]
+			pos_f = temp4.index('$')
+
+			integer4 = int(temp4[:pos_f])
+			temperature = integer4 * 2 + 10
+
+			print(orientation, "| X=", "{:>6}".format(integer1), "| Y=", "{:>6}".format(integer2), "| Z=", "{:>6}".format(integer3), "| T=", "{:>2}".format(temperature), "°C")
 
 			try:
 
@@ -90,14 +95,17 @@ def setval():
 
 def menu():
 
+	global confirm
+
 	os.system('clear')
 
-	confirm = input("press a key to continue...")
+	confirm = input("input g + ENTER for graph and only ENTER for values only")
 
 def main():
 
 	thread.start_new_thread(read_from_serial, ())
 	p.set_call_back(setval)
+
 	plotter.show()
 
 if __name__ == "__main__":

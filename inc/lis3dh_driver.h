@@ -240,7 +240,7 @@ LIS3DH_NO_CLICK = 0x00
 #define LIS3DH_I1_WTM BIT(2)
 #define LIS3DH_I1_ORUN BIT(1)
 
-//CONTROL REGISTER 6
+//CONTROL REGISTER 6 
 #define LIS3DH_CTRL_REG6 0x25
 #define LIS3DH_I2_CLICK BIT(7)
 #define LIS3DH_I2_INT1 BIT(6)
@@ -306,7 +306,7 @@ LIS3DH_NO_CLICK = 0x00
 //CONTROL REG3 bit mask
 #define LIS3DH_CLICK_ON_PIN_INT1_ENABLE 0x80
 #define LIS3DH_CLICK_ON_PIN_INT1_DISABLE 0x00
-#define LIS3DH_I1_INT1_ON_PIN_INT1_ENABLE 0x40
+#define LIS3DH_I1_INT1_ON_PIN_INT1_ENABLE 0x40	
 #define LIS3DH_I1_INT1_ON_PIN_INT1_DISABLE 0x00
 #define LIS3DH_I1_INT2_ON_PIN_INT1_ENABLE 0x20
 #define LIS3DH_I1_INT2_ON_PIN_INT1_DISABLE 0x00
@@ -427,7 +427,7 @@ LIS3DH_NO_CLICK = 0x00
 #define LIS3DH_STATUS_REG_XOR 0x10    // 0	:	no overrun has occurred (default)
 							// 1	:	new X-axis data has over written the previous one
 #define LIS3DH_STATUS_REG_ZYXDA 0x08    // 0	:	a new set of data is not yet avvious one
-                                                        // 1	:	a new set of data is available 
+                                                        // 1	:	a new set of data is available free
 #define LIS3DH_STATUS_REG_ZDA 0x04    // 0	:	a new data for the Z-Axis is not availvious one
                                                         // 1	:	a new data for the Z-Axis is available
 #define LIS3DH_STATUS_REG_YDA 0x02    // 0	:	a new data for the Y-Axis is not available

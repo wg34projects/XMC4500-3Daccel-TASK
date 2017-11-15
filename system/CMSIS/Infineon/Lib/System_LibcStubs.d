@@ -1,0 +1,27 @@
+system/CMSIS/Infineon/Lib/System_LibcStubs.o: \
+ system/CMSIS/Infineon/Lib/System_LibcStubs.c \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/stat.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/_ansi.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/newlib.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/_newlib_version.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/config.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/machine/ieeefp.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/features.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/time.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/_ansi.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/cdefs.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/machine/_default_types.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/include/stddef.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/reent.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/_types.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/machine/_types.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/lock.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/machine/time.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/types.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/_stdint.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/machine/types.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/timespec.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/_timespec.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/times.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/unistd.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/unistd.h

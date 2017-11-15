@@ -57,21 +57,18 @@ uint8_t _i2c_xfer (uint8_t id, uint8_t reg_addr, uint8_t i2c_data, _Bool rd_wr)
     uint8_t id_tmp = 0;
 
     channel = XMC_I2C1_CH0;
-/*	printf("\n");*/
 
     id_tmp = LIS3DH_RD_ADR;
 
     XMC_I2C_CH_MasterStart (channel, id_tmp, XMC_I2C_CH_CMD_WRITE);
     while ( (XMC_I2C_CH_GetStatusFlag (channel) & XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED) == 0U) {
         /* wait for ACK */
-/*		printf("ACK1\r");*/
     }
     XMC_I2C_CH_ClearStatusFlag (channel, XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED);
 
     XMC_I2C_CH_MasterTransmit (channel, reg_addr);
     while ( (XMC_I2C_CH_GetStatusFlag (channel) & XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED) == 0U) {
         /* wait for ACK */
-/*		printf("ACK2\r");*/
     }
     XMC_I2C_CH_ClearStatusFlag (channel, XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED);
 
@@ -80,7 +77,6 @@ uint8_t _i2c_xfer (uint8_t id, uint8_t reg_addr, uint8_t i2c_data, _Bool rd_wr)
         XMC_I2C_CH_MasterRepeatedStart (channel, id_tmp, XMC_I2C_CH_CMD_READ);
         while ( (XMC_I2C_CH_GetStatusFlag (channel) & XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED) == 0U) {
             /* wait for ACK */
-/*			printf("ACK3\r");*/
         }
         XMC_I2C_CH_ClearStatusFlag (channel, XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED);
 
@@ -100,7 +96,6 @@ uint8_t _i2c_xfer (uint8_t id, uint8_t reg_addr, uint8_t i2c_data, _Bool rd_wr)
         XMC_I2C_CH_MasterTransmit (channel, i2c_data);
         while ( (XMC_I2C_CH_GetStatusFlag (channel) & XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED) == 0U) {
             /* wait for ACK */
-/*			printf("ACK4\rS");*/
         }
         XMC_I2C_CH_ClearStatusFlag (channel, XMC_I2C_CH_STATUS_FLAG_ACK_RECEIVED);
 

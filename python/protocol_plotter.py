@@ -67,7 +67,7 @@ def stringCutter():
 		pos_f = temp4.index('$')
 
 		integer4 = int(temp4[:pos_f])
-		temperature = integer4 * 2 + 10
+		temperature = integer4 * 2 + 6
 
 	except AttributeError as Ae:
 			

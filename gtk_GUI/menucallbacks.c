@@ -20,8 +20,6 @@ void connectSerial(GtkButton *button, gpointer data)
 	widgets *a = (widgets *) data;
     char mode[]= {'8','N','1', 0};
 
-
-
 	a->pollSerial = TRUE;
 
     if(RS232_OpenComport(16, BAUD, mode))
@@ -61,10 +59,10 @@ void rawProtocolData(GtkButton *button, gpointer data)
 	strcpy(a->line, "TEST");
 
     a->terminalwindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title (GTK_WINDOW (a->window), "Terminal window");
-    gtk_container_set_border_width (GTK_CONTAINER (a->window), 0);
+    gtk_window_set_title (GTK_WINDOW (a->terminalwindow), "Terminal window");
+    gtk_container_set_border_width (GTK_CONTAINER (a->terminalwindow), 0);
     gtk_widget_set_size_request (a->terminalwindow, 400, 800);
-	gtk_window_set_resizable(GTK_WINDOW (a->window), TRUE);
+	gtk_window_set_resizable(GTK_WINDOW (a->terminalwindow), TRUE);
     
 	a->buffer = gtk_text_buffer_new (NULL);
 
@@ -81,7 +79,7 @@ void rawProtocolData(GtkButton *button, gpointer data)
 	gtk_container_add (GTK_CONTAINER (a->terminalwindow), a->scroll);
 	gtk_widget_show_all(GTK_WIDGET(a->terminalwindow));
 
-	g_timeout_add (250, (GSourceFunc) wait, (gpointer) a);
+	g_timeout_add (100, (GSourceFunc) wait, (gpointer) a);
 }
 
 void rawProtocolDataTimed(gpointer data)
@@ -133,7 +131,7 @@ void help(GSimpleAction *action, GVariant *parameter, gpointer data)
 {
 	widgets *a = (widgets *) data;
 
-	messageDialog(action, NULL, (gpointer) a, "Find here some helpful informations");
+	messageDialog(action, NULL, (gpointer) a, "Find here some helpful information");
 }
 
 void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gchar *showText)

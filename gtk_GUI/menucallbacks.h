@@ -19,5 +19,6 @@ void quit(GSimpleAction *action, GVariant *parameter, gpointer data);
 void about(GSimpleAction *action, GVariant *parameter, gpointer data);
 void help(GSimpleAction *action, GVariant *parameter, gpointer data);
 void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gchar *showText);
+void closeTerminalWindow(GtkButton *button, gpointer data);
 
 #endif

@@ -488,7 +488,6 @@ status_t LIS3DH_SetBLE(LIS3DH_Endianess_t ble) {
 
     return MEMS_SUCCESS;
 }
-stopAll
 
 /*******************************************************************************
 * Function Name  : LIS3DH_SetSelfTest

@@ -26,6 +26,6 @@
 uint8_t response;
 uint8_t errorcountRAW, errorcount6D, errorcountInternal, errorcountSetup;
 
-void SysTick_Handler (void);
+
 
 #endif

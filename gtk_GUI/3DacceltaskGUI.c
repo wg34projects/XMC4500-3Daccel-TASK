@@ -11,6 +11,8 @@ void constructGUI(gpointer data)
 {
 	widgets *a = (widgets *) data;
 
+	const char initialinfo[] = "information center accelerometer task...";
+
 	a->grid = gtk_grid_new();
 	gtk_grid_set_column_homogeneous(GTK_GRID (a->grid), TRUE);
 	gtk_grid_set_row_homogeneous(GTK_GRID (a->grid), TRUE);
@@ -22,14 +24,20 @@ void constructGUI(gpointer data)
 	gtk_widget_set_margin_bottom(a->grid, 10);
 	gtk_container_add(GTK_CONTAINER (a->window), a->grid);
 
-	a->label[0] = gtk_label_new("GUI accelerator task - informations...");
-	gtk_grid_attach(GTK_GRID (a->grid), a->label[0], 0, 0, 4, 1);
+/*	a->label[0] = gtk_label_new("GUI accelerator task - informations...");*/
+/*	gtk_grid_attach(GTK_GRID (a->grid), a->label[0], 0, 0, 4, 1);*/
 
-	a->image[0] = gtk_image_new_from_file("./pictures/3Da.png");
-	a->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-	gtk_grid_attach(GTK_GRID (a->grid), a->box, 1, 1, 3, 8);
-	gtk_box_pack_start(GTK_BOX(a->box), a->image[0], FALSE, FALSE, 0);
-	gtk_widget_set_opacity(GTK_WIDGET(a->box), 0.20);
+/*	a->image[0] = gtk_image_new_from_file("./pictures/ALL.png");*/
+/*	a->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);*/
+/*	gtk_grid_attach(GTK_GRID (a->grid), a->box, 2, 1, 2, 8);*/
+/*	gtk_box_pack_start(GTK_BOX(a->box), a->image[0], FALSE, FALSE, 0);*/
+/*	gtk_widget_set_opacity(GTK_WIDGET(a->box), 0.20);*/
+
+/*	a->image[0] = gtk_image_new_from_file("./pictures/3Da.png");*/
+/*	a->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);*/
+/*	gtk_grid_attach(GTK_GRID (a->grid), a->box, 2, 1, 3, 8);*/
+/*	gtk_box_pack_start(GTK_BOX(a->box), a->image[0], FALSE, FALSE, 0);*/
+/*	gtk_widget_set_opacity(GTK_WIDGET(a->box), 0.20);*/
 
 /*	a->entry[0] = gtk_entry_new();*/
 /*    gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[0]), "X-VALUE");*/
@@ -43,14 +51,20 @@ void constructGUI(gpointer data)
 /*    gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[2]), "Z-VALUE");*/
 /*	gtk_grid_attach(GTK_GRID (a->grid), a->entry[2], 1, 3, 1, 1);*/
 
-	a->label[1] = gtk_label_new("X-VALUE");
+	a->label[1] = gtk_label_new("6D POSITION");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[1], 1, 1, 1, 1);
 
-	a->label[2] = gtk_label_new("Y-VALUE");
+	a->label[2] = gtk_label_new("X-VALUE");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[2], 1, 2, 1, 1);
 
-	a->label[3] = gtk_label_new("Z-VALUE");
+	a->label[3] = gtk_label_new("Y-VALUE");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[3], 1, 3, 1, 1);
+
+	a->label[4] = gtk_label_new("Z-VALUE");
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[4], 1, 4, 1, 1);
+
+	a->label[5] = gtk_label_new("TEMPERATURE");
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[5], 1, 5, 1, 1);
 
 	a->button[0] = gtk_button_new_with_mnemonic("_CONNECT serial port");
 	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[0]), "connect serial port");
@@ -68,19 +82,26 @@ void constructGUI(gpointer data)
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), FALSE);
 
 	a->button[2] = gtk_button_new_with_mnemonic("_TERMINAL raw protocol");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[2]), "teminal raw protocl");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[2]), "teminal raw protocol");
 	gtk_widget_set_hexpand(a->button[2], TRUE);
 	gtk_widget_set_vexpand(a->button[2], TRUE);
 	g_signal_connect(a->button[2], "clicked", G_CALLBACK (rawProtocolData), (gpointer) a);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[2], 0, 3, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 
-/*	a->button[1] = gtk_button_new_with_mnemonic("_SHOW raw data");*/
-/*	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[1]), "show raw data");*/
-/*	gtk_widget_set_hexpand(a->button[1], TRUE);*/
-/*	gtk_widget_set_vexpand(a->button[1], TRUE);*/
-/*	g_signal_connect(a->button[1], "clicked", G_CALLBACK (showRawData), (gpointer) a);*/
-/*	gtk_grid_attach(GTK_GRID (a->grid), a->button[1], 0, 4, 1, 1);*/
+	a->statusBar = gtk_statusbar_new();
+	gtk_grid_attach (GTK_GRID (a->grid), a->statusBar, 0, 9, 3, 1);
+	a->id = gtk_statusbar_get_context_id (GTK_STATUSBAR (a->statusBar), "demo");
+
+	snprintf(a->bufferStatusBar, sizeof(initialinfo)+1, "%s", initialinfo);
+	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+
+/*	a->button[3] = gtk_button_new_with_mnemonic("_REQUEST data");*/
+/*	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[3]), "request data");*/
+/*	gtk_widget_set_hexpand(a->button[3], TRUE);*/
+/*	gtk_widget_set_vexpand(a->button[3], TRUE);*/
+/*	g_signal_connect(a->button[3], "clicked", G_CALLBACK (requestData), (gpointer) a);*/
+/*	gtk_grid_attach(GTK_GRID (a->grid), a->button[3], 0, 4, 1, 1);*/
 
 /*	a->button[2] = gtk_button_new_with_mnemonic("PLOT r_aw acceleration");*/
 /*	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[2]), "raw protocol data");*/

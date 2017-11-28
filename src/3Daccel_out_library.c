@@ -7,7 +7,7 @@ uint8_t protocolComplete(int16_t position6D, int16_t positionX, int16_t position
 	char send[RX_BUFFER_SIZE];
 	memset (&send, 0, sizeof (send));
 
-	if (sprintf(send, "%s%d%s%d%s%d%s%d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ, ",", temperature) < 0)
+	if (sprintf(send, "%s%7d%s%7d%s%7d%s%02d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ, ",", temperature* 2 + 6) < 0)
 //	if (sprintf(send, "%s%d%s%d%s%d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ) < 0)
 	{
 		errorcountInternal++;
@@ -19,4 +19,16 @@ uint8_t protocolComplete(int16_t position6D, int16_t positionX, int16_t position
 		_uart_printf("%s", send);	
 		return 0;
 	}	
+}
+
+void SysTick_Handler (void)
+{
+    static uint32_t ticks = 0;
+
+    ticks++;
+    if (ticks == TICKS_WAIT)
+    {
+        ticks = 0;
+//		printf("\nerrorcountRAW = %d errorcount6D = %d | errorcountSETUP = %d | errorcountInternal = %d\n", errorcountRAW, errorcount6D, errorcountSetup, errorcountInternal);
+    }
 }

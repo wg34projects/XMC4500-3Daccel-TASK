@@ -8,5 +8,6 @@
 #include <stdlib.h>
 
 uint8_t protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ, int8_t temperature);
+void SysTick_Handler (void);
 
 #endif

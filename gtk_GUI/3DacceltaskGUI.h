@@ -18,13 +18,17 @@ typedef struct
 {
 	GtkApplication *app;
 	GtkWidget *window, *headerbar, *grid, *gearicon, *button[25], *label[5], *image[5], *box, *entry[5];
-	GtkWidget *gearmenubutton, *terminalwindow;
+	GtkWidget *gearmenubutton, *terminalwindow, *statusBar;
 	GMenu *appmenu, *gearmenu;
 	gchar line[OSBUFFER], decodedLine[100];
 	GtkWidget *view, *scroll;
 	GtkTextIter iter, start, end;
 	GtkTextBuffer *buffer;
-	gboolean pollSerial; 
+	gboolean sendSerial;
+ 	guint id;
+	gchar bufferStatusBar[100], position6D[4];
+	gdouble accelerationXdouble, accelerationYdouble, accelerationZdouble, temperaturedouble;
+	gchar accelerationXout[10], accelerationYout[10], accelerationZout[10], tempOut[10];
 
 } widgets;
 

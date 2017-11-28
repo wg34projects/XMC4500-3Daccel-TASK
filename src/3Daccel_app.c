@@ -1,21 +1,10 @@
 #include "3Daccel_app.h"
 #include "3Daccel_out_library.h"
 
-void SysTick_Handler (void)
-{
-    static uint32_t ticks = 0;
-
-    ticks++;
-    if (ticks == TICKS_WAIT)
-    {
-        ticks = 0;
-//		printf("\nerrorcountRAW = %d errorcount6D = %d | errorcountSETUP = %d | errorcountInternal = %d\n", errorcountRAW, errorcount6D, errorcountSetup, errorcountInternal);
-    }
-}
-
 int main (void)
 {
 	uint8_t position = 0, old_position = 0, direction = 6;
+	char rx_buff[RX_BUFFER_SIZE] = {0};
 	AxesRaw_t data;
 	i8_t temp = 0;
 	
@@ -31,6 +20,7 @@ int main (void)
     SysTick_Config (SystemCoreClock / TICKS_PER_SECOND);
 
     //Inizialize MEMS Sensor
+
     //set ODR (turn ON device)
     if(LIS3DH_SetODR(LIS3DH_ODR_100Hz) == 1)
     {
@@ -136,90 +126,87 @@ int main (void)
 		errorcountSetup++;
 	}
 
-/*	LIS3DH_WriteReg(0x22, 0x20);*/
-/*	LIS3DH_WriteReg(0x24, 0x08);*/
-/*	LIS3DH_WriteReg(0x32, 0x16);*/
-/*	LIS3DH_WriteReg(0x33, 0x03);*/
-/*	LIS3DH_WriteReg(0x30, 0x95);*/
-/*	uint8_t reg = 0;*/
-
 	while(1)
 	{
-		LIS3DH_GetTempRaw(&temp);
+		memset (&rx_buff, 0, sizeof (rx_buff));
+		_uart_get_string (rx_buff);
 
-/*		LIS3DH_ReadReg(0x22, &reg);*/
-/*		printf("reg %d", reg);*/
+        if (strncmp(rx_buff, "REQUEST", strlen(rx_buff)) == 0)
+        {
+			// get temperature
+			LIS3DH_GetTempRaw(&temp);
 
-		//get 6D Position
-  		response = LIS3DH_Get6DPosition(&position);
-  		if((response == 1) && (old_position != position))
-		{
-		    switch (position)
+			//get 6D Position
+	  		response = LIS3DH_Get6DPosition(&position);
+	  		if((response == 1) && (old_position != position))
 			{
-				case LIS3DH_UP_SX:
+				switch (position)
 				{
-					printf("\nposition = UP_SX  \n");
-					direction = 0;
-					break;
+					case LIS3DH_UP_SX:
+					{
+						printf("\nposition = UP_SX  \n");
+						direction = 0;
+						break;
+					}
+					case LIS3DH_UP_DX:
+					{
+						printf("\nposition = UP_DX  \n");
+						direction = 1;
+						break;
+					}
+					case LIS3DH_DW_SX:
+					{
+						printf("\nposition = DW_SX  \n");
+						direction = 2;
+						break;
+					}
+					case LIS3DH_DW_DX:
+					{
+						printf("\nposition = DW_DX  \n");
+						direction = 3;
+						break; 
+					}
+					case LIS3DH_TOP:    
+					{
+						printf("\nposition = TOP    \n");
+						direction = 4;
+						break; 
+					}
+					case LIS3DH_BOTTOM: 
+					{
+						printf("\nposition = BOTTOM \n");   
+						direction = 5;
+						break; 
+					}
+					default:
+					{
+						printf("\nposition = unknown\n");
+						direction = 6;
+						break;
+					}
 				}
-				case LIS3DH_UP_DX:
-				{
-					printf("\nposition = UP_DX  \n");
-					direction = 1;
-					break;
-				}
-				case LIS3DH_DW_SX:
-				{
-					printf("\nposition = DW_SX  \n");
-					direction = 2;
-					break;
-				}
-				case LIS3DH_DW_DX:
-				{
-					printf("\nposition = DW_DX  \n");
-					direction = 3;
-					break; 
-				}
-				case LIS3DH_TOP:    
-				{
-					printf("\nposition = TOP    \n");
-					direction = 4;
-					break; 
-				}
-				case LIS3DH_BOTTOM: 
-				{
-					printf("\nposition = BOTTOM \n");   
-					direction = 5;
-					break; 
-				}
-				default:
-				{
-					printf("\nposition = unknown\n");
-					direction = 6;
-					break;
-				}
-    		}
-		}
-		else if(response != 1)
-		{
-			errorcount6D++;
-		}
-		old_position = position;
+			}
+			else if(response != 1)
+			{
+				errorcount6D++;
+			}
+			old_position = position;
 
-		//get raw data
-		response = LIS3DH_GetAccAxesRaw(&data);
-		if(response == 1)
-		{
-//	       	printf("X=%6d Y=%6d Z=%6d\r", data.AXIS_X, data.AXIS_Y, data.AXIS_Z);
-#if PROTOCOL
-			protocolComplete(direction, data.AXIS_X, data.AXIS_Y, data.AXIS_Z, temp);
-#else
-			_uart_printf ("%d\r\n%d\r\n%d\r\n", data.AXIS_X, data.AXIS_Y, data.AXIS_Z);
-#endif
+			//get raw data
+			response = LIS3DH_GetAccAxesRaw(&data);
+			if(response == 1)
+			{
+			   	printf("X=%6d Y=%6d Z=%6d\r", data.AXIS_X, data.AXIS_Y, data.AXIS_Z);
+				protocolComplete(direction, data.AXIS_X, data.AXIS_Y, data.AXIS_Z, temp);
+			}
+			else
+			{
+				errorcountRAW++;
+			}
 		}
 		else
 		{
-			errorcountRAW++;
+			continue;
 		}
 	}
 }

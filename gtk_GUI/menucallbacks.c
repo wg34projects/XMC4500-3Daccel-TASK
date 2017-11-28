@@ -107,6 +107,15 @@ guint waitSendnoTerminal(gpointer data)
 	return a->sendSerial;
 }
 
+guint waitSendPython(gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+	requestData((gpointer) a);
+
+	return a->sendSerial;
+}
+
 void connectSerial(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -128,6 +137,7 @@ void connectSerial(GtkButton *button, gpointer data)
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), TRUE);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), TRUE);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), TRUE);
 		for (i = 0; i < 5; i++) 
 		{
 			gtk_widget_set_sensitive (GTK_WIDGET (a->radioUSB[i]), FALSE);
@@ -156,6 +166,7 @@ void disconnectSerial(GtkButton *button, gpointer data)
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), TRUE);
 	for (i = 0; i < 5; i++) 
 	{
@@ -177,8 +188,25 @@ void dataTransmission(GtkButton *button, gpointer data)
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
 	a->sendSerial = TRUE;
 	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
+}
+
+void pythonConnector(GtkButton *button, gpointer data)
+{
+	widgets *a = (widgets *) data;
+	char pythonCall[100];
+
+	g_sprintf(pythonCall, "python3 ../python/protocol_plotter.py %d &", a->radioButtonUSBstate);
+
+	system(pythonCall);
+
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+	a->sendSerial = TRUE;
+	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendPython, (gpointer) a);
 }
 
 void rawProtocolData(GtkButton *button, gpointer data)

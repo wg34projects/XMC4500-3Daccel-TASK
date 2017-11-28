@@ -34,7 +34,7 @@ void constructGUI(gpointer data)
 	gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 
 	a->box[1] = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-	gtk_grid_attach(GTK_GRID (a->grid), a->box[1], 0, 4, 1, 3);
+	gtk_grid_attach(GTK_GRID (a->grid), a->box[1], 0, 5, 1, 3);
 
 	a->radioUSB[0] = gtk_radio_button_new_with_label (NULL, "/dev/ttyUSB0");
 
@@ -58,7 +58,7 @@ void constructGUI(gpointer data)
 
 	a->entry[0] = gtk_entry_new();
     gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[0]), "enter poll time in ms");
-	gtk_grid_attach(GTK_GRID (a->grid), a->entry[0], 0, 7, 1, 1);
+	gtk_grid_attach(GTK_GRID (a->grid), a->entry[0], 1, 5, 1, 1);
 	g_signal_connect (a->entry[0], "activate", G_CALLBACK (entryPollTime), (gpointer) a);
 	a->pollTimeSensor = 50;
 
@@ -117,14 +117,22 @@ void constructGUI(gpointer data)
 
 	a->button[3] = gtk_button_new_with_mnemonic("_DATA transmission");
 	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[3]), "data transmission");
-	gtk_widget_set_hexpand(a->button[2], TRUE);
-	gtk_widget_set_vexpand(a->button[2], TRUE);
+	gtk_widget_set_hexpand(a->button[3], TRUE);
+	gtk_widget_set_vexpand(a->button[3], TRUE);
 	g_signal_connect(a->button[3], "clicked", G_CALLBACK (dataTransmission), (gpointer) a);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[3], 0, 3, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
 
+	a->button[4] = gtk_button_new_with_mnemonic("_PYTHON connector");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[4]), "python connector");
+	gtk_widget_set_hexpand(a->button[4], TRUE);
+	gtk_widget_set_vexpand(a->button[4], TRUE);
+	g_signal_connect(a->button[4], "clicked", G_CALLBACK (pythonConnector), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[4], 0, 4, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+
 	a->statusBar = gtk_statusbar_new();
-	gtk_grid_attach (GTK_GRID (a->grid), a->statusBar, 0, 8, 4, 1);
+	gtk_grid_attach (GTK_GRID (a->grid), a->statusBar, 0, 9, 4, 1);
 	a->id = gtk_statusbar_get_context_id (GTK_STATUSBAR (a->statusBar), "demo");
 
 	snprintf(a->bufferStatusBar, sizeof(initialinfo)+1, "%s", initialinfo);

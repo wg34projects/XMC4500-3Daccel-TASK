@@ -14,6 +14,7 @@ void connectSerial(GtkButton *button, gpointer data);
 void disconnectSerial(GtkButton *button, gpointer data);
 guint waitSendTerminal(gpointer data);
 guint waitSendnoTerminal(gpointer data);
+guint waitSendPython(gpointer data);
 void readRadioUSB(GtkWidget *button, gpointer *data);
 void entryPollTime (GtkWidget *widget, gpointer data);
 unsigned int getInteger(char *input, int *numInteger);
@@ -26,5 +27,6 @@ void help(GSimpleAction *action, GVariant *parameter, gpointer data);
 void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gchar *showText);
 void closeTerminalWindow(GtkButton *button, gpointer data);
 void requestData(gpointer data);
+void pythonConnector(GtkButton *button, gpointer data);
 
 #endif

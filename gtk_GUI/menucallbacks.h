@@ -12,8 +12,12 @@
 
 void connectSerial(GtkButton *button, gpointer data);
 void disconnectSerial(GtkButton *button, gpointer data);
-guint waitSend(gpointer data);
+guint waitSendTerminal(gpointer data);
+guint waitSendnoTerminal(gpointer data);
+void readRadioUSB(GtkWidget *button, gpointer *data);
+void entryPollTime (GtkWidget *widget, gpointer data);
 unsigned int getInteger(char *input, int *numInteger);
+void dataTransmission(GtkButton *button, gpointer data);
 void rawProtocolData(GtkButton *button, gpointer data);
 void rawProtocolDataTimed(gpointer data);
 void quit(GSimpleAction *action, GVariant *parameter, gpointer data);

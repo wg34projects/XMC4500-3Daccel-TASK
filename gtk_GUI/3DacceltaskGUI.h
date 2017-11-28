@@ -13,12 +13,16 @@
 #include <gio/gio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <math.h>
+
+#define PI 3.14159265
+#define G 9.81
 
 typedef struct
 {
 	GtkApplication *app;
-	GtkWidget *window, *headerbar, *grid, *gearicon, *button[25], *label[5], *image[5], *box, *entry[5];
-	GtkWidget *gearmenubutton, *terminalwindow, *statusBar;
+	GtkWidget *window, *headerbar, *grid, *gearicon, *button[25], *label[25], *image[5], *box[2], *entry[5];
+	GtkWidget *gearmenubutton, *terminalwindow, *statusBar, *radioUSB[5];
 	GMenu *appmenu, *gearmenu;
 	gchar line[OSBUFFER], decodedLine[100];
 	GtkWidget *view, *scroll;
@@ -26,11 +30,19 @@ typedef struct
 	GtkTextBuffer *buffer;
 	gboolean sendSerial;
  	guint id;
+	gint pollTimeSensor;
 	gchar bufferStatusBar[100], position6D[4];
 	gdouble accelerationXdouble, accelerationYdouble, accelerationZdouble, temperaturedouble;
-	gchar accelerationXout[10], accelerationYout[10], accelerationZout[10], tempOut[10];
+	gdouble tiltX, tiltY, tiltZ, pitch, roll;
+	gchar accelerationXout[25], accelerationYout[1525], accelerationZout[25], tempOut[25];
+	gchar tiltXout[25], tiltYout[25], tiltZout[25], pitchOut[25], rollOut[25];
+	gint radioButtonUSBstate;
 
 } widgets;
+
+int fd[2];
+GIOChannel *channel;
+GMainLoop *loop;
 
 typedef struct tm TM;
 
@@ -38,5 +50,6 @@ void startup(GApplication *app, gpointer data);
 void activate(GtkApplication *app, gpointer data);
 void constructMenu(GtkApplication *app, gpointer data);
 void constructGUI(gpointer data);
+
 
 #endif

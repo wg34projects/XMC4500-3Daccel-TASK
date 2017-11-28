@@ -1,6 +1,5 @@
-SOURCES = 3DacceltaskGUI.c menucallbacks.c rs232.c
-HEADERS = $(SOURCES:.c=.h)
-TARGET  = 3DaccelGUI
+SOURCES = catch_signals.c
+TARGET  = catch_signals
 CXX      = gcc
 CXXFLAGS = `pkg-config --cflags --libs gtk+-3.0` -Wall -g -lm
 

@@ -27,6 +27,105 @@ void entryPollTime (GtkWidget *widget, gpointer data)
 	}
 }
 
+void entryXtrigger (GtkWidget *widget, gpointer data)
+{
+	widgets *a = (widgets *) data;
+	gchar *buffer;
+	gint rv = 0;
+
+	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[1]));
+	rv = getDouble(buffer, &a->acceltriggerX);
+
+	if (a->acceltriggerX < -2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "minimum -2.0 g set");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerX = -2.0;
+	}
+	else if (a->acceltriggerX > 2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "maximum +2,0 g set");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerX = 2.0;		
+	}
+	else if (a->acceltriggerX >= -2.0 && a->acceltriggerX <= 2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for X", a->acceltriggerX);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+	}
+	else if (rv == 1)
+	{
+		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+	}
+}
+
+void entryYtrigger (GtkWidget *widget, gpointer data)
+{
+	widgets *a = (widgets *) data;
+	gchar *buffer;
+	gint rv = 0;
+
+	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[2]));
+	rv = getDouble(buffer, &a->acceltriggerY);
+
+	if (a->acceltriggerY < -2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "minimum -2.0 g set");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerY = -2.0;
+	}
+	else if (a->acceltriggerY > 2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "maximum +2,0 g set");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerY = 2.0;		
+	}
+	else if (a->acceltriggerY >= -2.0 && a->acceltriggerY <= 2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for Y", a->acceltriggerY);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+	}
+	else if (rv == 1)
+	{
+		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+	}
+}
+
+void entryZtrigger (GtkWidget *widget, gpointer data)
+{
+	widgets *a = (widgets *) data;
+	gchar *buffer;
+	gint rv = 0;
+
+	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[3]));
+	rv = getDouble(buffer, &a->acceltriggerZ);
+
+	if (a->acceltriggerZ < -2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "minimum -2.0 g set");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerZ = -2.0;
+	}
+	else if (a->acceltriggerZ > 2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "maximum +2,0 g set");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerZ = 2.0;		
+	}
+	else if (a->acceltriggerZ >= -2.0 && a->acceltriggerZ <= 2.0 && rv == 0)
+	{
+		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for Z", a->acceltriggerZ);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+	}
+	else if (rv == 1)
+	{
+		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+	}
+}
+
 void readRadioUSB(GtkWidget *button, gpointer *data)
 {
 	widgets *a = (widgets *) data;
@@ -134,14 +233,17 @@ void connectSerial(GtkButton *button, gpointer data)
 		snprintf(a->bufferStatusBar, sizeof(openComPortSuccess)+1, "%s", openComPortSuccess);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), FALSE);
-		gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), TRUE);
-		gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), TRUE);
-		gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), TRUE);
-		gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), TRUE);
+
+		for (i = 1; i < 6; i++) 
+		{
+			gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), TRUE);
+		}
+
 		for (i = 0; i < 5; i++) 
 		{
 			gtk_widget_set_sensitive (GTK_WIDGET (a->radioUSB[i]), FALSE);
 		}
+
 		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), FALSE);
 	}
 }
@@ -163,11 +265,13 @@ void disconnectSerial(GtkButton *button, gpointer data)
 	gint i = 0;
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+	for (i = 1; i < 6; i++) 
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
+	}
+
 	gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), TRUE);
+
 	for (i = 0; i < 5; i++) 
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (a->radioUSB[i]), TRUE);
@@ -185,10 +289,12 @@ void disconnectSerial(GtkButton *button, gpointer data)
 void dataTransmission(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
+	gint i = 0;
 
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+	for (i = 2; i < 6; i++) 
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
+	}
 	a->sendSerial = TRUE;
 	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
 }
@@ -204,7 +310,25 @@ void pythonConnector(GtkButton *button, gpointer data)
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
+
+	a->sendSerial = TRUE;
+	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendPython, (gpointer) a);
+}
+
+void pythonSpriteConnector(GtkButton *button, gpointer data)
+{
+	widgets *a = (widgets *) data;
+	char pythonCall[100];
+
+	g_sprintf(pythonCall, "python3 ../python/direction.py %d &", a->radioButtonUSBstate);
+
+	system(pythonCall);
+
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+
 	a->sendSerial = TRUE;
 	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendPython, (gpointer) a);
 }
@@ -212,8 +336,14 @@ void pythonConnector(GtkButton *button, gpointer data)
 void rawProtocolData(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
+	gint i = 0;
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
+
+	for (i = 2; i < 6; i++) 
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
+	}
 
 	strcpy(a->line, ".");
 
@@ -321,31 +451,6 @@ void rawProtocolDataTimed(gpointer data)
 	a->pitch = atan(a->accelerationXdouble/(sqrt((a->accelerationYdouble*a->accelerationYdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
 	a->roll = atan(a->accelerationYdouble/(sqrt((a->accelerationXdouble*a->accelerationXdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
 
-/*	if (a->tiltX < 0)*/
-/*	{*/
-/*		a->tiltX = 360.0 + a->tiltX;*/
-/*	}*/
-
-/*	if (a->tiltY < 0)*/
-/*	{*/
-/*		a->tiltY = 360.0 + a->tiltY;*/
-/*	}*/
-
-/*	if (a->tiltZ < 0)*/
-/*	{*/
-/*		a->tiltZ = 360.0 + a->tiltZ;*/
-/*	}*/
-
-/*	if (a->pitch < 0)*/
-/*	{*/
-/*		a->pitch = 360.0 + a->pitch;*/
-/*	}*/
-
-/*	if (a->roll < 0)*/
-/*	{*/
-/*		a->roll = 360.0 + a->roll;*/
-/*	}*/
-
 	sprintf(a->tiltXout, "tiltX %7.2f °", a->tiltX);
 	sprintf(a->tiltYout, "tiltY %7.2f °", a->tiltY);
 	sprintf(a->tiltZout, "tiltZ %7.2f °", a->tiltZ);
@@ -367,8 +472,8 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
 		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-//		gtk_widget_set_opacity(GTK_WIDGET(a->box[0]), 0.20);
-		gtk_widget_show_all(a->grid);	
+		gtk_widget_show_all(a->grid);
+		a->position6Dint = 1;
 	}
 	else if (strncmp(a->position6D, "BOT",3) == 0)
 	{
@@ -379,8 +484,8 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
 		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-//		gtk_widget_set_opacity(GTK_WIDGET(a->box[0]), 0.20);
-		gtk_widget_show_all(a->grid);	
+		gtk_widget_show_all(a->grid);
+		a->position6Dint = 2;
 	}
 	else if (strncmp(a->position6D, "DDX",3) == 0)
 	{
@@ -391,8 +496,8 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
 		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-//		gtk_widget_set_opacity(GTK_WIDGET(a->box[0]), 0.20);
-		gtk_widget_show_all(a->grid);	
+		gtk_widget_show_all(a->grid);
+		a->position6Dint = 3;	
 	}
 	else if (strncmp(a->position6D, "DSX", 3) == 0)
 	{
@@ -403,8 +508,8 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
 		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-//		gtk_widget_set_opacity(GTK_WIDGET(a->box[0]), 0.20);
-		gtk_widget_show_all(a->grid);	
+		gtk_widget_show_all(a->grid);
+		a->position6Dint = 4;	
 	}
 	else if (strncmp(a->position6D, "UDX", 3) == 0)
 	{
@@ -415,8 +520,8 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
 		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-//		gtk_widget_set_opacity(GTK_WIDGET(a->box[0]), 0.20);
-		gtk_widget_show_all(a->grid);	
+		gtk_widget_show_all(a->grid);
+		a->position6Dint = 5;	
 	}
 	else if (strncmp(a->position6D, "USX", 3) == 0)
 	{
@@ -427,8 +532,8 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
 		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-//		gtk_widget_set_opacity(GTK_WIDGET(a->box[0]), 0.20);
-		gtk_widget_show_all(a->grid);	
+		gtk_widget_show_all(a->grid);
+		a->position6Dint = 6;	
 	}
 	else
 	{
@@ -439,8 +544,35 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
 		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-//		gtk_widget_set_opacity(GTK_WIDGET(a->box[0]), 0.20);
-		gtk_widget_show_all(a->grid);	
+		gtk_widget_show_all(a->grid);
+		a->position6Dint = 0;
+	}
+
+	if (a->accelerationXdouble > a->acceltriggerX || a->accelerationXdouble < -a->acceltriggerX)
+	{
+		gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='red' weight='ultrabold' font='20'> X  ALARM  </span>");
+	}
+	else
+	{
+		gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='green' weight='ultrabold' font='20'> X TRIGGER </span>");
+	}
+
+	if (a->accelerationYdouble > a->acceltriggerY || a->accelerationYdouble < -a->acceltriggerY)
+	{
+		gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='red' weight='ultrabold' font='20'> Y  ALARM  </span>");
+	}
+	else
+	{
+		gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='green' weight='ultrabold' font='20'> Y TRIGGER </span>");
+	}
+
+	if (a->accelerationZdouble > a->acceltriggerZ || a->accelerationZdouble < -a->acceltriggerZ)
+	{
+		gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='red' weight='ultrabold' font='20'> Z  ALARM  </span>");
+	}
+	else
+	{
+		gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
 	}
 }
 
@@ -457,6 +589,23 @@ unsigned int getInteger(char *input, int *numInteger)
     else
     {
         *numInteger = (int)number;
+        return 0;
+    }
+}
+
+unsigned int getDouble(char *input, double *numDouble)
+{
+    long double number = 0;
+    char *pointToEnd = NULL;
+
+    number = strtod(input, &pointToEnd);
+    if(*pointToEnd != '\0')
+    {
+        return 1;
+    }
+    else
+    {
+        *numDouble = (double)number;
         return 0;
     }
 }

@@ -1,5 +1,5 @@
-#ifndef _beltcontrol_
-#define _beltcontrol_
+#ifndef _3DACCELTASKGUI_
+#define _3DACCELTASKGUI_
 
 #include "menucallbacks.h"
 #include <gtk/gtk.h>
@@ -21,8 +21,8 @@
 typedef struct
 {
 	GtkApplication *app;
-	GtkWidget *window, *headerbar, *grid, *gearicon, *button[25], *label[25], *image[5], *box[2], *entry[5];
-	GtkWidget *gearmenubutton, *terminalwindow, *statusBar, *radioUSB[5];
+	GtkWidget *window, *headerbar, *grid, *gearicon, *button[25], *label[25], *image[5], *box[2], *entry[10];
+	GtkWidget *gearmenubutton, *terminalwindow, *statusBar, *radioUSB[5], *eventbox[5];
 	GMenu *appmenu, *gearmenu;
 	gchar line[OSBUFFER], decodedLine[100];
 	GtkWidget *view, *scroll;
@@ -36,7 +36,8 @@ typedef struct
 	gdouble tiltX, tiltY, tiltZ, pitch, roll;
 	gchar accelerationXout[25], accelerationYout[1525], accelerationZout[25], tempOut[25];
 	gchar tiltXout[25], tiltYout[25], tiltZout[25], pitchOut[25], rollOut[25];
-	gint radioButtonUSBstate;
+	gint radioButtonUSBstate, position6Dint;
+	gdouble acceltriggerX, acceltriggerY, acceltriggerZ;
 
 } widgets;
 

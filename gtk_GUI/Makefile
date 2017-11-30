@@ -1,4 +1,4 @@
-SOURCES = 3DacceltaskGUI.c menucallbacks.c rs232.c
+SOURCES = 3DacceltaskGUI.c menucallbacks.c rs232.c 
 HEADERS = $(SOURCES:.c=.h)
 TARGET  = 3DaccelGUI
 CXX      = gcc

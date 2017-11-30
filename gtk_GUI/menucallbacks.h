@@ -1,5 +1,5 @@
-#ifndef _menucallbacks_
-#define _menucallbacks_
+#ifndef _MENUCALLBACKS_
+#define _MENUCALLBACKS_
 
 #include "3DacceltaskGUI.h"
 #include <gtk/gtk.h>
@@ -28,5 +28,10 @@ void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gc
 void closeTerminalWindow(GtkButton *button, gpointer data);
 void requestData(gpointer data);
 void pythonConnector(GtkButton *button, gpointer data);
+void pythonSpriteConnector(GtkButton *button, gpointer data);
+unsigned int getDouble(char *input, double *numDouble);
+void entryXtrigger (GtkWidget *widget, gpointer data);
+void entryYtrigger (GtkWidget *widget, gpointer data);
+void entryZtrigger (GtkWidget *widget, gpointer data);
 
 #endif

@@ -15,6 +15,11 @@ void constructGUI(gpointer data)
 	gchar stringUSB[15];
 	gint i;
 
+	a->position6Dint = 0;
+	a->acceltriggerX = 0;
+	a->acceltriggerY = 0;
+	a->acceltriggerZ = 0;
+
 	a->grid = gtk_grid_new();
 	gtk_grid_set_column_homogeneous(GTK_GRID (a->grid), TRUE);
 	gtk_grid_set_row_homogeneous(GTK_GRID (a->grid), TRUE);
@@ -34,7 +39,9 @@ void constructGUI(gpointer data)
 	gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 
 	a->box[1] = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-	gtk_grid_attach(GTK_GRID (a->grid), a->box[1], 0, 5, 1, 3);
+	gtk_grid_attach(GTK_GRID (a->grid), a->box[1], 1, 5, 1, 3);
+	gtk_widget_set_halign(GTK_WIDGET(a->box[1]), GTK_ALIGN_CENTER);
+	gtk_widget_set_valign(GTK_WIDGET(a->box[1]), GTK_ALIGN_CENTER);
 
 	a->radioUSB[0] = gtk_radio_button_new_with_label (NULL, "/dev/ttyUSB0");
 
@@ -58,9 +65,24 @@ void constructGUI(gpointer data)
 
 	a->entry[0] = gtk_entry_new();
     gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[0]), "enter poll time in ms");
-	gtk_grid_attach(GTK_GRID (a->grid), a->entry[0], 1, 5, 1, 1);
+	gtk_grid_attach(GTK_GRID (a->grid), a->entry[0], 2, 5, 1, 1);
 	g_signal_connect (a->entry[0], "activate", G_CALLBACK (entryPollTime), (gpointer) a);
 	a->pollTimeSensor = 50;
+
+	a->entry[1] = gtk_entry_new();
+    gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[1]), "trigger accelX");
+	gtk_grid_attach(GTK_GRID (a->grid), a->entry[1], 3, 5, 1, 1);
+	g_signal_connect (a->entry[1], "activate", G_CALLBACK (entryXtrigger), (gpointer) a);
+
+	a->entry[2] = gtk_entry_new();
+    gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[2]), "trigger accelY");
+	gtk_grid_attach(GTK_GRID (a->grid), a->entry[2], 3, 6, 1, 1);
+	g_signal_connect (a->entry[2], "activate", G_CALLBACK (entryYtrigger), (gpointer) a);
+
+	a->entry[3] = gtk_entry_new();
+    gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[3]), "trigger accelZ");
+	gtk_grid_attach(GTK_GRID (a->grid), a->entry[3], 3, 7, 1, 1);
+	g_signal_connect (a->entry[3], "activate", G_CALLBACK (entryZtrigger), (gpointer) a);
 
 	a->label[0] = gtk_label_new("6D POSITION");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[0], 1, 0, 1, 1);
@@ -123,13 +145,21 @@ void constructGUI(gpointer data)
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[3], 0, 3, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
 
-	a->button[4] = gtk_button_new_with_mnemonic("_PYTHON connector");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[4]), "python connector");
+	a->button[4] = gtk_button_new_with_mnemonic("_PYTHON diagrams");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[4]), "python diagrams");
 	gtk_widget_set_hexpand(a->button[4], TRUE);
 	gtk_widget_set_vexpand(a->button[4], TRUE);
 	g_signal_connect(a->button[4], "clicked", G_CALLBACK (pythonConnector), (gpointer) a);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[4], 0, 4, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+
+	a->button[5] = gtk_button_new_with_mnemonic("P_YTHON sprites");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[5]), "python sprites");
+	gtk_widget_set_hexpand(a->button[5], TRUE);
+	gtk_widget_set_vexpand(a->button[5], TRUE);
+	g_signal_connect(a->button[5], "clicked", G_CALLBACK (pythonSpriteConnector), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[5], 0, 5, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
 
 	a->statusBar = gtk_statusbar_new();
 	gtk_grid_attach (GTK_GRID (a->grid), a->statusBar, 0, 9, 4, 1);
@@ -137,6 +167,18 @@ void constructGUI(gpointer data)
 
 	snprintf(a->bufferStatusBar, sizeof(initialinfo)+1, "%s", initialinfo);
 	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+
+	a->label[10] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> X TRIGGER </span>");
+	gtk_label_set_use_markup (GTK_LABEL (a->label[10]), TRUE);
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[10], 4, 5, 1, 1);
+
+	a->label[11] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> Y TRIGGER </span>");
+	gtk_label_set_use_markup (GTK_LABEL (a->label[11]), TRUE);
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[11], 4, 6, 1, 1);
+
+	a->label[12] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
+	gtk_label_set_use_markup (GTK_LABEL (a->label[12]), TRUE);
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[12], 4, 7, 1, 1);
 }
 
 void constructMenu(GtkApplication *app, gpointer data)
@@ -203,7 +245,7 @@ int main(int argc, char **argv)
 	g_signal_connect(a->app, "activate", G_CALLBACK (activate), (gpointer)a);
 	g_signal_connect(a->app, "startup", G_CALLBACK (startup), (gpointer)a);
 	status = g_application_run(G_APPLICATION (a->app), argc, argv);
-
+	
 	g_object_unref(a->app);
 	g_free(a);
 

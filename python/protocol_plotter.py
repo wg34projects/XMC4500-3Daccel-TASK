@@ -26,7 +26,7 @@ accelZ = 0
 temp = 0
 i = 0
 
-samples = 200
+samples = 50
 
 usbConnection = ["/dev/ttyUSB0", "/dev/ttyUSB1", "/dev/ttyUSB2", "/dev/ttyUSB3", "/dev/ttyUSB4"]
 

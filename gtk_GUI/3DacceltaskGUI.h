@@ -38,6 +38,7 @@ typedef struct
 	gchar tiltXout[25], tiltYout[25], tiltZout[25], pitchOut[25], rollOut[25];
 	gint radioButtonUSBstate, position6Dint;
 	gdouble acceltriggerX, acceltriggerY, acceltriggerZ;
+	gchar packagesOut[15], errorOut[9];
 
 } widgets;
 

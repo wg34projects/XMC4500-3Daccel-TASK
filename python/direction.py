@@ -54,8 +54,8 @@ def stringCutter():
 		temp = int(temp4[:pos_f])
 		temperature = temp
 
-		pitch = math.atan(accelX/(math.sqrt((accelY*accelY)+(accelZ*accelZ)))) * 180 / 3.1415926
-		roll = math.atan(accelY/(math.sqrt((accelX*accelX)+(accelZ*accelZ)))) * 180 / 3.1415926
+		pitch = math.atan(accelX/(math.sqrt((accelY*accelY)+(accelZ*accelZ)))) * 180 / 3.141592654
+		roll = math.atan(accelY/(math.sqrt((accelX*accelX)+(accelZ*accelZ)))) * 180 / 3.141592654
 
 		pitch = round(pitch, 2)
 		roll = round(roll, 2)

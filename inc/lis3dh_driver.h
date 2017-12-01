@@ -34,7 +34,7 @@
 #define LIS3DH_ADR 0x18
 #define LIS3DH_RD_ADR (LIS3DH_ADR<<1)
 
-#include "xmc4500_i2c_lib.h"
+#include "3Daccel_app.h"
 
 //these could change accordingly with the architecture
 

@@ -221,6 +221,7 @@ void connectSerial(GtkButton *button, gpointer data)
     char mode[]= {'8','N','1', 0};
 	const char openComPortError[] = "ERROR opening COM port";
 	const char openComPortSuccess[] = "SUCCESS opening COM port";
+	unsigned char requestConnection[] = "#CON,";
 	gint i = 0;
 
     if(RS232_OpenComport(a->radioButtonUSBstate, BAUD, mode))
@@ -245,23 +246,33 @@ void connectSerial(GtkButton *button, gpointer data)
 		}
 
 		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), FALSE);
+
+		RS232_flushTX(a->radioButtonUSBstate);
+		RS232_SendBuf(a->radioButtonUSBstate, requestConnection, (int)sizeof(requestConnection));
+		RS232_SendByte(a->radioButtonUSBstate, '\r');
+		RS232_SendByte(a->radioButtonUSBstate, '\r');
+		RS232_flushTX(a->radioButtonUSBstate);
+	
 	}
 }
 
 void requestData(gpointer data)
 {
 	widgets *a = (widgets *) data;
-	unsigned char requestText[] = "REQUEST";
+	unsigned char requestText[] = "#REQ,";
 
 	RS232_flushTX(a->radioButtonUSBstate);
 	RS232_SendBuf(a->radioButtonUSBstate, requestText, (int)sizeof(requestText));
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
+	RS232_flushTX(a->radioButtonUSBstate);
 }
 
 void disconnectSerial(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
 	const char closeComPortSuccess[] = "SUCCESS closing COM port";
+	unsigned char requestStop[] = "#END,";
 	gint i = 0;
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
@@ -280,6 +291,12 @@ void disconnectSerial(GtkButton *button, gpointer data)
 	gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[0]), "enter poll time in ms");
 
 	a->sendSerial = FALSE;
+
+	RS232_flushTX(a->radioButtonUSBstate);
+	RS232_SendBuf(a->radioButtonUSBstate, requestStop, (int)sizeof(requestStop));
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
+	RS232_flushTX(a->radioButtonUSBstate);
 
     RS232_CloseComport(a->radioButtonUSBstate);
 	snprintf(a->bufferStatusBar, sizeof(closeComPortSuccess)+1, "%s", closeComPortSuccess);
@@ -378,8 +395,8 @@ void rawProtocolDataTimed(gpointer data)
 	widgets *a = (widgets *) data;
 	unsigned char buf[OSBUFFER];
 	int n = 0, i = 0;
-	gchar accelerationX[7], accelerationY[7], accelerationZ[7], temperature[3];
-	gint accelerationXint, accelerationYint, accelerationZint, temperatureint;
+	gchar accelerationX[7], accelerationY[7], accelerationZ[7], temperature[3], packages[10], error[3];
+	gint accelerationXint, accelerationYint, accelerationZint, temperatureint, packagesInt, errorInt;
 
 	memset (&buf, 0, sizeof (buf));
 	n = RS232_PollComport(a->radioButtonUSBstate, buf, (OSBUFFER-1));
@@ -403,176 +420,202 @@ void rawProtocolDataTimed(gpointer data)
 	{
 		g_print("strncpy1 error\n");
 	}
-	gtk_label_set_label((GtkLabel*)a->label[0], a->position6D);
+	
+	if (strncmp(a->position6D, "STA", 3) == 0)
+	{
+		if (strncpy(packages, a->line+5, 10) != packages)
+		{
+			g_print("strncpy error\n");
+		}
+		packages[10] = '\0';
+		getInteger(packages, &packagesInt);
+		g_sprintf(a->packagesOut, "data %d", packagesInt);
 
-	if (strncpy(accelerationX, a->line+5, 7) != accelerationX)
-	{
-		g_print("strncpy2 error\n");
-	}
-	accelerationX[7] = '\0';
-	getInteger(accelerationX, &accelerationXint);
-	a->accelerationXdouble = accelerationXint / 15987.0;
-	sprintf(a->accelerationXout, "accelX %7.3f g", a->accelerationXdouble);
-	gtk_label_set_label((GtkLabel*)a->label[1], a->accelerationXout);
+		
+		if (strncpy(error, a->line+16, 3) != error)
+		{
+			g_print("strncpy error\n");
+		}
+		error[3] = '\0';
+		getInteger(error, &errorInt);
+		g_sprintf(a->errorOut, "error %d", errorInt);
 
-	if (strncpy(accelerationY, a->line+13, 7) != accelerationY)
-	{
-		g_print("strncpy3 error\n");
-	}
-	accelerationY[7] = '\0';
-	getInteger(accelerationY, &accelerationYint);
-	a->accelerationYdouble = accelerationYint / 15987.0;
-	sprintf(a->accelerationYout, "accelY %7.3f g", a->accelerationYdouble);
-	gtk_label_set_label((GtkLabel*)a->label[2], a->accelerationYout);
-
-	if (strncpy(accelerationZ, a->line+21, 7) != accelerationZ)
-	{
-		g_print("strncpy4 error\n");
-	}
-	accelerationZ[7] = '\0';
-	getInteger(accelerationZ, &accelerationZint);
-	a->accelerationZdouble = accelerationZint / 15987.0;
-	sprintf(a->accelerationZout, "accelZ %7.3f g", a->accelerationZdouble);
-	gtk_label_set_label((GtkLabel*)a->label[3], a->accelerationZout);
-
-	if (strncpy(temperature, a->line+29, 2) != temperature)
-	{
-		g_print("strncpy5 error\n");
-	}
-	temperature[2] = '\0';
-	getInteger(temperature, &temperatureint);
-	a->temperaturedouble = temperatureint / 1.0;
-	sprintf(a->tempOut, "%3.2f °C", a->temperaturedouble);
-	gtk_label_set_label((GtkLabel*)a->label[4], a->tempOut);
-
-	a->tiltX = asin(a->accelerationXdouble/G) * 180 / PI;
-	a->tiltY = asin(a->accelerationYdouble/G) * 180 / PI;
-	a->tiltZ = asin(a->accelerationZdouble/G) * 180 / PI;
-	a->pitch = atan(a->accelerationXdouble/(sqrt((a->accelerationYdouble*a->accelerationYdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
-	a->roll = atan(a->accelerationYdouble/(sqrt((a->accelerationXdouble*a->accelerationXdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
-
-	sprintf(a->tiltXout, "tiltX %7.2f °", a->tiltX);
-	sprintf(a->tiltYout, "tiltY %7.2f °", a->tiltY);
-	sprintf(a->tiltZout, "tiltZ %7.2f °", a->tiltZ);
-	sprintf(a->pitchOut, "pitch %7.2f °", a->pitch);
-	sprintf(a->rollOut, "roll  %7.2f °", a->roll);
-
-	gtk_label_set_label((GtkLabel*)a->label[5], a->tiltXout);
-	gtk_label_set_label((GtkLabel*)a->label[6], a->tiltYout);
-	gtk_label_set_label((GtkLabel*)a->label[7], a->tiltZout);
-	gtk_label_set_label((GtkLabel*)a->label[8], a->pitchOut);
-	gtk_label_set_label((GtkLabel*)a->label[9], a->rollOut);
-
-	if (strncmp(a->position6D, "TOP", 3) == 0)
-	{
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->image[1] = gtk_image_new_from_file("./pictures/TOP.png");
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
-		a->position6Dint = 1;
-	}
-	else if (strncmp(a->position6D, "BOT",3) == 0)
-	{
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->image[1] = gtk_image_new_from_file("./pictures/BOT.png");
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
-		a->position6Dint = 2;
-	}
-	else if (strncmp(a->position6D, "DDX",3) == 0)
-	{
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->image[1] = gtk_image_new_from_file("./pictures/DDX.png");
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
-		a->position6Dint = 3;	
-	}
-	else if (strncmp(a->position6D, "DSX", 3) == 0)
-	{
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->image[1] = gtk_image_new_from_file("./pictures/DSX.png");
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
-		a->position6Dint = 4;	
-	}
-	else if (strncmp(a->position6D, "UDX", 3) == 0)
-	{
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->image[1] = gtk_image_new_from_file("./pictures/UDX.png");
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
-		a->position6Dint = 5;	
-	}
-	else if (strncmp(a->position6D, "USX", 3) == 0)
-	{
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->image[1] = gtk_image_new_from_file("./pictures/USX.png");
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
-		a->position6Dint = 6;	
+		gtk_label_set_label((GtkLabel*)a->label[13], a->packagesOut);
+		gtk_label_set_label((GtkLabel*)a->label[14], a->errorOut);
 	}
 	else
 	{
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
-		a->position6Dint = 0;
-	}
+		gtk_label_set_label((GtkLabel*)a->label[0], a->position6D);
 
-	if (a->accelerationXdouble > a->acceltriggerX || a->accelerationXdouble < -a->acceltriggerX)
-	{
-		gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='red' weight='ultrabold' font='20'> X  ALARM  </span>");
-	}
-	else
-	{
-		gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='green' weight='ultrabold' font='20'> X TRIGGER </span>");
-	}
+		if (strncpy(accelerationX, a->line+5, 7) != accelerationX)
+		{
+			g_print("strncpy2 error\n");
+		}
+		accelerationX[7] = '\0';
+		getInteger(accelerationX, &accelerationXint);
+		a->accelerationXdouble = accelerationXint / 15987.0;
+		sprintf(a->accelerationXout, "accelX %7.3f g", a->accelerationXdouble);
+		gtk_label_set_label((GtkLabel*)a->label[1], a->accelerationXout);
 
-	if (a->accelerationYdouble > a->acceltriggerY || a->accelerationYdouble < -a->acceltriggerY)
-	{
-		gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='red' weight='ultrabold' font='20'> Y  ALARM  </span>");
-	}
-	else
-	{
-		gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='green' weight='ultrabold' font='20'> Y TRIGGER </span>");
-	}
+		if (strncpy(accelerationY, a->line+13, 7) != accelerationY)
+		{
+			g_print("strncpy3 error\n");
+		}
+		accelerationY[7] = '\0';
+		getInteger(accelerationY, &accelerationYint);
+		a->accelerationYdouble = accelerationYint / 15987.0;
+		sprintf(a->accelerationYout, "accelY %7.3f g", a->accelerationYdouble);
+		gtk_label_set_label((GtkLabel*)a->label[2], a->accelerationYout);
 
-	if (a->accelerationZdouble > a->acceltriggerZ || a->accelerationZdouble < -a->acceltriggerZ)
-	{
-		gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='red' weight='ultrabold' font='20'> Z  ALARM  </span>");
-	}
-	else
-	{
-		gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
+		if (strncpy(accelerationZ, a->line+21, 7) != accelerationZ)
+		{
+			g_print("strncpy4 error\n");
+		}
+		accelerationZ[7] = '\0';
+		getInteger(accelerationZ, &accelerationZint);
+		a->accelerationZdouble = accelerationZint / 15987.0;
+		sprintf(a->accelerationZout, "accelZ %7.3f g", a->accelerationZdouble);
+		gtk_label_set_label((GtkLabel*)a->label[3], a->accelerationZout);
+
+		if (strncpy(temperature, a->line+29, 2) != temperature)
+		{
+			g_print("strncpy5 error\n");
+		}
+		temperature[2] = '\0';
+		getInteger(temperature, &temperatureint);
+		a->temperaturedouble = temperatureint / 1.0;
+		sprintf(a->tempOut, "%3.2f °C", a->temperaturedouble);
+		gtk_label_set_label((GtkLabel*)a->label[4], a->tempOut);
+
+		a->tiltX = asin(a->accelerationXdouble/G) * 180 / PI;
+		a->tiltY = asin(a->accelerationYdouble/G) * 180 / PI;
+		a->tiltZ = asin(a->accelerationZdouble/G) * 180 / PI;
+		a->pitch = atan(a->accelerationXdouble/(sqrt((a->accelerationYdouble*a->accelerationYdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
+		a->roll = atan(a->accelerationYdouble/(sqrt((a->accelerationXdouble*a->accelerationXdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
+
+		sprintf(a->tiltXout, "tiltX %7.2f °", a->tiltX);
+		sprintf(a->tiltYout, "tiltY %7.2f °", a->tiltY);
+		sprintf(a->tiltZout, "tiltZ %7.2f °", a->tiltZ);
+		sprintf(a->pitchOut, "pitch %7.2f °", a->pitch);
+		sprintf(a->rollOut, "roll  %7.2f °", a->roll);
+
+		gtk_label_set_label((GtkLabel*)a->label[5], a->tiltXout);
+		gtk_label_set_label((GtkLabel*)a->label[6], a->tiltYout);
+		gtk_label_set_label((GtkLabel*)a->label[7], a->tiltZout);
+		gtk_label_set_label((GtkLabel*)a->label[8], a->pitchOut);
+		gtk_label_set_label((GtkLabel*)a->label[9], a->rollOut);
+
+		if (strncmp(a->position6D, "TOP", 3) == 0)
+		{
+			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+			a->image[1] = gtk_image_new_from_file("./pictures/TOP.png");
+			a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+			gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+			gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+			gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_show_all(a->grid);
+			a->position6Dint = 1;
+		}
+		else if (strncmp(a->position6D, "BOT",3) == 0)
+		{
+			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+			a->image[1] = gtk_image_new_from_file("./pictures/BOT.png");
+			a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+			gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+			gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+			gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_show_all(a->grid);
+			a->position6Dint = 2;
+		}
+		else if (strncmp(a->position6D, "DDX",3) == 0)
+		{
+			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+			a->image[1] = gtk_image_new_from_file("./pictures/DDX.png");
+			a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+			gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+			gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+			gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_show_all(a->grid);
+			a->position6Dint = 3;	
+		}
+		else if (strncmp(a->position6D, "DSX", 3) == 0)
+		{
+			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+			a->image[1] = gtk_image_new_from_file("./pictures/DSX.png");
+			a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+			gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+			gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+			gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_show_all(a->grid);
+			a->position6Dint = 4;	
+		}
+		else if (strncmp(a->position6D, "UDX", 3) == 0)
+		{
+			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+			a->image[1] = gtk_image_new_from_file("./pictures/UDX.png");
+			a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+			gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+			gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+			gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_show_all(a->grid);
+			a->position6Dint = 5;	
+		}
+		else if (strncmp(a->position6D, "USX", 3) == 0)
+		{
+			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+			a->image[1] = gtk_image_new_from_file("./pictures/USX.png");
+			a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+			gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+			gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+			gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_show_all(a->grid);
+			a->position6Dint = 6;	
+		}
+		else
+		{
+			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+			a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
+			a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+			gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+			gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+			gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+			gtk_widget_show_all(a->grid);
+			a->position6Dint = 0;
+		}
+
+		if (a->accelerationXdouble > a->acceltriggerX || a->accelerationXdouble < -a->acceltriggerX)
+		{
+			gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='red' weight='ultrabold' font='20'> X  ALARM  </span>");
+		}
+		else
+		{
+			gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='green' weight='ultrabold' font='20'> X TRIGGER </span>");
+		}
+
+		if (a->accelerationYdouble > a->acceltriggerY || a->accelerationYdouble < -a->acceltriggerY)
+		{
+			gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='red' weight='ultrabold' font='20'> Y  ALARM  </span>");
+		}
+		else
+		{
+			gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='green' weight='ultrabold' font='20'> Y TRIGGER </span>");
+		}
+
+		if (a->accelerationZdouble > a->acceltriggerZ || a->accelerationZdouble < -a->acceltriggerZ)
+		{
+			gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='red' weight='ultrabold' font='20'> Z  ALARM  </span>");
+		}
+		else
+		{
+			gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
+		}
 	}
 }
 

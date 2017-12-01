@@ -1,2 +1,7 @@
-3Daccel_out_library.c:4:9:protocolComplete	168	static
-3Daccel_out_library.c:24:6:SysTick_Handler	4	static
+xmc_gpio.h:256:22:XMC_GPIO_SetOutputHigh	16	static
+xmc_gpio.h:282:22:XMC_GPIO_SetOutputLow	16	static
+xmc_gpio.h:308:22:XMC_GPIO_ToggleOutput	16	static
+3Daccel_out_library.c:3:6:protocolComplete	168	static
+3Daccel_out_library.c:39:6:outputInit	24	static
+3Daccel_out_library.c:49:6:ledSetting	16	static
+3Daccel_out_library.c:92:6:SysTick_Handler	4	static

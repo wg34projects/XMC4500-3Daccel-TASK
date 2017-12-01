@@ -1,5 +1,5 @@
 src/lis3dh_driver.o: src/lis3dh_driver.c inc/lis3dh_driver.h \
- inc/xmc4500_i2c_lib.h \
+ inc/3Daccel_app.h inc/lis3dh_driver.h inc/xmc4500_i2c_lib.h \
  /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/stdio.h \
  /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/_ansi.h \
  /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/newlib.h \
@@ -35,4 +35,5 @@ src/lis3dh_driver.o: src/lis3dh_driver.c inc/lis3dh_driver.h \
  system/CMSIS/Include/cmsis_gcc.h \
  system/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h \
  xmclib/inc/xmc4_usic_map.h xmclib/inc/xmc_gpio.h xmclib/inc/xmc4_gpio.h \
- xmclib/inc/xmc4_gpio_map.h xmclib/inc/xmc_usic.h inc/lis3dh_driver.h
+ xmclib/inc/xmc4_gpio_map.h xmclib/inc/xmc_usic.h inc/xmc4500_uart_lib.h \
+ inc/debug_lib.h

@@ -114,6 +114,12 @@ void constructGUI(gpointer data)
 	a->label[9] = gtk_label_new("ROLL");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[9], 2, 4, 1, 1);
 
+	a->label[13] = gtk_label_new("Packages XMC");
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[13], 2, 6, 1, 1);
+
+	a->label[14] = gtk_label_new("Errors XMC");
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[14], 2, 7, 1, 1);
+
 	a->button[0] = gtk_button_new_with_mnemonic("_CONNECT serial port");
 	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[0]), "connect serial port");
 	gtk_widget_set_hexpand(a->button[0], TRUE);

@@ -17,6 +17,7 @@
 
 #define PI 3.14159265
 #define G 9.81
+#define GDIVIDER 8190.0	//2G = 16380 4G = 8190 8G = 4096 16G = 1365 15987.0
 
 typedef struct
 {
@@ -39,6 +40,7 @@ typedef struct
 	gint radioButtonUSBstate, position6Dint;
 	gdouble acceltriggerX, acceltriggerY, acceltriggerZ;
 	gchar packagesOut[15], errorOut[9];
+	gint servoSign;
 
 } widgets;
 

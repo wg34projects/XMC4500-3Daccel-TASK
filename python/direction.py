@@ -36,17 +36,17 @@ def stringCutter():
 		temp1 = temp0[pos_f+1:]
 
 		pos_s = temp1.index(',')
-		accelX = int(temp1[:pos_s]) / 15987.0
+		accelX = int(temp1[:pos_s]) / 8190.0
 
 		temp2 = temp1[pos_s+1:]
 
 		pos_t = temp2.index(',')
-		accelY = int(temp2[:pos_t]) / 15987.0
+		accelY = int(temp2[:pos_t]) / 8190.0
 
 		temp3 = temp2[pos_t+1:]
 
 		pos_e = temp3.index(',')
-		accelZ = int(temp3[:pos_e]) / 15987.0
+		accelZ = int(temp3[:pos_e]) / 8190.0
 
 		temp4 = temp3[pos_e+1:]
 		pos_f = temp4.index('$')

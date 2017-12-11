@@ -35,5 +35,6 @@ src/xmc4500_i2c_lib.o: src/xmc4500_i2c_lib.c inc/xmc4500_i2c_lib.h \
  system/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h \
  xmclib/inc/xmc4_usic_map.h xmclib/inc/xmc_gpio.h xmclib/inc/xmc4_gpio.h \
  xmclib/inc/xmc4_gpio_map.h xmclib/inc/xmc_usic.h inc/lis3dh_driver.h \
- inc/3Daccel_app.h inc/xmc4500_i2c_lib.h inc/xmc4500_uart_lib.h \
- inc/debug_lib.h
+ inc/3Daccel_app.h inc/servo_driver.h system/GPIO.h inc/xmc4500_i2c_lib.h \
+ inc/xmc4500_uart_lib.h inc/debug_lib.h \
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/math.h

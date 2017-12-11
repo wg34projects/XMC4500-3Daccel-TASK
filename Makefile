@@ -31,6 +31,7 @@ FPU           = fpv4-sp-d16
 FABI          = softfp  #soft, softfp, hard
 LIBS          = -larm_cortexM4lf_math
 LIBS         += -lxmclibcstubs
+LIBS         += -lm
 GDB_ARGS      = -ex "target remote :2331"
 GDB_ARGS     += -ex "monitor reset"
 GDB_ARGS     += -ex "load"

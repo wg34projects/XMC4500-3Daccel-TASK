@@ -19,6 +19,7 @@ void constructGUI(gpointer data)
 	a->acceltriggerX = 0;
 	a->acceltriggerY = 0;
 	a->acceltriggerZ = 0;
+	a->servoSign = 0;
 
 	a->grid = gtk_grid_new();
 	gtk_grid_set_column_homogeneous(GTK_GRID (a->grid), TRUE);
@@ -166,6 +167,14 @@ void constructGUI(gpointer data)
 	g_signal_connect(a->button[5], "clicked", G_CALLBACK (pythonSpriteConnector), (gpointer) a);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[5], 0, 5, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
+
+	a->button[6] = gtk_button_new_with_mnemonic("SER_VO control");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[6]), "servo control");
+	gtk_widget_set_hexpand(a->button[6], TRUE);
+	gtk_widget_set_vexpand(a->button[6], TRUE);
+	g_signal_connect(a->button[6], "clicked", G_CALLBACK (servoConnector), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[6], 0, 6, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[6]), FALSE);
 
 	a->statusBar = gtk_statusbar_new();
 	gtk_grid_attach (GTK_GRID (a->grid), a->statusBar, 0, 9, 4, 1);

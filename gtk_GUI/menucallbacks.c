@@ -251,8 +251,6 @@ void connectSerial(GtkButton *button, gpointer data)
 		RS232_SendBuf(a->radioButtonUSBstate, requestConnection, (int)sizeof(requestConnection));
 		RS232_SendByte(a->radioButtonUSBstate, '\r');
 		RS232_SendByte(a->radioButtonUSBstate, '\r');
-		RS232_flushTX(a->radioButtonUSBstate);
-	
 	}
 }
 
@@ -261,11 +259,22 @@ void requestData(gpointer data)
 	widgets *a = (widgets *) data;
 	unsigned char requestText[] = "#REQ,";
 
-	RS232_flushTX(a->radioButtonUSBstate);
+	RS232_flushTX(a->radioButtonUSBstate);	
 	RS232_SendBuf(a->radioButtonUSBstate, requestText, (int)sizeof(requestText));
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
-	RS232_flushTX(a->radioButtonUSBstate);
+}
+
+void servoConnector (gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+	a->sendSerial = FALSE;
+
+	a->servoSign = 1;
+
+	a->sendSerial = TRUE;
+	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
 }
 
 void disconnectSerial(GtkButton *button, gpointer data)
@@ -296,7 +305,6 @@ void disconnectSerial(GtkButton *button, gpointer data)
 	RS232_SendBuf(a->radioButtonUSBstate, requestStop, (int)sizeof(requestStop));
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
-	RS232_flushTX(a->radioButtonUSBstate);
 
     RS232_CloseComport(a->radioButtonUSBstate);
 	snprintf(a->bufferStatusBar, sizeof(closeComPortSuccess)+1, "%s", closeComPortSuccess);
@@ -453,7 +461,7 @@ void rawProtocolDataTimed(gpointer data)
 		}
 		accelerationX[7] = '\0';
 		getInteger(accelerationX, &accelerationXint);
-		a->accelerationXdouble = accelerationXint / 15987.0;
+		a->accelerationXdouble = accelerationXint / GDIVIDER;
 		sprintf(a->accelerationXout, "accelX %7.3f g", a->accelerationXdouble);
 		gtk_label_set_label((GtkLabel*)a->label[1], a->accelerationXout);
 
@@ -463,7 +471,7 @@ void rawProtocolDataTimed(gpointer data)
 		}
 		accelerationY[7] = '\0';
 		getInteger(accelerationY, &accelerationYint);
-		a->accelerationYdouble = accelerationYint / 15987.0;
+		a->accelerationYdouble = accelerationYint / GDIVIDER;
 		sprintf(a->accelerationYout, "accelY %7.3f g", a->accelerationYdouble);
 		gtk_label_set_label((GtkLabel*)a->label[2], a->accelerationYout);
 
@@ -473,7 +481,7 @@ void rawProtocolDataTimed(gpointer data)
 		}
 		accelerationZ[7] = '\0';
 		getInteger(accelerationZ, &accelerationZint);
-		a->accelerationZdouble = accelerationZint / 15987.0;
+		a->accelerationZdouble = accelerationZint / GDIVIDER;
 		sprintf(a->accelerationZout, "accelZ %7.3f g", a->accelerationZdouble);
 		gtk_label_set_label((GtkLabel*)a->label[3], a->accelerationZout);
 

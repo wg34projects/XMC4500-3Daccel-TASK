@@ -33,5 +33,6 @@ unsigned int getDouble(char *input, double *numDouble);
 void entryXtrigger (GtkWidget *widget, gpointer data);
 void entryYtrigger (GtkWidget *widget, gpointer data);
 void entryZtrigger (GtkWidget *widget, gpointer data);
+void servoConnector (gpointer data);
 
 #endif

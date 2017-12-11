@@ -11,6 +11,7 @@
 #define _3Daccel_app_
 
 #include "lis3dh_driver.h"
+#include "servo_driver.h"
 #include "xmc4500_i2c_lib.h"
 #include <xmc4500_uart_lib.h>
 #include <debug_lib.h>
@@ -18,12 +19,14 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define TICKS_PER_SECOND 1000
 #define TICKS_WAIT 100
 #define RX_BUFFER_SIZE 64
 #define LED1 P1_0
 #define LED2 P1_1
+#define DEBUG 1
 
 struct axesRawdata
 {
@@ -39,5 +42,6 @@ uint8_t errorcount;
 uint8_t position, old_position, direction;
 uint32_t packagesSent;
 uint8_t statisticSend;
+double signal;
 
 #endif

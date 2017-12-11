@@ -28,7 +28,7 @@ uint8_t initMEMSsensor()
 	}
 
     //set Fullscale
-    if(LIS3DH_SetFullScale(LIS3DH_FULLSCALE_2) == 1)
+    if(LIS3DH_SetFullScale(LIS3DH_FULLSCALE_4) == 1)
     {
 
         printf("LIS3DH_SetFullScale done...\n");

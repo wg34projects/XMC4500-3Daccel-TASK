@@ -1,5 +1,5 @@
-src/3Daccel_app.o: src/3Daccel_app.c inc/3Daccel_app.h \
- inc/lis3dh_driver.h inc/3Daccel_app.h inc/servo_driver.h system/GPIO.h \
+src/servo_library.o: src/servo_library.c inc/servo_library.h \
+ inc/3Daccel_app.h inc/lis3dh_driver.h inc/servo_driver.h system/GPIO.h \
  system/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h \
  system/CMSIS/Include/core_cm4.h \
  /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/include/stdint.h \
@@ -37,5 +37,4 @@ src/3Daccel_app.o: src/3Daccel_app.c inc/3Daccel_app.h \
  xmclib/inc/xmc_device.h xmclib/inc/xmc4_usic_map.h xmclib/inc/xmc_gpio.h \
  xmclib/inc/xmc4_gpio.h xmclib/inc/xmc4_gpio_map.h xmclib/inc/xmc_usic.h \
  inc/xmc4500_uart_lib.h inc/debug_lib.h \
- /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/math.h \
- inc/3Daccel_out_library.h inc/lis3dh_library.h inc/lis3dh_library.h
+ /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/math.h

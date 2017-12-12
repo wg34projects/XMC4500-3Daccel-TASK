@@ -132,31 +132,29 @@ double pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
 
 void SysTick_Handler (void)
 {
-    static uint32_t ticks = 0, howMuchTicks = 1000;
-	double steps = 0.266666, up = 11.00, lo = 3.00;
+    static uint32_t ticks = 0, howMuchTicks = 5;
 
-    ticks++;
-
-    if (ticks == howMuchTicks)
-    {
-		if (dir == 0)
-		{
-			signal = signal + steps;
-			if (signal >= up)
-			{
-				signal = up;
-				dir = 1;
-			}
-		}
-		else
-		{
-			signal = signal - steps;
-			if (signal <= lo)
-			{
-				signal = lo;
-				dir = 0;
-			}
-		}
+	ticks++;
+	if(ticks == howMuchTicks)
+	{
+		// get temperature
+		temperature = getTemperature(&temperature);
+		// get 6D Position
+		direction = get6Dposition();
+		// get raw data
+		readAxes = getAxesRawData();
+		// calculate angle for servo output
+		signal = pwmAngleCalc(readAxes.axisX, readAxes.axisY, readAxes.axisZ);
 		ticks = 0;
-    }
+	}
+
+	if (servoEnable == 1)
+	{
+		// set servo
+		pwm(signal);
+	}
+	else
+	{
+		pwm(7.00);
+	}
 }

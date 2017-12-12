@@ -41,7 +41,10 @@ uint8_t response;
 uint8_t errorcount;
 uint8_t position, old_position, direction;
 uint32_t packagesSent;
-uint8_t statisticSend;
+uint8_t statisticSend, servoEnable;
 double signal;
+AXESRAWDATA readAxes;
+uint8_t direction;
+int8_t temperature;
 
 #endif

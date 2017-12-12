@@ -29,7 +29,7 @@ typedef struct
 	GtkWidget *view, *scroll;
 	GtkTextIter iter, start, end;
 	GtkTextBuffer *buffer;
-	gboolean sendSerial;
+	gboolean sendSerial, safeWaitStep;
  	guint id;
 	gint pollTimeSensor;
 	gchar bufferStatusBar[100], position6D[4];
@@ -40,7 +40,6 @@ typedef struct
 	gint radioButtonUSBstate, position6Dint;
 	gdouble acceltriggerX, acceltriggerY, acceltriggerZ;
 	gchar packagesOut[15], errorOut[9];
-	gint servoSign;
 
 } widgets;
 

@@ -215,6 +215,16 @@ guint waitSendPython(gpointer data)
 	return a->sendSerial;
 }
 
+guint safeWait(gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+	a->sendSerial = TRUE;
+	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
+
+	return a->safeWaitStep;
+}
+
 void connectSerial(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -235,7 +245,7 @@ void connectSerial(GtkButton *button, gpointer data)
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), FALSE);
 
-		for (i = 1; i < 6; i++) 
+		for (i = 1; i < 7; i++) 
 		{
 			gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), TRUE);
 		}
@@ -265,16 +275,23 @@ void requestData(gpointer data)
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
 }
 
-void servoConnector (gpointer data)
+void servoConnector (GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
+	unsigned char requestServo[] = "#SER,";
+
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
 
 	a->sendSerial = FALSE;
 
-	a->servoSign = 1;
+	RS232_flushTX(a->radioButtonUSBstate);
+	RS232_SendBuf(a->radioButtonUSBstate, requestServo, (int)sizeof(requestServo));
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
 
-	a->sendSerial = TRUE;
-	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
+	a->safeWaitStep = FALSE;
+	g_timeout_add (250, (GSourceFunc) safeWait, (gpointer) a);
 }
 
 void disconnectSerial(GtkButton *button, gpointer data)
@@ -285,7 +302,7 @@ void disconnectSerial(GtkButton *button, gpointer data)
 	gint i = 0;
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
-	for (i = 1; i < 6; i++) 
+	for (i = 1; i < 7; i++) 
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
 	}

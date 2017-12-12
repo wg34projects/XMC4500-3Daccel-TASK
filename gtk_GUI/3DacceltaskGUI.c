@@ -19,7 +19,6 @@ void constructGUI(gpointer data)
 	a->acceltriggerX = 0;
 	a->acceltriggerY = 0;
 	a->acceltriggerZ = 0;
-	a->servoSign = 0;
 
 	a->grid = gtk_grid_new();
 	gtk_grid_set_column_homogeneous(GTK_GRID (a->grid), TRUE);

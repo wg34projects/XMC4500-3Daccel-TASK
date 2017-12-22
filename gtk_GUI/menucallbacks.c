@@ -356,7 +356,7 @@ void connectSerial(GtkButton *button, gpointer data)
 			snprintf(a->bufferStatusBar, sizeof(openComPortSuccess)+1, "%s", openComPortSuccess);
 			gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 
-			for (i = 2; i < BUTTONS; i++) 
+			for (i = 1; i < BUTTONS; i++) 
 			{
 				gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), TRUE);
 			}
@@ -570,10 +570,8 @@ void rawProtocolData(GtkButton *button, gpointer data)
 	gtk_container_add (GTK_CONTAINER (a->terminalwindow), a->scroll);
 	gtk_widget_show_all(GTK_WIDGET(a->terminalwindow));
 
-	if (a->transmission == TRUE)
-	{
-		a->sendSerial = TRUE;
-	}
+	a->sendSerial = TRUE;
+	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendTerminal, (gpointer) a);
 }
 
 // input callback
@@ -879,8 +877,22 @@ void about(GSimpleAction *action, GVariant *parameter, gpointer data)
 void help(GSimpleAction *action, GVariant *parameter, gpointer data)
 {
 	widgets *a = (widgets *) data;
+	const char connectionText[] = "CONNECTION - choose your /dev/ttyUSB and connect to XMC\n";
+	const char statisticText[] = "STATISTIC - receive statistic from XMC with next transmission\n";
+	const char saveText[] = "SAVE - enter a filename after activating transmission\n";
+	const char terminalText[] = "TERMINAL - simple terminal for raw data, close window to exit\n";
+	const char transmissionText[] = "TRANSMISSION - starts and ends transmission and connected tasks\n";
+	const char diagramsText[] = "DIAGRAMS - Python connector diagrams X Y Z acceleration\n";
+	const char spritesText[]  = "SPRITES - Python connector sprites for ROLL and PITCH\n";
+	const char servoText[] = "SERVO - starts stops the servos connected to XMC\n";
+	const char enterpolltimeText[] = "polltime in milliseconds - from 10 to 1000 possible\n";
+	const char triggeraccText[] = "trigger g-force for every axis can be set and is triggered\n";
+	const char buttonText[] = "buttons highlight the pressed buttons on XMC\n";
+	gchar messageText[1000];
 
-	messageDialog(action, NULL, (gpointer) a, "Find here some helpful information");
+	g_sprintf(messageText, "%s%s%s%s%s%s%s%s%s%s%s", connectionText, statisticText, saveText, terminalText, transmissionText, diagramsText, spritesText, servoText, enterpolltimeText, triggeraccText, buttonText);
+	
+	messageDialog(action, NULL, (gpointer) a, messageText);
 }
 
 void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gchar *showText)

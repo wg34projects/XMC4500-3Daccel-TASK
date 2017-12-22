@@ -20,7 +20,7 @@
 #define GDIVIDER 8190.0	//2G = 16380 4G = 8190 8G = 4096 16G = 1365 15987.0
 #define UARTWAIT 100
 #define BUTTONWAIT 50
-#define BUTTONS 9
+#define BUTTONS 8
 
 typedef struct
 {

@@ -477,6 +477,8 @@ void dataTransmission(GtkButton *button, gpointer data)
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[4]), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[9]), TRUE);
 		a->sendSerial = TRUE;
 		g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
     }
@@ -490,6 +492,8 @@ void dataTransmission(GtkButton *button, gpointer data)
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), TRUE);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), TRUE);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[4]), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[9]), FALSE);
 	}
 }
 

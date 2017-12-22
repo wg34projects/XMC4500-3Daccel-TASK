@@ -230,12 +230,14 @@ void constructGUI(gpointer data)
 	gtk_widget_set_hexpand(a->button[8], TRUE);
 	gtk_widget_set_vexpand(a->button[8], TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[8], 1, 8, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), FALSE);
 
     a->button[9] = gtk_toggle_button_new_with_label("BUTTON 2");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[9]), FALSE);
 	gtk_widget_set_hexpand(a->button[9], TRUE);
 	gtk_widget_set_vexpand(a->button[9], TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[9], 2, 8, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[9]), FALSE);
 
 	// statusbar section
 

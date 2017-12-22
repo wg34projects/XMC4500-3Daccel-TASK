@@ -10,15 +10,27 @@ const GActionEntry appActions[] =
 void constructGUI(gpointer data)
 {
 	widgets *a = (widgets *) data;
+	const gchar initialinfo[] = "please choose your USB connection ID and poll time - standard is /dev/ttyUSB0 and 50ms";
 
-	const char initialinfo[] = "please choose your USB connection ID and poll time - standard is /dev/ttyUSB0 and 50ms";
 	gchar stringUSB[15];
 	gint i;
 
+	// some initialization
+
 	a->position6Dint = 0;
-	a->acceltriggerX = 0;
-	a->acceltriggerY = 0;
-	a->acceltriggerZ = 0;
+	a->acceltriggerX = 2.0;
+	a->acceltriggerY = 2.0;
+	a->acceltriggerZ = 2.0;
+	a->servoState = 0;
+	a->transmission = FALSE;
+	a->radioButtonUSBstate = 16;
+	a->pollTimeSensor = 50;
+
+	// flush cache
+
+	RS232_flushRXTX(a->radioButtonUSBstate);
+
+	// grid based
 
 	a->grid = gtk_grid_new();
 	gtk_grid_set_column_homogeneous(GTK_GRID (a->grid), TRUE);
@@ -31,6 +43,8 @@ void constructGUI(gpointer data)
 	gtk_widget_set_margin_bottom(a->grid, 10);
 	gtk_container_add(GTK_CONTAINER (a->window), a->grid);
 
+	// initial picture
+
 	a->image[0] = gtk_image_new_from_file("./pictures/ALL.png");
 	a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 	gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
@@ -38,36 +52,34 @@ void constructGUI(gpointer data)
 	gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 	gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
 
+	// radio buttons for USB
+
 	a->box[1] = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
 	gtk_grid_attach(GTK_GRID (a->grid), a->box[1], 1, 5, 1, 3);
 	gtk_widget_set_halign(GTK_WIDGET(a->box[1]), GTK_ALIGN_CENTER);
 	gtk_widget_set_valign(GTK_WIDGET(a->box[1]), GTK_ALIGN_CENTER);
-
 	a->radioUSB[0] = gtk_radio_button_new_with_label (NULL, "/dev/ttyUSB0");
-
 	for (i = 1; i < 5; i++) 
 	{
 		g_sprintf (stringUSB, "/dev/ttyUSB%d", i);
 		a->radioUSB[i] = gtk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (a->radioUSB[0]), stringUSB);
 		memset (&stringUSB, 0, sizeof (stringUSB));
 	}
-
 	for (i = 0; i < 5; i++) 
 	{
 		gtk_box_pack_start (GTK_BOX (a->box[1]), a->radioUSB[i], FALSE, TRUE, 0);
 	}
-
 	for (i = 0; i < 5; i++) 
 	{
 		g_signal_connect (G_OBJECT (a->radioUSB[i]), "toggled", G_CALLBACK (readRadioUSB), (gpointer) a);
 	}
-	a->radioButtonUSBstate = 16;
+
+	// entry section
 
 	a->entry[0] = gtk_entry_new();
     gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[0]), "enter poll time in ms");
 	gtk_grid_attach(GTK_GRID (a->grid), a->entry[0], 2, 5, 1, 1);
 	g_signal_connect (a->entry[0], "activate", G_CALLBACK (entryPollTime), (gpointer) a);
-	a->pollTimeSensor = 50;
 
 	a->entry[1] = gtk_entry_new();
     gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[1]), "trigger accelX");
@@ -83,6 +95,14 @@ void constructGUI(gpointer data)
     gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[3]), "trigger accelZ");
 	gtk_grid_attach(GTK_GRID (a->grid), a->entry[3], 3, 7, 1, 1);
 	g_signal_connect (a->entry[3], "activate", G_CALLBACK (entryZtrigger), (gpointer) a);
+
+	a->entry[4] = gtk_entry_new();
+    gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[4]), "enter your filename");
+	gtk_grid_attach(GTK_GRID (a->grid), a->entry[4], 3, 8, 1, 1);
+	g_signal_connect (a->entry[4], "activate", G_CALLBACK (fileName), (gpointer) a);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->entry[4]), FALSE);
+
+	// label section
 
 	a->label[0] = gtk_label_new("6D POSITION");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[0], 1, 0, 1, 1);
@@ -114,74 +134,6 @@ void constructGUI(gpointer data)
 	a->label[9] = gtk_label_new("ROLL");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[9], 2, 4, 1, 1);
 
-	a->label[13] = gtk_label_new("Packages XMC");
-	gtk_grid_attach(GTK_GRID (a->grid), a->label[13], 2, 6, 1, 1);
-
-	a->label[14] = gtk_label_new("Errors XMC");
-	gtk_grid_attach(GTK_GRID (a->grid), a->label[14], 2, 7, 1, 1);
-
-	a->button[0] = gtk_button_new_with_mnemonic("_CONNECT serial port");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[0]), "connect serial port");
-	gtk_widget_set_hexpand(a->button[0], TRUE);
-	gtk_widget_set_vexpand(a->button[0], TRUE);
-	g_signal_connect(a->button[0], "clicked", G_CALLBACK (connectSerial), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[0], 0, 0, 1, 1);
-
-	a->button[1] = gtk_button_new_with_mnemonic("_DISCONNECT serial port");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[1]), "disconnect serial port");
-	gtk_widget_set_hexpand(a->button[1], TRUE);
-	gtk_widget_set_vexpand(a->button[1], TRUE);
-	g_signal_connect(a->button[1], "clicked", G_CALLBACK (disconnectSerial), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[1], 0, 1, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), FALSE);
-
-	a->button[2] = gtk_button_new_with_mnemonic("_TERMINAL raw protocol");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[2]), "teminal raw protocol");
-	gtk_widget_set_hexpand(a->button[2], TRUE);
-	gtk_widget_set_vexpand(a->button[2], TRUE);
-	g_signal_connect(a->button[2], "clicked", G_CALLBACK (rawProtocolData), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[2], 0, 2, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
-
-	a->button[3] = gtk_button_new_with_mnemonic("_DATA transmission");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[3]), "data transmission");
-	gtk_widget_set_hexpand(a->button[3], TRUE);
-	gtk_widget_set_vexpand(a->button[3], TRUE);
-	g_signal_connect(a->button[3], "clicked", G_CALLBACK (dataTransmission), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[3], 0, 3, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
-
-	a->button[4] = gtk_button_new_with_mnemonic("_PYTHON diagrams");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[4]), "python diagrams");
-	gtk_widget_set_hexpand(a->button[4], TRUE);
-	gtk_widget_set_vexpand(a->button[4], TRUE);
-	g_signal_connect(a->button[4], "clicked", G_CALLBACK (pythonConnector), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[4], 0, 4, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
-
-	a->button[5] = gtk_button_new_with_mnemonic("P_YTHON sprites");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[5]), "python sprites");
-	gtk_widget_set_hexpand(a->button[5], TRUE);
-	gtk_widget_set_vexpand(a->button[5], TRUE);
-	g_signal_connect(a->button[5], "clicked", G_CALLBACK (pythonSpriteConnector), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[5], 0, 5, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
-
-	a->button[6] = gtk_button_new_with_mnemonic("SER_VO control");
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[6]), "servo control");
-	gtk_widget_set_hexpand(a->button[6], TRUE);
-	gtk_widget_set_vexpand(a->button[6], TRUE);
-	g_signal_connect(a->button[6], "clicked", G_CALLBACK (servoConnector), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[6], 0, 6, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[6]), FALSE);
-
-	a->statusBar = gtk_statusbar_new();
-	gtk_grid_attach (GTK_GRID (a->grid), a->statusBar, 0, 9, 4, 1);
-	a->id = gtk_statusbar_get_context_id (GTK_STATUSBAR (a->statusBar), "demo");
-
-	snprintf(a->bufferStatusBar, sizeof(initialinfo)+1, "%s", initialinfo);
-	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-
 	a->label[10] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> X TRIGGER </span>");
 	gtk_label_set_use_markup (GTK_LABEL (a->label[10]), TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[10], 4, 5, 1, 1);
@@ -193,6 +145,105 @@ void constructGUI(gpointer data)
 	a->label[12] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
 	gtk_label_set_use_markup (GTK_LABEL (a->label[12]), TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[12], 4, 7, 1, 1);
+
+/*	a->label[15] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> FREEFALL </span>");*/
+/*	gtk_label_set_use_markup (GTK_LABEL (a->label[15]), TRUE);*/
+/*	gtk_grid_attach(GTK_GRID (a->grid), a->label[15], 4, 8, 1, 1);*/
+
+	a->label[13] = gtk_label_new("Packages XMC");
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[13], 2, 6, 1, 1);
+
+	a->label[14] = gtk_label_new("Errors XMC");
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[14], 2, 7, 1, 1);
+
+	// button section
+
+	a->button[0] = gtk_toggle_button_new_with_label("CONNECTION");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[0]), FALSE);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[0]), "toggle RS232 connection on / off");
+	gtk_widget_set_hexpand(a->button[0], TRUE);
+	gtk_widget_set_vexpand(a->button[0], TRUE);
+	g_signal_connect(a->button[0], "toggled", G_CALLBACK (connectSerial), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[0], 0, 0, 1, 1);
+
+	a->button[1] = gtk_button_new_with_mnemonic("STATISTIC");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[1]), "request statistic package from XMC");
+	gtk_widget_set_hexpand(a->button[1], TRUE);
+	gtk_widget_set_vexpand(a->button[1], TRUE);
+	g_signal_connect(a->button[1], "clicked", G_CALLBACK (statisticConnector), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[1], 0, 1, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), FALSE);
+
+	a->button[7] = gtk_toggle_button_new_with_label("SAVE");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[7]), FALSE);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[7]), "toggle save data");
+	gtk_widget_set_hexpand(a->button[7], TRUE);
+	gtk_widget_set_vexpand(a->button[7], TRUE);
+	g_signal_connect(a->button[7], "toggled", G_CALLBACK (saveData), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[7], 0, 2, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[7]), FALSE);
+
+	a->button[2] = gtk_button_new_with_mnemonic("TERMINAL");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[2]), "view raw incoming protocol");
+	gtk_widget_set_hexpand(a->button[2], TRUE);
+	gtk_widget_set_vexpand(a->button[2], TRUE);
+	g_signal_connect(a->button[2], "clicked", G_CALLBACK (rawProtocolData), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[2], 0, 3, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
+
+	a->button[3] = gtk_toggle_button_new_with_label("TRANSMISSION");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[3]), FALSE);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[3]), "toggle data transmission");
+	gtk_widget_set_hexpand(a->button[3], TRUE);
+	gtk_widget_set_vexpand(a->button[3], TRUE);
+	g_signal_connect(a->button[3], "toggled", G_CALLBACK (dataTransmission), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[3], 0, 4, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
+
+	a->button[4] = gtk_button_new_with_mnemonic("DIAGRAMS");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[4]), "python diagrams");
+	gtk_widget_set_hexpand(a->button[4], TRUE);
+	gtk_widget_set_vexpand(a->button[4], TRUE);
+	g_signal_connect(a->button[4], "clicked", G_CALLBACK (pythonConnector), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[4], 0, 5, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+
+	a->button[5] = gtk_button_new_with_mnemonic("SPRITES");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[5]), "python sprites");
+	gtk_widget_set_hexpand(a->button[5], TRUE);
+	gtk_widget_set_vexpand(a->button[5], TRUE);
+	g_signal_connect(a->button[5], "clicked", G_CALLBACK (pythonSpriteConnector), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[5], 0, 6, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
+
+    a->button[6] = gtk_toggle_button_new_with_label("SERVO");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[6]), FALSE);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[6]), "toggle servo control");
+	gtk_widget_set_hexpand(a->button[6], TRUE);
+	gtk_widget_set_vexpand(a->button[6], TRUE);
+    g_signal_connect(a->button[6], "toggled", G_CALLBACK(servo), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[6], 0, 7, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[6]), FALSE);
+
+    a->button[8] = gtk_toggle_button_new_with_label("BUTTON 1");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
+	gtk_widget_set_hexpand(a->button[8], TRUE);
+	gtk_widget_set_vexpand(a->button[8], TRUE);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[8], 1, 8, 1, 1);
+
+    a->button[9] = gtk_toggle_button_new_with_label("BUTTON 2");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[9]), FALSE);
+	gtk_widget_set_hexpand(a->button[9], TRUE);
+	gtk_widget_set_vexpand(a->button[9], TRUE);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[9], 2, 8, 1, 1);
+
+	// statusbar section
+
+	a->statusBar = gtk_statusbar_new();
+	gtk_grid_attach (GTK_GRID (a->grid), a->statusBar, 0, 9, 4, 1);
+	a->id = gtk_statusbar_get_context_id (GTK_STATUSBAR (a->statusBar), "demo");
+	snprintf(a->bufferStatusBar, sizeof(initialinfo)+1, "%s", initialinfo);
+	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 }
 
 void constructMenu(GtkApplication *app, gpointer data)

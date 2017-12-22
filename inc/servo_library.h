@@ -8,4 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+void pwm(double dutycycle, uint8_t out);
+void initServoPWM();
+
 #endif

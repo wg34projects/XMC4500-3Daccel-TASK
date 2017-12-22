@@ -14,6 +14,7 @@
 #include "servo_driver.h"
 #include "xmc4500_i2c_lib.h"
 #include <xmc4500_uart_lib.h>
+#include "servo_library.h"
 #include <debug_lib.h>
 #include <string.h>
 #include <stdio.h>
@@ -26,7 +27,14 @@
 #define RX_BUFFER_SIZE 64
 #define LED1 P1_0
 #define LED2 P1_1
+#define DEBUGI 1
+#define DEBUGO 0
 #define DEBUG 1
+#define BUTTON1 P1_14
+#define BUTTON2 P1_15
+#define BUTTON1INT 14
+#define BUTTON2INT 15
+#define CBSIZE 10
 
 struct axesRawdata
 {
@@ -41,10 +49,16 @@ uint8_t response;
 uint8_t errorcount;
 uint8_t position, old_position, direction;
 uint32_t packagesSent;
-uint8_t statisticSend, servoEnable;
-double signal;
+uint8_t statisticSend, servoEnable, buttonSend;
 AXESRAWDATA readAxes;
+double signal1, signal2;
 uint8_t direction;
 int8_t temperature;
+// global variables
+uint8_t full, empty;
+uint8_t inix, outix;
+uint8_t cb[CBSIZE];
+uint8_t button1pressed, button2pressed;
+uint8_t button1state, button2state;
 
 #endif

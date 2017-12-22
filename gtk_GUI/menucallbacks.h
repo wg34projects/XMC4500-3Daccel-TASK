@@ -10,29 +10,55 @@
 #define BAUD 115200
 #define OSBUFFER 4096
 
-void connectSerial(GtkButton *button, gpointer data);
-void disconnectSerial(GtkButton *button, gpointer data);
+// entry callbacks
+
+void entryPollTime (GtkWidget *widget, gpointer data);
+void entryXtrigger (GtkWidget *widget, gpointer data);
+void entryYtrigger (GtkWidget *widget, gpointer data);
+void entryZtrigger (GtkWidget *widget, gpointer data);
+void fileName (GtkWidget *widget, gpointer data);
+
+// radio button callbacks
+
+void readRadioUSB(GtkWidget *button, gpointer *data);
+
+// timer
+
 guint waitSendTerminal(gpointer data);
 guint waitSendnoTerminal(gpointer data);
 guint waitSendPython(gpointer data);
-void readRadioUSB(GtkWidget *button, gpointer *data);
-void entryPollTime (GtkWidget *widget, gpointer data);
-unsigned int getInteger(char *input, int *numInteger);
+guint safeStop(gpointer data);
+guint safeEnd(gpointer data);
+guint safeClose(gpointer data);
+guint buttonFeedback(gpointer data);
+
+// connection callbacks
+
+void connectSerial(GtkButton *button, gpointer data);
+void requestData(gpointer data);
+void servoConnector (gpointer data);
+void statisticConnector (GtkButton *button, gpointer data);
+void servo(GtkWidget *checkbutton, gpointer data);
 void dataTransmission(GtkButton *button, gpointer data);
+void pythonConnector(GtkButton *button, gpointer data);
+void pythonSpriteConnector(GtkButton *button, gpointer data);
 void rawProtocolData(GtkButton *button, gpointer data);
+
+// input callback
+
 void rawProtocolDataTimed(gpointer data);
+void saveData(GtkButton *button, gpointer data);
+
+// dialog callbacks
+
 void quit(GSimpleAction *action, GVariant *parameter, gpointer data);
 void about(GSimpleAction *action, GVariant *parameter, gpointer data);
 void help(GSimpleAction *action, GVariant *parameter, gpointer data);
 void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gchar *showText);
-void closeTerminalWindow(GtkButton *button, gpointer data);
-void requestData(gpointer data);
-void pythonConnector(GtkButton *button, gpointer data);
-void pythonSpriteConnector(GtkButton *button, gpointer data);
+
+// misc functions
+
+unsigned int getInteger(char *input, int *numInteger);
 unsigned int getDouble(char *input, double *numDouble);
-void entryXtrigger (GtkWidget *widget, gpointer data);
-void entryYtrigger (GtkWidget *widget, gpointer data);
-void entryZtrigger (GtkWidget *widget, gpointer data);
-void servoConnector (GtkButton *button, gpointer data);
 
 #endif

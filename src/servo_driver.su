@@ -1,5 +1,8 @@
 GPIO.h:470:22:P1_1_set_mode	16	static
 GPIO.h:475:22:P1_1_set_driver_strength	16	static
 GPIO.h:489:22:P1_1_reset	4	static
-servo_driver.c:4:6:initServoPWM	8	static
-servo_driver.c:28:9:pwmXMC	40	static
+GPIO.h:501:22:P1_2_set_mode	16	static
+GPIO.h:506:22:P1_2_set_driver_strength	16	static
+GPIO.h:520:22:P1_2_reset	4	static
+servo_driver.c:4:6:initServoPWMXMC	8	static
+servo_driver.c:47:9:pwmXMC	48	static

@@ -4,8 +4,9 @@
 
 int main (void)
 {
-
-	char rx_buff[RX_BUFFER_SIZE] = {0};
+	char rx_buff[RX_BUFFER_SIZE];
+	
+	memset (&rx_buff, 0, sizeof (rx_buff));
 
 	direction = 6;
 	temperature = 0;
@@ -17,15 +18,18 @@ int main (void)
 	readAxes.axisY = 0;
 	readAxes.axisZ = 0;
 	statisticSend = 0;
-	signal = 7.00;
+	signal1 = 0.00;
+	signal2 = 0.00;
 	servoEnable = 0;
+	buttonSend = 0;
 
 	// init DEBUG, UART, I2C
     initRetargetSwo();
     _init_uart0_ch0();
     _init_i2c1_ch0();
 	initServoPWM();
-	
+	pwm(7, 0);
+	pwm(7, 1);
 
 #if DEBUG
     printf("DEBUG+I2C+UART init done...\n");
@@ -33,6 +37,10 @@ int main (void)
 
 	// init LED output
 	outputInit();
+
+	// init BUTTON input
+	inputInit();
+	circularInit();
 
     // init MEMS
 	while (1)
@@ -72,7 +80,7 @@ int main (void)
 		}
 	}
 
-	pwm(signal);
+/*	configFREEfall();*/
 
 	// set up SysTick
     SysTick_Config (SystemCoreClock / 1000);
@@ -83,18 +91,9 @@ int main (void)
 		// clear buffer and receie incoming data
 		memset (&rx_buff, 0, sizeof (rx_buff));
 		_uart_get_string (rx_buff);
-#if DEBUG
+#if DEBUGI
 		printf("received %s\n", rx_buff);
 #endif
-
-/*		// get temperature*/
-/*		temperature = getTemperature(&temperature);*/
-/*		// get 6D Position*/
-/*		direction = get6Dposition();*/
-/*		// get raw data*/
-/*		readAxes = getAxesRawData();*/
-/*		// calculate angle for servo output*/
-/*		signal = pwmAngleCalc(readAxes.axisX, readAxes.axisY, readAxes.axisZ);*/
 
         if (strncmp(rx_buff, "#REQ,", strlen(rx_buff)) == 0)
         {
@@ -109,16 +108,17 @@ int main (void)
 		{
 			ledSetting(0, 1);
 		}
-		else if (strncmp(rx_buff, "#SER,", strlen(rx_buff)) == 0)
+		else if (strncmp(rx_buff, "#SER,f", strlen(rx_buff)) == 0)
 		{
-			if (servoEnable == 0)
-			{
-				servoEnable = 1;
-			}
-			else
-			{
-				servoEnable = 0;
-			}
+			servoEnable = 0;
+		}
+		else if (strncmp(rx_buff, "#SER,n", strlen(rx_buff)) == 0)
+		{
+			servoEnable = 1;
+		}
+		else if (strncmp(rx_buff, "#STA,", strlen(rx_buff)) == 0)
+		{
+			statisticSend = 1;
 		}
 		else
 		{

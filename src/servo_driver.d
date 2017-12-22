@@ -37,6 +37,6 @@ src/servo_driver.o: src/servo_driver.c inc/servo_driver.h \
  system/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h \
  xmclib/inc/xmc4_usic_map.h xmclib/inc/xmc_gpio.h xmclib/inc/xmc4_gpio.h \
  xmclib/inc/xmc4_gpio_map.h xmclib/inc/xmc_usic.h inc/xmc4500_uart_lib.h \
- inc/debug_lib.h \
+ inc/servo_library.h \
  /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/math.h \
- system/GPIO.h inc/servo_library.h
+ inc/debug_lib.h system/GPIO.h inc/servo_library.h

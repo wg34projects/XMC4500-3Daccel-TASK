@@ -36,5 +36,5 @@ src/servo_library.o: src/servo_library.c inc/servo_library.h \
  /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/sys/string.h \
  xmclib/inc/xmc_device.h xmclib/inc/xmc4_usic_map.h xmclib/inc/xmc_gpio.h \
  xmclib/inc/xmc4_gpio.h xmclib/inc/xmc4_gpio_map.h xmclib/inc/xmc_usic.h \
- inc/xmc4500_uart_lib.h inc/debug_lib.h \
+ inc/xmc4500_uart_lib.h inc/servo_library.h inc/debug_lib.h \
  /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/include/math.h

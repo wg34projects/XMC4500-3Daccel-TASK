@@ -1,5 +1,46 @@
 #include "3DacceltaskGUI.h"
 
+// entry callbacks
+
+void fileName (GtkWidget *widget, gpointer data)
+{
+	widgets *a = (widgets *) data;
+	gchar *buffer;
+	gchar timeZone[100];
+	TM *timeStamp, timeTemp;
+	time_t timeEpoch;
+
+	// prepare timestamp
+
+	timeEpoch = time(NULL);
+	timeStamp = localtime_r(&timeEpoch, &timeTemp);
+
+	// prepare save and log string
+
+	if (strftime(timeZone, sizeof(timeZone), "%Y.%B.%d_%T", timeStamp) == 0)
+	{
+		g_print ("strftime returned 0");
+		return;
+	}
+
+	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[4]));
+	g_sprintf(a->fileName, "%s_%s.log", timeZone, buffer);
+	g_print("%s\n", a->fileName);
+	g_sprintf (a->bufferStatusBar, "filename in local folder %s", a->fileName);
+	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+
+	if (a->transmission == TRUE)
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[7]), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[4]), FALSE);
+	}
+	else
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[7]), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[4]), TRUE);
+	}
+}
+
 void entryPollTime (GtkWidget *widget, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -126,6 +167,8 @@ void entryZtrigger (GtkWidget *widget, gpointer data)
 	}
 }
 
+// radiobuttons callbacks
+
 void readRadioUSB(GtkWidget *button, gpointer *data)
 {
 	widgets *a = (widgets *) data;
@@ -177,6 +220,18 @@ void readRadioUSB(GtkWidget *button, gpointer *data)
 	}
 }
 
+// timer functions
+
+guint buttonFeedback(gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[9]), FALSE);
+
+	return a->buttonXMC;
+}
+
 guint waitSendTerminal(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -215,15 +270,69 @@ guint waitSendPython(gpointer data)
 	return a->sendSerial;
 }
 
-guint safeWait(gpointer data)
+guint safeStop(gpointer data)
 {
 	widgets *a = (widgets *) data;
+	unsigned char requestServoOff[] = "#SER,f";
+	a->servoState = 0;	
 
-	a->sendSerial = TRUE;
-	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
+	RS232_flushTX(a->radioButtonUSBstate);	
+	RS232_SendBuf(a->radioButtonUSBstate, requestServoOff, (int)sizeof(requestServoOff));
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
 
-	return a->safeWaitStep;
+    a->safeEnd = FALSE;
+    g_timeout_add (UARTWAIT, (GSourceFunc) safeEnd, (gpointer) a);
+
+	return a->safeWaitStop;
 }
+
+guint safeEnd(gpointer data)
+{
+	widgets *a = (widgets *) data;
+	unsigned char requestStop[] = "#END,";
+	a->servoState = 0;	
+
+	RS232_flushTX(a->radioButtonUSBstate);
+	RS232_SendBuf(a->radioButtonUSBstate, requestStop, (int)sizeof(requestStop));
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
+
+    a->safeWaitClose = FALSE;
+    g_timeout_add (UARTWAIT, (GSourceFunc) safeClose, (gpointer) a);
+
+	return a->safeEnd;
+}
+
+guint safeClose(gpointer data)
+{
+	widgets *a = (widgets *) data;
+	const char closeComPortSuccess[] = "SUCCESS closing COM port";
+	gint i = 0;
+
+    RS232_CloseComport(a->radioButtonUSBstate);
+	snprintf(a->bufferStatusBar, sizeof(closeComPortSuccess)+1, "%s", closeComPortSuccess);
+	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[3]), FALSE);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[6]), FALSE);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[7]), FALSE);
+
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
+	for (i = 1; i < BUTTONS; i++) 
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
+	}
+
+	gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), TRUE);
+
+	for (i = 0; i < 5; i++) 
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (a->radioUSB[i]), TRUE);
+	}
+
+	return a->safeWaitClose;
+}
+
+// connection callbacks
 
 void connectSerial(GtkButton *button, gpointer data)
 {
@@ -234,33 +343,42 @@ void connectSerial(GtkButton *button, gpointer data)
 	unsigned char requestConnection[] = "#CON,";
 	gint i = 0;
 
-    if(RS232_OpenComport(a->radioButtonUSBstate, BAUD, mode))
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
     {
-		snprintf(a->bufferStatusBar, sizeof(openComPortError)+1, "%s", openComPortError);
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+        g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
+		if(RS232_OpenComport(a->radioButtonUSBstate, BAUD, mode))
+		{
+			snprintf(a->bufferStatusBar, sizeof(openComPortError)+1, "%s", openComPortError);
+			gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		}
+		else
+		{
+			snprintf(a->bufferStatusBar, sizeof(openComPortSuccess)+1, "%s", openComPortSuccess);
+			gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+
+			for (i = 2; i < BUTTONS; i++) 
+			{
+				gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), TRUE);
+			}
+
+			for (i = 0; i < 5; i++) 
+			{
+				gtk_widget_set_sensitive (GTK_WIDGET (a->radioUSB[i]), FALSE);
+			}
+
+			gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), FALSE);
+
+			RS232_flushTX(a->radioButtonUSBstate);	
+			RS232_SendBuf(a->radioButtonUSBstate, requestConnection, (int)sizeof(requestConnection));
+			RS232_SendByte(a->radioButtonUSBstate, '\r');
+		}
     }
-	else
-	{
-		snprintf(a->bufferStatusBar, sizeof(openComPortSuccess)+1, "%s", openComPortSuccess);
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), FALSE);
-
-		for (i = 1; i < 7; i++) 
-		{
-			gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), TRUE);
-		}
-
-		for (i = 0; i < 5; i++) 
-		{
-			gtk_widget_set_sensitive (GTK_WIDGET (a->radioUSB[i]), FALSE);
-		}
-
-		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), FALSE);
-
-		RS232_flushTX(a->radioButtonUSBstate);
-		RS232_SendBuf(a->radioButtonUSBstate, requestConnection, (int)sizeof(requestConnection));
-		RS232_SendByte(a->radioButtonUSBstate, '\r');
-		RS232_SendByte(a->radioButtonUSBstate, '\r');
+    else
+    {
+        g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
+		a->sendSerial = FALSE;
+		a->safeWaitStop = FALSE;
+		g_timeout_add (UARTWAIT, (GSourceFunc) safeStop, (gpointer) a);
 	}
 }
 
@@ -272,73 +390,107 @@ void requestData(gpointer data)
 	RS232_flushTX(a->radioButtonUSBstate);	
 	RS232_SendBuf(a->radioButtonUSBstate, requestText, (int)sizeof(requestText));
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
-	RS232_SendByte(a->radioButtonUSBstate, '\r');
 }
 
-void servoConnector (GtkButton *button, gpointer data)
+void servoConnector (gpointer data)
 {
 	widgets *a = (widgets *) data;
-	unsigned char requestServo[] = "#SER,";
+	unsigned char requestServoOn[] = "#SER,n";
+	unsigned char requestServoOff[] = "#SER,f";
+
+	a->sendSerial = FALSE;
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
-
-	a->sendSerial = FALSE;
 
 	RS232_flushTX(a->radioButtonUSBstate);
-	RS232_SendBuf(a->radioButtonUSBstate, requestServo, (int)sizeof(requestServo));
-	RS232_SendByte(a->radioButtonUSBstate, '\r');
+
+	if (a->servoState == 0)
+	{
+		a->servoState = 1;
+		RS232_SendBuf(a->radioButtonUSBstate, requestServoOn, (int)sizeof(requestServoOn));
+	}
+	else if (a->servoState == 1)
+	{
+		a->servoState = 0;
+		RS232_SendBuf(a->radioButtonUSBstate, requestServoOff, (int)sizeof(requestServoOff));
+	}
+
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
 
-	a->safeWaitStep = FALSE;
-	g_timeout_add (250, (GSourceFunc) safeWait, (gpointer) a);
+	if (a->transmission == TRUE)
+	{
+		a->sendSerial = TRUE;
+	}
 }
 
-void disconnectSerial(GtkButton *button, gpointer data)
+void statisticConnector (GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
-	const char closeComPortSuccess[] = "SUCCESS closing COM port";
-	unsigned char requestStop[] = "#END,";
-	gint i = 0;
-
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
-	for (i = 1; i < 7; i++) 
-	{
-		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
-	}
-
-	gtk_widget_set_sensitive (GTK_WIDGET (a->entry[0]), TRUE);
-
-	for (i = 0; i < 5; i++) 
-	{
-		gtk_widget_set_sensitive (GTK_WIDGET (a->radioUSB[i]), TRUE);
-	}
-	gtk_entry_set_text(GTK_ENTRY (a->entry[0]), "");
-	gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[0]), "enter poll time in ms");
+	unsigned char requestStat[] = "#STA,";
 
 	a->sendSerial = FALSE;
 
 	RS232_flushTX(a->radioButtonUSBstate);
-	RS232_SendBuf(a->radioButtonUSBstate, requestStop, (int)sizeof(requestStop));
-	RS232_SendByte(a->radioButtonUSBstate, '\r');
+	RS232_SendBuf(a->radioButtonUSBstate, requestStat, (int)sizeof(requestStat));
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
 
-    RS232_CloseComport(a->radioButtonUSBstate);
-	snprintf(a->bufferStatusBar, sizeof(closeComPortSuccess)+1, "%s", closeComPortSuccess);
-	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+	if (a->transmission == TRUE)
+	{
+		a->sendSerial = TRUE;
+	}
+}
+
+void servo(GtkWidget *button, gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
+    {
+        g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
+		a->servoState = 0;
+    }
+    else
+    {
+        g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
+		a->servoState = 1;
+    }
+
+	servoConnector((gpointer) a);
 }
 
 void dataTransmission(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
 	gint i = 0;
-
-	for (i = 2; i < 6; i++) 
+	
+	for (i = 2; i < BUTTONS-2; i++) 
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
 	}
-	a->sendSerial = TRUE;
-	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), TRUE);
+
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
+    {
+        g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
+		a->transmission = TRUE;
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[4]), TRUE);
+		a->sendSerial = TRUE;
+		g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendnoTerminal, (gpointer) a);
+    }
+    else
+    {
+        g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
+		a->transmission = FALSE;
+		a->sendSerial = FALSE;
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[7]), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), FALSE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), TRUE);
+		gtk_widget_set_sensitive (GTK_WIDGET (a->entry[4]), FALSE);
+	}
 }
 
 void pythonConnector(GtkButton *button, gpointer data)
@@ -353,6 +505,7 @@ void pythonConnector(GtkButton *button, gpointer data)
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[6]), FALSE);
 
 	a->sendSerial = TRUE;
 	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendPython, (gpointer) a);
@@ -370,6 +523,7 @@ void pythonSpriteConnector(GtkButton *button, gpointer data)
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[6]), FALSE);
 
 	a->sendSerial = TRUE;
 	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendPython, (gpointer) a);
@@ -380,9 +534,11 @@ void rawProtocolData(GtkButton *button, gpointer data)
 	widgets *a = (widgets *) data;
 	gint i = 0;
 
+	a->transmission = TRUE;
+
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[3]), FALSE);
 
-	for (i = 2; i < 6; i++) 
+	for (i = 2; i < 8; i++) 
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
 	}
@@ -410,22 +566,57 @@ void rawProtocolData(GtkButton *button, gpointer data)
 	gtk_container_add (GTK_CONTAINER (a->terminalwindow), a->scroll);
 	gtk_widget_show_all(GTK_WIDGET(a->terminalwindow));
 
-	a->sendSerial = TRUE;
+	if (a->transmission == TRUE)
+	{
+		a->sendSerial = TRUE;
+	}
+}
 
-	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendTerminal, (gpointer) a);
+// input callback
+
+void saveData(GtkButton *button, gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
+    {
+		a->saveOutgoing = 1;
+	}
+	else
+	{
+		a->saveOutgoing = 0;
+	}
 }
 
 void rawProtocolDataTimed(gpointer data)
 {
 	widgets *a = (widgets *) data;
-	unsigned char buf[OSBUFFER];
+	unsigned char buf[OSBUFFER] = { 0 };
 	int n = 0, i = 0;
-	gchar accelerationX[7], accelerationY[7], accelerationZ[7], temperature[3], packages[10], error[3];
+	FILE *saveFile = NULL;
+	gchar accelerationX[8], accelerationY[8], accelerationZ[8], temperature[3], packages[11], error[4];
 	gint accelerationXint, accelerationYint, accelerationZint, temperatureint, packagesInt, errorInt;
+	TM *timeStamp, timeTemp;
+	time_t timeEpoch;
+	gchar timeZone[100];
+
+	// prepare timestamp
+
+	timeEpoch = time(NULL);
+	timeStamp = localtime_r(&timeEpoch, &timeTemp);
+
+	// prepare save and log string
+
+	if (strftime(timeZone, sizeof(timeZone), "%A %d %B %Y %T", timeStamp) == 0)
+	{
+		g_print ("strftime returned 0");
+		return;
+	}
 
 	memset (&buf, 0, sizeof (buf));
 	n = RS232_PollComport(a->radioButtonUSBstate, buf, (OSBUFFER-1));
 	RS232_flushRX(a->radioButtonUSBstate);
+	RS232_flushTX(a->radioButtonUSBstate);
 
 	if (n > 0)
 	{
@@ -455,7 +646,6 @@ void rawProtocolDataTimed(gpointer data)
 		packages[10] = '\0';
 		getInteger(packages, &packagesInt);
 		g_sprintf(a->packagesOut, "data %d", packagesInt);
-
 		
 		if (strncpy(error, a->line+16, 3) != error)
 		{
@@ -467,6 +657,22 @@ void rawProtocolDataTimed(gpointer data)
 
 		gtk_label_set_label((GtkLabel*)a->label[13], a->packagesOut);
 		gtk_label_set_label((GtkLabel*)a->label[14], a->errorOut);
+		return;
+	}
+	else if (strncmp(a->position6D, "BUT", 3) == 0)
+	{
+		if(a->line[5] == '1')
+		{
+		    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), TRUE);
+			a->buttonXMC = FALSE;
+			g_timeout_add (BUTTONWAIT, (GSourceFunc) buttonFeedback, (gpointer) a);
+		}
+		else if(a->line[5] == '2')
+		{
+		    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[9]), TRUE);
+			a->buttonXMC = FALSE;
+			g_timeout_add (BUTTONWAIT, (GSourceFunc) buttonFeedback, (gpointer) a);
+		}				
 	}
 	else
 	{
@@ -518,6 +724,18 @@ void rawProtocolDataTimed(gpointer data)
 		a->pitch = atan(a->accelerationXdouble/(sqrt((a->accelerationYdouble*a->accelerationYdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
 		a->roll = atan(a->accelerationYdouble/(sqrt((a->accelerationXdouble*a->accelerationXdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
 
+		if (a->saveOutgoing == 1)
+		{
+			saveFile = fopen(a->fileName, "a");
+			if (fprintf(saveFile, "%lu|%s|%s|%f|%f|%f|%f|%f|%f|%f|%f\n", timeEpoch, timeZone, a->position6D, a->accelerationXdouble, a->accelerationYdouble, a->accelerationZdouble, a->tiltX, a->tiltY, a->tiltZ, a->pitch, a->roll) < 1)
+			{
+				g_print ("problems writing save file\n");
+				fclose(saveFile);
+				return;
+			}
+			fclose(saveFile);
+		}
+
 		sprintf(a->tiltXout, "tiltX %7.2f °", a->tiltX);
 		sprintf(a->tiltYout, "tiltY %7.2f °", a->tiltY);
 		sprintf(a->tiltZout, "tiltZ %7.2f °", a->tiltZ);
@@ -529,6 +747,7 @@ void rawProtocolDataTimed(gpointer data)
 		gtk_label_set_label((GtkLabel*)a->label[7], a->tiltZout);
 		gtk_label_set_label((GtkLabel*)a->label[8], a->pitchOut);
 		gtk_label_set_label((GtkLabel*)a->label[9], a->rollOut);
+
 
 		if (strncmp(a->position6D, "TOP", 3) == 0)
 		{
@@ -542,7 +761,7 @@ void rawProtocolDataTimed(gpointer data)
 			gtk_widget_show_all(a->grid);
 			a->position6Dint = 1;
 		}
-		else if (strncmp(a->position6D, "BOT",3) == 0)
+		else if (strncmp(a->position6D, "BOT", 3) == 0)
 		{
 			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
 			a->image[1] = gtk_image_new_from_file("./pictures/BOT.png");
@@ -554,7 +773,7 @@ void rawProtocolDataTimed(gpointer data)
 			gtk_widget_show_all(a->grid);
 			a->position6Dint = 2;
 		}
-		else if (strncmp(a->position6D, "DDX",3) == 0)
+		else if (strncmp(a->position6D, "DDX", 3) == 0)
 		{
 			gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
 			a->image[1] = gtk_image_new_from_file("./pictures/DDX.png");
@@ -644,39 +863,7 @@ void rawProtocolDataTimed(gpointer data)
 	}
 }
 
-unsigned int getInteger(char *input, int *numInteger)
-{
-    unsigned long int number = 0;
-    char *pointToEnd = NULL;
-
-    number = strtoul(input, &pointToEnd, 0);
-    if(*pointToEnd != '\0')
-    {
-        return 1;
-    }
-    else
-    {
-        *numInteger = (int)number;
-        return 0;
-    }
-}
-
-unsigned int getDouble(char *input, double *numDouble)
-{
-    long double number = 0;
-    char *pointToEnd = NULL;
-
-    number = strtod(input, &pointToEnd);
-    if(*pointToEnd != '\0')
-    {
-        return 1;
-    }
-    else
-    {
-        *numDouble = (double)number;
-        return 0;
-    }
-}
+// message dialog callbacks
 
 void about(GSimpleAction *action, GVariant *parameter, gpointer data)
 {
@@ -710,4 +897,40 @@ void quit(GSimpleAction *action, GVariant *parameter, gpointer data)
 	widgets *a = (widgets *) data;
 
 	g_application_quit(G_APPLICATION (a->app));
+}
+
+// some functions needed
+
+unsigned int getInteger(char *input, int *numInteger)
+{
+    unsigned long int number = 0;
+    char *pointToEnd = NULL;
+
+    number = strtoul(input, &pointToEnd, 0);
+    if(*pointToEnd != '\0')
+    {
+        return 1;
+    }
+    else
+    {
+        *numInteger = (int)number;
+        return 0;
+    }
+}
+
+unsigned int getDouble(char *input, double *numDouble)
+{
+    long double number = 0;
+    char *pointToEnd = NULL;
+
+    number = strtod(input, &pointToEnd);
+    if(*pointToEnd != '\0')
+    {
+        return 1;
+    }
+    else
+    {
+        *numDouble = (double)number;
+        return 0;
+    }
 }

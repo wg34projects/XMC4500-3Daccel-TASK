@@ -7,6 +7,8 @@ uint8_t initMEMSsensor();
 uint8_t configMEMSsensor();
 uint8_t getTemperature();
 uint8_t get6Dposition();
+void configFREEfall();
+void getFREEfall();
 AXESRAWDATA getAxesRawData();
 
 #endif

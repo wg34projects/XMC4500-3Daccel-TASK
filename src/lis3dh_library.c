@@ -54,6 +54,36 @@ uint8_t initMEMSsensor()
 	return error;
 }
 
+/*void configFREEfall()*/
+/*{*/
+/*	LIS3DH_WriteReg(0x20, 0x57);*/
+/*	LIS3DH_WriteReg(0x21, 0x00);*/
+/*	LIS3DH_WriteReg(0x25, 0x40);	*/
+/*	LIS3DH_WriteReg(0x23, 0x00);*/
+/*	LIS3DH_WriteReg(0x24, 0x02);*/
+/*	LIS3DH_WriteReg(0x36, 0x16);*/
+/*	LIS3DH_WriteReg(0x37, 0x03);*/
+/*	LIS3DH_WriteReg(0x34, 0x95);*/
+/*}*/
+
+/*void getFREEfall()*/
+/*{*/
+/*	u8_t fall = 0;*/
+/*	LIS3DH_ReadReg(0x35, &fall);*/
+
+/*	printf("%d\n", fall);*/
+
+/*	if ((fall & (1 << 6)) == 0)*/
+/*	{*/
+/*		printf("0\n");*/
+/*	}*/
+/*	else*/
+/*	{*/
+/*		printf("1\n");*/
+/*	}*/
+
+/*}*/
+
 uint8_t configMEMSsensor()
 {
 	uint8_t error = 0;
@@ -200,19 +230,33 @@ uint8_t get6Dposition()
 AXESRAWDATA getAxesRawData()
 {
 	uint8_t response = 0;
-	AxesRaw_t data;
+	uint8_t m = 1;
+	uint8_t i = 0;
+	AxesRaw_t data[m];
 	AXESRAWDATA dataOut;
+	dataOut.axisX = 0;
+	dataOut.axisY = 0;
+	dataOut.axisZ = 0;
 
-	response = LIS3DH_GetAccAxesRaw(&data);
-
-	if(response != 1)
+	for (i = 0; i <= m; i++)
 	{
-		errorcount++;
+		response = LIS3DH_GetAccAxesRaw(&data[i]);
+		if(response != 1)
+		{
+			errorcount++;
+		}
 	}
 
-	dataOut.axisX = data.AXIS_X;
-	dataOut.axisY = data.AXIS_Y;
-	dataOut.axisZ = data.AXIS_Z;
+	for (i = 0; i <= m; i++)
+	{
+		dataOut.axisX += data[i].AXIS_X;
+		dataOut.axisY += data[i].AXIS_Y;
+		dataOut.axisZ += data[i].AXIS_Z;
+	}
+
+	dataOut.axisX /= m;
+	dataOut.axisY /= m;
+	dataOut.axisZ /= m;
 
 	return dataOut;	
 }

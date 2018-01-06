@@ -1,3 +1,12 @@
+/**
+ * @file		lis3dh_driver.h
+ * @version		x
+ * @date		x
+ * @author		STMicroelectronics
+ *
+ * @brief		lis3dh driver header
+ */
+
 /******************** (C) COPYRIGHT 2012 STMicroelectronics ********************
 * File Name          : lis3dh_driver.h
 * Author             : MSH Application Team
@@ -526,3 +535,5 @@ u8_t LIS3DH_WriteReg(u8_t Reg, u8_t Data);
 #endif /* __LIS3DH_H */
 
 /******************* (C) COPYRIGHT 2012 STMicroelectronics *****END OF FILE****/
+
+/** EOF **/

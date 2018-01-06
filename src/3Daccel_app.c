@@ -1,46 +1,51 @@
-#include "3Daccel_app.h"
-#include "3Daccel_out_library.h"
-#include "lis3dh_library.h"
+/**
+ * @file		3Daccel_app.c
+ * @version		v1.0
+ * @date		Nov 2017
+ * @author		Egermann, Resch
+ *
+ * @mainpage	I2C sensor task 3D accelerometer BEL3
+ * @brief		BEL3 task I2C sensor with GUI <br>
+ *				Libraries for Debug, UART and I2C used as
+ *				provided on CIS without changes, thanks!<br>
+ */
 
+#include "3Daccel_app.h"
+
+/**
+ * @brief	main routine 
+ *		  
+ */
 int main (void)
 {
-	char rx_buff[RX_BUFFER_SIZE];
-	
-	memset (&rx_buff, 0, sizeof (rx_buff));
+	char rxBuff[RXBUFFERSIZE];
 
-	direction = 6;
-	temperature = 0;
-	errorcount = 0;
-	packagesSent = 0;
-	position = 0;
-	old_position = 0;
-	readAxes.axisX = 0;
-	readAxes.axisY = 0;
-	readAxes.axisZ = 0;
-	statisticSend = 0;
-	signal1 = 0.00;
-	signal2 = 0.00;
-	servoEnable = 0;
-	buttonSend = 0;
+	// init receive buffer	
+	memset (&rxBuff, 0, sizeof (rxBuff));
 
-	// init DEBUG, UART, I2C
+	// init values for globals
+	initGlobals();
+
+	// init DEBUG, UART, I2C, PWM
     initRetargetSwo();
     _init_uart0_ch0();
     _init_i2c1_ch0();
 	initServoPWM();
-	pwm(7, 0);
-	pwm(7, 1);
 
-#if DEBUG
-    printf("DEBUG+I2C+UART init done...\n");
-#endif
+	// center both servo
+	pwm(SERVOUPCENTER, 0);
+	pwm(SERVOLOCENTER, 1);
 
 	// init LED output
 	outputInit();
+	ledSetting(0);
 
-	// init BUTTON input
+	// init BUTTONS
 	inputInit();
-	circularInit();
+
+#if DEBUG
+    printf("DEBUG+I2C+UART+PWM+LED+BUTTON init done...\n");
+#endif
 
     // init MEMS
 	while (1)
@@ -57,7 +62,6 @@ int main (void)
 #if DEBUG
 			printf("Error MEMS init, retry...\n");
 #endif
-			ledSetting(0, 1);
 		}
 	}
 
@@ -76,47 +80,44 @@ int main (void)
 #if DEBUG
 			printf("Error MEMS config, retry...\n");
 #endif
-			ledSetting(0, 1);
 		}
 	}
 
-/*	configFREEfall();*/
-
 	// set up SysTick
-    SysTick_Config (SystemCoreClock / 1000);
+    SysTick_Config (SystemCoreClock / SYSTEMTICKDIVIDER);
 
 	// main loop
 	while(1)
 	{
 		// clear buffer and receie incoming data
-		memset (&rx_buff, 0, sizeof (rx_buff));
-		_uart_get_string (rx_buff);
-#if DEBUGI
-		printf("received %s\n", rx_buff);
+		memset (&rxBuff, 0, sizeof (rxBuff));
+		_uart_get_string (rxBuff);
+
+#if DEBUG
+		printf("received %s\n", rxBuff);
 #endif
 
-        if (strncmp(rx_buff, "#REQ,", strlen(rx_buff)) == 0)
+        if (strncmp(rxBuff, "#REQ,", strlen(rxBuff)) == 0)
         {
-			// send data over UART
 			protocolComplete(direction, readAxes.axisX, readAxes.axisY, readAxes.axisZ, temperature);
 		}
-		else if (strncmp(rx_buff, "#END,", strlen(rx_buff)) == 0)
+		else if (strncmp(rxBuff, "#END,", strlen(rxBuff)) == 0)
 		{
-			ledSetting(0, 0);
+			ledSetting(0);
 		}
-		else if (strncmp(rx_buff, "#CON,", strlen(rx_buff)) == 0)
+		else if (strncmp(rxBuff, "#CON,", strlen(rxBuff)) == 0)
 		{
-			ledSetting(0, 1);
+			ledSetting(1);
 		}
-		else if (strncmp(rx_buff, "#SER,f", strlen(rx_buff)) == 0)
+		else if (strncmp(rxBuff, "#SER,f", strlen(rxBuff)) == 0)
 		{
 			servoEnable = 0;
 		}
-		else if (strncmp(rx_buff, "#SER,n", strlen(rx_buff)) == 0)
+		else if (strncmp(rxBuff, "#SER,n", strlen(rxBuff)) == 0)
 		{
 			servoEnable = 1;
 		}
-		else if (strncmp(rx_buff, "#STA,", strlen(rx_buff)) == 0)
+		else if (strncmp(rxBuff, "#STA,", strlen(rxBuff)) == 0)
 		{
 			statisticSend = 1;
 		}
@@ -126,3 +127,5 @@ int main (void)
 		}
 	}
 }
+
+/** EOF **/

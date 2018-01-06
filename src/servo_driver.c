@@ -1,6 +1,20 @@
-#include "servo_driver.h"
-#include "servo_library.h"
+/**
+ * @file		servo_driver.c
+ * @version		v1.0
+ * @date		Nov 2017
+ * @author		Egermann, Resch
+ *
+ * @brief		servo driver
+ */
 
+#include "servo_driver.h"
+
+/**
+ * @brief	init PWM for servos
+ * @param	none
+ * @return	none
+ *		  
+ */
 void initServoPWMXMC()
 {
     // onboard alternate function 3 at CCU40 slice 2 = CCU40.OUT2 = CCU40.CC42
@@ -19,8 +33,8 @@ void initServoPWMXMC()
     SCU_CLK->CLKSET = (1 << SCU_CLK_CLKSET_CCUCEN_Pos); 			// clock enable register CCUCEN - CCU clock enabled
     CCU40->GIDLC |= (1 << CCU4_GIDLC_SPRB_Pos); 					// global idle clear - SPRB - prescaler run bit set
 
-    CCU40_CC42->PSC = 6; 											// prescaler control - 0 - CCU40.OUT2
-    CCU40_CC41->PSC = 6;
+    CCU40_CC42->PSC = PRESCALER; 											// prescaler control - 0 - CCU40.OUT2
+    CCU40_CC41->PSC = PRESCALER;
 
     CCU40_CC42->TC |= (1 << CCU4_CC4_TC_CLST_Pos); 					// slice timer control - CLST - shadow transfer on clear - CCU40.OUT2
     CCU40_CC41->TC |= (1 << CCU4_CC4_TC_CLST_Pos);
@@ -30,20 +44,29 @@ void initServoPWMXMC()
 
     SCU_GENERAL->CCUCON |= (1 << SCU_GENERAL_CCUCON_GSC40_Pos);		// CCU control register - GSC40 - global start control CCU40
 
-    CCU40_CC42->PRS = 37500; 										// period register - timer shadow period value - CCU40.OUT2
-    CCU40_CC41->PRS = 37500;
+    CCU40_CC42->PRS = COUNTER; 										// period register - timer shadow period value - CCU40.OUT2
+    CCU40_CC41->PRS = COUNTER;
 
     CCU40_CC42->TCSET = 1;											// slice timer run set - CCU40.OUT2
     CCU40_CC41->TCSET = 1;
 
     // initial output values
-    CCU40_CC42->CRS = 37500;										// compare register - timer shadow compare value - CCU40.OUT2
-    CCU40_CC41->CRS = 37500;
+    CCU40_CC42->CRS = COUNTER;										// compare register - timer shadow compare value - CCU40.OUT2
+    CCU40_CC41->CRS = COUNTER;
 
     CCU40->GCSS |= (1 << CCU4_GCSS_S2SE_Pos); 						// global channel set - S3SE slice 2 shadow transfer set enable
     CCU40->GCSS |= (1 << CCU4_GCSS_S1SE_Pos);
 }
 
+/**
+ * @brief	set PWM for servos
+ * @param	dutycycle in percent <br>
+ *			0 for upper servo <br>
+ *			1 for lower servo <br>
+ * @return	1 if wrong PWM dutycycle given <br>
+			0 if correct PWM dutycycle given <br>
+ *		  
+ */
 uint8_t pwmXMC(double dutycycle, uint8_t out)
 {
     double dcCalc = 0;
@@ -54,7 +77,7 @@ uint8_t pwmXMC(double dutycycle, uint8_t out)
         return 1;
     }
 
-    dcCalc = 37500 - (37500 * dutycycle * 0.01);
+    dcCalc = COUNTER - (COUNTER * dutycycle * 0.01);
     intdcCalc = (uint32_t)dcCalc;
 
 	if (out == 0)
@@ -71,4 +94,4 @@ uint8_t pwmXMC(double dutycycle, uint8_t out)
 	}
 }
 
-
+/** EOF **/

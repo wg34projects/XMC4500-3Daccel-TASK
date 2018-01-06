@@ -1,0 +1,11 @@
+<map id="configMEMSsensor" name="configMEMSsensor">
+<area shape="rect" id="node2" href="$lis3dh__driver_8c.html#ae45852d8356f11c55f7545c8292b9341" title="LIS3DH_SetADCAux" alt="" coords="221,208,372,235"/>
+<area shape="rect" id="node6" href="$lis3dh__driver_8c.html#a17f398a68dfe365897f680e0e7830c9f" title="LIS3DH_SetBDU" alt="" coords="233,5,360,32"/>
+<area shape="rect" id="node7" href="$lis3dh__driver_8c.html#acb37136225c72c1dac3af64315ae9b8a" title="LIS3DH_SetInt1Threshold" alt="" coords="203,259,390,285"/>
+<area shape="rect" id="node8" href="$lis3dh__driver_8c.html#a59c9591aa1404868087b3efc9ac9806b" title="LIS3DH_SetIntConfiguration" alt="" coords="196,56,397,83"/>
+<area shape="rect" id="node9" href="$lis3dh__driver_8c.html#a214f47b26e15c16c2845729287743726" title="LIS3DH_SetIntMode" alt="" coords="222,107,371,133"/>
+<area shape="rect" id="node10" href="$lis3dh__driver_8c.html#a9959dd9deaddd4c077e1c266cca69898" title="LIS3DH_SetTemperature" alt="" coords="207,157,386,184"/>
+<area shape="rect" id="node3" href="$lis3dh__driver_8c.html#a34bf2e408596452f55618e57e8ba6233" title="LIS3DH_ReadReg" alt="" coords="447,107,579,133"/>
+<area shape="rect" id="node5" href="$lis3dh__driver_8c.html#a2f92d64d542d03ac8c1ce4800a04f2ed" title="LIS3DH_WriteReg" alt="" coords="445,157,580,184"/>
+<area shape="rect" id="node4" href="$xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02" title="This function writes/reads data to a specific I2C channel. " alt="" coords="628,132,709,159"/>
+</map>

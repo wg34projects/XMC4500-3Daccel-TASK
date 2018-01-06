@@ -1,0 +1,15 @@
+<map id="inc/lis3dh_driver.h" name="inc/lis3dh_driver.h">
+<area shape="rect" id="node2" href="$lis3dh__driver_8c.html" title="lis3dh driver " alt="" coords="15,80,153,107"/>
+<area shape="rect" id="node3" href="$lis3dh__library_8h.html" title="inc/lis3dh_library.h" alt="" coords="178,80,321,107"/>
+<area shape="rect" id="node13" href="$xmc4500__i2c__lib_8h.html" title="inc/xmc4500_i2c_lib.h" alt="" coords="397,80,563,107"/>
+<area shape="rect" id="node4" href="$lis3dh__library_8c.html" title="lis3dh library " alt="" coords="94,155,237,181"/>
+<area shape="rect" id="node5" href="$3Daccel__app_8h.html" title="3Daccel app header " alt="" coords="261,155,401,181"/>
+<area shape="rect" id="node6" href="$3Daccel__app_8c.html" title="src/3Daccel_app.c" alt="" coords="5,229,144,256"/>
+<area shape="rect" id="node7" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="168,229,352,256"/>
+<area shape="rect" id="node9" href="$servo__library_8h.html" title="servo library header " alt="" coords="331,304,471,331"/>
+<area shape="rect" id="node11" href="$servo__driver_8h.html" title="servo driver header " alt="" coords="451,229,589,256"/>
+<area shape="rect" id="node8" href="$3Daccel__out__library_8c.html" title="3Daccel out library " alt="" coords="125,304,307,331"/>
+<area shape="rect" id="node10" href="$servo__library_8c.html" title="servo library " alt="" coords="332,379,471,405"/>
+<area shape="rect" id="node12" href="$servo__driver_8c.html" title="servo driver " alt="" coords="496,304,632,331"/>
+<area shape="rect" id="node14" href="$xmc4500__i2c__lib_8c.html" title="src/xmc4500_i2c_lib.c" alt="" coords="425,155,591,181"/>
+</map>

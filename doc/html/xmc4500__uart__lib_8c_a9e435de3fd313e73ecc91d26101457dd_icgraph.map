@@ -1,0 +1,5 @@
+<map id="_uart_send_string" name="_uart_send_string">
+<area shape="rect" id="node2" href="$xmc4500__uart__lib_8h.html#a29c1d181552652b4c548b8bac89aa18b" title="_uart_printf" alt="" coords="191,5,288,32"/>
+<area shape="rect" id="node3" href="$3Daccel__out__library_8h.html#ac9b94e8e0a389c7ad94562e81c15ba3d" title="send data to PC and GUI " alt="" coords="336,5,475,32"/>
+<area shape="rect" id="node4" href="$3Daccel__app_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main routine " alt="" coords="523,5,577,32"/>
+</map>

@@ -123,8 +123,6 @@ all: $(OBJS) $(TARGET).elf $(TARGET)
 %.o: %.asm
 	$(CC) -c $(CFLAGS) $(AFLAGS) $< -o $@
 	@echo ""
-	
-
 
 $(TARGET).elf: $(OBJS)
 ifeq ($(shell echo "check_quotes"),"check_quotes")

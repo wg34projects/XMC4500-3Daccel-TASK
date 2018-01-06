@@ -283,6 +283,11 @@ void pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
     roll = atan(gY/(sqrt((gX*gX)+(gZ*gZ)))) * 180 / pi;
     pitch = atan(gX/(sqrt((gY*gY)+(gZ*gZ)))) * 180 / pi;
 
+	if (pitch >= 0.0)
+	{
+		pitch += pitch * PITCHCORRECTPOS;
+	}
+
     signal1 = (90.00+roll) * SERVOUOLINEAR + SERUPLO0;
     signal2 = (90.00+pitch) * SERVOLOLINEAR + SERVOLO0;
 

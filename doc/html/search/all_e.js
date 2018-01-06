@@ -5,6 +5,7 @@ var searchData=
   ['packagessent',['packagesSent',['../3Daccel__out__library_8h.html#a0b9b9ea9e34f2c155730bf929159d831',1,'3Daccel_out_library.h']]],
   ['pi',['PI',['../3Daccel__out__library_8h.html#a598a3330b3c21701223ee0ca14316eca',1,'PI():&#160;3Daccel_out_library.h'],['../3DacceltaskGUI_8h.html#a598a3330b3c21701223ee0ca14316eca',1,'PI():&#160;3DacceltaskGUI.h']]],
   ['pitch',['Pitch',['../classdirection_1_1Pitch.html',1,'direction.Pitch'],['../structwidgets.html#ad449db6f4bf71d297ce4153358dc807a',1,'widgets::pitch()'],['../namespacedirection.html#a214a0b2bc6767a92434136af76c07660',1,'direction.pitch()']]],
+  ['pitchcorrectpos',['PITCHCORRECTPOS',['../3Daccel__out__library_8h.html#a974c2908eab1a44d69a442dcad71e227',1,'3Daccel_out_library.h']]],
   ['pitchout',['pitchOut',['../structwidgets.html#a3b182113812dbd1b26950b44b68cf745',1,'widgets']]],
   ['pollmax',['POLLMAX',['../3DacceltaskGUI_8h.html#ad79e8b8cb336611613d20f08f7ae8e7d',1,'3DacceltaskGUI.h']]],
   ['pollmin',['POLLMIN',['../3DacceltaskGUI_8h.html#ad0c6a8c2f2bfa3b8a07bb8df438a2e6c',1,'3DacceltaskGUI.h']]],

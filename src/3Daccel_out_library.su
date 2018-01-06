@@ -9,7 +9,7 @@ xmc_gpio.h:333:26:XMC_GPIO_GetInput	16	static
 3Daccel_out_library.c:223:6:getDouble	40	static
 3Daccel_out_library.c:248:6:ledSetting	16	static
 3Daccel_out_library.c:272:6:pwmAngleCalc	80	static
-3Daccel_out_library.c:299:6:readButtonDebounce	8	static
-3Daccel_out_library.c:340:6:inputInit	24	static
-3Daccel_out_library.c:353:9:circularAdd	16	static
-3Daccel_out_library.c:374:9:circularGet	16	static
+3Daccel_out_library.c:304:6:readButtonDebounce	8	static
+3Daccel_out_library.c:345:6:inputInit	24	static
+3Daccel_out_library.c:358:9:circularAdd	16	static
+3Daccel_out_library.c:379:9:circularGet	16	static

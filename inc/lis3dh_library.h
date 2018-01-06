@@ -1,7 +1,7 @@
 /**
- * @file		lis3dh_library.5
+ * @file		lis3dh_library.h
  * @version		v1.0
- * @date		Nov 2017
+ * @date		Jan 2018
  * @author		Egermann, Resch
  *
  * @brief		lis3dh library header
@@ -10,15 +10,32 @@
 #ifndef _lis3dh_library_h
 #define _lis3dh_library_h
 
-#include "3Daccel_app.h"
 #include "lis3dh_driver.h"
+#include <stdint.h>
+#include <stdio.h>
+
+// typedef and struct definition
+
+typedef struct axesRawdata AXESRAWDATA;
+
+struct axesRawdata
+{
+    uint16_t axisX;
+    uint16_t axisY;
+    uint16_t axisZ;
+};
+
+// global variables
+
+uint8_t errorcount;
+uint8_t position, old_position;
+uint8_t direction;
+
+// function prototypes
 
 uint8_t initMEMSsensor();
 uint8_t configMEMSsensor();
-uint8_t getTemperature();
 uint8_t get6Dposition();
-void configFREEfall();
-void getFREEfall();
 AXESRAWDATA getAxesRawData();
 
 #endif

@@ -1,7 +1,21 @@
-#include "3DacceltaskGUI.h"
+/**
+ * @file		menucallbacks.c
+ * @version		v1.0
+ * @date		Jan 2018
+ * @author		Egermann, Resch
+ *
+ * @brief		menucallbacks 3Dacceltask GUI
+ *
+ */
+
+#include "menucallbacks.h"
 
 // entry callbacks
 
+/**
+ * @brief	prepare filename for logging
+ *
+ */
 void fileName (GtkWidget *widget, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -41,33 +55,49 @@ void fileName (GtkWidget *widget, gpointer data)
 	}
 }
 
+/**
+ * @brief	get poll time from entry
+ *
+ */
 void entryPollTime (GtkWidget *widget, gpointer data)
 {
 	widgets *a = (widgets *) data;
 	gchar *buffer;
+	gint rv = 0;
 
 	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[0]));
-	getInteger(buffer, &a->pollTimeSensor);
+	rv = getInteger(buffer, &a->pollTimeSensor);
 
-	if (a->pollTimeSensor < 10)
+	if (rv == 1)
+	{
+		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		return;
+	}
+
+	if (a->pollTimeSensor < POLLMIN)
 	{
 		g_sprintf (a->bufferStatusBar, "you have chosen %d ms poll time, lower limit is 10 ms, this is now set", a->pollTimeSensor);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->pollTimeSensor = 10;
+		a->pollTimeSensor = POLLMIN;
 	}
-	else if (a->pollTimeSensor > 1000)
+	else if (a->pollTimeSensor > POLLMAX)
 	{
 		g_sprintf (a->bufferStatusBar, "you have chosen %d ms poll time, upper limit is 1000 ms, this is now set", a->pollTimeSensor);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->pollTimeSensor = 1000;		
+		a->pollTimeSensor = POLLMAX;		
 	}
-	else if (a->pollTimeSensor > 0 && a->pollTimeSensor < 1001)
+	else
 	{
 		g_sprintf (a->bufferStatusBar, "you have chosen %d ms poll time", a->pollTimeSensor);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 	}
 }
 
+/**
+ * @brief	get X trigger from entry
+ *
+ */
 void entryXtrigger (GtkWidget *widget, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -77,30 +107,36 @@ void entryXtrigger (GtkWidget *widget, gpointer data)
 	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[1]));
 	rv = getDouble(buffer, &a->acceltriggerX);
 
-	if (a->acceltriggerX < -2.0 && rv == 0)
+	if (rv == 1)
 	{
-		g_sprintf (a->bufferStatusBar, "minimum -2.0 g set");
+		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->acceltriggerX = -2.0;
+		return;
 	}
-	else if (a->acceltriggerX > 2.0 && rv == 0)
+
+	if (a->acceltriggerX < GMIN)
 	{
-		g_sprintf (a->bufferStatusBar, "maximum +2,0 g set");
+		g_sprintf (a->bufferStatusBar, "minimum %.2fg set", GMIN);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->acceltriggerX = 2.0;		
+		a->acceltriggerX = GMIN;
 	}
-	else if (a->acceltriggerX >= -2.0 && a->acceltriggerX <= 2.0 && rv == 0)
+	else if (a->acceltriggerX > GMAX)
+	{
+		g_sprintf (a->bufferStatusBar, "maximum %.2fg set", GMAX);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerX = GMAX;		
+	}
+	else
 	{
 		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for X", a->acceltriggerX);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 	}
-	else if (rv == 1)
-	{
-		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-	}
 }
 
+/**
+ * @brief	get Y trigger from entry
+ *
+ */
 void entryYtrigger (GtkWidget *widget, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -110,30 +146,36 @@ void entryYtrigger (GtkWidget *widget, gpointer data)
 	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[2]));
 	rv = getDouble(buffer, &a->acceltriggerY);
 
-	if (a->acceltriggerY < -2.0 && rv == 0)
-	{
-		g_sprintf (a->bufferStatusBar, "minimum -2.0 g set");
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->acceltriggerY = -2.0;
-	}
-	else if (a->acceltriggerY > 2.0 && rv == 0)
-	{
-		g_sprintf (a->bufferStatusBar, "maximum +2,0 g set");
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->acceltriggerY = 2.0;		
-	}
-	else if (a->acceltriggerY >= -2.0 && a->acceltriggerY <= 2.0 && rv == 0)
-	{
-		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for Y", a->acceltriggerY);
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-	}
-	else if (rv == 1)
+	if (rv == 1)
 	{
 		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		return;
+	}
+
+	if (a->acceltriggerY < GMIN)
+	{
+		g_sprintf (a->bufferStatusBar, "minimum %.2fg set", GMIN);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerY = GMIN;
+	}
+	else if (a->acceltriggerY > GMAX)
+	{
+		g_sprintf (a->bufferStatusBar, "maximum %.2fg set", GMAX);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerY = GMAX;		
+	}
+	else
+	{
+		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for X", a->acceltriggerY);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 	}
 }
 
+/**
+ * @brief	get Z trigger from entry
+ *
+ */
 void entryZtrigger (GtkWidget *widget, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -143,32 +185,38 @@ void entryZtrigger (GtkWidget *widget, gpointer data)
 	buffer = (gchar*) gtk_entry_get_text (GTK_ENTRY (a->entry[3]));
 	rv = getDouble(buffer, &a->acceltriggerZ);
 
-	if (a->acceltriggerZ < -2.0 && rv == 0)
-	{
-		g_sprintf (a->bufferStatusBar, "minimum -2.0 g set");
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->acceltriggerZ = -2.0;
-	}
-	else if (a->acceltriggerZ > 2.0 && rv == 0)
-	{
-		g_sprintf (a->bufferStatusBar, "maximum +2,0 g set");
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-		a->acceltriggerZ = 2.0;		
-	}
-	else if (a->acceltriggerZ >= -2.0 && a->acceltriggerZ <= 2.0 && rv == 0)
-	{
-		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for Z", a->acceltriggerZ);
-		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-	}
-	else if (rv == 1)
+	if (rv == 1)
 	{
 		g_sprintf (a->bufferStatusBar, "you did not enter a correct number");
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		return;
+	}
+
+	if (a->acceltriggerZ < GMIN)
+	{
+		g_sprintf (a->bufferStatusBar, "minimum %.2fg set", GMIN);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerX = GMIN;
+	}
+	else if (a->acceltriggerZ > GMAX)
+	{
+		g_sprintf (a->bufferStatusBar, "maximum %.2fg set", GMAX);
+		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+		a->acceltriggerZ = GMAX;		
+	}
+	else
+	{
+		g_sprintf (a->bufferStatusBar, "you have chosen %.2f g trigger for X", a->acceltriggerZ);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 	}
 }
 
 // radiobuttons callbacks
 
+/**
+ * @brief	read radio buttons for UART connection
+ *
+ */
 void readRadioUSB(GtkWidget *button, gpointer *data)
 {
 	widgets *a = (widgets *) data;
@@ -184,9 +232,6 @@ void readRadioUSB(GtkWidget *button, gpointer *data)
 	{
 		r[i] = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (a->radioUSB[i]));
 	}
-
-	g_sprintf (a->bufferStatusBar, "you have chosen /dev/ttyUSB0, ID %d - please now press connect", a->radioButtonUSBstate);
-	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 
 	if (r[0] == TRUE) 
 	{
@@ -212,7 +257,7 @@ void readRadioUSB(GtkWidget *button, gpointer *data)
 		g_sprintf (a->bufferStatusBar, "you have chosen /dev/ttyUSB3, ID %d - please now press connect", a->radioButtonUSBstate);
 		gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 	}
-	else if (r[4] == TRUE) 
+	else
 	{
 		a->radioButtonUSBstate = 20;
 		g_sprintf (a->bufferStatusBar, "you have chosen /dev/ttyUSB4, ID %d - please now press connect", a->radioButtonUSBstate);
@@ -222,6 +267,10 @@ void readRadioUSB(GtkWidget *button, gpointer *data)
 
 // timer functions
 
+/**
+ * @brief	timer to highlight pressed button
+ *
+ */
 guint buttonFeedback(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -232,12 +281,16 @@ guint buttonFeedback(gpointer data)
 	return a->buttonXMC;
 }
 
+/**
+ * @brief	timer for output and request terminal function
+ *
+ */
 guint waitSendTerminal(gpointer data)
 {
 	widgets *a = (widgets *) data;
 	char lineWithLF[OSBUFFER+1];
 
-	sprintf(lineWithLF, "%s\n", a->line);
+	g_sprintf(lineWithLF, "%s\n", a->line);
 
 	requestData((gpointer) a);
 	rawProtocolDataTimed((gpointer) a);
@@ -251,6 +304,10 @@ guint waitSendTerminal(gpointer data)
 	return a->sendSerial;
 }
 
+/**
+ * @brief	timer for output and request function
+ *
+ */
 guint waitSendnoTerminal(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -261,6 +318,10 @@ guint waitSendnoTerminal(gpointer data)
 	return a->sendSerial;
 }
 
+/**
+ * @brief	timer for output and request function Python
+ *
+ */
 guint waitSendPython(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -270,6 +331,10 @@ guint waitSendPython(gpointer data)
 	return a->sendSerial;
 }
 
+/**
+ * @brief	timer for safe UART stop
+ *
+ */
 guint safeStop(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -286,6 +351,10 @@ guint safeStop(gpointer data)
 	return a->safeWaitStop;
 }
 
+/**
+ * @brief	timer for safe UART end
+ *
+ */
 guint safeEnd(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -302,6 +371,10 @@ guint safeEnd(gpointer data)
 	return a->safeEnd;
 }
 
+/**
+ * @brief	timer for safe UART close
+ *
+ */
 guint safeClose(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -315,6 +388,7 @@ guint safeClose(gpointer data)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[3]), FALSE);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[6]), FALSE);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[7]), FALSE);
+	gtk_label_set_label((GtkLabel*)a->label[4], "LED OFF");
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
 	for (i = 1; i < BUTTONS; i++) 
@@ -334,6 +408,10 @@ guint safeClose(gpointer data)
 
 // connection callbacks
 
+/**
+ * @brief	function connect UART
+ *
+ */
 void connectSerial(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -355,6 +433,7 @@ void connectSerial(GtkButton *button, gpointer data)
 		{
 			snprintf(a->bufferStatusBar, sizeof(openComPortSuccess)+1, "%s", openComPortSuccess);
 			gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
+			gtk_label_set_label((GtkLabel*)a->label[4], "LED ON");
 
 			for (i = 1; i < BUTTONS; i++) 
 			{
@@ -382,6 +461,10 @@ void connectSerial(GtkButton *button, gpointer data)
 	}
 }
 
+/**
+ * @brief	function request data from XMC UART
+ *
+ */
 void requestData(gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -392,6 +475,10 @@ void requestData(gpointer data)
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
 }
 
+/**
+ * @brief	function servo connector
+ *
+ */
 void servoConnector (gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -423,6 +510,10 @@ void servoConnector (gpointer data)
 	}
 }
 
+/**
+ * @brief	function statistic request from XMC
+ *
+ */
 void statisticConnector (GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -440,6 +531,10 @@ void statisticConnector (GtkButton *button, gpointer data)
 	}
 }
 
+/**
+ * @brief	function toggle servo on off
+ *
+ */
 void servo(GtkWidget *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -458,6 +553,10 @@ void servo(GtkWidget *button, gpointer data)
 	servoConnector((gpointer) a);
 }
 
+/**
+ * @brief	function for timed data request
+ *
+ */
 void dataTransmission(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -497,6 +596,10 @@ void dataTransmission(GtkButton *button, gpointer data)
 	}
 }
 
+/**
+ * @brief	function to start python script plotter
+ *
+ */
 void pythonConnector(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -515,6 +618,10 @@ void pythonConnector(GtkButton *button, gpointer data)
 	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendPython, (gpointer) a);
 }
 
+/**
+ * @brief	function to start python sprite
+ *
+ */
 void pythonSpriteConnector(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -533,6 +640,10 @@ void pythonSpriteConnector(GtkButton *button, gpointer data)
 	g_timeout_add (a->pollTimeSensor, (GSourceFunc) waitSendPython, (gpointer) a);
 }
 
+/**
+ * @brief	function to show data in terminal window
+ *
+ */
 void rawProtocolData(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -576,6 +687,10 @@ void rawProtocolData(GtkButton *button, gpointer data)
 
 // input callback
 
+/**
+ * @brief	function to toggle protocol on off
+ *
+ */
 void saveData(GtkButton *button, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -590,14 +705,18 @@ void saveData(GtkButton *button, gpointer data)
 	}
 }
 
+/**
+ * @brief	main function to receive timed data from XMC and handle protocol etc.
+ *
+ */
 void rawProtocolDataTimed(gpointer data)
 {
 	widgets *a = (widgets *) data;
 	unsigned char buf[OSBUFFER] = { 0 };
 	int n = 0, i = 0;
 	FILE *saveFile = NULL;
-	gchar accelerationX[8], accelerationY[8], accelerationZ[8], temperature[3], packages[11], error[4];
-	gint accelerationXint, accelerationYint, accelerationZint, temperatureint, packagesInt, errorInt;
+	gchar accelerationX[8], accelerationY[8], accelerationZ[8], packages[11], error[4];
+	gint accelerationXint, accelerationYint, accelerationZint, packagesInt, errorInt;
 	TM *timeStamp, timeTemp;
 	time_t timeEpoch;
 	gchar timeZone[100];
@@ -622,7 +741,7 @@ void rawProtocolDataTimed(gpointer data)
 
 	if (n > 0)
 	{
-		sprintf(a->line, "%s", (char *)buf);
+		g_sprintf(a->line, "%s", (char *)buf);
 	}
 
 	for (i = 0; i < strlen(a->line); i++)
@@ -687,7 +806,7 @@ void rawProtocolDataTimed(gpointer data)
 		accelerationX[7] = '\0';
 		getInteger(accelerationX, &accelerationXint);
 		a->accelerationXdouble = accelerationXint / GDIVIDER;
-		sprintf(a->accelerationXout, "accelX %7.3f g", a->accelerationXdouble);
+		g_sprintf(a->accelerationXout, "accelX %7.3f g", a->accelerationXdouble);
 		gtk_label_set_label((GtkLabel*)a->label[1], a->accelerationXout);
 
 		if (strncpy(accelerationY, a->line+13, 7) != accelerationY)
@@ -697,7 +816,7 @@ void rawProtocolDataTimed(gpointer data)
 		accelerationY[7] = '\0';
 		getInteger(accelerationY, &accelerationYint);
 		a->accelerationYdouble = accelerationYint / GDIVIDER;
-		sprintf(a->accelerationYout, "accelY %7.3f g", a->accelerationYdouble);
+		g_sprintf(a->accelerationYout, "accelY %7.3f g", a->accelerationYdouble);
 		gtk_label_set_label((GtkLabel*)a->label[2], a->accelerationYout);
 
 		if (strncpy(accelerationZ, a->line+21, 7) != accelerationZ)
@@ -707,18 +826,8 @@ void rawProtocolDataTimed(gpointer data)
 		accelerationZ[7] = '\0';
 		getInteger(accelerationZ, &accelerationZint);
 		a->accelerationZdouble = accelerationZint / GDIVIDER;
-		sprintf(a->accelerationZout, "accelZ %7.3f g", a->accelerationZdouble);
+		g_sprintf(a->accelerationZout, "accelZ %7.3f g", a->accelerationZdouble);
 		gtk_label_set_label((GtkLabel*)a->label[3], a->accelerationZout);
-
-		if (strncpy(temperature, a->line+29, 2) != temperature)
-		{
-			g_print("strncpy5 error\n");
-		}
-		temperature[2] = '\0';
-		getInteger(temperature, &temperatureint);
-		a->temperaturedouble = temperatureint / 1.0;
-		sprintf(a->tempOut, "%3.2f °C", a->temperaturedouble);
-		gtk_label_set_label((GtkLabel*)a->label[4], a->tempOut);
 
 		a->tiltX = asin(a->accelerationXdouble/G) * 180 / PI;
 		a->tiltY = asin(a->accelerationYdouble/G) * 180 / PI;
@@ -738,11 +847,11 @@ void rawProtocolDataTimed(gpointer data)
 			fclose(saveFile);
 		}
 
-		sprintf(a->tiltXout, "tiltX %7.2f °", a->tiltX);
-		sprintf(a->tiltYout, "tiltY %7.2f °", a->tiltY);
-		sprintf(a->tiltZout, "tiltZ %7.2f °", a->tiltZ);
-		sprintf(a->pitchOut, "pitch %7.2f °", a->pitch);
-		sprintf(a->rollOut, "roll  %7.2f °", a->roll);
+		g_sprintf(a->tiltXout, "tiltX %7.2f °", a->tiltX);
+		g_sprintf(a->tiltYout, "tiltY %7.2f °", a->tiltY);
+		g_sprintf(a->tiltZout, "tiltZ %7.2f °", a->tiltZ);
+		g_sprintf(a->pitchOut, "pitch %7.2f °", a->pitch);
+		g_sprintf(a->rollOut, "roll  %7.2f °", a->roll);
 
 		gtk_label_set_label((GtkLabel*)a->label[5], a->tiltXout);
 		gtk_label_set_label((GtkLabel*)a->label[6], a->tiltYout);
@@ -867,6 +976,10 @@ void rawProtocolDataTimed(gpointer data)
 
 // message dialog callbacks
 
+/**
+ * @brief	about message dialog
+ *
+ */
 void about(GSimpleAction *action, GVariant *parameter, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -874,6 +987,10 @@ void about(GSimpleAction *action, GVariant *parameter, gpointer data)
 	messageDialog(action, NULL, (gpointer) a, "BEL3 ESS accelerometer task\n\nWerner Egermann, Helmut Resch");
 }
 
+/**
+ * @brief	help message dialog text concenation
+ *
+ */
 void help(GSimpleAction *action, GVariant *parameter, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -895,6 +1012,10 @@ void help(GSimpleAction *action, GVariant *parameter, gpointer data)
 	messageDialog(action, NULL, (gpointer) a, messageText);
 }
 
+/**
+ * @brief	help message dialog
+ *
+ */
 void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gchar *showText)
 {
 	widgets *a = (widgets *) data;
@@ -908,6 +1029,10 @@ void messageDialog(GSimpleAction *action, GVariant *parameter, gpointer data, gc
 	gtk_widget_show (dialog);
 }
 
+/**
+ * @brief	quit dialog
+ *
+ */
 void quit(GSimpleAction *action, GVariant *parameter, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -917,6 +1042,12 @@ void quit(GSimpleAction *action, GVariant *parameter, gpointer data)
 
 // some functions needed
 
+/**
+ * @brief	function to convert string to integer
+ * @param	input string and output integer pointer
+ * @return	0 on success, 1 on error
+ *
+ */
 unsigned int getInteger(char *input, int *numInteger)
 {
     unsigned long int number = 0;
@@ -934,6 +1065,12 @@ unsigned int getInteger(char *input, int *numInteger)
     }
 }
 
+/**
+ * @brief	function to convert string to double
+ * @param	input string and output double pointer
+ * @return	0 on success, 1 on error
+ *
+ */
 unsigned int getDouble(char *input, double *numDouble)
 {
     long double number = 0;
@@ -950,3 +1087,5 @@ unsigned int getDouble(char *input, double *numDouble)
         return 0;
     }
 }
+
+/** EOF **/

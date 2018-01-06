@@ -1,3 +1,13 @@
+/**
+ * @file		menucallbacks.h
+ * @version		v1.0
+ * @date		Jan 2018
+ * @author		Egermann, Resch
+ *
+ * @brief		menucallbacks 3Dacceltask GUI header
+ *
+ */
+
 #ifndef _MENUCALLBACKS_
 #define _MENUCALLBACKS_
 
@@ -7,8 +17,7 @@
 
 #include "rs232.h"
 
-#define BAUD 115200
-#define OSBUFFER 4096
+
 
 // entry callbacks
 
@@ -62,3 +71,5 @@ unsigned int getInteger(char *input, int *numInteger);
 unsigned int getDouble(char *input, double *numDouble);
 
 #endif
+
+/** EOF **/

@@ -1,11 +1,24 @@
 var searchData=
 [
-  ['packagessent',['packagesSent',['../3Daccel__app_8h.html#a0b9b9ea9e34f2c155730bf929159d831',1,'3Daccel_app.h']]],
-  ['pi',['PI',['../3Daccel__app_8h.html#a598a3330b3c21701223ee0ca14316eca',1,'3Daccel_app.h']]],
-  ['position',['position',['../3Daccel__app_8h.html#a1e1320cfd39f6febcf8e4eb2b542f424',1,'3Daccel_app.h']]],
-  ['prescaler',['PRESCALER',['../3Daccel__app_8h.html#a0fac869d83ac1a584d6c45cf609f5fe7',1,'3Daccel_app.h']]],
-  ['protocolcomplete',['protocolComplete',['../3Daccel__out__library_8c.html#ac9b94e8e0a389c7ad94562e81c15ba3d',1,'protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ, uint8_t temperature):&#160;3Daccel_out_library.c'],['../3Daccel__out__library_8h.html#ac9b94e8e0a389c7ad94562e81c15ba3d',1,'protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ, uint8_t temperature):&#160;3Daccel_out_library.c']]],
+  ['p',['p',['../namespaceprotocol__plotter.html#a682d21556ee026b0339dfd61fed3c3ec',1,'protocol_plotter']]],
+  ['packagesout',['packagesOut',['../structwidgets.html#adb8c696a2b86aaf40f014e40097e1f3c',1,'widgets']]],
+  ['packagessent',['packagesSent',['../3Daccel__out__library_8h.html#a0b9b9ea9e34f2c155730bf929159d831',1,'3Daccel_out_library.h']]],
+  ['pi',['PI',['../3Daccel__out__library_8h.html#a598a3330b3c21701223ee0ca14316eca',1,'PI():&#160;3Daccel_out_library.h'],['../3DacceltaskGUI_8h.html#a598a3330b3c21701223ee0ca14316eca',1,'PI():&#160;3DacceltaskGUI.h']]],
+  ['pitch',['Pitch',['../classdirection_1_1Pitch.html',1,'direction.Pitch'],['../structwidgets.html#ad449db6f4bf71d297ce4153358dc807a',1,'widgets::pitch()'],['../namespacedirection.html#a214a0b2bc6767a92434136af76c07660',1,'direction.pitch()']]],
+  ['pitchout',['pitchOut',['../structwidgets.html#a3b182113812dbd1b26950b44b68cf745',1,'widgets']]],
+  ['pollmax',['POLLMAX',['../3DacceltaskGUI_8h.html#ad79e8b8cb336611613d20f08f7ae8e7d',1,'3DacceltaskGUI.h']]],
+  ['pollmin',['POLLMIN',['../3DacceltaskGUI_8h.html#ad0c6a8c2f2bfa3b8a07bb8df438a2e6c',1,'3DacceltaskGUI.h']]],
+  ['polltimesensor',['pollTimeSensor',['../structwidgets.html#a4762bf65ee5a4f971547be803a947af4',1,'widgets']]],
+  ['position',['position',['../lis3dh__library_8h.html#a1e1320cfd39f6febcf8e4eb2b542f424',1,'lis3dh_library.h']]],
+  ['position6d',['position6D',['../structwidgets.html#acedd070253c17c954ebd1df22f5e5492',1,'widgets']]],
+  ['position6dint',['position6Dint',['../structwidgets.html#aa44de9d96bcda7e49c170284c802069b',1,'widgets']]],
+  ['prescaler',['PRESCALER',['../servo__driver_8h.html#a0fac869d83ac1a584d6c45cf609f5fe7',1,'servo_driver.h']]],
+  ['protocol_5fplotter',['protocol_plotter',['../namespaceprotocol__plotter.html',1,'']]],
+  ['protocol_5fplotter_2epy',['protocol_plotter.py',['../protocol__plotter_8py.html',1,'']]],
+  ['protocolcomplete',['protocolComplete',['../3Daccel__out__library_8c.html#a3a765df13ada6a922af636a79e2ddf07',1,'protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ):&#160;3Daccel_out_library.c'],['../3Daccel__out__library_8h.html#a3a765df13ada6a922af636a79e2ddf07',1,'protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ):&#160;3Daccel_out_library.c']]],
   ['pwm',['pwm',['../servo__library_8c.html#a1b4b483954e298401d3bb4015a71dbd7',1,'pwm(double dutycycle, uint8_t out):&#160;servo_library.c'],['../servo__library_8h.html#a1b4b483954e298401d3bb4015a71dbd7',1,'pwm(double dutycycle, uint8_t out):&#160;servo_library.c']]],
   ['pwmanglecalc',['pwmAngleCalc',['../3Daccel__out__library_8c.html#a2d16efe1a5635c4d3be791124f7e7432',1,'pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ):&#160;3Daccel_out_library.c'],['../3Daccel__out__library_8h.html#a2d16efe1a5635c4d3be791124f7e7432',1,'pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ):&#160;3Daccel_out_library.c']]],
-  ['pwmxmc',['pwmXMC',['../servo__driver_8c.html#a44c59c9b51f0842aa366c6d2a13a5944',1,'pwmXMC(double dutycycle, uint8_t out):&#160;servo_driver.c'],['../servo__driver_8h.html#a44c59c9b51f0842aa366c6d2a13a5944',1,'pwmXMC(double dutycycle, uint8_t out):&#160;servo_driver.c']]]
+  ['pwmxmc',['pwmXMC',['../servo__driver_8c.html#a44c59c9b51f0842aa366c6d2a13a5944',1,'pwmXMC(double dutycycle, uint8_t out):&#160;servo_driver.c'],['../servo__driver_8h.html#a44c59c9b51f0842aa366c6d2a13a5944',1,'pwmXMC(double dutycycle, uint8_t out):&#160;servo_driver.c']]],
+  ['pythonconnector',['pythonConnector',['../menucallbacks_8c.html#a162d8a6161e80cea565f7b43bb23cb8b',1,'pythonConnector(GtkButton *button, gpointer data):&#160;menucallbacks.c'],['../menucallbacks_8h.html#a162d8a6161e80cea565f7b43bb23cb8b',1,'pythonConnector(GtkButton *button, gpointer data):&#160;menucallbacks.c']]],
+  ['pythonspriteconnector',['pythonSpriteConnector',['../menucallbacks_8c.html#a3a87fd3ab8d225f5a316686563bbc582',1,'pythonSpriteConnector(GtkButton *button, gpointer data):&#160;menucallbacks.c'],['../menucallbacks_8h.html#a3a87fd3ab8d225f5a316686563bbc582',1,'pythonSpriteConnector(GtkButton *button, gpointer data):&#160;menucallbacks.c']]]
 ];

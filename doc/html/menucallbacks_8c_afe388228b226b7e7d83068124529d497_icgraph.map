@@ -1,0 +1,6 @@
+<map id="safeStop" name="safeStop">
+<area shape="rect" id="node2" href="$menucallbacks_8h.html#afb5e0da082f7af4b6ce5e85012b8fe18" title="function connect UART " alt="" coords="132,5,243,32"/>
+<area shape="rect" id="node3" href="$3DacceltaskGUI_8h.html#a39bb15ce2c31b859d7ac5dd857f86b57" title="main function to describe GUI " alt="" coords="291,5,397,32"/>
+<area shape="rect" id="node4" href="$3DacceltaskGUI_8h.html#a7cd4d905a4d5afd543eee488a3cb37bc" title="main function to activate GUI " alt="" coords="445,5,520,32"/>
+<area shape="rect" id="node5" href="$3DacceltaskGUI_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main routine " alt="" coords="568,5,623,32"/>
+</map>

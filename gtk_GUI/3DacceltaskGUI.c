@@ -1,5 +1,19 @@
+/**
+ * @file		3DacceltaskGUI.c
+ * @version		v1.0
+ * @date		Jan 2018
+ * @author		Egermann, Resch
+ *
+ * @brief		3Dacceltask GUI
+ *
+ */
+
 #include "3DacceltaskGUI.h"
 
+/**
+ * @brief	GMenu entries
+ *
+ */
 const GActionEntry appActions[] =
 {
 	{ "help", 		help },
@@ -7,24 +21,27 @@ const GActionEntry appActions[] =
 	{ "quit", 		quit }
 };
 
+/**
+ * @brief	main function to describe GUI
+ *
+ */
 void constructGUI(gpointer data)
 {
 	widgets *a = (widgets *) data;
-	const gchar initialinfo[] = "please choose your USB connection ID and poll time - standard is /dev/ttyUSB0 and 50ms";
-
+	const gchar initialinfo[] = "please choose your USB connection ID and poll time - standard is /dev/ttyUSB0 and 100ms";
 	gchar stringUSB[15];
 	gint i;
 
 	// some initialization
 
 	a->position6Dint = 0;
-	a->acceltriggerX = 2.0;
-	a->acceltriggerY = 2.0;
-	a->acceltriggerZ = 2.0;
+	a->acceltriggerX = 1.5;
+	a->acceltriggerY = 1.5;
+	a->acceltriggerZ = 1.5;
 	a->servoState = 0;
 	a->transmission = FALSE;
 	a->radioButtonUSBstate = 16;
-	a->pollTimeSensor = 50;
+	a->pollTimeSensor = 100;
 
 	// flush cache
 
@@ -116,7 +133,7 @@ void constructGUI(gpointer data)
 	a->label[3] = gtk_label_new("Z-VALUE");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[3], 1, 3, 1, 1);
 
-	a->label[4] = gtk_label_new("TEMPERATURE");
+	a->label[4] = gtk_label_new("LED");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[4], 1, 4, 1, 1);
 
 	a->label[5] = gtk_label_new("TILT X");
@@ -145,10 +162,6 @@ void constructGUI(gpointer data)
 	a->label[12] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
 	gtk_label_set_use_markup (GTK_LABEL (a->label[12]), TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[12], 4, 7, 1, 1);
-
-/*	a->label[15] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> FREEFALL </span>");*/
-/*	gtk_label_set_use_markup (GTK_LABEL (a->label[15]), TRUE);*/
-/*	gtk_grid_attach(GTK_GRID (a->grid), a->label[15], 4, 8, 1, 1);*/
 
 	a->label[13] = gtk_label_new("Packages XMC");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[13], 2, 6, 1, 1);
@@ -248,6 +261,10 @@ void constructGUI(gpointer data)
 	gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
 }
 
+/**
+ * @brief	main function to describe Menu
+ *
+ */
 void constructMenu(GtkApplication *app, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -279,6 +296,10 @@ void constructMenu(GtkApplication *app, gpointer data)
 	g_object_unref(a->gearmenu);
 }
 
+/**
+ * @brief	main function to activate GUI
+ *
+ */
 void activate(GtkApplication *app, gpointer data)
 {
 	widgets *a = (widgets *) data;
@@ -296,6 +317,10 @@ void activate(GtkApplication *app, gpointer data)
 	gtk_widget_show_all(GTK_WIDGET(a->window));
 }
 
+/**
+ * @brief	main function to start GUI
+ *
+ */
 void startup(GApplication *app, gpointer data)
 {
 	widgets *a = (widgets *)data;
@@ -303,6 +328,10 @@ void startup(GApplication *app, gpointer data)
 	g_action_map_add_action_entries(G_ACTION_MAP(app), appActions, G_N_ELEMENTS(appActions), (gpointer)a);
 }
 
+/**
+ * @brief	main routine
+ *
+ */
 int main(int argc, char **argv)
 {
 	gint status;
@@ -318,3 +347,5 @@ int main(int argc, char **argv)
 
 	return status;
 }
+
+/** EOF **/

@@ -18,12 +18,10 @@ temp0 = []
 temp1 = []
 temp2 = []
 temp3 = []
-temp4 = []
 
 accelX = 0
 accelY = 0
 accelZ = 0
-temp = 0
 i = 0
 
 samples = 50
@@ -38,7 +36,7 @@ p = plotter(number_of_samples=[samples, samples, samples], total_plots=3, rows=1
 
 def stringCutter():
 
-	global accelX, accelY, accelZ, temperature, orientation
+	global accelX, accelY, accelZ, orientation
 
 	try:
 
@@ -60,14 +58,8 @@ def stringCutter():
 
 		temp3 = temp2[pos_t+1:]
 
-		pos_e = temp3.index(',')
+		pos_e = temp3.index('$')
 		accelZ = int(temp3[:pos_e]) / 8190.0
-
-		temp4 = temp3[pos_e+1:]
-		pos_f = temp4.index('$')
-
-		temp = int(temp4[:pos_f])
-		temperature = temp
 
 	except AttributeError as Ae:
 			
@@ -91,7 +83,7 @@ def graphOutput():
 
 			stringCutter()
 
-			print(orientation, "| X=", "{:>6.2}".format(accelX), "g | Y=", "{:>6.2}".format(accelY), "g | Z=", "{:>6.2}".format(accelZ), "g | T=", "{:>2}".format(temperature), "°C")
+			print(orientation, "| X=", "{:>6.2}".format(accelX), "g | Y=", "{:>6.2}".format(accelY), "g | Z=", "{:>6.2}".format(accelZ), "g")
 
 			try:
 

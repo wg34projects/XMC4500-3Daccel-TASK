@@ -2,7 +2,7 @@
 <area shape="rect" id="node2" href="$xmc4500__i2c__lib_8c.html#a27f77ce67b06737545a575b47e9625b9" title="This function configures the I2C interface to communicate via pins P0_5 &amp; P0_11. " alt="" coords="122,44,237,71"/>
 <area shape="rect" id="node3" href="$xmc4500__uart__lib_8c.html#ac98c9342b86b5c42437908b380e08485" title="_init_uart0_ch0" alt="" coords="119,95,240,121"/>
 <area shape="rect" id="node4" href="$xmc4500__uart__lib_8c.html#a8b7b118d5fcdefceb6fd35ae9c080161" title="_uart_get_string" alt="" coords="116,145,243,172"/>
-<area shape="rect" id="node5" href="$lis3dh__library_8c.html#a13ccc4ea5f9ce003cf05ce20da9bdade" title="init MEMS sensor " alt="" coords="108,284,251,311"/>
+<area shape="rect" id="node5" href="$lis3dh__library_8c.html#a13ccc4ea5f9ce003cf05ce20da9bdade" title="config MEMS sensor " alt="" coords="108,284,251,311"/>
 <area shape="rect" id="node15" href="$3Daccel__out__library_8c.html#af3e2e485f3ff008910d925cbb25f3a73" title="init global variables " alt="" coords="133,335,225,361"/>
 <area shape="rect" id="node16" href="$lis3dh__library_8c.html#af87a0e605c7f6d45094e98454c6661a4" title="init MEMS sensor " alt="" coords="117,196,241,223"/>
 <area shape="rect" id="node21" href="$debug__lib_8c.html#aaa2bb4d61ba65858309bae41a3933a69" title="Initialize the SWD/TPI/ITM debug modules to output debug messages via the Debug interface. This will enable the outputz of printf() and fputc() like messages. " alt="" coords="117,385,242,412"/>
@@ -10,7 +10,7 @@
 <area shape="rect" id="node24" href="$3Daccel__out__library_8c.html#a212a6fde8e289ecf188ec1490e2ddc3c" title="intialize input GPIOs " alt="" coords="141,487,217,513"/>
 <area shape="rect" id="node25" href="$3Daccel__out__library_8c.html#a923fb698e5e6806825e2cf45cc4960c5" title="function to set LED " alt="" coords="355,563,443,589"/>
 <area shape="rect" id="node26" href="$3Daccel__out__library_8c.html#a930d335c24189b1bfb632ddb7819967c" title="function to init LED output " alt="" coords="137,639,222,665"/>
-<area shape="rect" id="node27" href="$3Daccel__out__library_8c.html#ac9b94e8e0a389c7ad94562e81c15ba3d" title="send data to PC and GUI " alt="" coords="110,588,249,615"/>
+<area shape="rect" id="node27" href="$3Daccel__out__library_8c.html#a3a765df13ada6a922af636a79e2ddf07" title="send data to PC and GUI " alt="" coords="110,588,249,615"/>
 <area shape="rect" id="node30" href="$servo__library_8c.html#a1b4b483954e298401d3bb4015a71dbd7" title="set PWM for servos " alt="" coords="152,689,207,716"/>
 <area shape="rect" id="node6" href="$lis3dh__driver_8c.html#acb37136225c72c1dac3af64315ae9b8a" title="LIS3DH_SetInt1Threshold" alt="" coords="306,461,493,488"/>
 <area shape="rect" id="node9" href="$lis3dh__driver_8c.html#a59c9591aa1404868087b3efc9ac9806b" title="LIS3DH_SetIntConfiguration" alt="" coords="299,309,500,336"/>

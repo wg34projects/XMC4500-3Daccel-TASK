@@ -1,5 +1,4 @@
-lis3dh_library.c:18:9:initMEMSsensor	16	static
-lis3dh_library.c:79:9:configMEMSsensor	16	static
-lis3dh_library.c:160:9:getTemperature	16	static
-lis3dh_library.c:178:9:get6Dposition	16	static
-lis3dh_library.c:241:13:getAxesRawData	32	static
+lis3dh_library.c:19:9:initMEMSsensor	16	static
+lis3dh_library.c:80:9:configMEMSsensor	16	static
+lis3dh_library.c:161:9:get6Dposition	16	static
+lis3dh_library.c:224:13:getAxesRawData	32	static

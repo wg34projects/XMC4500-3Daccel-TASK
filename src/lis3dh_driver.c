@@ -7,7 +7,6 @@
  * @brief		lis3dh driver
  */
 
-
 /******************** (C) COPYRIGHT 2012 STMicroelectronics ********************
 * File Name          : LIS3DH_driver.c
 * Author             : MSH Application Team
@@ -35,6 +34,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "lis3dh_driver.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/

@@ -1,7 +1,7 @@
 <map id="LIS3DH_ReadReg" name="LIS3DH_ReadReg">
 <area shape="rect" id="node2" href="$lis3dh__driver_8h.html#a2d8f4dd8945a8cce721cb2270f70d95c" title="LIS3DH_FIFOModeEnable" alt="" coords="213,5,395,32"/>
-<area shape="rect" id="node3" href="$lis3dh__driver_8h.html#a55c6b8016ef56e8c212ca9f54d86519b" title="LIS3DH_Get6DPosition" alt="" coords="219,715,389,741"/>
-<area shape="rect" id="node6" href="$lis3dh__driver_8h.html#adbdbd15b40c15a13927b5a08cc0ff25a" title="LIS3DH_GetAccAxesRaw" alt="" coords="213,56,395,83"/>
+<area shape="rect" id="node3" href="$lis3dh__driver_8h.html#a55c6b8016ef56e8c212ca9f54d86519b" title="LIS3DH_Get6DPosition" alt="" coords="219,56,389,83"/>
+<area shape="rect" id="node6" href="$lis3dh__driver_8h.html#adbdbd15b40c15a13927b5a08cc0ff25a" title="LIS3DH_GetAccAxesRaw" alt="" coords="213,107,395,133"/>
 <area shape="rect" id="node8" href="$lis3dh__driver_8h.html#a790b356071bafef4c6f93256592784cb" title="LIS3DH_GetAuxRaw" alt="" coords="228,157,380,184"/>
 <area shape="rect" id="node9" href="$lis3dh__driver_8h.html#abd0a0b1e325cb15e53bbb0b22a5c504e" title="LIS3DH_GetClickResponse" alt="" coords="207,208,401,235"/>
 <area shape="rect" id="node10" href="$lis3dh__driver_8h.html#abecd7e3c121f0873401d0c6d7875ef54" title="LIS3DH_GetFifoSourceBit" alt="" coords="212,259,396,285"/>
@@ -13,39 +13,38 @@
 <area shape="rect" id="node16" href="$lis3dh__driver_8h.html#a930fde041e034c0d7352caec93255cfd" title="LIS3DH_GetStatusAUXBit" alt="" coords="211,563,397,589"/>
 <area shape="rect" id="node17" href="$lis3dh__driver_8h.html#af9949175e45a469936e6922b85f255d0" title="LIS3DH_GetStatusBit" alt="" coords="225,613,383,640"/>
 <area shape="rect" id="node18" href="$lis3dh__driver_8h.html#a3ede5f5ae858be663316b82a134b1f8e" title="LIS3DH_GetStatusReg" alt="" coords="222,664,386,691"/>
-<area shape="rect" id="node19" href="$lis3dh__driver_8h.html#ada57051b641c658a3426c69479521445" title="LIS3DH_GetTempRaw" alt="" coords="223,107,385,133"/>
-<area shape="rect" id="node21" href="$lis3dh__driver_8h.html#a689f86c83f1fd164942845b373dd6ac5" title="LIS3DH_GetWHO_AM_I" alt="" coords="219,765,389,792"/>
-<area shape="rect" id="node22" href="$lis3dh__driver_8h.html#a3bcdd843ebf3cab867807e8841ac6429" title="LIS3DH_HPFAOI1Enable" alt="" coords="217,816,391,843"/>
-<area shape="rect" id="node23" href="$lis3dh__driver_8h.html#adb63026449b61658a5e96a562e58f183" title="LIS3DH_HPFAOI2Enable" alt="" coords="217,867,391,893"/>
-<area shape="rect" id="node24" href="$lis3dh__driver_8h.html#a2783e73f9e473e65d6f75b58ca93afe2" title="LIS3DH_HPFClickEnable" alt="" coords="215,917,393,944"/>
-<area shape="rect" id="node25" href="$lis3dh__driver_8h.html#a53a192abdabf897f3a02c7c1738a06c2" title="LIS3DH_Int1LatchEnable" alt="" coords="214,968,394,995"/>
-<area shape="rect" id="node26" href="$lis3dh__driver_8h.html#a75eb3daaedf504380eede75823da5acc" title="LIS3DH_ResetInt1Latch" alt="" coords="218,1019,390,1045"/>
-<area shape="rect" id="node27" href="$lis3dh__driver_8h.html#ae45852d8356f11c55f7545c8292b9341" title="LIS3DH_SetADCAux" alt="" coords="229,1829,379,1856"/>
-<area shape="rect" id="node30" href="$lis3dh__driver_8h.html#aa0b0544dc20159085be6313cd5588b68" title="LIS3DH_SetAxis" alt="" coords="241,1171,367,1197"/>
-<area shape="rect" id="node32" href="$lis3dh__driver_8h.html#a17f398a68dfe365897f680e0e7830c9f" title="LIS3DH_SetBDU" alt="" coords="241,1981,367,2008"/>
-<area shape="rect" id="node33" href="$lis3dh__driver_8h.html#ac996c97c013b3497ecbf22af20cb4d69" title="LIS3DH_SetBLE" alt="" coords="243,1221,365,1248"/>
-<area shape="rect" id="node34" href="$lis3dh__driver_8h.html#a539df7d305ee16c69745bf7fe656e574" title="LIS3DH_SetClickCFG" alt="" coords="227,1272,381,1299"/>
-<area shape="rect" id="node35" href="$lis3dh__driver_8h.html#ad507030a49dd14df9d53c579ca797d97" title="LIS3DH_SetFilterDataSel" alt="" coords="214,1323,394,1349"/>
-<area shape="rect" id="node36" href="$lis3dh__driver_8h.html#a9211a95f8842a555838ba94bad86638e" title="LIS3DH_SetFullScale" alt="" coords="227,1373,381,1400"/>
-<area shape="rect" id="node37" href="$lis3dh__driver_8h.html#a1f8cc6a63e0a6a868abaadb7a09f8d0a" title="LIS3DH_SetHPFCutOFF" alt="" coords="220,1424,388,1451"/>
-<area shape="rect" id="node38" href="$lis3dh__driver_8h.html#a93423d52119d6fc28da26ad1866c403d" title="LIS3DH_SetHPFMode" alt="" coords="225,1475,383,1501"/>
-<area shape="rect" id="node39" href="$lis3dh__driver_8h.html#abdabb307531c415d8db8087c9d67d385" title="LIS3DH_SetInt1Pin" alt="" coords="233,1525,375,1552"/>
-<area shape="rect" id="node40" href="$lis3dh__driver_8h.html#a6852c891d2d7aaf8124d53fcf25c1039" title="LIS3DH_SetInt2Pin" alt="" coords="233,1576,375,1603"/>
-<area shape="rect" id="node41" href="$lis3dh__driver_8h.html#a511c9a8892aa21a465b389321af28a9a" title="LIS3DH_SetInt6D4DConfiguration" alt="" coords="185,1627,423,1653"/>
-<area shape="rect" id="node42" href="$lis3dh__driver_8h.html#a59c9591aa1404868087b3efc9ac9806b" title="LIS3DH_SetIntConfiguration" alt="" coords="203,1779,405,1805"/>
-<area shape="rect" id="node43" href="$lis3dh__driver_8h.html#a8fb8e6437aff0d7700bf4d13ab526ea5" title="LIS3DH_SetIntMode" alt="" coords="229,1677,379,1704"/>
-<area shape="rect" id="node44" href="$lis3dh__driver_8h.html#ab3e5252ca8c531431ca3a730f87b9f30" title="LIS3DH_SetMode" alt="" coords="238,1069,370,1096"/>
-<area shape="rect" id="node45" href="$lis3dh__driver_8h.html#acd8b72787b198f8f27a2769535fd1c24" title="LIS3DH_SetODR" alt="" coords="241,1120,367,1147"/>
-<area shape="rect" id="node46" href="$lis3dh__driver_8h.html#a431d1c19fcee669e848e4fc98760eb57" title="LIS3DH_SetSelfTest" alt="" coords="230,1880,378,1907"/>
-<area shape="rect" id="node47" href="$lis3dh__driver_8c.html#ae53d8d02a3889b073092956824802d13" title="LIS3DH_SetSPIInterface" alt="" coords="217,1931,391,1957"/>
-<area shape="rect" id="node48" href="$lis3dh__driver_8h.html#a9959dd9deaddd4c077e1c266cca69898" title="LIS3DH_SetTemperature" alt="" coords="215,1728,393,1755"/>
-<area shape="rect" id="node49" href="$lis3dh__driver_8h.html#ad33f79de0d53a2a4622713aff9224efa" title="LIS3DH_SetTriggerInt" alt="" coords="225,2032,383,2059"/>
-<area shape="rect" id="node50" href="$lis3dh__driver_8h.html#a0c73d20c6b8ded1146041c4fdd7c8ae6" title="LIS3DH_SetWaterMark" alt="" coords="221,2083,387,2109"/>
-<area shape="rect" id="node4" href="$lis3dh__library_8h.html#a81d6a7561abdb349d9de8e71373a199c" title="get 6D position " alt="" coords="485,436,599,463"/>
-<area shape="rect" id="node5" href="$3Daccel__out__library_8h.html#ab5e09814056d617c521549e542639b7e" title="SysTick. " alt="" coords="661,107,792,133"/>
-<area shape="rect" id="node7" href="$lis3dh__library_8h.html#aa43222ab76656846444ff322177b13c6" title="get axes acceleration raw data " alt="" coords="475,56,609,83"/>
-<area shape="rect" id="node20" href="$lis3dh__library_8h.html#a4321ff967a5d2bbfdf6917cc5acb66b8" title="get Temperature from sensor " alt="" coords="479,107,605,133"/>
-<area shape="rect" id="node28" href="$lis3dh__library_8h.html#a13ccc4ea5f9ce003cf05ce20da9bdade" title="init MEMS sensor " alt="" coords="471,1753,613,1780"/>
-<area shape="rect" id="node29" href="$3Daccel__app_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main routine " alt="" coords="699,1461,754,1488"/>
-<area shape="rect" id="node31" href="$lis3dh__library_8h.html#af87a0e605c7f6d45094e98454c6661a4" title="init MEMS sensor " alt="" coords="480,1171,604,1197"/>
+<area shape="rect" id="node19" href="$lis3dh__driver_8h.html#ada57051b641c658a3426c69479521445" title="LIS3DH_GetTempRaw" alt="" coords="223,715,385,741"/>
+<area shape="rect" id="node20" href="$lis3dh__driver_8h.html#a689f86c83f1fd164942845b373dd6ac5" title="LIS3DH_GetWHO_AM_I" alt="" coords="219,765,389,792"/>
+<area shape="rect" id="node21" href="$lis3dh__driver_8h.html#a3bcdd843ebf3cab867807e8841ac6429" title="LIS3DH_HPFAOI1Enable" alt="" coords="217,816,391,843"/>
+<area shape="rect" id="node22" href="$lis3dh__driver_8h.html#adb63026449b61658a5e96a562e58f183" title="LIS3DH_HPFAOI2Enable" alt="" coords="217,867,391,893"/>
+<area shape="rect" id="node23" href="$lis3dh__driver_8h.html#a2783e73f9e473e65d6f75b58ca93afe2" title="LIS3DH_HPFClickEnable" alt="" coords="215,917,393,944"/>
+<area shape="rect" id="node24" href="$lis3dh__driver_8h.html#a53a192abdabf897f3a02c7c1738a06c2" title="LIS3DH_Int1LatchEnable" alt="" coords="214,968,394,995"/>
+<area shape="rect" id="node25" href="$lis3dh__driver_8h.html#a75eb3daaedf504380eede75823da5acc" title="LIS3DH_ResetInt1Latch" alt="" coords="218,1019,390,1045"/>
+<area shape="rect" id="node26" href="$lis3dh__driver_8h.html#ae45852d8356f11c55f7545c8292b9341" title="LIS3DH_SetADCAux" alt="" coords="229,1171,379,1197"/>
+<area shape="rect" id="node29" href="$lis3dh__driver_8h.html#aa0b0544dc20159085be6313cd5588b68" title="LIS3DH_SetAxis" alt="" coords="241,1981,367,2008"/>
+<area shape="rect" id="node31" href="$lis3dh__driver_8h.html#a17f398a68dfe365897f680e0e7830c9f" title="LIS3DH_SetBDU" alt="" coords="241,1373,367,1400"/>
+<area shape="rect" id="node32" href="$lis3dh__driver_8h.html#ac996c97c013b3497ecbf22af20cb4d69" title="LIS3DH_SetBLE" alt="" coords="243,1221,365,1248"/>
+<area shape="rect" id="node33" href="$lis3dh__driver_8h.html#a539df7d305ee16c69745bf7fe656e574" title="LIS3DH_SetClickCFG" alt="" coords="227,1272,381,1299"/>
+<area shape="rect" id="node34" href="$lis3dh__driver_8h.html#ad507030a49dd14df9d53c579ca797d97" title="LIS3DH_SetFilterDataSel" alt="" coords="214,1323,394,1349"/>
+<area shape="rect" id="node35" href="$lis3dh__driver_8h.html#a9211a95f8842a555838ba94bad86638e" title="LIS3DH_SetFullScale" alt="" coords="227,1728,381,1755"/>
+<area shape="rect" id="node36" href="$lis3dh__driver_8h.html#a1f8cc6a63e0a6a868abaadb7a09f8d0a" title="LIS3DH_SetHPFCutOFF" alt="" coords="220,1424,388,1451"/>
+<area shape="rect" id="node37" href="$lis3dh__driver_8h.html#a93423d52119d6fc28da26ad1866c403d" title="LIS3DH_SetHPFMode" alt="" coords="225,1475,383,1501"/>
+<area shape="rect" id="node38" href="$lis3dh__driver_8h.html#abdabb307531c415d8db8087c9d67d385" title="LIS3DH_SetInt1Pin" alt="" coords="233,1525,375,1552"/>
+<area shape="rect" id="node39" href="$lis3dh__driver_8h.html#a6852c891d2d7aaf8124d53fcf25c1039" title="LIS3DH_SetInt2Pin" alt="" coords="233,1576,375,1603"/>
+<area shape="rect" id="node40" href="$lis3dh__driver_8h.html#a511c9a8892aa21a465b389321af28a9a" title="LIS3DH_SetInt6D4DConfiguration" alt="" coords="185,1627,423,1653"/>
+<area shape="rect" id="node41" href="$lis3dh__driver_8h.html#a59c9591aa1404868087b3efc9ac9806b" title="LIS3DH_SetIntConfiguration" alt="" coords="203,1677,405,1704"/>
+<area shape="rect" id="node42" href="$lis3dh__driver_8h.html#a8fb8e6437aff0d7700bf4d13ab526ea5" title="LIS3DH_SetIntMode" alt="" coords="229,1069,379,1096"/>
+<area shape="rect" id="node43" href="$lis3dh__driver_8h.html#ab3e5252ca8c531431ca3a730f87b9f30" title="LIS3DH_SetMode" alt="" coords="238,1779,370,1805"/>
+<area shape="rect" id="node44" href="$lis3dh__driver_8h.html#acd8b72787b198f8f27a2769535fd1c24" title="LIS3DH_SetODR" alt="" coords="241,1829,367,1856"/>
+<area shape="rect" id="node45" href="$lis3dh__driver_8h.html#a431d1c19fcee669e848e4fc98760eb57" title="LIS3DH_SetSelfTest" alt="" coords="230,1880,378,1907"/>
+<area shape="rect" id="node46" href="$lis3dh__driver_8c.html#ae53d8d02a3889b073092956824802d13" title="LIS3DH_SetSPIInterface" alt="" coords="217,1931,391,1957"/>
+<area shape="rect" id="node47" href="$lis3dh__driver_8h.html#a9959dd9deaddd4c077e1c266cca69898" title="LIS3DH_SetTemperature" alt="" coords="215,1120,393,1147"/>
+<area shape="rect" id="node48" href="$lis3dh__driver_8h.html#ad33f79de0d53a2a4622713aff9224efa" title="LIS3DH_SetTriggerInt" alt="" coords="225,2032,383,2059"/>
+<area shape="rect" id="node49" href="$lis3dh__driver_8h.html#a0c73d20c6b8ded1146041c4fdd7c8ae6" title="LIS3DH_SetWaterMark" alt="" coords="221,2083,387,2109"/>
+<area shape="rect" id="node4" href="$lis3dh__library_8h.html#a81d6a7561abdb349d9de8e71373a199c" title="get 6D position " alt="" coords="485,56,599,83"/>
+<area shape="rect" id="node5" href="$3Daccel__out__library_8h.html#ab5e09814056d617c521549e542639b7e" title="SysTick. " alt="" coords="661,81,792,108"/>
+<area shape="rect" id="node7" href="$lis3dh__library_8h.html#aa43222ab76656846444ff322177b13c6" title="get axes acceleration raw data " alt="" coords="475,107,609,133"/>
+<area shape="rect" id="node27" href="$lis3dh__library_8h.html#a13ccc4ea5f9ce003cf05ce20da9bdade" title="config MEMS sensor " alt="" coords="471,1272,613,1299"/>
+<area shape="rect" id="node28" href="$3Daccel__app_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main routine " alt="" coords="699,1525,754,1552"/>
+<area shape="rect" id="node30" href="$lis3dh__library_8h.html#af87a0e605c7f6d45094e98454c6661a4" title="init MEMS sensor " alt="" coords="480,1779,604,1805"/>
 </map>

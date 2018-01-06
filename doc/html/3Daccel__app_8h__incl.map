@@ -1,10 +1,10 @@
 <map id="inc/3Daccel_app.h" name="inc/3Daccel_app.h">
-<area shape="rect" id="node7" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="931,80,1092,107"/>
-<area shape="rect" id="node8" href="$lis3dh__library_8h.html" title="lis3dh_library.h" alt="" coords="421,80,541,107"/>
-<area shape="rect" id="node10" href="$servo__library_8h.html" title="servo library header " alt="" coords="1117,80,1234,107"/>
-<area shape="rect" id="node12" href="$xmc4500__uart__lib_8h.html" title="xmc4500_uart_lib.h" alt="" coords="1309,80,1460,107"/>
-<area shape="rect" id="node13" href="$xmc4500__i2c__lib_8h.html" title="xmc4500_i2c_lib.h" alt="" coords="253,80,396,107"/>
-<area shape="rect" id="node18" href="$debug__lib_8h.html" title="This library retargets the printf() function to generate output via the SWD DEBUG interface..." alt="" coords="717,80,815,107"/>
-<area shape="rect" id="node9" href="$lis3dh__driver_8h.html" title="lis3dh driver header " alt="" coords="454,155,571,181"/>
-<area shape="rect" id="node11" href="$servo__driver_8h.html" title="servo driver header " alt="" coords="1166,155,1281,181"/>
+<area shape="rect" id="node2" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="365,80,526,107"/>
+<area shape="rect" id="node3" href="$lis3dh__library_8h.html" title="lis3dh library header " alt="" coords="175,155,295,181"/>
+<area shape="rect" id="node12" href="$servo__library_8h.html" title="servo library header " alt="" coords="387,155,504,181"/>
+<area shape="rect" id="node15" href="$debug__lib_8h.html" title="This library retargets the printf() function to generate output via the SWD DEBUG interface..." alt="" coords="301,229,398,256"/>
+<area shape="rect" id="node18" href="$xmc4500__uart__lib_8h.html" title="xmc4500_uart_lib.h" alt="" coords="529,155,679,181"/>
+<area shape="rect" id="node4" href="$lis3dh__driver_8h.html" title="lis3dh driver header " alt="" coords="153,229,271,256"/>
+<area shape="rect" id="node5" href="$xmc4500__i2c__lib_8h.html" title="xmc4500_i2c_lib.h" alt="" coords="127,304,270,331"/>
+<area shape="rect" id="node13" href="$servo__driver_8h.html" title="servo driver header " alt="" coords="499,229,613,256"/>
 </map>

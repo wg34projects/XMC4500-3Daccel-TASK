@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['_5f_5finit_5f_5f',['__init__',['../classdirection_1_1Roll.html#a0014961564b0d52f575708e693959cd6',1,'direction.Roll.__init__()'],['../classdirection_1_1Pitch.html#a892a03caf8d8643acc1dd66ae2a81924',1,'direction.Pitch.__init__()']]],
   ['_5fi2c_5fxfer',['_i2c_xfer',['../xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02',1,'_i2c_xfer(uint8_t id, uint8_t reg_addr, uint8_t i2c_data, _Bool rd_wr):&#160;xmc4500_i2c_lib.c'],['../xmc4500__i2c__lib_8h.html#a2a45dae52742cfe324e10177c67d1b02',1,'_i2c_xfer(uint8_t id, uint8_t reg_addr, uint8_t i2c_data, _Bool rd_wr):&#160;xmc4500_i2c_lib.c']]],
   ['_5finit_5fi2c1_5fch0',['_init_i2c1_ch0',['../xmc4500__i2c__lib_8c.html#a27f77ce67b06737545a575b47e9625b9',1,'_init_i2c1_ch0(void):&#160;xmc4500_i2c_lib.c'],['../xmc4500__i2c__lib_8h.html#a27f77ce67b06737545a575b47e9625b9',1,'_init_i2c1_ch0(void):&#160;xmc4500_i2c_lib.c']]],
   ['_5finit_5fuart0_5fch0',['_init_uart0_ch0',['../xmc4500__uart__lib_8c.html#ac98c9342b86b5c42437908b380e08485',1,'_init_uart0_ch0():&#160;xmc4500_uart_lib.c'],['../xmc4500__uart__lib_8h.html#a0fa9a2056f03a12c1b552ea6d74890a9',1,'_init_uart0_ch0(void):&#160;xmc4500_uart_lib.c']]],

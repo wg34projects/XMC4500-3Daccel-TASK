@@ -1,3 +1,13 @@
+/**
+ * @file		3DacceltaskGUI.h
+ * @version		v1.0
+ * @date		Jan 2018
+ * @author		Egermann, Resch
+ *
+ * @brief		3Dacceltask GUI header
+ *
+ */
+
 #ifndef _3DACCELTASKGUI_
 #define _3DACCELTASKGUI_
 
@@ -17,17 +27,25 @@
 
 #define PI 3.14159265
 #define G 9.81
-#define GDIVIDER 16380.0	//2G = 16380 4G = 8190 8G = 4096 16G = 1365 15987.0
+#define GDIVIDER 8190.0	// 2G = 16380 4G = 8190 8G = 4096 16G = 1365
 #define UARTWAIT 100
-#define BUTTONWAIT 50
+#define BUTTONWAIT 100
 #define BUTTONS 7
+#define POLLMIN 10
+#define POLLMAX 1000
+#define GMIN -4.0
+#define GMAX +4.0
+#define BAUD 115200
+#define OSBUFFER 4096
+
+// main struct for all data
 
 typedef struct
 {
 	GtkApplication *app;
 	GMenu *appmenu, *gearmenu;
 	GtkWidget *window, *headerbar, *grid, *gearicon, *gearmenubutton, *terminalwindow, *statusBar;
-	GtkWidget *button[10], *label[16], *image[2], *box[2], *entry[5], *radioUSB[5];
+	GtkWidget *button[10], *label[15], *image[2], *box[2], *entry[5], *radioUSB[5];
 	GtkWidget *view, *scroll;
 	GtkTextIter iter, start, end;
 	GtkTextBuffer *buffer;
@@ -45,9 +63,13 @@ typedef struct
 
 typedef struct tm TM;
 
+// function prototypes
+
 void startup(GApplication *app, gpointer data);
 void activate(GtkApplication *app, gpointer data);
 void constructMenu(GtkApplication *app, gpointer data);
 void constructGUI(gpointer data);
 
 #endif
+
+/** EOF **/

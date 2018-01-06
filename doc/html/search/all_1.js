@@ -1,6 +1,11 @@
 var searchData=
 [
+  ['_5f_5farchdep_5f_5ftypes',['__ARCHDEP__TYPES',['../lis3dh__driver_8h.html#a4a4b723a36f4615dddc870c8d0beffdf',1,'lis3dh_driver.h']]],
   ['_5f_5ffile',['__FILE',['../struct____FILE.html',1,'']]],
+  ['_5f_5finit_5f_5f',['__init__',['../classdirection_1_1Roll.html#a0014961564b0d52f575708e693959cd6',1,'direction.Roll.__init__()'],['../classdirection_1_1Pitch.html#a892a03caf8d8643acc1dd66ae2a81924',1,'direction.Pitch.__init__()']]],
+  ['_5f_5fshared_5f_5fconstants',['__SHARED__CONSTANTS',['../lis3dh__driver_8h.html#a1c5c61e7e1e52d33b2cf9a9537dc98f4',1,'lis3dh_driver.h']]],
+  ['_5f_5fshared_5f_5fmacros',['__SHARED__MACROS',['../lis3dh__driver_8h.html#a3fd647e017f85c2c1ba59f59df1e83c8',1,'lis3dh_driver.h']]],
+  ['_5f_5fshared_5f_5ftypes',['__SHARED__TYPES',['../lis3dh__driver_8h.html#ac8f50a520ad9297ca046a06dd0a431b5',1,'lis3dh_driver.h']]],
   ['_5f_5fstdin',['__stdin',['../debug__lib_8c.html#abb2a819d3c88269eba04ea62d759bef5',1,'debug_lib.c']]],
   ['_5f_5fstdout',['__stdout',['../debug__lib_8c.html#ac1f65ebf7d6f28fb49530ee0095306cb',1,'debug_lib.c']]],
   ['_5fi2c_5fxfer',['_i2c_xfer',['../xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02',1,'_i2c_xfer(uint8_t id, uint8_t reg_addr, uint8_t i2c_data, _Bool rd_wr):&#160;xmc4500_i2c_lib.c'],['../xmc4500__i2c__lib_8h.html#a2a45dae52742cfe324e10177c67d1b02',1,'_i2c_xfer(uint8_t id, uint8_t reg_addr, uint8_t i2c_data, _Bool rd_wr):&#160;xmc4500_i2c_lib.c']]],

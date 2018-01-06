@@ -37,13 +37,9 @@
 #define __LIS3DH_DRIVER__H
 
 /* Includes ------------------------------------------------------------------*/
+#include "xmc4500_i2c_lib.h"
+
 /* Exported types ------------------------------------------------------------*/
-
-// defines sensor adress
-#define LIS3DH_ADR 0x18
-#define LIS3DH_RD_ADR (LIS3DH_ADR<<1)
-
-#include "3Daccel_app.h"
 
 //these could change accordingly with the architecture
 
@@ -66,146 +62,146 @@ typedef u8_t LIS3DH_Int1Conf_t;
 #define __SHARED__TYPES
 
 typedef enum {
-  MEMS_SUCCESS = 0x01,
-  MEMS_ERROR = 0x00	
+    MEMS_SUCCESS = 0x01,
+    MEMS_ERROR = 0x00
 } status_t;
 
 typedef enum {
-  MEMS_ENABLE = 0x01,
-  MEMS_DISABLE = 0x00	
+    MEMS_ENABLE = 0x01,
+    MEMS_DISABLE = 0x00
 } State_t;
 
 typedef struct {
-  i16_t AXIS_X;
-  i16_t AXIS_Y;
-  i16_t AXIS_Z;
+    i16_t AXIS_X;
+    i16_t AXIS_Y;
+    i16_t AXIS_Z;
 } AxesRaw_t;
 
 #endif /*__SHARED__TYPES*/
 
-typedef enum {  
-  LIS3DH_ODR_1Hz = 0x01,		
-  LIS3DH_ODR_10Hz = 0x02,
-  LIS3DH_ODR_25Hz = 0x03,
-  LIS3DH_ODR_50Hz = 0x04,
-  LIS3DH_ODR_100Hz = 0x05,	
-  LIS3DH_ODR_200Hz = 0x06,
-  LIS3DH_ODR_400Hz = 0x07,
-  LIS3DH_ODR_1620Hz_LP = 0x08,
-  LIS3DH_ODR_1344Hz_NP_5367HZ_LP = 0x09	
+typedef enum {
+    LIS3DH_ODR_1Hz = 0x01,
+    LIS3DH_ODR_10Hz = 0x02,
+    LIS3DH_ODR_25Hz = 0x03,
+    LIS3DH_ODR_50Hz = 0x04,
+    LIS3DH_ODR_100Hz = 0x05,
+    LIS3DH_ODR_200Hz = 0x06,
+    LIS3DH_ODR_400Hz = 0x07,
+    LIS3DH_ODR_1620Hz_LP = 0x08,
+    LIS3DH_ODR_1344Hz_NP_5367HZ_LP = 0x09
 } LIS3DH_ODR_t;
 
 typedef enum {
-  LIS3DH_POWER_DOWN = 0x00,
-  LIS3DH_LOW_POWER = 0x01,
-  LIS3DH_NORMAL = 0x02
+    LIS3DH_POWER_DOWN = 0x00,
+    LIS3DH_LOW_POWER = 0x01,
+    LIS3DH_NORMAL = 0x02
 } LIS3DH_Mode_t;
 
 typedef enum {
-  LIS3DH_HPM_NORMAL_MODE_RES = 0x00,
-  LIS3DH_HPM_REF_SIGNAL = 0x01,
-  LIS3DH_HPM_NORMAL_MODE = 0x02,
-  LIS3DH_HPM_AUTORESET_INT = 0x03
+    LIS3DH_HPM_NORMAL_MODE_RES = 0x00,
+    LIS3DH_HPM_REF_SIGNAL = 0x01,
+    LIS3DH_HPM_NORMAL_MODE = 0x02,
+    LIS3DH_HPM_AUTORESET_INT = 0x03
 } LIS3DH_HPFMode_t;
 
 typedef enum {
-  LIS3DH_HPFCF_0 = 0x00,
-  LIS3DH_HPFCF_1 = 0x01,
-  LIS3DH_HPFCF_2 = 0x02,
-  LIS3DH_HPFCF_3 = 0x03
+    LIS3DH_HPFCF_0 = 0x00,
+    LIS3DH_HPFCF_1 = 0x01,
+    LIS3DH_HPFCF_2 = 0x02,
+    LIS3DH_HPFCF_3 = 0x03
 } LIS3DH_HPFCutOffFreq_t;
 
 typedef struct {
-  u16_t AUX_1;
-  u16_t AUX_2;
-  u16_t AUX_3;
+    u16_t AUX_1;
+    u16_t AUX_2;
+    u16_t AUX_3;
 } LIS3DH_Aux123Raw_t;
 
 typedef enum {
-  LIS3DH_FULLSCALE_2 = 0x00,
-  LIS3DH_FULLSCALE_4 = 0x01,
-  LIS3DH_FULLSCALE_8 = 0x02,
-  LIS3DH_FULLSCALE_16 = 0x03
+    LIS3DH_FULLSCALE_2 = 0x00,
+    LIS3DH_FULLSCALE_4 = 0x01,
+    LIS3DH_FULLSCALE_8 = 0x02,
+    LIS3DH_FULLSCALE_16 = 0x03
 } LIS3DH_Fullscale_t;
 
 typedef enum {
-  LIS3DH_BLE_LSB = 0x00,
-  LIS3DH_BLE_MSB = 0x01
+    LIS3DH_BLE_LSB = 0x00,
+    LIS3DH_BLE_MSB = 0x01
 } LIS3DH_Endianess_t;
 
 typedef enum {
-  LIS3DH_SELF_TEST_DISABLE = 0x00,
-  LIS3DH_SELF_TEST_0 = 0x01,
-  LIS3DH_SELF_TEST_1 = 0x02
+    LIS3DH_SELF_TEST_DISABLE = 0x00,
+    LIS3DH_SELF_TEST_0 = 0x01,
+    LIS3DH_SELF_TEST_1 = 0x02
 } LIS3DH_SelfTest_t;
 
 typedef enum {
-  LIS3DH_FIFO_BYPASS_MODE = 0x00,
-  LIS3DH_FIFO_MODE = 0x01,
-  LIS3DH_FIFO_STREAM_MODE = 0x02,
-  LIS3DH_FIFO_TRIGGER_MODE = 0x03,
-  LIS3DH_FIFO_DISABLE = 0x04
+    LIS3DH_FIFO_BYPASS_MODE = 0x00,
+    LIS3DH_FIFO_MODE = 0x01,
+    LIS3DH_FIFO_STREAM_MODE = 0x02,
+    LIS3DH_FIFO_TRIGGER_MODE = 0x03,
+    LIS3DH_FIFO_DISABLE = 0x04
 } LIS3DH_FifoMode_t;
 
 typedef enum {
-  LIS3DH_TRIG_INT1 = 0x00,
-  LIS3DH_TRIG_INT2 = 0x01
+    LIS3DH_TRIG_INT1 = 0x00,
+    LIS3DH_TRIG_INT2 = 0x01
 } LIS3DH_TrigInt_t;
 
 typedef enum {
-  LIS3DH_SPI_4_WIRE = 0x00,
-  LIS3DH_SPI_3_WIRE = 0x01
+    LIS3DH_SPI_4_WIRE = 0x00,
+    LIS3DH_SPI_3_WIRE = 0x01
 } LIS3DH_SPIMode_t;
 
 typedef enum {
-  LIS3DH_X_ENABLE = 0x01,
-  LIS3DH_X_DISABLE = 0x00,
-  LIS3DH_Y_ENABLE = 0x02,
-  LIS3DH_Y_DISABLE = 0x00,
-  LIS3DH_Z_ENABLE = 0x04,
-  LIS3DH_Z_DISABLE = 0x00    
+    LIS3DH_X_ENABLE = 0x01,
+    LIS3DH_X_DISABLE = 0x00,
+    LIS3DH_Y_ENABLE = 0x02,
+    LIS3DH_Y_DISABLE = 0x00,
+    LIS3DH_Z_ENABLE = 0x04,
+    LIS3DH_Z_DISABLE = 0x00
 } LIS3DH_AXISenable_t;
 
 typedef enum {
-  LIS3DH_INT1_6D_4D_DISABLE = 0x00,
-  LIS3DH_INT1_6D_ENABLE = 0x01,
-  LIS3DH_INT1_4D_ENABLE = 0x02 
+    LIS3DH_INT1_6D_4D_DISABLE = 0x00,
+    LIS3DH_INT1_6D_ENABLE = 0x01,
+    LIS3DH_INT1_4D_ENABLE = 0x02
 } LIS3DH_INT_6D_4D_t;
 
 typedef enum {
-  LIS3DH_UP_SX = 0x44,
-  LIS3DH_UP_DX = 0x42,
-  LIS3DH_DW_SX = 0x41,
-  LIS3DH_DW_DX = 0x48,
-  LIS3DH_TOP = 0x60,
-  LIS3DH_BOTTOM = 0x50
+    LIS3DH_UP_SX = 0x44,
+    LIS3DH_UP_DX = 0x42,
+    LIS3DH_DW_SX = 0x41,
+    LIS3DH_DW_DX = 0x48,
+    LIS3DH_TOP = 0x60,
+    LIS3DH_BOTTOM = 0x50
 } LIS3DH_POSITION_6D_t;
 
 typedef enum {
-  LIS3DH_INT_MODE_OR = 0x00,
-  LIS3DH_INT_MODE_6D_MOVEMENT = 0x01,
-  LIS3DH_INT_MODE_AND = 0x02,
-  LIS3DH_INT_MODE_6D_POSITION = 0x03  
+    LIS3DH_INT_MODE_OR = 0x00,
+    LIS3DH_INT_MODE_6D_MOVEMENT = 0x01,
+    LIS3DH_INT_MODE_AND = 0x02,
+    LIS3DH_INT_MODE_6D_POSITION = 0x03
 } LIS3DH_Int1Mode_t;
 
 //interrupt click response
-//  b7 = don't care   b6 = IA  b5 = DClick  b4 = Sclick  b3 = Sign  
+//  b7 = don't care   b6 = IA  b5 = DClick  b4 = Sclick  b3 = Sign
 //  b2 = z      b1 = y     b0 = x
 typedef enum {
-LIS3DH_DCLICK_Z_P = 0x24,
-LIS3DH_DCLICK_Z_N = 0x2C,
-LIS3DH_SCLICK_Z_P = 0x14,
-LIS3DH_SCLICK_Z_N = 0x1C,
-LIS3DH_DCLICK_Y_P = 0x22,
-LIS3DH_DCLICK_Y_N = 0x2A,
-LIS3DH_SCLICK_Y_P = 0x12,
-LIS3DH_SCLICK_Y_N = 0x1A,
-LIS3DH_DCLICK_X_P = 0x21,
-LIS3DH_DCLICK_X_N = 0x29,
-LIS3DH_SCLICK_X_P = 0x11,
-LIS3DH_SCLICK_X_N = 0x19,
-LIS3DH_NO_CLICK = 0x00
-} LIS3DH_Click_Response; 
+    LIS3DH_DCLICK_Z_P = 0x24,
+    LIS3DH_DCLICK_Z_N = 0x2C,
+    LIS3DH_SCLICK_Z_P = 0x14,
+    LIS3DH_SCLICK_Z_N = 0x1C,
+    LIS3DH_DCLICK_Y_P = 0x22,
+    LIS3DH_DCLICK_Y_N = 0x2A,
+    LIS3DH_SCLICK_Y_P = 0x12,
+    LIS3DH_SCLICK_Y_N = 0x1A,
+    LIS3DH_DCLICK_X_P = 0x21,
+    LIS3DH_DCLICK_X_N = 0x29,
+    LIS3DH_SCLICK_X_P = 0x11,
+    LIS3DH_SCLICK_X_N = 0x19,
+    LIS3DH_NO_CLICK = 0x00
+} LIS3DH_Click_Response;
 
 //TODO: start from here and manage the shared macros etc before this
 
@@ -249,7 +245,7 @@ LIS3DH_NO_CLICK = 0x00
 #define LIS3DH_I1_WTM BIT(2)
 #define LIS3DH_I1_ORUN BIT(1)
 
-//CONTROL REGISTER 6 
+//CONTROL REGISTER 6
 #define LIS3DH_CTRL_REG6 0x25
 #define LIS3DH_I2_CLICK BIT(7)
 #define LIS3DH_I2_INT1 BIT(6)
@@ -315,7 +311,7 @@ LIS3DH_NO_CLICK = 0x00
 //CONTROL REG3 bit mask
 #define LIS3DH_CLICK_ON_PIN_INT1_ENABLE 0x80
 #define LIS3DH_CLICK_ON_PIN_INT1_DISABLE 0x00
-#define LIS3DH_I1_INT1_ON_PIN_INT1_ENABLE 0x40	
+#define LIS3DH_I1_INT1_ON_PIN_INT1_ENABLE 0x40
 #define LIS3DH_I1_INT1_ON_PIN_INT1_DISABLE 0x00
 #define LIS3DH_I1_INT2_ON_PIN_INT1_ENABLE 0x20
 #define LIS3DH_I1_INT2_ON_PIN_INT1_DISABLE 0x00
@@ -376,7 +372,7 @@ LIS3DH_NO_CLICK = 0x00
 #define LIS3DH_FIFO_SRC_WTM 0x80
 #define LIS3DH_FIFO_SRC_OVRUN 0x40
 #define LIS3DH_FIFO_SRC_EMPTY 0x20
-  
+
 //INTERRUPT CLICK REGISTER
 #define LIS3DH_CLICK_CFG 0x38
 //INTERRUPT CLICK CONFIGURATION bit mask
@@ -428,19 +424,19 @@ LIS3DH_NO_CLICK = 0x00
 
 //STATUS REGISTER bit mask
 #define LIS3DH_STATUS_REG_ZYXOR 0x80    // 1	:	new data set has over written the previous one
-							// 0	:	no overrun has occurred (default)	
+// 0	:	no overrun has occurred (default)
 #define LIS3DH_STATUS_REG_ZOR 0x40    // 0	:	no overrun has occurred (default)
-							// 1	:	new Z-axis data has over written the previous one
+// 1	:	new Z-axis data has over written the previous one
 #define LIS3DH_STATUS_REG_YOR 0x20    // 0	:	no overrun has occurred (default)
-							// 1	:	new Y-axis data has over written the previous one
+// 1	:	new Y-axis data has over written the previous one
 #define LIS3DH_STATUS_REG_XOR 0x10    // 0	:	no overrun has occurred (default)
-							// 1	:	new X-axis data has over written the previous one
+// 1	:	new X-axis data has over written the previous one
 #define LIS3DH_STATUS_REG_ZYXDA 0x08    // 0	:	a new set of data is not yet avvious one
-                                                        // 1	:	a new set of data is available free
+// 1	:	a new set of data is available free
 #define LIS3DH_STATUS_REG_ZDA 0x04    // 0	:	a new data for the Z-Axis is not availvious one
-                                                        // 1	:	a new data for the Z-Axis is available
+// 1	:	a new data for the Z-Axis is available
 #define LIS3DH_STATUS_REG_YDA 0x02    // 0	:	a new data for the Y-Axis is not available
-                                                        // 1	:	a new data for the Y-Axis is available
+// 1	:	a new data for the Y-Axis is available
 #define LIS3DH_STATUS_REG_XDA 0x01    // 0	:	a new data for the X-Axis is not available
 
 #define LIS3DH_DATAREADY_BIT LIS3DH_STATUS_REG_ZYXDA

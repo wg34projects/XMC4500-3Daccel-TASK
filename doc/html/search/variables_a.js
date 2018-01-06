@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['packagessent',['packagesSent',['../3Daccel__app_8h.html#a0b9b9ea9e34f2c155730bf929159d831',1,'3Daccel_app.h']]],
-  ['position',['position',['../3Daccel__app_8h.html#a1e1320cfd39f6febcf8e4eb2b542f424',1,'3Daccel_app.h']]]
+  ['label',['label',['../structwidgets.html#a1d2f2ced8ee2299bd0849b65bfde79e2',1,'widgets']]],
+  ['line',['line',['../structwidgets.html#a2f4e2f6a5c5e66d83bc0f9e549d8d9c5',1,'widgets']]]
 ];

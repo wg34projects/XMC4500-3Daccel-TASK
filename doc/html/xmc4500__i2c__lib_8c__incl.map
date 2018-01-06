@@ -1,11 +1,3 @@
 <map id="src/xmc4500_i2c_lib.c" name="src/xmc4500_i2c_lib.c">
-<area shape="rect" id="node2" href="$xmc4500__i2c__lib_8h.html" title="xmc4500_i2c_lib.h" alt="" coords="540,80,682,107"/>
-<area shape="rect" id="node8" href="$lis3dh__driver_8h.html" title="lis3dh driver header " alt="" coords="552,155,670,181"/>
-<area shape="rect" id="node9" href="$3Daccel__app_8h.html" title="3Daccel app header " alt="" coords="552,229,670,256"/>
-<area shape="rect" id="node13" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="530,304,692,331"/>
-<area shape="rect" id="node14" href="$lis3dh__library_8h.html" title="lis3dh_library.h" alt="" coords="1174,304,1294,331"/>
-<area shape="rect" id="node15" href="$servo__library_8h.html" title="servo library header " alt="" coords="716,304,834,331"/>
-<area shape="rect" id="node17" href="$xmc4500__uart__lib_8h.html" title="xmc4500_uart_lib.h" alt="" coords="909,304,1060,331"/>
-<area shape="rect" id="node19" href="$debug__lib_8h.html" title="This library retargets the printf() function to generate output via the SWD DEBUG interface..." alt="" coords="170,304,268,331"/>
-<area shape="rect" id="node16" href="$servo__driver_8h.html" title="servo driver header " alt="" coords="766,379,880,405"/>
+<area shape="rect" id="node2" href="$xmc4500__i2c__lib_8h.html" title="xmc4500_i2c_lib.h" alt="" coords="165,80,307,107"/>
 </map>

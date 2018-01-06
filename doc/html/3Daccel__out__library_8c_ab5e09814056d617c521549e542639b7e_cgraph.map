@@ -2,15 +2,13 @@
 <area shape="rect" id="node2" href="$3Daccel__out__library_8c.html#a70edaf95a789a77c18a96b4b7627a9ae" title="read element from circular buffer " alt="" coords="217,5,310,32"/>
 <area shape="rect" id="node3" href="$lis3dh__library_8c.html#a81d6a7561abdb349d9de8e71373a199c" title="get 6D position " alt="" coords="207,56,320,83"/>
 <area shape="rect" id="node7" href="$lis3dh__library_8c.html#aa43222ab76656846444ff322177b13c6" title="get axes acceleration raw data " alt="" coords="196,107,331,133"/>
-<area shape="rect" id="node9" href="$lis3dh__library_8c.html#a4321ff967a5d2bbfdf6917cc5acb66b8" title="get Temperature from sensor " alt="" coords="201,157,326,184"/>
-<area shape="rect" id="node11" href="$servo__library_8c.html#a1b4b483954e298401d3bb4015a71dbd7" title="set PWM for servos " alt="" coords="236,208,291,235"/>
-<area shape="rect" id="node13" href="$3Daccel__out__library_8c.html#a2d16efe1a5635c4d3be791124f7e7432" title="function to calculate all angles and PWM signal in percent " alt="" coords="204,259,323,285"/>
-<area shape="rect" id="node14" href="$3Daccel__out__library_8c.html#ab63eeeff79d56285f05b054717dc8694" title="read buttons debounce " alt="" coords="184,309,343,336"/>
+<area shape="rect" id="node9" href="$servo__library_8c.html#a1b4b483954e298401d3bb4015a71dbd7" title="set PWM for servos " alt="" coords="236,157,291,184"/>
+<area shape="rect" id="node11" href="$3Daccel__out__library_8c.html#a2d16efe1a5635c4d3be791124f7e7432" title="function to calculate all angles and PWM signal in percent " alt="" coords="204,208,323,235"/>
+<area shape="rect" id="node12" href="$3Daccel__out__library_8c.html#ab63eeeff79d56285f05b054717dc8694" title="read buttons debounce " alt="" coords="184,259,343,285"/>
 <area shape="rect" id="node4" href="$lis3dh__driver_8c.html#a55c6b8016ef56e8c212ca9f54d86519b" title="LIS3DH_Get6DPosition" alt="" coords="397,56,567,83"/>
-<area shape="rect" id="node5" href="$lis3dh__driver_8c.html#a34bf2e408596452f55618e57e8ba6233" title="LIS3DH_ReadReg" alt="" coords="621,107,753,133"/>
-<area shape="rect" id="node6" href="$xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02" title="This function writes/reads data to a specific I2C channel. " alt="" coords="801,107,883,133"/>
+<area shape="rect" id="node5" href="$lis3dh__driver_8c.html#a34bf2e408596452f55618e57e8ba6233" title="LIS3DH_ReadReg" alt="" coords="621,81,753,108"/>
+<area shape="rect" id="node6" href="$xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02" title="This function writes/reads data to a specific I2C channel. " alt="" coords="801,81,883,108"/>
 <area shape="rect" id="node8" href="$lis3dh__driver_8c.html#adbdbd15b40c15a13927b5a08cc0ff25a" title="LIS3DH_GetAccAxesRaw" alt="" coords="391,107,573,133"/>
-<area shape="rect" id="node10" href="$lis3dh__driver_8c.html#abc096bb3aada234da7085ca8afe8a17b" title="LIS3DH_GetTempRaw" alt="" coords="401,157,563,184"/>
-<area shape="rect" id="node12" href="$servo__driver_8c.html#a44c59c9b51f0842aa366c6d2a13a5944" title="set PWM for servos " alt="" coords="441,208,523,235"/>
-<area shape="rect" id="node15" href="$3Daccel__out__library_8c.html#ac4a2bd867b9d2802d1e21f9417df0c43" title="add element to circular buffer " alt="" coords="435,309,529,336"/>
+<area shape="rect" id="node10" href="$servo__driver_8c.html#a44c59c9b51f0842aa366c6d2a13a5944" title="set PWM for servos " alt="" coords="441,157,523,184"/>
+<area shape="rect" id="node13" href="$3Daccel__out__library_8c.html#ac4a2bd867b9d2802d1e21f9417df0c43" title="add element to circular buffer " alt="" coords="435,259,529,285"/>
 </map>

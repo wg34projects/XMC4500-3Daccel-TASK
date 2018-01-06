@@ -16,14 +16,13 @@ accelY = 0
 accelZ = 0
 pitch = 0
 roll = 0
-temp = 0
 i = 0
 
 usbConnection = ["/dev/ttyUSB0", "/dev/ttyUSB1", "/dev/ttyUSB2", "/dev/ttyUSB3", "/dev/ttyUSB4"]
 
 def stringCutter():
 
-	global accelX, accelY, accelZ, temperature, orientation, pitch, roll
+	global accelX, accelY, accelZ, orientation, pitch, roll
 
 	try:
 
@@ -45,23 +44,14 @@ def stringCutter():
 
 		temp3 = temp2[pos_t+1:]
 
-		pos_e = temp3.index(',')
+		pos_e = temp3.index('$')
 		accelZ = int(temp3[:pos_e]) / 8190.0
-
-		temp4 = temp3[pos_e+1:]
-		pos_f = temp4.index('$')
-
-		temp = int(temp4[:pos_f])
-		temperature = temp
 
 		pitch = math.atan(accelX/(math.sqrt((accelY*accelY)+(accelZ*accelZ)))) * 180 / 3.141592654
 		roll = math.atan(accelY/(math.sqrt((accelX*accelX)+(accelZ*accelZ)))) * 180 / 3.141592654
 
 		pitch = round(pitch, 2)
 		roll = round(roll, 2)
-
-#		print ("pitch = ", pitch, "°")
-#		print ("roll  = ", roll, "°")
 
 	except AttributeError as Ae:
 			

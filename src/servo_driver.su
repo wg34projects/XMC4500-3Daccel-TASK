@@ -5,4 +5,4 @@ GPIO.h:501:22:P1_2_set_mode	16	static
 GPIO.h:506:22:P1_2_set_driver_strength	16	static
 GPIO.h:520:22:P1_2_reset	4	static
 servo_driver.c:18:6:initServoPWMXMC	8	static
-servo_driver.c:70:9:pwmXMC	48	static
+servo_driver.c:71:9:pwmXMC	48	static

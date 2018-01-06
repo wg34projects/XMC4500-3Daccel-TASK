@@ -17,7 +17,7 @@
 #include <XMC4500.h>
 
 struct __FILE {
-  int handle;
+    int handle;
 };
 
 /******************************************************** FUNCTION PROTOTYPES */

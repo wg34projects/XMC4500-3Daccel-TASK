@@ -1,7 +1,7 @@
 /**
  * @file		3Daccel_out_library.c
  * @version		v1.0
- * @date		Nov 2017
+ * @date		Jan 2018
  * @author		Egermann, Resch
  *
  * @brief		3Daccel out library
@@ -13,30 +13,114 @@
  * @brief	init global variables
  * @param	none
  * @return	none
- *		  
+ *
  */
 void initGlobals()
 {
-	readAxes.axisX = 0;
-	readAxes.axisY = 0;
-	readAxes.axisZ = 0;
-	direction = 6;
-	temperature = 0;
-	errorcount = 0;
-	packagesSent = 0;
-	position = 0;
-	old_position = 0;
-	signal1 = 0.00;
-	signal2 = 0.00;
+    readAxes.axisX = 0;
+    readAxes.axisY = 0;
+    readAxes.axisZ = 0;
+    direction = 6;
+    errorcount = 0;
+    packagesSent = 0;
+    position = 0;
+    old_position = 0;
+    signal1 = 0.00;
+    signal2 = 0.00;
     button1pressed = 0;
     button2pressed = 0;
-	statisticSend = 0;
-	servoEnable = 0;
-	buttonSend = 0;
+    statisticSend = 0;
+    servoEnable = 0;
+    buttonSend = 0;
     inix = 0;
     outix = 0;
     full = 0;
     empty = 1;
+}
+
+/**
+ * @brief	function to init LED output
+ * @param	none
+ * @return	none
+ *
+ */
+void outputInit(void)
+{
+    XMC_GPIO_CONFIG_t config_out;
+    config_out.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL;
+    config_out.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW;
+    config_out.output_strength = XMC_GPIO_OUTPUT_STRENGTH_WEAK;
+    XMC_GPIO_Init(LED1, &config_out);
+}
+
+/**
+ * @brief	SysTick
+ * @param	none
+ * @return	none
+ *
+ */
+void SysTick_Handler (void)
+{
+    static uint32_t ticks = 0;
+    static uint8_t buttonIDpressed;
+
+    // read buttons and fill circular buffer
+
+    readButtonDebounce();
+
+    if (circularGet(&buttonIDpressed))
+    {
+        switch (buttonIDpressed)
+        {
+        case BUTTON1INT:
+        {
+#if DEBUG
+            printf("button 1 pressed\n");
+#endif
+            buttonSend = 1;
+            break;
+        }
+        case BUTTON2INT:
+        {
+#if DEBUG
+            printf("button 2 pressed\n");
+#endif
+            buttonSend = 2;
+            break;
+        }
+        default:
+        {
+            buttonSend = 0;
+            break;
+        }
+        }
+    }
+
+    ticks++;
+    if(ticks == SENSORTICKS)
+    {
+        // get 6D Position
+        direction = get6Dposition();
+        // get raw data
+        readAxes = getAxesRawData();
+        // calculate servo output
+        pwmAngleCalc(readAxes.axisX, readAxes.axisY, readAxes.axisZ);
+
+        ticks = 0;
+    }
+
+    if (servoEnable == 1)
+    {
+        // set servo
+        pwm(signal1, 0);
+        pwm(signal2, 1);
+    }
+    else
+    {
+        // reset servo
+        pwm(SERVOUPCENTER, 0);
+        pwm(SERVOLOCENTER, 1);
+    }
 }
 
 /**
@@ -47,82 +131,86 @@ void initGlobals()
  *			raw Z acceleration value <br>
  *			temperature value <br>
  * @return	none
- *		  
+ *
  */
-void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ, uint8_t temperature)
+void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ)
 {
-	char string6D[8][6] = {"#USX,", "#UDX,", "#DSX,", "#DDX,", "#TOP,", "#BOT,", "#XXX,", "#FAL,"};
-	char send[RXBUFFERSIZE];
+    char string6D[8][6] = {"#USX,", "#UDX,", "#DSX,", "#DDX,", "#TOP,", "#BOT,", "#XXX,", "#FAL,"};
+    char send[RXBUFFERSIZE];
 
-	memset (&send, 0, sizeof (send));
+    memset (&send, 0, sizeof (send));
 
-	if (statisticSend == 1)
-	{
-		if (sprintf(send, "#STA,%10lu,%3d$\n", packagesSent, errorcount) < 0)
-		{
-			errorcount++;
-		}
-		else
-		{
+    if (statisticSend == 1)
+    {
+        // send statistic package if requested
+        if (sprintf(send, "#STA,%10lu,%3d$\n", packagesSent, errorcount) < 0)
+        {
+            errorcount++;
+        }
+        else
+        {
 #if DEBUG
-			printf("send %s", send);
+            printf("send %s", send);
 #endif
-			_uart_printf("%s", send);
-			packagesSent++;
-		}
-		statisticSend = 0;
-		return;
-	}
-	else if (buttonSend == 1)
-	{
-		if (sprintf(send, "#BUT,1$\n") < 0)
-		{
-			errorcount++;
-		}
-		else
-		{
+            _uart_printf("%s", send);
+            packagesSent++;
+        }
+        statisticSend = 0;
+        return;
+    }
+    else if (buttonSend == 1)
+    {
+        // send button 1 pressed
+        if (sprintf(send, "#BUT,1$\n") < 0)
+        {
+            errorcount++;
+        }
+        else
+        {
 #if DEBUG
-			printf("send %s", send);
+            printf("send %s", send);
 #endif
-			_uart_printf("%s", send);
-			packagesSent++;
-		}
-		buttonSend = 0;
-		return;
-	}
-	else if (buttonSend == 2)
-	{
-		if (sprintf(send, "#BUT,2$\n") < 0)
-		{
-			errorcount++;
-		}
-		else
-		{
+            _uart_printf("%s", send);
+            packagesSent++;
+        }
+        buttonSend = 0;
+        return;
+    }
+    else if (buttonSend == 2)
+    {
+        // send button 2 pressed
+        if (sprintf(send, "#BUT,2$\n") < 0)
+        {
+            errorcount++;
+        }
+        else
+        {
 #if DEBUG
-			printf("send %s", send);
+            printf("send %s", send);
 #endif
-			_uart_printf("%s", send);
-			packagesSent++;
-		}
-		buttonSend = 0;
-		return;
-	}
-	else
-	{	
-		if (sprintf(send, "%s%7d%s%7d%s%7d%s%02d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ, ",", temperature* 2 + 6) < 0)
-		{
-			errorcount++;
-		}
-		else
-		{
+            _uart_printf("%s", send);
+            packagesSent++;
+        }
+        buttonSend = 0;
+        return;
+    }
+    else
+    {
+        // send acceleration data
+        if (sprintf(send, "%s%7d%s%7d%s%7d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ) < 0)
+        {
+            errorcount++;
+        }
+        else
+        {
 #if DEBUG
-			printf("send %s", send);
+            printf("send %s", send);
 #endif
-			_uart_printf("%s", send);
-			ledSetting(3);
-			packagesSent++;
-		}
-	}
+            _uart_printf("%s", send);
+            ledSetting(3);
+            packagesSent++;
+        }
+    }
 }
 
 /**
@@ -130,7 +218,7 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
  * @param	input string <br>
  *			output double <br>
  * @return	none
- *		  
+ *
  */
 void getDouble(char *input, double *numDouble)
 {
@@ -149,43 +237,28 @@ void getDouble(char *input, double *numDouble)
 }
 
 /**
- * @brief	function to init LED output
- * @param	none
- * @return	none
- *		  
- */
-void outputInit(void)
-{
-    XMC_GPIO_CONFIG_t config_out;
-    config_out.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL;
-    config_out.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW;
-    config_out.output_strength = XMC_GPIO_OUTPUT_STRENGTH_WEAK;
-    XMC_GPIO_Init(LED1, &config_out);
-}
-
-/**
  * @brief	function to set LED
  * @param	LED state <br>
  *			0 for LED off <br>
  *			1 for LED on <br>
  *			other for LED toggle <br>
  * @return	none
- *		  
+ *
  */
 void ledSetting(uint8_t ledState)
 {
-	if (ledState == 0)
-	{
-		XMC_GPIO_SetOutputLow(XMC_GPIO_PORT1, 0);
-	}
-	else if (ledState == 1)
-	{
-		XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT1, 0);
-	}
-	else
-	{
-		XMC_GPIO_ToggleOutput(LED1);
-	}
+    if (ledState == 0)
+    {
+        XMC_GPIO_SetOutputLow(XMC_GPIO_PORT1, 0);
+    }
+    else if (ledState == 1)
+    {
+        XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT1, 0);
+    }
+    else
+    {
+        XMC_GPIO_ToggleOutput(LED1);
+    }
 }
 
 /**
@@ -194,104 +267,34 @@ void ledSetting(uint8_t ledState)
  *			raw Y acceleration value <br>
  *			raw Z acceleration value <br>
  * @return	none
- *		  
+ *
  */
 void pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
 {
-	double pi = PI;
-	double divider = GDIVIDER;
-	double roll, pitch;
-	double gX, gY, gZ;
+    double pi = PI;
+    double divider = GDIVIDER;
+    double roll, pitch;
+    double gX, gY, gZ;
 
-	gX = positionX / divider;
-	gY = positionY / divider;
-	gZ = positionZ / divider;
+    gX = positionX / divider;
+    gY = positionY / divider;
+    gZ = positionZ / divider;
 
-	roll = atan(gY/(sqrt((gX*gX)+(gZ*gZ)))) * 180 / pi;
-	pitch = atan(gX/(sqrt((gY*gY)+(gZ*gZ)))) * 180 / pi;
+    roll = atan(gY/(sqrt((gX*gX)+(gZ*gZ)))) * 180 / pi;
+    pitch = atan(gX/(sqrt((gY*gY)+(gZ*gZ)))) * 180 / pi;
 
-	signal1 = (90.00+roll) * SERVOUOLINEAR + SERUPLO0;
-	signal2 = (90.00+pitch) * SERVOLOLINEAR + SERVOLO0;
+    signal1 = (90.00+roll) * SERVOUOLINEAR + SERUPLO0;
+    signal2 = (90.00+pitch) * SERVOLOLINEAR + SERVOLO0;
 
-	signal1 = (int)(signal1 * 1000 + 0.5) / 1000.0;
-	signal2 = (int)(signal2 * 1000 + 0.5) / 1000.0;
+    signal1 = (int)(signal1 * 1000 + 0.5) / 1000.0;
+    signal2 = (int)(signal2 * 1000 + 0.5) / 1000.0;
 }
-
-/**
- * @brief	SysTick
- * @param	none
- * @return	none
- *		  
- */
-void SysTick_Handler (void)
-{
-    static uint32_t ticks = 0;
-	static uint8_t buttonIDpressed;
-
-	readButtonDebounce();
-
-	if (circularGet(&buttonIDpressed))
-    {
-		switch (buttonIDpressed)
-		{
-			case BUTTON1INT:
-			{
-#if DEBUG
-				printf("button 1 pressed\n");
-#endif
-				buttonSend = 1;
-				break;
-			}
-			case BUTTON2INT:
-			{
-#if DEBUG
-				printf("button 2 pressed\n");
-#endif
-				buttonSend = 2;
-	            break;
-			}
-			default:
-			{
-				buttonSend = 0;
-				break;
-			}
-		}
-	}
-
-	ticks++;
-	if(ticks == SENSORTICKS)
-	{
-		// get temperature
-		temperature = getTemperature(&temperature);
-		// get 6D Position
-		direction = get6Dposition();
-		// get raw data
-		readAxes = getAxesRawData();
-		// calculate servo output
-		pwmAngleCalc(readAxes.axisX, readAxes.axisY, readAxes.axisZ);
-
-		ticks = 0;
-	}
-
-	if (servoEnable == 1)
-	{
-		// set servo
-		pwm(signal1, 0);
-		pwm(signal2, 1);
-	}
-	else
-	{
-		pwm(SERVOUPCENTER, 0);
-		pwm(SERVOLOCENTER, 1);
-	}
-}
-
 
 /**
  * @brief	read buttons debounce
  * @param	none
  * @return	none
- *		  
+ *
  */
 void readButtonDebounce()
 {
@@ -332,7 +335,7 @@ void readButtonDebounce()
  * @brief	intialize input GPIOs
  * @param	none
  * @return	none
- *		  
+ *
  */
 void inputInit()
 {

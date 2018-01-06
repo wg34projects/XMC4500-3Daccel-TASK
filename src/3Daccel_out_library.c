@@ -63,6 +63,8 @@ void SysTick_Handler (void)
 {
     static uint32_t ticks = 0;
     static uint8_t buttonIDpressed;
+	static uint8_t i = 0;
+	static double smoothSignal1 = 0.0, smoothSignal2 = 0.0;
 
     // read buttons and fill circular buffer
 
@@ -111,9 +113,20 @@ void SysTick_Handler (void)
 
     if (servoEnable == 1)
     {
-        // set servo
-        pwm(signal1, 0);
-        pwm(signal2, 1);
+		smoothSignal1 += signal1;
+		smoothSignal2 += signal2;
+		i++;
+		if (i == PWMAVERAGE)
+		{
+	        // set servo
+			smoothSignal1 /= PWMAVERAGE;
+			smoothSignal2 /= PWMAVERAGE;
+    	    pwm(smoothSignal1, 0);
+    	    pwm(smoothSignal2, 1);
+			smoothSignal1 = 0.0;
+			smoothSignal2 = 0.0;
+			i = 0;
+		}
     }
     else
     {
@@ -291,8 +304,8 @@ void pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
     signal1 = (90.00+roll) * SERVOUOLINEAR + SERUPLO0;
     signal2 = (90.00+pitch) * SERVOLOLINEAR + SERVOLO0;
 
-    signal1 = (int)(signal1 * 1000 + 0.5) / 1000.0;
-    signal2 = (int)(signal2 * 1000 + 0.5) / 1000.0;
+    signal1 = (int)(signal1 * RNDFACTOR + 0.5) / RNDFACTOR;
+    signal2 = (int)(signal2 * RNDFACTOR + 0.5) / RNDFACTOR;
 }
 
 /**

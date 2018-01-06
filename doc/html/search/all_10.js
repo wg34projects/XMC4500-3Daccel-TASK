@@ -9,6 +9,7 @@ var searchData=
   ['readradiousb',['readRadioUSB',['../menucallbacks_8c.html#a57ab95342ed8a96992d491e245492868',1,'readRadioUSB(GtkWidget *button, gpointer *data):&#160;menucallbacks.c'],['../menucallbacks_8h.html#a57ab95342ed8a96992d491e245492868',1,'readRadioUSB(GtkWidget *button, gpointer *data):&#160;menucallbacks.c']]],
   ['rect',['rect',['../classdirection_1_1Roll.html#a9b0f8cec6d35f667ff18dc36dfb4ba0e',1,'direction.Roll.rect()'],['../classdirection_1_1Pitch.html#afa2299c6070f056a68676185911a4b09',1,'direction.Pitch.rect()']]],
   ['requestdata',['requestData',['../menucallbacks_8c.html#ad1ea06c96755e6377c58360efd74ac3a',1,'requestData(gpointer data):&#160;menucallbacks.c'],['../menucallbacks_8h.html#ad1ea06c96755e6377c58360efd74ac3a',1,'requestData(gpointer data):&#160;menucallbacks.c']]],
+  ['rndfactor',['RNDFACTOR',['../3Daccel__out__library_8h.html#aa0404bdc143b8c96d8f09f38be3de977',1,'3Daccel_out_library.h']]],
   ['roll',['Roll',['../classdirection_1_1Roll.html',1,'direction.Roll'],['../structwidgets.html#a8ed85f82393b075ce4b482724531a11c',1,'widgets::roll()'],['../namespacedirection.html#a8f01b77bb92af6fe5be6ce17fe1703d0',1,'direction.roll()']]],
   ['rollout',['rollOut',['../structwidgets.html#a3a609a7377300b94d3f0ca0285a6bbee',1,'widgets']]],
   ['rs232_2ec',['rs232.c',['../rs232_8c.html',1,'']]],

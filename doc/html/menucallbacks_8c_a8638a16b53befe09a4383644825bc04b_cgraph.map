@@ -1,7 +1,7 @@
 <map id="dataTransmission" name="dataTransmission">
-<area shape="rect" id="node2" href="$menucallbacks_8c.html#a3418cf8ecbe0e481b120dad820ba4ed2" title="timer for output and request function " alt="" coords="189,145,344,172"/>
-<area shape="rect" id="node3" href="$menucallbacks_8c.html#ad1ea06c96755e6377c58360efd74ac3a" title="function request data from XMC UART " alt="" coords="426,95,529,121"/>
-<area shape="rect" id="node7" href="$menucallbacks_8c.html#a7b9a036250fa5f340ae84d020bed9140" title="main function to receive timed data from XMC and handle protocol etc. " alt="" coords="392,171,563,197"/>
+<area shape="rect" id="node2" href="$menucallbacks_8c.html#a3418cf8ecbe0e481b120dad820ba4ed2" title="timer for output and request function " alt="" coords="189,157,344,184"/>
+<area shape="rect" id="node3" href="$menucallbacks_8c.html#ad1ea06c96755e6377c58360efd74ac3a" title="function request data from XMC UART " alt="" coords="426,81,529,108"/>
+<area shape="rect" id="node7" href="$menucallbacks_8c.html#a7b9a036250fa5f340ae84d020bed9140" title="main function to receive timed data from XMC and handle protocol etc. " alt="" coords="392,208,563,235"/>
 <area shape="rect" id="node4" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="627,107,745,133"/>
 <area shape="rect" id="node5" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="624,5,748,32"/>
 <area shape="rect" id="node6" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="620,56,752,83"/>
@@ -9,4 +9,5 @@
 <area shape="rect" id="node9" href="$rs232_8c.html#a41da1bd1b0a017849daf985e619f7dac" title="RS232_flushRX" alt="" coords="627,208,745,235"/>
 <area shape="rect" id="node10" href="$menucallbacks_8c.html#ae7c2bd7023c2d571565b7653d032a01b" title="function to convert string to integer " alt="" coords="641,259,731,285"/>
 <area shape="rect" id="node11" href="$menucallbacks_8c.html#ae4e222df7deb65f18f4a19fd836a76bf" title="timer to highlight pressed button " alt="" coords="623,309,749,336"/>
+<area shape="rect" id="node12" href="$menucallbacks_8c.html#ab322c4401e1bcc8773bc75d919f795ff" title="timer to highlight freefall label " alt="" coords="633,360,739,387"/>
 </map>

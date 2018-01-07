@@ -1,7 +1,8 @@
 <map id="rawProtocolDataTimed" name="rawProtocolDataTimed">
 <area shape="rect" id="node2" href="$menucallbacks_8c.html#ae4e222df7deb65f18f4a19fd836a76bf" title="timer to highlight pressed button " alt="" coords="237,5,362,32"/>
-<area shape="rect" id="node3" href="$menucallbacks_8c.html#ae7c2bd7023c2d571565b7653d032a01b" title="function to convert string to integer " alt="" coords="255,56,344,83"/>
-<area shape="rect" id="node4" href="$rs232_8c.html#a41da1bd1b0a017849daf985e619f7dac" title="RS232_flushRX" alt="" coords="240,107,359,133"/>
-<area shape="rect" id="node5" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="240,157,359,184"/>
-<area shape="rect" id="node6" href="$rs232_8c.html#af66e3a0fc5eb7defb43aa61487a0b895" title="RS232_PollComport" alt="" coords="224,208,375,235"/>
+<area shape="rect" id="node3" href="$menucallbacks_8c.html#ab322c4401e1bcc8773bc75d919f795ff" title="timer to highlight freefall label " alt="" coords="247,56,352,83"/>
+<area shape="rect" id="node4" href="$menucallbacks_8c.html#ae7c2bd7023c2d571565b7653d032a01b" title="function to convert string to integer " alt="" coords="255,107,344,133"/>
+<area shape="rect" id="node5" href="$rs232_8c.html#a41da1bd1b0a017849daf985e619f7dac" title="RS232_flushRX" alt="" coords="240,157,359,184"/>
+<area shape="rect" id="node6" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="240,208,359,235"/>
+<area shape="rect" id="node7" href="$rs232_8c.html#af66e3a0fc5eb7defb43aa61487a0b895" title="RS232_PollComport" alt="" coords="224,259,375,285"/>
 </map>

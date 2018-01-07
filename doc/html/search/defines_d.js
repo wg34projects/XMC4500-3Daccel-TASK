@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['uart_5frx',['UART_RX',['../xmc4500__uart__lib_8c.html#afd4d579b12950a4770aeaa6088400c3b',1,'xmc4500_uart_lib.c']]],
-  ['uart_5ftx',['UART_TX',['../xmc4500__uart__lib_8c.html#ac554053f778819e84a6234cbc100cd5d',1,'xmc4500_uart_lib.c']]],
-  ['uartwait',['UARTWAIT',['../3DacceltaskGUI_8h.html#acc37c39db08306123d6b6f59a4e2d3d4',1,'3DacceltaskGUI.h']]]
+  ['tx_5ffifo_5finitial_5flimit',['TX_FIFO_INITIAL_LIMIT',['../xmc4500__uart__lib_8c.html#ad54fb53642fd877e12ca94e5b5136d19',1,'xmc4500_uart_lib.c']]]
 ];

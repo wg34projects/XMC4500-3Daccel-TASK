@@ -170,7 +170,7 @@ void constructGUI(gpointer data)
 	a->label[14] = gtk_label_new("Errors XMC");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[14], 2, 7, 1, 1);
 
-	a->label[15] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> SAFE </span>");
+	a->label[15] = gtk_label_new ("<span foreground='white' weight='ultrabold' font='20'> SAFE </span>");
 	gtk_label_set_use_markup (GTK_LABEL (a->label[15]), TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[15], 4, 8, 1, 1);
 

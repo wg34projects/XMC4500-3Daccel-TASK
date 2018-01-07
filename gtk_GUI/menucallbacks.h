@@ -40,6 +40,7 @@ guint safeStop(gpointer data);
 guint safeEnd(gpointer data);
 guint safeClose(gpointer data);
 guint buttonFeedback(gpointer data);
+guint freeFallLabel(gpointer data);
 
 // connection callbacks
 

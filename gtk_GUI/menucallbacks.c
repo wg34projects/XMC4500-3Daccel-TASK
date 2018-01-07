@@ -282,6 +282,19 @@ guint buttonFeedback(gpointer data)
 }
 
 /**
+ * @brief	timer to highlight freefall label
+ *
+ */
+guint freeFallLabel(gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+	gtk_label_set_label((GtkLabel*)a->label[15], "<span foreground='white' weight='ultrabold' font='20'> SAFE </span>");
+
+	return a->freeFallLabel;
+}
+
+/**
  * @brief	timer for output and request terminal function
  *
  */
@@ -975,10 +988,8 @@ void rawProtocolDataTimed(gpointer data)
 		if (((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) > FREEHI)) || ((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) > FREEHI) && (fabs(a->accelerationZdouble) < FREELO)) || ((fabs(a->accelerationXdouble) > FREEHI) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) < FREELO)))
 		{
 			gtk_label_set_label((GtkLabel*)a->label[15], "<span foreground='white' background='red' weight='ultrabold' font='20'> FALL </span>");
-		}
-		else
-		{
-			gtk_label_set_label((GtkLabel*)a->label[15], "<span foreground='white' background='green' weight='ultrabold' font='20'> SAFE </span>");
+			a->freeFallLabel = FALSE;
+			g_timeout_add (FREEFALLTIME, (GSourceFunc) freeFallLabel, (gpointer) a);
 		}
 
 	}

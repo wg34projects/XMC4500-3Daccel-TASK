@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "ailtu",
   7: "ls",
   8: "lm",
-  9: "_bcdeglmoprstuv",
+  9: "_bcdefglmoprstuv",
   10: "t"
 };
 

@@ -5,7 +5,6 @@ var searchData=
   ['temp2',['temp2',['../namespacedirection.html#a929c15a570506be2877d6623f2a63a5b',1,'direction.temp2()'],['../namespaceprotocol__plotter.html#ab05f1d51527e815e4aa312f246a31b43',1,'protocol_plotter.temp2()']]],
   ['temp3',['temp3',['../namespacedirection.html#a3187fa35919ff53c88679fea0e6b5dff',1,'direction.temp3()'],['../namespaceprotocol__plotter.html#afd698ba562358cdefead5fca6a9b7959',1,'protocol_plotter.temp3()']]],
   ['temp4',['temp4',['../namespacedirection.html#a20e318c8b08ee4d68f15d3beff547e3b',1,'direction']]],
-  ['temperaturedouble',['temperaturedouble',['../structwidgets.html#a03c9c4cdcaa132c464e14ea6c2546c75',1,'widgets']]],
   ['tempout',['tempOut',['../structwidgets.html#a812a7a259a1a7707034c8c6132e8f2ac',1,'widgets']]],
   ['terminalwindow',['terminalwindow',['../structwidgets.html#a2a94d8e6c101410d3fe27c8c8252bebc',1,'widgets']]],
   ['tiltx',['tiltX',['../structwidgets.html#ac7fa8742b21ae418d22c65bacc64ea01',1,'widgets']]],

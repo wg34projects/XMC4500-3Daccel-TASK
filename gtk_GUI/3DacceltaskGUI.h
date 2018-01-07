@@ -37,8 +37,9 @@
 #define GMAX +4.0
 #define BAUD 115200
 #define OSBUFFER 4096
-#define FREELO 0.350
-#define FREEHI 1.000
+#define FREELO 0.400
+#define FREEHI 1.050
+#define FREEFALLTIME 2000
 
 // main struct for all data
 
@@ -55,7 +56,7 @@ typedef struct
 	gchar accelerationXout[25], accelerationYout[1525], accelerationZout[25], tempOut[25];
 	gchar tiltXout[25], tiltYout[25], tiltZout[25], pitchOut[25], rollOut[25];
 	gchar packagesOut[15], errorOut[9], fileName[100];
-	gboolean sendSerial, safeWaitStep, safeWaitStop, safeWaitClose, safeEnd, transmission, buttonXMC;
+	gboolean sendSerial, safeWaitStep, safeWaitStop, safeWaitClose, safeEnd, transmission, buttonXMC, freeFallLabel;
  	guint id, servoState, saveOutgoing;
 	gint pollTimeSensor, radioButtonUSBstate, position6Dint;
 	gdouble accelerationXdouble, accelerationYdouble, accelerationZdouble;

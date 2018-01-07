@@ -76,15 +76,11 @@ $(function() {
 Inheritance diagram for direction.Pitch:</div>
 <div class="dyncontent">
 <div class="center"><img src="classdirection_1_1Pitch__inherit__graph.png" border="0" usemap="#direction_8Pitch_inherit__map" alt="Inheritance graph"/></div>
-<map name="direction_8Pitch_inherit__map" id="direction_8Pitch_inherit__map">
-</map>
 </div>
 <div class="dynheader">
 Collaboration diagram for direction.Pitch:</div>
 <div class="dyncontent">
 <div class="center"><img src="classdirection_1_1Pitch__coll__graph.png" border="0" usemap="#direction_8Pitch_coll__map" alt="Collaboration graph"/></div>
-<map name="direction_8Pitch_coll__map" id="direction_8Pitch_coll__map">
-</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -172,7 +168,7 @@ Data Fields</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="direction_8py_source.html#l00102">102</a> of file <a class="el" href="direction_8py_source.html">direction.py</a>.</p>
 
-<p class="reference">References <a class="el" href="direction_8py_source.html#l00077">direction.Roll.dir</a>, <a class="el" href="direction_8py_source.html#l00100">direction.Pitch.dir</a>, <a class="el" href="3DacceltaskGUI_8h_source.html#l00048">widgets.image</a>, <a class="el" href="direction_8py_source.html#l00074">direction.Roll.image</a>, <a class="el" href="direction_8py_source.html#l00097">direction.Pitch.image</a>, <a class="el" href="direction_8py_source.html#l00072">direction.Roll.imageMaster</a>, <a class="el" href="direction_8py_source.html#l00095">direction.Pitch.imageMaster</a>, <a class="el" href="direction_8py_source.html#l00075">direction.Roll.rect</a>, and <a class="el" href="direction_8py_source.html#l00098">direction.Pitch.rect</a>.</p>
+<p class="reference">References <a class="el" href="direction_8py_source.html#l00077">direction.Roll.dir</a>, <a class="el" href="direction_8py_source.html#l00100">direction.Pitch.dir</a>, <a class="el" href="3DacceltaskGUI_8h_source.html#l00051">widgets.image</a>, <a class="el" href="direction_8py_source.html#l00074">direction.Roll.image</a>, <a class="el" href="direction_8py_source.html#l00097">direction.Pitch.image</a>, <a class="el" href="direction_8py_source.html#l00072">direction.Roll.imageMaster</a>, <a class="el" href="direction_8py_source.html#l00095">direction.Pitch.imageMaster</a>, <a class="el" href="direction_8py_source.html#l00075">direction.Roll.rect</a>, and <a class="el" href="direction_8py_source.html#l00098">direction.Pitch.rect</a>.</p>
 <div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">def </span>update(self):</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        oldCenter = self.rect.center</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        self.image = pygame.transform.rotate(self.imageMaster, self.dir)</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        self.rect = self.image.get_rect()</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        self.rect.center = oldCenter</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>

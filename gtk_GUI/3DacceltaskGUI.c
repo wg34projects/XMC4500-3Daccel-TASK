@@ -134,6 +134,7 @@ void constructGUI(gpointer data)
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[3], 1, 3, 1, 1);
 
 	a->label[4] = gtk_label_new("LED");
+	gtk_label_set_use_markup (GTK_LABEL (a->label[4]), TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[4], 1, 4, 1, 1);
 
 	a->label[5] = gtk_label_new("TILT X");
@@ -168,6 +169,10 @@ void constructGUI(gpointer data)
 
 	a->label[14] = gtk_label_new("Errors XMC");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[14], 2, 7, 1, 1);
+
+	a->label[15] = gtk_label_new ("<span foreground='white' background='green' weight='ultrabold' font='20'> SAFE </span>");
+	gtk_label_set_use_markup (GTK_LABEL (a->label[15]), TRUE);
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[15], 4, 8, 1, 1);
 
 	// button section
 

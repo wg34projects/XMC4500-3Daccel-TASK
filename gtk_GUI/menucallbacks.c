@@ -433,7 +433,7 @@ void connectSerial(GtkButton *button, gpointer data)
 		{
 			snprintf(a->bufferStatusBar, sizeof(openComPortSuccess)+1, "%s", openComPortSuccess);
 			gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-			gtk_label_set_label((GtkLabel*)a->label[4], "LED ON");
+			gtk_label_set_label((GtkLabel*)a->label[4], "<span foreground='white' background='red' weight='ultrabold' font='12'> LED ON  </span>");
 
 			for (i = 1; i < BUTTONS; i++) 
 			{
@@ -945,7 +945,7 @@ void rawProtocolDataTimed(gpointer data)
 			a->position6Dint = 0;
 		}
 
-		if (a->accelerationXdouble > a->acceltriggerX || a->accelerationXdouble < -a->acceltriggerX)
+		if (fabs(a->accelerationXdouble) > a->acceltriggerX)
 		{
 			gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='red' weight='ultrabold' font='20'> X  ALARM  </span>");
 		}
@@ -954,7 +954,7 @@ void rawProtocolDataTimed(gpointer data)
 			gtk_label_set_label((GtkLabel*)a->label[10], "<span foreground='white' background='green' weight='ultrabold' font='20'> X TRIGGER </span>");
 		}
 
-		if (a->accelerationYdouble > a->acceltriggerY || a->accelerationYdouble < -a->acceltriggerY)
+		if (fabs(a->accelerationYdouble) > a->acceltriggerY)
 		{
 			gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='red' weight='ultrabold' font='20'> Y  ALARM  </span>");
 		}
@@ -963,7 +963,7 @@ void rawProtocolDataTimed(gpointer data)
 			gtk_label_set_label((GtkLabel*)a->label[11], "<span foreground='white' background='green' weight='ultrabold' font='20'> Y TRIGGER </span>");
 		}
 
-		if (a->accelerationZdouble > a->acceltriggerZ || a->accelerationZdouble < -a->acceltriggerZ)
+		if (fabs(a->accelerationZdouble) > a->acceltriggerZ)
 		{
 			gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='red' weight='ultrabold' font='20'> Z  ALARM  </span>");
 		}
@@ -971,6 +971,16 @@ void rawProtocolDataTimed(gpointer data)
 		{
 			gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
 		}
+
+		if (((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) > FREEHI)) || ((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) > FREEHI) && (fabs(a->accelerationZdouble) < FREELO)) || ((fabs(a->accelerationXdouble) > FREEHI) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) < FREELO)))
+		{
+			gtk_label_set_label((GtkLabel*)a->label[15], "<span foreground='white' background='red' weight='ultrabold' font='20'> FALL </span>");
+		}
+		else
+		{
+			gtk_label_set_label((GtkLabel*)a->label[15], "<span foreground='white' background='green' weight='ultrabold' font='20'> SAFE </span>");
+		}
+
 	}
 }
 

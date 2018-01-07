@@ -37,6 +37,8 @@
 #define GMAX +4.0
 #define BAUD 115200
 #define OSBUFFER 4096
+#define FREELO 0.350
+#define FREEHI 1.000
 
 // main struct for all data
 
@@ -45,7 +47,7 @@ typedef struct
 	GtkApplication *app;
 	GMenu *appmenu, *gearmenu;
 	GtkWidget *window, *headerbar, *grid, *gearicon, *gearmenubutton, *terminalwindow, *statusBar;
-	GtkWidget *button[10], *label[15], *image[2], *box[2], *entry[5], *radioUSB[5];
+	GtkWidget *button[10], *label[16], *image[2], *box[2], *entry[5], *radioUSB[5];
 	GtkWidget *view, *scroll;
 	GtkTextIter iter, start, end;
 	GtkTextBuffer *buffer;
@@ -56,7 +58,7 @@ typedef struct
 	gboolean sendSerial, safeWaitStep, safeWaitStop, safeWaitClose, safeEnd, transmission, buttonXMC;
  	guint id, servoState, saveOutgoing;
 	gint pollTimeSensor, radioButtonUSBstate, position6Dint;
-	gdouble accelerationXdouble, accelerationYdouble, accelerationZdouble, temperaturedouble;
+	gdouble accelerationXdouble, accelerationYdouble, accelerationZdouble;
 	gdouble tiltX, tiltY, tiltZ, pitch, roll;
 	gdouble acceltriggerX, acceltriggerY, acceltriggerZ;
 } widgets;

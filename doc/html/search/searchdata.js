@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "ls",
   8: "lm",
   9: "_bcdefglmoprstuv",
-  10: "t"
+  10: "x"
 };
 
 var indexSectionNames =

@@ -1,32 +1,35 @@
 <map id="main" name="main">
-<area shape="rect" id="node2" href="$xmc4500__i2c__lib_8c.html#a27f77ce67b06737545a575b47e9625b9" title="This function configures the I2C interface to communicate via pins P0_5 &amp; P0_11. " alt="" coords="122,44,237,71"/>
-<area shape="rect" id="node3" href="$xmc4500__uart__lib_8c.html#ac98c9342b86b5c42437908b380e08485" title="_init_uart0_ch0" alt="" coords="119,95,240,121"/>
-<area shape="rect" id="node4" href="$xmc4500__uart__lib_8c.html#a8b7b118d5fcdefceb6fd35ae9c080161" title="_uart_get_string" alt="" coords="116,145,243,172"/>
-<area shape="rect" id="node5" href="$lis3dh__library_8c.html#a13ccc4ea5f9ce003cf05ce20da9bdade" title="config MEMS sensor " alt="" coords="108,284,251,311"/>
-<area shape="rect" id="node15" href="$3Daccel__out__library_8c.html#af3e2e485f3ff008910d925cbb25f3a73" title="init global variables " alt="" coords="133,335,225,361"/>
-<area shape="rect" id="node16" href="$lis3dh__library_8c.html#af87a0e605c7f6d45094e98454c6661a4" title="init MEMS sensor " alt="" coords="117,196,241,223"/>
-<area shape="rect" id="node21" href="$debug__lib_8c.html#aaa2bb4d61ba65858309bae41a3933a69" title="Initialize the SWD/TPI/ITM debug modules to output debug messages via the Debug interface. This will enable the outputz of printf() and fputc() like messages. " alt="" coords="117,385,242,412"/>
-<area shape="rect" id="node22" href="$servo__library_8c.html#a59512a2cd4642ea27d44a3f52627ce0d" title="init PWM for servos " alt="" coords="123,436,235,463"/>
-<area shape="rect" id="node24" href="$3Daccel__out__library_8c.html#a212a6fde8e289ecf188ec1490e2ddc3c" title="intialize input GPIOs " alt="" coords="141,487,217,513"/>
-<area shape="rect" id="node25" href="$3Daccel__out__library_8c.html#a923fb698e5e6806825e2cf45cc4960c5" title="function to set LED " alt="" coords="355,563,443,589"/>
-<area shape="rect" id="node26" href="$3Daccel__out__library_8c.html#a930d335c24189b1bfb632ddb7819967c" title="function to init LED output " alt="" coords="137,639,222,665"/>
-<area shape="rect" id="node27" href="$3Daccel__out__library_8c.html#a3a765df13ada6a922af636a79e2ddf07" title="send data to PC and GUI " alt="" coords="110,588,249,615"/>
-<area shape="rect" id="node30" href="$servo__library_8c.html#a1b4b483954e298401d3bb4015a71dbd7" title="set PWM for servos " alt="" coords="152,689,207,716"/>
-<area shape="rect" id="node6" href="$lis3dh__driver_8c.html#acb37136225c72c1dac3af64315ae9b8a" title="LIS3DH_SetInt1Threshold" alt="" coords="306,461,493,488"/>
-<area shape="rect" id="node9" href="$lis3dh__driver_8c.html#a59c9591aa1404868087b3efc9ac9806b" title="LIS3DH_SetIntConfiguration" alt="" coords="299,309,500,336"/>
-<area shape="rect" id="node11" href="$lis3dh__driver_8c.html#a214f47b26e15c16c2845729287743726" title="LIS3DH_SetIntMode" alt="" coords="325,360,474,387"/>
-<area shape="rect" id="node12" href="$lis3dh__driver_8c.html#ae45852d8356f11c55f7545c8292b9341" title="LIS3DH_SetADCAux" alt="" coords="324,411,475,437"/>
-<area shape="rect" id="node13" href="$lis3dh__driver_8c.html#a17f398a68dfe365897f680e0e7830c9f" title="LIS3DH_SetBDU" alt="" coords="336,208,463,235"/>
-<area shape="rect" id="node14" href="$lis3dh__driver_8c.html#a9959dd9deaddd4c077e1c266cca69898" title="LIS3DH_SetTemperature" alt="" coords="310,259,489,285"/>
-<area shape="rect" id="node7" href="$lis3dh__driver_8c.html#a2f92d64d542d03ac8c1ce4800a04f2ed" title="LIS3DH_WriteReg" alt="" coords="549,259,684,285"/>
+<area shape="rect" id="node2" href="$xmc4500__i2c__lib_8c.html#a27f77ce67b06737545a575b47e9625b9" title="This function configures the I2C interface to communicate via pins P0_5 &amp; P0_11. " alt="" coords="122,81,237,108"/>
+<area shape="rect" id="node3" href="$xmc4500__uart__lib_8c.html#ac98c9342b86b5c42437908b380e08485" title="_init_uart0_ch0" alt="" coords="119,132,240,159"/>
+<area shape="rect" id="node4" href="$xmc4500__uart__lib_8c.html#a8b7b118d5fcdefceb6fd35ae9c080161" title="_uart_get_string" alt="" coords="116,183,243,209"/>
+<area shape="rect" id="node5" href="$lis3dh__library_8c.html#a13ccc4ea5f9ce003cf05ce20da9bdade" title="config MEMS sensor " alt="" coords="108,233,251,260"/>
+<area shape="rect" id="node15" href="$3Daccel__out__library_8c.html#af3e2e485f3ff008910d925cbb25f3a73" title="init global variables " alt="" coords="133,411,225,437"/>
+<area shape="rect" id="node16" href="$lis3dh__library_8c.html#af87a0e605c7f6d45094e98454c6661a4" title="init MEMS sensor " alt="" coords="117,360,241,387"/>
+<area shape="rect" id="node21" href="$debug__lib_8c.html#aaa2bb4d61ba65858309bae41a3933a69" title="Initialize the SWD/TPI/ITM debug modules to output debug messages via the Debug interface. This will enable the outputz of printf() and fputc() like messages. " alt="" coords="117,461,242,488"/>
+<area shape="rect" id="node22" href="$servo__library_8c.html#a59512a2cd4642ea27d44a3f52627ce0d" title="init PWM for servos " alt="" coords="123,512,235,539"/>
+<area shape="rect" id="node24" href="$3Daccel__out__library_8c.html#a212a6fde8e289ecf188ec1490e2ddc3c" title="intialize input GPIOs " alt="" coords="141,563,217,589"/>
+<area shape="rect" id="node26" href="$3Daccel__out__library_8c.html#a923fb698e5e6806825e2cf45cc4960c5" title="function to set LED " alt="" coords="355,613,443,640"/>
+<area shape="rect" id="node28" href="$3Daccel__out__library_8c.html#a930d335c24189b1bfb632ddb7819967c" title="function to init LED output " alt="" coords="137,715,222,741"/>
+<area shape="rect" id="node30" href="$3Daccel__out__library_8c.html#a3a765df13ada6a922af636a79e2ddf07" title="send data to PC and GUI " alt="" coords="110,664,249,691"/>
+<area shape="rect" id="node33" href="$servo__library_8c.html#a1b4b483954e298401d3bb4015a71dbd7" title="set PWM for servos " alt="" coords="152,765,207,792"/>
+<area shape="rect" id="node6" href="$lis3dh__driver_8c.html#acb37136225c72c1dac3af64315ae9b8a" title="LIS3DH_SetInt1Threshold" alt="" coords="306,5,493,32"/>
+<area shape="rect" id="node9" href="$lis3dh__driver_8c.html#a59c9591aa1404868087b3efc9ac9806b" title="LIS3DH_SetIntConfiguration" alt="" coords="299,157,500,184"/>
+<area shape="rect" id="node11" href="$lis3dh__driver_8c.html#a214f47b26e15c16c2845729287743726" title="LIS3DH_SetIntMode" alt="" coords="325,208,474,235"/>
+<area shape="rect" id="node12" href="$lis3dh__driver_8c.html#ae45852d8356f11c55f7545c8292b9341" title="LIS3DH_SetADCAux" alt="" coords="324,259,475,285"/>
+<area shape="rect" id="node13" href="$lis3dh__driver_8c.html#a17f398a68dfe365897f680e0e7830c9f" title="LIS3DH_SetBDU" alt="" coords="336,56,463,83"/>
+<area shape="rect" id="node14" href="$lis3dh__driver_8c.html#a9959dd9deaddd4c077e1c266cca69898" title="LIS3DH_SetTemperature" alt="" coords="310,107,489,133"/>
+<area shape="rect" id="node7" href="$lis3dh__driver_8c.html#a2f92d64d542d03ac8c1ce4800a04f2ed" title="LIS3DH_WriteReg" alt="" coords="549,208,684,235"/>
 <area shape="rect" id="node8" href="$xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02" title="This function writes/reads data to a specific I2C channel. " alt="" coords="733,233,815,260"/>
-<area shape="rect" id="node10" href="$lis3dh__driver_8c.html#a34bf2e408596452f55618e57e8ba6233" title="LIS3DH_ReadReg" alt="" coords="551,208,683,235"/>
-<area shape="rect" id="node17" href="$lis3dh__driver_8c.html#acd8b72787b198f8f27a2769535fd1c24" title="LIS3DH_SetODR" alt="" coords="336,5,463,32"/>
-<area shape="rect" id="node18" href="$lis3dh__driver_8c.html#ab3e5252ca8c531431ca3a730f87b9f30" title="LIS3DH_SetMode" alt="" coords="333,56,465,83"/>
-<area shape="rect" id="node19" href="$lis3dh__driver_8c.html#a9211a95f8842a555838ba94bad86638e" title="LIS3DH_SetFullScale" alt="" coords="322,107,477,133"/>
-<area shape="rect" id="node20" href="$lis3dh__driver_8c.html#aa0b0544dc20159085be6313cd5588b68" title="LIS3DH_SetAxis" alt="" coords="337,157,462,184"/>
+<area shape="rect" id="node10" href="$lis3dh__driver_8c.html#a34bf2e408596452f55618e57e8ba6233" title="LIS3DH_ReadReg" alt="" coords="551,259,683,285"/>
+<area shape="rect" id="node17" href="$lis3dh__driver_8c.html#acd8b72787b198f8f27a2769535fd1c24" title="LIS3DH_SetODR" alt="" coords="336,411,463,437"/>
+<area shape="rect" id="node18" href="$lis3dh__driver_8c.html#ab3e5252ca8c531431ca3a730f87b9f30" title="LIS3DH_SetMode" alt="" coords="333,461,465,488"/>
+<area shape="rect" id="node19" href="$lis3dh__driver_8c.html#a9211a95f8842a555838ba94bad86638e" title="LIS3DH_SetFullScale" alt="" coords="322,309,477,336"/>
+<area shape="rect" id="node20" href="$lis3dh__driver_8c.html#aa0b0544dc20159085be6313cd5588b68" title="LIS3DH_SetAxis" alt="" coords="337,360,462,387"/>
 <area shape="rect" id="node23" href="$servo__driver_8c.html#aa12684d5634bf5f0360d89da3f64a3fc" title="init PWM for servos " alt="" coords="329,512,470,539"/>
-<area shape="rect" id="node28" href="$xmc4500__uart__lib_8c.html#a29c1d181552652b4c548b8bac89aa18b" title="_uart_printf" alt="" coords="351,613,448,640"/>
-<area shape="rect" id="node29" href="$xmc4500__uart__lib_8c.html#a9e435de3fd313e73ecc91d26101457dd" title="_uart_send_string" alt="" coords="548,613,685,640"/>
-<area shape="rect" id="node31" href="$servo__driver_8c.html#a44c59c9b51f0842aa366c6d2a13a5944" title="set PWM for servos " alt="" coords="358,689,441,716"/>
+<area shape="rect" id="node25" href="$3Daccel__out__driver_8c.html#a9dcb152c8860969ff1389e67065629cc" title="intialize input GPIOs " alt="" coords="347,563,452,589"/>
+<area shape="rect" id="node27" href="$3Daccel__out__driver_8c.html#a6b4a521c486280ea56a54515911810ac" title="function to set LED " alt="" coords="558,613,675,640"/>
+<area shape="rect" id="node29" href="$3Daccel__out__driver_8c.html#a70b3f1bd910e4da4c3091d02dedb2b0f" title="function to init LED output " alt="" coords="342,715,457,741"/>
+<area shape="rect" id="node31" href="$xmc4500__uart__lib_8c.html#a29c1d181552652b4c548b8bac89aa18b" title="_uart_printf" alt="" coords="351,664,448,691"/>
+<area shape="rect" id="node32" href="$xmc4500__uart__lib_8c.html#a9e435de3fd313e73ecc91d26101457dd" title="_uart_send_string" alt="" coords="548,664,685,691"/>
+<area shape="rect" id="node34" href="$servo__driver_8c.html#a44c59c9b51f0842aa366c6d2a13a5944" title="set PWM for servos " alt="" coords="358,765,441,792"/>
 </map>

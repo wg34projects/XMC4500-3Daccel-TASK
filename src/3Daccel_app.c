@@ -5,7 +5,6 @@
  * @author		Egermann, Resch
  *
  * @brief		3Daccel app
- * @mainpage	TASK description
  *
  */
 

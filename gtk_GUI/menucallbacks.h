@@ -12,12 +12,19 @@
 #define _MENUCALLBACKS_
 
 #include "3DacceltaskGUI.h"
+#include "rs232.h"
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-
-#include "rs232.h"
-
-
+#include <math.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <glib.h>
+#include <glib/gprintf.h>
+#include <gio/gio.h>
 
 // entry callbacks
 

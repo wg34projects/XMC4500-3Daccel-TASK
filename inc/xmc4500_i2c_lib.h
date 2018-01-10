@@ -13,7 +13,6 @@
 #include <xmc_i2c.h>
 #include <xmc_gpio.h>
 #include <xmc_usic.h>
-//#include "lis3dh_driver.h"
 
 // defines sensor adress
 #define LIS3DH_ADR 0x18

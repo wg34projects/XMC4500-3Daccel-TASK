@@ -1,6 +1,7 @@
 var searchData=
 [
   ['ledsetting',['ledSetting',['../3Daccel__out__library_8c.html#a923fb698e5e6806825e2cf45cc4960c5',1,'ledSetting(uint8_t ledState):&#160;3Daccel_out_library.c'],['../3Daccel__out__library_8h.html#a923fb698e5e6806825e2cf45cc4960c5',1,'ledSetting(uint8_t ledState):&#160;3Daccel_out_library.c']]],
+  ['ledsettingxmc',['ledSettingXMC',['../3Daccel__out__driver_8c.html#a6b4a521c486280ea56a54515911810ac',1,'ledSettingXMC(uint8_t ledState):&#160;3Daccel_out_driver.c'],['../3Daccel__out__driver_8h.html#a6b4a521c486280ea56a54515911810ac',1,'ledSettingXMC(uint8_t ledState):&#160;3Daccel_out_driver.c']]],
   ['lis3dh_5ffifomodeenable',['LIS3DH_FIFOModeEnable',['../lis3dh__driver_8c.html#a2d8f4dd8945a8cce721cb2270f70d95c',1,'LIS3DH_FIFOModeEnable(LIS3DH_FifoMode_t fm):&#160;lis3dh_driver.c'],['../lis3dh__driver_8h.html#a2d8f4dd8945a8cce721cb2270f70d95c',1,'LIS3DH_FIFOModeEnable(LIS3DH_FifoMode_t fm):&#160;lis3dh_driver.c']]],
   ['lis3dh_5fget6dposition',['LIS3DH_Get6DPosition',['../lis3dh__driver_8c.html#a55c6b8016ef56e8c212ca9f54d86519b',1,'LIS3DH_Get6DPosition(u8_t *val):&#160;lis3dh_driver.c'],['../lis3dh__driver_8h.html#a55c6b8016ef56e8c212ca9f54d86519b',1,'LIS3DH_Get6DPosition(u8_t *val):&#160;lis3dh_driver.c']]],
   ['lis3dh_5fgetaccaxesraw',['LIS3DH_GetAccAxesRaw',['../lis3dh__driver_8c.html#adbdbd15b40c15a13927b5a08cc0ff25a',1,'LIS3DH_GetAccAxesRaw(AxesRaw_t *buff):&#160;lis3dh_driver.c'],['../lis3dh__driver_8h.html#adbdbd15b40c15a13927b5a08cc0ff25a',1,'LIS3DH_GetAccAxesRaw(AxesRaw_t *buff):&#160;lis3dh_driver.c']]],

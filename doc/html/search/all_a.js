@@ -16,6 +16,7 @@ var searchData=
   ['initservopwmxmc',['initServoPWMXMC',['../servo__driver_8c.html#aa12684d5634bf5f0360d89da3f64a3fc',1,'initServoPWMXMC():&#160;servo_driver.c'],['../servo__driver_8h.html#aa12684d5634bf5f0360d89da3f64a3fc',1,'initServoPWMXMC():&#160;servo_driver.c']]],
   ['inix',['inix',['../3Daccel__out__library_8h.html#a26d8070b4f3cf5869bebaa1e456d836f',1,'3Daccel_out_library.h']]],
   ['inputinit',['inputInit',['../3Daccel__out__library_8c.html#a212a6fde8e289ecf188ec1490e2ddc3c',1,'inputInit():&#160;3Daccel_out_library.c'],['../3Daccel__out__library_8h.html#a212a6fde8e289ecf188ec1490e2ddc3c',1,'inputInit():&#160;3Daccel_out_library.c']]],
+  ['inputinitxmc',['inputInitXMC',['../3Daccel__out__driver_8c.html#a9dcb152c8860969ff1389e67065629cc',1,'inputInitXMC():&#160;3Daccel_out_driver.c'],['../3Daccel__out__driver_8h.html#a9dcb152c8860969ff1389e67065629cc',1,'inputInitXMC():&#160;3Daccel_out_driver.c']]],
   ['inputusb',['inputUSB',['../namespacedirection.html#a2781a45e14a02daef2cb87ce53d9f803',1,'direction.inputUSB()'],['../namespaceprotocol__plotter.html#ac0d14b923a7ce9837f39fc0c712a3691',1,'protocol_plotter.inputUSB()']]],
   ['iter',['iter',['../structwidgets.html#a7860279920e9973dbc7dedd459bc971c',1,'widgets']]],
   ['itm_5frxbuffer',['ITM_RxBuffer',['../debug__lib_8c.html#a12e68e55a7badc271b948d6c7230b2a8',1,'debug_lib.c']]]

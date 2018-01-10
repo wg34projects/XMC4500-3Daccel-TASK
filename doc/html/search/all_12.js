@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['task_20description',['TASK description',['../index.html',1,'']]],
   ['temp0',['temp0',['../namespacedirection.html#a924ccbd55a2bee356bdbc99c910426d4',1,'direction.temp0()'],['../namespaceprotocol__plotter.html#aaabdf0ca013c01e7de8bd1c6b4b534af',1,'protocol_plotter.temp0()']]],
   ['temp1',['temp1',['../namespacedirection.html#ae0b957abb26b75747dca1f940e05d3cb',1,'direction.temp1()'],['../namespaceprotocol__plotter.html#aa658e876603c83fbe377676e0e8802f0',1,'protocol_plotter.temp1()']]],
   ['temp2',['temp2',['../namespacedirection.html#a929c15a570506be2877d6623f2a63a5b',1,'direction.temp2()'],['../namespaceprotocol__plotter.html#ab05f1d51527e815e4aa312f246a31b43',1,'protocol_plotter.temp2()']]],

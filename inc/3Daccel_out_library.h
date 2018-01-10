@@ -10,7 +10,7 @@
 #ifndef _3Daccel_out_library_h
 #define _3Daccel_out_library_h
 
-//#include "xmc4500_i2c_lib.h"
+#include "3Daccel_out_driver.h"
 #include "lis3dh_library.h"
 #include "servo_library.h"
 #include "debug_lib.h"
@@ -19,7 +19,6 @@
 
 #define CBSIZE 10
 #define RXBUFFERSIZE 64
-#define LED1 P1_0
 #define GDIVIDER 8190.0
 #define PI 3.141592654
 #define SERUPLO0 3.00
@@ -55,7 +54,6 @@ AXESRAWDATA readAxes;
 uint8_t full, empty;
 uint8_t inix, outix;
 uint8_t cb[CBSIZE];
-uint8_t button1pressed, button2pressed;
 uint8_t statisticSend, servoEnable;
 uint8_t buttonSend;
 uint32_t packagesSent;

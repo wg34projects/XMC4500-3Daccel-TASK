@@ -3,7 +3,8 @@
 <area shape="rect" id="node3" href="$servo__library_8h.html" title="servo library header " alt="" coords="166,80,306,107"/>
 <area shape="rect" id="node4" href="$servo__library_8c.html" title="servo library " alt="" coords="75,155,213,181"/>
 <area shape="rect" id="node5" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="237,155,421,181"/>
-<area shape="rect" id="node6" href="$3Daccel__out__library_8c.html" title="3Daccel out library " alt="" coords="146,229,329,256"/>
-<area shape="rect" id="node7" href="$3Daccel__app_8h.html" title="3Daccel app header " alt="" coords="353,229,493,256"/>
-<area shape="rect" id="node8" href="$3Daccel__app_8c.html" title="3Daccel app " alt="" coords="353,304,492,331"/>
+<area shape="rect" id="node6" href="$3Daccel__out__driver_8c.html" title="3Daccel out driver " alt="" coords="34,229,214,256"/>
+<area shape="rect" id="node7" href="$3Daccel__out__library_8c.html" title="3Daccel out library " alt="" coords="238,229,421,256"/>
+<area shape="rect" id="node8" href="$3Daccel__app_8h.html" title="3Daccel app header " alt="" coords="445,229,585,256"/>
+<area shape="rect" id="node9" href="$3Daccel__app_8c.html" title="3Daccel app " alt="" coords="445,304,584,331"/>
 </map>

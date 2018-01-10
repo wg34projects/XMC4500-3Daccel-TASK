@@ -404,6 +404,7 @@ guint safeClose(gpointer data)
 	gtk_label_set_label((GtkLabel*)a->label[4], "LED OFF");
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
+
 	for (i = 1; i < BUTTONS; i++) 
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);

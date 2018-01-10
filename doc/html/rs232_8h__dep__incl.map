@@ -1,7 +1,7 @@
 <map id="gtk_GUI/rs232.h" name="gtk_GUI/rs232.h">
-<area shape="rect" id="node2" href="$menucallbacks_8h.html" title="menucallbacks 3Dacceltask GUI header " alt="" coords="9,80,197,107"/>
-<area shape="rect" id="node6" href="$rs232_8c.html" title="gtk_GUI/rs232.c" alt="" coords="221,80,347,107"/>
+<area shape="rect" id="node2" href="$menucallbacks_8h.html" title="menucallbacks 3Dacceltask GUI header " alt="" coords="75,80,263,107"/>
 <area shape="rect" id="node3" href="$3DacceltaskGUI_8h.html" title="3Dacceltask GUI header " alt="" coords="5,155,200,181"/>
+<area shape="rect" id="node6" href="$rs232_8c.html" title="gtk_GUI/rs232.c" alt="" coords="288,80,413,107"/>
 <area shape="rect" id="node5" href="$menucallbacks_8c.html" title="menucallbacks 3Dacceltask GUI " alt="" coords="224,155,411,181"/>
 <area shape="rect" id="node4" href="$3DacceltaskGUI_8c.html" title="3Dacceltask GUI " alt="" coords="6,229,199,256"/>
 </map>

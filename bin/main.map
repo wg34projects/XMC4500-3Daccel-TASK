@@ -15,7 +15,7 @@ Archive member included to satisfy reference by file (symbol)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_addsubdf3.o)
                               src/servo_driver.o (__aeabi_dsub)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_muldivdf3.o)
-                              src/servo_driver.o (__aeabi_dmul)
+                              src/3Daccel_out_library.o (__aeabi_dmul)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_cmpdf2.o)
                               src/servo_driver.o (__aeabi_dcmplt)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_unorddf2.o)
@@ -29,7 +29,7 @@ Archive member included to satisfy reference by file (symbol)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-impure.o)
                               /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o) (_impure_ptr)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
-                              /tmp/ccwRlX3y.o (__libc_init_array)
+                              /tmp/ccEUeJSH.o (__libc_init_array)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
                               src/xmc4500_uart_lib.o (memcpy)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
@@ -254,40 +254,6 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 src/servo_library.o
  .debug_macro   0x00000000    0x14744 src/servo_library.o
  .comment       0x00000000       0x6f src/servo_library.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .group         0x00000000        0x8 src/servo_driver.o
- .text          0x00000000        0x0 src/servo_driver.o
- .data          0x00000000        0x0 src/servo_driver.o
- .bss           0x00000000        0x0 src/servo_driver.o
- .debug_macro   0x00000000      0x88c src/servo_driver.o
- .debug_macro   0x00000000       0x22 src/servo_driver.o
- .debug_macro   0x00000000       0x4f src/servo_driver.o
- .debug_macro   0x00000000       0x44 src/servo_driver.o
- .debug_macro   0x00000000       0xfd src/servo_driver.o
- .debug_macro   0x00000000       0x5e src/servo_driver.o
- .debug_macro   0x00000000      0x1df src/servo_driver.o
- .debug_macro   0x00000000       0x2d src/servo_driver.o
- .debug_macro   0x00000000       0x28 src/servo_driver.o
- .debug_macro   0x00000000       0xaf src/servo_driver.o
- .debug_macro   0x00000000      0xfe7 src/servo_driver.o
- .debug_macro   0x00000000       0x16 src/servo_driver.o
- .debug_macro   0x00000000    0x14744 src/servo_driver.o
- .debug_macro   0x00000000       0x9a src/servo_driver.o
- .debug_macro   0x00000000       0x10 src/servo_driver.o
- .comment       0x00000000       0x6f src/servo_driver.o
  .group         0x00000000        0x8 src/3Daccel_out_library.o
  .group         0x00000000        0x8 src/3Daccel_out_library.o
  .group         0x00000000        0x8 src/3Daccel_out_library.o
@@ -345,31 +311,21 @@ Discarded input sections
                 0x00000000       0x48 src/3Daccel_out_library.o
  .debug_macro   0x00000000      0x88c src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x22 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x4c src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x55 src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0x4f src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0x44 src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0xfd src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0x5e src/3Daccel_out_library.o
+ .debug_macro   0x00000000      0x1df src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x35 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x9c src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x16 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x4a src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x97 src/3Daccel_out_library.o
- .debug_macro   0x00000000      0x330 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0xf6 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x10 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x52 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x1f src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x43 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x20 src/3Daccel_out_library.o
  .debug_macro   0x00000000      0x187 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x10 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x5e src/3Daccel_out_library.o
- .debug_macro   0x00000000       0xb6 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x16 src/3Daccel_out_library.o
- .debug_macro   0x00000000      0x145 src/3Daccel_out_library.o
+ .debug_macro   0x00000000      0x330 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x35 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0xfd src/3Daccel_out_library.o
- .debug_macro   0x00000000      0x1df src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x22 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x16 src/3Daccel_out_library.o
  .debug_macro   0x00000000      0x167 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x2d src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x28 src/3Daccel_out_library.o
@@ -379,13 +335,154 @@ Discarded input sections
  .debug_macro   0x00000000    0x14744 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x12 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x40 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x8d src/3Daccel_out_library.o
- .debug_macro   0x00000000      0x271 src/3Daccel_out_library.o
- .debug_macro   0x00000000       0x28 src/3Daccel_out_library.o
  .debug_macro   0x00000000      0x861 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0xa5 src/3Daccel_out_library.o
  .debug_macro   0x00000000       0x10 src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0xb6 src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0x16 src/3Daccel_out_library.o
+ .debug_macro   0x00000000      0x145 src/3Daccel_out_library.o
+ .debug_macro   0x00000000      0x271 src/3Daccel_out_library.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_out_library.o
  .comment       0x00000000       0x6f src/3Daccel_out_library.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .group         0x00000000        0x8 src/servo_driver.o
+ .text          0x00000000        0x0 src/servo_driver.o
+ .data          0x00000000        0x0 src/servo_driver.o
+ .bss           0x00000000        0x0 src/servo_driver.o
+ .debug_macro   0x00000000      0x88c src/servo_driver.o
+ .debug_macro   0x00000000       0x22 src/servo_driver.o
+ .debug_macro   0x00000000       0x4f src/servo_driver.o
+ .debug_macro   0x00000000       0x44 src/servo_driver.o
+ .debug_macro   0x00000000       0xfd src/servo_driver.o
+ .debug_macro   0x00000000       0x5e src/servo_driver.o
+ .debug_macro   0x00000000      0x1df src/servo_driver.o
+ .debug_macro   0x00000000       0x2d src/servo_driver.o
+ .debug_macro   0x00000000       0x28 src/servo_driver.o
+ .debug_macro   0x00000000       0xaf src/servo_driver.o
+ .debug_macro   0x00000000      0xfe7 src/servo_driver.o
+ .debug_macro   0x00000000       0x16 src/servo_driver.o
+ .debug_macro   0x00000000    0x14744 src/servo_driver.o
+ .debug_macro   0x00000000       0x9a src/servo_driver.o
+ .debug_macro   0x00000000       0x10 src/servo_driver.o
+ .comment       0x00000000       0x6f src/servo_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .group         0x00000000        0x8 src/3Daccel_out_driver.o
+ .text          0x00000000        0x0 src/3Daccel_out_driver.o
+ .data          0x00000000        0x0 src/3Daccel_out_driver.o
+ .bss           0x00000000        0x0 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x88c src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x4f src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x44 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0xfd src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x5e src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x1df src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x16d src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x52 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x35 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x9c src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x52 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x1f src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x43 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x20 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x187 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x330 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x35 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x167 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x2d src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x28 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0xaf src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0xfe7 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x16 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000    0x14744 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x12 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x40 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x861 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0xa5 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x1c src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0xb6 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x16 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x145 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x16 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x93 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x271 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x2e src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000      0x503 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0xa0 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0xde src/3Daccel_out_driver.o
+ .debug_macro   0x00000000       0x7c src/3Daccel_out_driver.o
+ .comment       0x00000000       0x6f src/3Daccel_out_driver.o
  .group         0x00000000        0x8 src/debug_lib.o
  .group         0x00000000        0x8 src/debug_lib.o
  .group         0x00000000        0x8 src/debug_lib.o
@@ -436,6 +533,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x5e src/debug_lib.o
  .debug_macro   0x00000000      0x1df src/debug_lib.o
  .debug_macro   0x00000000       0x22 src/debug_lib.o
+ .debug_macro   0x00000000       0x52 src/debug_lib.o
  .debug_macro   0x00000000       0x35 src/debug_lib.o
  .debug_macro   0x00000000       0x9c src/debug_lib.o
  .debug_macro   0x00000000       0x16 src/debug_lib.o
@@ -873,33 +971,24 @@ Discarded input sections
  .bss           0x00000000        0x0 src/3Daccel_app.o
  .debug_macro   0x00000000      0x88c src/3Daccel_app.o
  .debug_macro   0x00000000       0x22 src/3Daccel_app.o
- .debug_macro   0x00000000       0x4c src/3Daccel_app.o
- .debug_macro   0x00000000       0x55 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x4f src/3Daccel_app.o
+ .debug_macro   0x00000000       0x44 src/3Daccel_app.o
+ .debug_macro   0x00000000       0xfd src/3Daccel_app.o
+ .debug_macro   0x00000000       0x5e src/3Daccel_app.o
+ .debug_macro   0x00000000      0x1df src/3Daccel_app.o
+ .debug_macro   0x00000000      0x16d src/3Daccel_app.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x52 src/3Daccel_app.o
  .debug_macro   0x00000000       0x35 src/3Daccel_app.o
  .debug_macro   0x00000000       0x9c src/3Daccel_app.o
- .debug_macro   0x00000000       0x16 src/3Daccel_app.o
- .debug_macro   0x00000000       0x4a src/3Daccel_app.o
- .debug_macro   0x00000000       0x97 src/3Daccel_app.o
- .debug_macro   0x00000000      0x330 src/3Daccel_app.o
- .debug_macro   0x00000000       0xf6 src/3Daccel_app.o
- .debug_macro   0x00000000       0x10 src/3Daccel_app.o
  .debug_macro   0x00000000       0x52 src/3Daccel_app.o
  .debug_macro   0x00000000       0x1f src/3Daccel_app.o
  .debug_macro   0x00000000       0x43 src/3Daccel_app.o
  .debug_macro   0x00000000       0x20 src/3Daccel_app.o
  .debug_macro   0x00000000      0x187 src/3Daccel_app.o
+ .debug_macro   0x00000000      0x330 src/3Daccel_app.o
  .debug_macro   0x00000000       0x10 src/3Daccel_app.o
- .debug_macro   0x00000000       0x5e src/3Daccel_app.o
- .debug_macro   0x00000000       0xb6 src/3Daccel_app.o
- .debug_macro   0x00000000       0x16 src/3Daccel_app.o
- .debug_macro   0x00000000      0x145 src/3Daccel_app.o
- .debug_macro   0x00000000       0x16 src/3Daccel_app.o
  .debug_macro   0x00000000       0x35 src/3Daccel_app.o
- .debug_macro   0x00000000       0x22 src/3Daccel_app.o
- .debug_macro   0x00000000       0xfd src/3Daccel_app.o
- .debug_macro   0x00000000      0x1df src/3Daccel_app.o
- .debug_macro   0x00000000       0x22 src/3Daccel_app.o
- .debug_macro   0x00000000       0x16 src/3Daccel_app.o
  .debug_macro   0x00000000      0x167 src/3Daccel_app.o
  .debug_macro   0x00000000       0x2d src/3Daccel_app.o
  .debug_macro   0x00000000       0x28 src/3Daccel_app.o
@@ -909,18 +998,27 @@ Discarded input sections
  .debug_macro   0x00000000    0x14744 src/3Daccel_app.o
  .debug_macro   0x00000000       0x12 src/3Daccel_app.o
  .debug_macro   0x00000000       0x40 src/3Daccel_app.o
- .debug_macro   0x00000000       0x8d src/3Daccel_app.o
- .debug_macro   0x00000000      0x271 src/3Daccel_app.o
- .debug_macro   0x00000000       0x2e src/3Daccel_app.o
- .debug_macro   0x00000000       0x28 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_app.o
  .debug_macro   0x00000000      0x861 src/3Daccel_app.o
  .debug_macro   0x00000000       0xa5 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x1c src/3Daccel_app.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x10 src/3Daccel_app.o
+ .debug_macro   0x00000000       0xb6 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x16 src/3Daccel_app.o
+ .debug_macro   0x00000000      0x145 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x16 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x22 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x93 src/3Daccel_app.o
+ .debug_macro   0x00000000      0x271 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x2e src/3Daccel_app.o
  .debug_macro   0x00000000       0x10 src/3Daccel_app.o
  .debug_macro   0x00000000      0x503 src/3Daccel_app.o
  .debug_macro   0x00000000       0xa0 src/3Daccel_app.o
  .debug_macro   0x00000000       0x10 src/3Daccel_app.o
  .debug_macro   0x00000000       0xde src/3Daccel_app.o
- .debug_macro   0x00000000       0x82 src/3Daccel_app.o
+ .debug_macro   0x00000000       0x7c src/3Daccel_app.o
  .comment       0x00000000       0x6f src/3Daccel_app.o
  .group         0x00000000        0x8 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .group         0x00000000        0x8 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
@@ -969,6 +1067,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x35 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .debug_macro   0x00000000       0x9c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .debug_macro   0x00000000       0x4a ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x00000000      0x16d ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .debug_macro   0x00000000      0x330 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .debug_macro   0x00000000       0x52 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .debug_macro   0x00000000       0x1f ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
@@ -1022,6 +1121,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x20 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .debug_macro   0x00000000      0x187 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .debug_macro   0x00000000      0x330 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_macro   0x00000000       0x10 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .debug_macro   0x00000000       0x35 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .debug_macro   0x00000000       0x2d ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .debug_macro   0x00000000       0xfd ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
@@ -5232,9 +5332,9 @@ Discarded input sections
  .comment       0x00000000       0x6f ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
  .ARM.attributes
                 0x00000000       0x37 ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
- .text          0x00000000        0x0 /tmp/ccwRlX3y.o
- .data          0x00000000        0x0 /tmp/ccwRlX3y.o
- .bss           0x00000000        0x0 /tmp/ccwRlX3y.o
+ .text          0x00000000        0x0 /tmp/ccEUeJSH.o
+ .data          0x00000000        0x0 /tmp/ccEUeJSH.o
+ .bss           0x00000000        0x0 /tmp/ccEUeJSH.o
  .text          0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .data          0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .bss           0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
@@ -5581,8 +5681,9 @@ Linker script and memory map
 
 LOAD src/xmc4500_uart_lib.o
 LOAD src/servo_library.o
-LOAD src/servo_driver.o
 LOAD src/3Daccel_out_library.o
+LOAD src/servo_driver.o
+LOAD src/3Daccel_out_driver.o
 LOAD src/debug_lib.o
 LOAD src/xmc4500_i2c_lib.o
 LOAD src/lis3dh_library.o
@@ -5630,7 +5731,7 @@ LOAD ./xmclib/src/xmc_common.o
 LOAD ./xmclib/src/xmc_math.o
 LOAD ./xmclib/src/xmc_dma.o
 LOAD ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
-LOAD /tmp/ccwRlX3y.o
+LOAD /tmp/ccEUeJSH.o
 LOAD ./system/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a
 LOAD ./system/CMSIS/Infineon/Lib/libxmclibcstubs.a
 LOAD /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a
@@ -5642,10 +5743,10 @@ END GROUP
                 0x00000800                stack_size = DEFINED (stack_size)?stack_size:0x800
                 0x00000040                no_init_size = 0x40
 
-.text           0x08000000     0xabb8 load address 0x0c000000
+.text           0x08000000     0xabf8 load address 0x0c000000
                 0x08000000                sText = .
  *(.reset)
- .reset         0x08000000      0x2b2 /tmp/ccwRlX3y.o
+ .reset         0x08000000      0x2b2 /tmp/ccEUeJSH.o
                 0x08000000                __Vectors
                 0x08000200                Reset_Handler
                 0x080002b0                VADC0_C0_3_IRQHandler
@@ -5795,511 +5896,523 @@ END GROUP
                 0x08000654                initServoPWM
  .text.pwm      0x08000660       0x34 src/servo_library.o
                 0x08000660                pwm
- .text.P1_1_set_mode
-                0x08000694       0x34 src/servo_driver.o
- .text.P1_1_set_driver_strength
-                0x080006c8       0x34 src/servo_driver.o
- .text.P1_1_reset
-                0x080006fc       0x1c src/servo_driver.o
- .text.P1_2_set_mode
-                0x08000718       0x34 src/servo_driver.o
- .text.P1_2_set_driver_strength
-                0x0800074c       0x34 src/servo_driver.o
- .text.P1_2_reset
-                0x08000780       0x1c src/servo_driver.o
- .text.initServoPWMXMC
-                0x0800079c       0xf8 src/servo_driver.o
-                0x0800079c                initServoPWMXMC
- *fill*         0x08000894        0x4 
- .text.pwmXMC   0x08000898       0xf0 src/servo_driver.o
-                0x08000898                pwmXMC
- .text.XMC_GPIO_SetOutputHigh
-                0x08000988       0x24 src/3Daccel_out_library.o
- .text.XMC_GPIO_SetOutputLow
-                0x080009ac       0x24 src/3Daccel_out_library.o
- .text.XMC_GPIO_ToggleOutput
-                0x080009d0       0x24 src/3Daccel_out_library.o
- .text.XMC_GPIO_GetInput
-                0x080009f4       0x28 src/3Daccel_out_library.o
  .text.initGlobals
-                0x08000a1c       0xd4 src/3Daccel_out_library.o
-                0x08000a1c                initGlobals
+                0x08000694       0xd4 src/3Daccel_out_library.o
+                0x08000694                initGlobals
  .text.outputInit
-                0x08000af0       0x2c src/3Daccel_out_library.o
-                0x08000af0                outputInit
+                0x08000768        0xc src/3Daccel_out_library.o
+                0x08000768                outputInit
  .text.SysTick_Handler
-                0x08000b1c      0x1b4 src/3Daccel_out_library.o
-                0x08000b1c                SysTick_Handler
+                0x08000774      0x1b4 src/3Daccel_out_library.o
+                0x08000774                SysTick_Handler
  .text.protocolComplete
-                0x08000cd0      0x1c0 src/3Daccel_out_library.o
-                0x08000cd0                protocolComplete
+                0x08000928      0x1c0 src/3Daccel_out_library.o
+                0x08000928                protocolComplete
  .text.ledSetting
-                0x08000e90       0x40 src/3Daccel_out_library.o
-                0x08000e90                ledSetting
+                0x08000ae8       0x1c src/3Daccel_out_library.o
+                0x08000ae8                ledSetting
+ *fill*         0x08000b04        0x4 
  .text.pwmAngleCalc
-                0x08000ed0      0x2ec src/3Daccel_out_library.o
-                0x08000ed0                pwmAngleCalc
+                0x08000b08      0x2ec src/3Daccel_out_library.o
+                0x08000b08                pwmAngleCalc
  .text.readButtonDebounce
-                0x080011bc       0xd4 src/3Daccel_out_library.o
-                0x080011bc                readButtonDebounce
+                0x08000df4        0xc src/3Daccel_out_library.o
+                0x08000df4                readButtonDebounce
  .text.inputInit
-                0x08001290       0x30 src/3Daccel_out_library.o
-                0x08001290                inputInit
+                0x08000e00        0xc src/3Daccel_out_library.o
+                0x08000e00                inputInit
  .text.circularAdd
-                0x080012c0       0x84 src/3Daccel_out_library.o
-                0x080012c0                circularAdd
+                0x08000e0c       0x84 src/3Daccel_out_library.o
+                0x08000e0c                circularAdd
  .text.circularGet
-                0x08001344       0x84 src/3Daccel_out_library.o
-                0x08001344                circularGet
+                0x08000e90       0x84 src/3Daccel_out_library.o
+                0x08000e90                circularGet
+ .text.P1_1_set_mode
+                0x08000f14       0x34 src/servo_driver.o
+ .text.P1_1_set_driver_strength
+                0x08000f48       0x34 src/servo_driver.o
+ .text.P1_1_reset
+                0x08000f7c       0x1c src/servo_driver.o
+ .text.P1_2_set_mode
+                0x08000f98       0x34 src/servo_driver.o
+ .text.P1_2_set_driver_strength
+                0x08000fcc       0x34 src/servo_driver.o
+ .text.P1_2_reset
+                0x08001000       0x1c src/servo_driver.o
+ .text.initServoPWMXMC
+                0x0800101c       0xf8 src/servo_driver.o
+                0x0800101c                initServoPWMXMC
+ *fill*         0x08001114        0x4 
+ .text.pwmXMC   0x08001118       0xf0 src/servo_driver.o
+                0x08001118                pwmXMC
+ .text.XMC_GPIO_SetOutputHigh
+                0x08001208       0x24 src/3Daccel_out_driver.o
+ .text.XMC_GPIO_SetOutputLow
+                0x0800122c       0x24 src/3Daccel_out_driver.o
+ .text.XMC_GPIO_ToggleOutput
+                0x08001250       0x24 src/3Daccel_out_driver.o
+ .text.XMC_GPIO_GetInput
+                0x08001274       0x28 src/3Daccel_out_driver.o
+ .text.outputInitXMC
+                0x0800129c       0x2c src/3Daccel_out_driver.o
+                0x0800129c                outputInitXMC
+ .text.readButtonDebounceXMC
+                0x080012c8       0xd4 src/3Daccel_out_driver.o
+                0x080012c8                readButtonDebounceXMC
+ .text.ledSettingXMC
+                0x0800139c       0x40 src/3Daccel_out_driver.o
+                0x0800139c                ledSettingXMC
+ .text.inputInitXMC
+                0x080013dc       0x30 src/3Daccel_out_driver.o
+                0x080013dc                inputInitXMC
  .text.ITM_SendChar
-                0x080013c8       0x50 src/debug_lib.o
+                0x0800140c       0x50 src/debug_lib.o
  .text.initRetargetSwo
-                0x08001418       0x8c src/debug_lib.o
-                0x08001418                initRetargetSwo
- .text._write   0x080014a4       0x38 src/debug_lib.o
-                0x080014a4                _write
+                0x0800145c       0x8c src/debug_lib.o
+                0x0800145c                initRetargetSwo
+ .text._write   0x080014e8       0x38 src/debug_lib.o
+                0x080014e8                _write
  .text.XMC_USIC_CH_SetInputSource
-                0x080014dc       0x3c src/xmc4500_i2c_lib.o
+                0x08001520       0x3c src/xmc4500_i2c_lib.o
  .text.XMC_USIC_CH_GetReceiveBufferStatus
-                0x08001518       0x1c src/xmc4500_i2c_lib.o
+                0x0800155c       0x1c src/xmc4500_i2c_lib.o
  .text.XMC_USIC_CH_SetMode
-                0x08001534       0x28 src/xmc4500_i2c_lib.o
+                0x08001578       0x28 src/xmc4500_i2c_lib.o
  .text.XMC_I2C_CH_Start
-                0x0800155c       0x18 src/xmc4500_i2c_lib.o
+                0x080015a0       0x18 src/xmc4500_i2c_lib.o
  .text.XMC_I2C_CH_SetInputSource
-                0x08001574       0x44 src/xmc4500_i2c_lib.o
+                0x080015b8       0x44 src/xmc4500_i2c_lib.o
  .text.XMC_I2C_CH_GetStatusFlag
-                0x080015b8       0x18 src/xmc4500_i2c_lib.o
+                0x080015fc       0x18 src/xmc4500_i2c_lib.o
  .text.XMC_I2C_CH_ClearStatusFlag
-                0x080015d0       0x24 src/xmc4500_i2c_lib.o
+                0x08001614       0x24 src/xmc4500_i2c_lib.o
  .text._init_i2c1_ch0
-                0x080015f4       0x54 src/xmc4500_i2c_lib.o
-                0x080015f4                _init_i2c1_ch0
+                0x08001638       0x54 src/xmc4500_i2c_lib.o
+                0x08001638                _init_i2c1_ch0
  .text._i2c_xfer
-                0x08001648      0x120 src/xmc4500_i2c_lib.o
-                0x08001648                _i2c_xfer
+                0x0800168c      0x120 src/xmc4500_i2c_lib.o
+                0x0800168c                _i2c_xfer
  .text.initMEMSsensor
-                0x08001768       0xc8 src/lis3dh_library.o
-                0x08001768                initMEMSsensor
+                0x080017ac       0xc8 src/lis3dh_library.o
+                0x080017ac                initMEMSsensor
  .text.configMEMSsensor
-                0x08001830      0x11c src/lis3dh_library.o
-                0x08001830                configMEMSsensor
+                0x08001874      0x11c src/lis3dh_library.o
+                0x08001874                configMEMSsensor
  .text.get6Dposition
-                0x0800194c      0x134 src/lis3dh_library.o
-                0x0800194c                get6Dposition
+                0x08001990      0x134 src/lis3dh_library.o
+                0x08001990                get6Dposition
  .text.getAxesRawData
-                0x08001a80       0x6c src/lis3dh_library.o
-                0x08001a80                getAxesRawData
+                0x08001ac4       0x6c src/lis3dh_library.o
+                0x08001ac4                getAxesRawData
  .text.LIS3DH_ReadReg
-                0x08001aec       0x2c src/lis3dh_driver.o
-                0x08001aec                LIS3DH_ReadReg
+                0x08001b30       0x2c src/lis3dh_driver.o
+                0x08001b30                LIS3DH_ReadReg
  .text.LIS3DH_WriteReg
-                0x08001b18       0x28 src/lis3dh_driver.o
-                0x08001b18                LIS3DH_WriteReg
+                0x08001b5c       0x28 src/lis3dh_driver.o
+                0x08001b5c                LIS3DH_WriteReg
  .text.LIS3DH_SetODR
-                0x08001b40       0x5c src/lis3dh_driver.o
-                0x08001b40                LIS3DH_SetODR
+                0x08001b84       0x5c src/lis3dh_driver.o
+                0x08001b84                LIS3DH_SetODR
  .text.LIS3DH_SetTemperature
-                0x08001b9c       0x5c src/lis3dh_driver.o
-                0x08001b9c                LIS3DH_SetTemperature
+                0x08001be0       0x5c src/lis3dh_driver.o
+                0x08001be0                LIS3DH_SetTemperature
  .text.LIS3DH_SetADCAux
-                0x08001bf8       0x5c src/lis3dh_driver.o
-                0x08001bf8                LIS3DH_SetADCAux
+                0x08001c3c       0x5c src/lis3dh_driver.o
+                0x08001c3c                LIS3DH_SetADCAux
  .text.LIS3DH_SetMode
-                0x08001c54       0xfc src/lis3dh_driver.o
-                0x08001c54                LIS3DH_SetMode
+                0x08001c98       0xfc src/lis3dh_driver.o
+                0x08001c98                LIS3DH_SetMode
  .text.LIS3DH_SetAxis
-                0x08001d50       0x58 src/lis3dh_driver.o
-                0x08001d50                LIS3DH_SetAxis
+                0x08001d94       0x58 src/lis3dh_driver.o
+                0x08001d94                LIS3DH_SetAxis
  .text.LIS3DH_SetFullScale
-                0x08001da8       0x5c src/lis3dh_driver.o
-                0x08001da8                LIS3DH_SetFullScale
+                0x08001dec       0x5c src/lis3dh_driver.o
+                0x08001dec                LIS3DH_SetFullScale
  .text.LIS3DH_SetBDU
-                0x08001e04       0x5c src/lis3dh_driver.o
-                0x08001e04                LIS3DH_SetBDU
+                0x08001e48       0x5c src/lis3dh_driver.o
+                0x08001e48                LIS3DH_SetBDU
  .text.LIS3DH_SetIntConfiguration
-                0x08001e60       0x54 src/lis3dh_driver.o
-                0x08001e60                LIS3DH_SetIntConfiguration
+                0x08001ea4       0x54 src/lis3dh_driver.o
+                0x08001ea4                LIS3DH_SetIntConfiguration
  .text.LIS3DH_SetIntMode
-                0x08001eb4       0x5c src/lis3dh_driver.o
-                0x08001eb4                LIS3DH_SetIntMode
+                0x08001ef8       0x5c src/lis3dh_driver.o
+                0x08001ef8                LIS3DH_SetIntMode
  .text.LIS3DH_Get6DPosition
-                0x08001f10       0xf4 src/lis3dh_driver.o
-                0x08001f10                LIS3DH_Get6DPosition
+                0x08001f54       0xf4 src/lis3dh_driver.o
+                0x08001f54                LIS3DH_Get6DPosition
  .text.LIS3DH_SetInt1Threshold
-                0x08002004       0x34 src/lis3dh_driver.o
-                0x08002004                LIS3DH_SetInt1Threshold
+                0x08002048       0x34 src/lis3dh_driver.o
+                0x08002048                LIS3DH_SetInt1Threshold
  .text.LIS3DH_GetAccAxesRaw
-                0x08002038       0xa4 src/lis3dh_driver.o
-                0x08002038                LIS3DH_GetAccAxesRaw
+                0x0800207c       0xa4 src/lis3dh_driver.o
+                0x0800207c                LIS3DH_GetAccAxesRaw
  .text.__NVIC_SetPriority
-                0x080020dc       0x54 src/3Daccel_app.o
+                0x08002120       0x54 src/3Daccel_app.o
  .text.SysTick_Config
-                0x08002130       0x44 src/3Daccel_app.o
- .text.main     0x08002174      0x1a4 src/3Daccel_app.o
-                0x08002174                main
- .text._lseek   0x08002318       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x08002318                _lseek
- .text._read    0x08002334       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x08002334                _read
- .text._close   0x08002350       0x14 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x08002350                _close
- .text._fstat   0x08002364       0x28 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x08002364                _fstat
- .text._sbrk    0x0800238c       0x70 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x0800238c                _sbrk
- .text._init    0x080023fc       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x080023fc                _init
- .text._isatty  0x0800240c       0x18 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x0800240c                _isatty
- .text.delay    0x08002424       0x2c ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002174       0x44 src/3Daccel_app.o
+ .text.main     0x080021b8      0x1a4 src/3Daccel_app.o
+                0x080021b8                main
+ .text._lseek   0x0800235c       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x0800235c                _lseek
+ .text._read    0x08002378       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x08002378                _read
+ .text._close   0x08002394       0x14 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x08002394                _close
+ .text._fstat   0x080023a8       0x28 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x080023a8                _fstat
+ .text._sbrk    0x080023d0       0x70 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x080023d0                _sbrk
+ .text._init    0x08002440       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x08002440                _init
+ .text._isatty  0x08002450       0x18 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x08002450                _isatty
+ .text.delay    0x08002468       0x2c ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .text.SystemInit
-                0x08002450       0x24 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x08002450                SystemInit
+                0x08002494       0x24 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002494                SystemInit
  .text.SystemCoreSetup
-                0x08002474       0x70 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x08002474                SystemCoreSetup
+                0x080024b8       0x70 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x080024b8                SystemCoreSetup
  .text.SystemCoreClockSetup
-                0x080024e4      0x208 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x080024e4                SystemCoreClockSetup
+                0x08002528      0x208 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002528                SystemCoreClockSetup
  .text.SystemCoreClockUpdate
-                0x080026ec       0xd4 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x080026ec                SystemCoreClockUpdate
+                0x08002730       0xd4 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002730                SystemCoreClockUpdate
  .text.OSCHP_GetFrequency
-                0x080027c0       0x14 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x080027c0                OSCHP_GetFrequency
+                0x08002804       0x14 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002804                OSCHP_GetFrequency
  .text.XMC_GPIO_Init
-                0x080027d4      0x144 ./xmclib/src/xmc4_gpio.o
-                0x080027d4                XMC_GPIO_Init
+                0x08002818      0x144 ./xmclib/src/xmc4_gpio.o
+                0x08002818                XMC_GPIO_Init
  .text.XMC_USIC_CH_GetTransmitBufferStatus
-                0x08002918       0x20 ./xmclib/src/xmc_uart.o
+                0x0800295c       0x20 ./xmclib/src/xmc_uart.o
  .text.XMC_UART_CH_ClearStatusFlag
-                0x08002938       0x1c ./xmclib/src/xmc_uart.o
+                0x0800297c       0x1c ./xmclib/src/xmc_uart.o
  .text.XMC_UART_CH_Init
-                0x08002954       0xb0 ./xmclib/src/xmc_uart.o
-                0x08002954                XMC_UART_CH_Init
+                0x08002998       0xb0 ./xmclib/src/xmc_uart.o
+                0x08002998                XMC_UART_CH_Init
  .text.XMC_UART_CH_Transmit
-                0x08002a04       0x4c ./xmclib/src/xmc_uart.o
-                0x08002a04                XMC_UART_CH_Transmit
+                0x08002a48       0x4c ./xmclib/src/xmc_uart.o
+                0x08002a48                XMC_UART_CH_Transmit
  .text.XMC_UART_CH_GetReceivedData
-                0x08002a50       0x34 ./xmclib/src/xmc_uart.o
-                0x08002a50                XMC_UART_CH_GetReceivedData
+                0x08002a94       0x34 ./xmclib/src/xmc_uart.o
+                0x08002a94                XMC_UART_CH_GetReceivedData
  .text.XMC_USIC_CH_GetTransmitBufferStatus
-                0x08002a84       0x20 ./xmclib/src/xmc_i2c.o
+                0x08002ac8       0x20 ./xmclib/src/xmc_i2c.o
  .text.XMC_I2C_CH_ClearStatusFlag
-                0x08002aa4       0x24 ./xmclib/src/xmc_i2c.o
+                0x08002ae8       0x24 ./xmclib/src/xmc_i2c.o
  .text.XMC_I2C_CH_Init
-                0x08002ac8       0x50 ./xmclib/src/xmc_i2c.o
-                0x08002ac8                XMC_I2C_CH_Init
+                0x08002b0c       0x50 ./xmclib/src/xmc_i2c.o
+                0x08002b0c                XMC_I2C_CH_Init
  .text.XMC_I2C_CH_SetSlaveAddress
-                0x08002b18       0x40 ./xmclib/src/xmc_i2c.o
-                0x08002b18                XMC_I2C_CH_SetSlaveAddress
+                0x08002b5c       0x40 ./xmclib/src/xmc_i2c.o
+                0x08002b5c                XMC_I2C_CH_SetSlaveAddress
  .text.XMC_I2C_CH_SetBaudrate
-                0x08002b58       0x78 ./xmclib/src/xmc_i2c.o
-                0x08002b58                XMC_I2C_CH_SetBaudrate
+                0x08002b9c       0x78 ./xmclib/src/xmc_i2c.o
+                0x08002b9c                XMC_I2C_CH_SetBaudrate
  .text.XMC_I2C_CH_MasterStart
-                0x08002bd0       0x68 ./xmclib/src/xmc_i2c.o
-                0x08002bd0                XMC_I2C_CH_MasterStart
+                0x08002c14       0x68 ./xmclib/src/xmc_i2c.o
+                0x08002c14                XMC_I2C_CH_MasterStart
  .text.XMC_I2C_CH_MasterRepeatedStart
-                0x08002c38       0x68 ./xmclib/src/xmc_i2c.o
-                0x08002c38                XMC_I2C_CH_MasterRepeatedStart
+                0x08002c7c       0x68 ./xmclib/src/xmc_i2c.o
+                0x08002c7c                XMC_I2C_CH_MasterRepeatedStart
  .text.XMC_I2C_CH_MasterStop
-                0x08002ca0       0x4c ./xmclib/src/xmc_i2c.o
-                0x08002ca0                XMC_I2C_CH_MasterStop
+                0x08002ce4       0x4c ./xmclib/src/xmc_i2c.o
+                0x08002ce4                XMC_I2C_CH_MasterStop
  .text.XMC_I2C_CH_MasterTransmit
-                0x08002cec       0x4c ./xmclib/src/xmc_i2c.o
-                0x08002cec                XMC_I2C_CH_MasterTransmit
+                0x08002d30       0x4c ./xmclib/src/xmc_i2c.o
+                0x08002d30                XMC_I2C_CH_MasterTransmit
  .text.XMC_I2C_CH_MasterReceiveNack
-                0x08002d38       0x4c ./xmclib/src/xmc_i2c.o
-                0x08002d38                XMC_I2C_CH_MasterReceiveNack
+                0x08002d7c       0x4c ./xmclib/src/xmc_i2c.o
+                0x08002d7c                XMC_I2C_CH_MasterReceiveNack
  .text.XMC_I2C_CH_GetReceivedData
-                0x08002d84       0x34 ./xmclib/src/xmc_i2c.o
-                0x08002d84                XMC_I2C_CH_GetReceivedData
+                0x08002dc8       0x34 ./xmclib/src/xmc_i2c.o
+                0x08002dc8                XMC_I2C_CH_GetReceivedData
  .text.XMC_SCU_CLOCK_GetCpuClockFrequency
-                0x08002db8       0x18 ./xmclib/src/xmc4_scu.o
+                0x08002dfc       0x18 ./xmclib/src/xmc4_scu.o
  .text.XMC_SCU_RESET_DeassertPeripheralReset
-                0x08002dd0       0x3c ./xmclib/src/xmc4_scu.o
-                0x08002dd0                XMC_SCU_RESET_DeassertPeripheralReset
+                0x08002e14       0x3c ./xmclib/src/xmc4_scu.o
+                0x08002e14                XMC_SCU_RESET_DeassertPeripheralReset
  .text.XMC_SCU_CLOCK_GetPeripheralClockFrequency
-                0x08002e0c       0x20 ./xmclib/src/xmc4_scu.o
-                0x08002e0c                XMC_SCU_CLOCK_GetPeripheralClockFrequency
+                0x08002e50       0x20 ./xmclib/src/xmc4_scu.o
+                0x08002e50                XMC_SCU_CLOCK_GetPeripheralClockFrequency
  .text.XMC_USIC_CH_Enable
-                0x08002e2c       0x9c ./xmclib/src/xmc_usic.o
-                0x08002e2c                XMC_USIC_CH_Enable
+                0x08002e70       0x9c ./xmclib/src/xmc_usic.o
+                0x08002e70                XMC_USIC_CH_Enable
  .text.XMC_USIC_CH_SetBaudrate
-                0x08002ec8       0xe0 ./xmclib/src/xmc_usic.o
-                0x08002ec8                XMC_USIC_CH_SetBaudrate
+                0x08002f0c       0xe0 ./xmclib/src/xmc_usic.o
+                0x08002f0c                XMC_USIC_CH_SetBaudrate
  .text.XMC_USIC_CH_TXFIFO_Configure
-                0x08002fa8       0x50 ./xmclib/src/xmc_usic.o
-                0x08002fa8                XMC_USIC_CH_TXFIFO_Configure
+                0x08002fec       0x50 ./xmclib/src/xmc_usic.o
+                0x08002fec                XMC_USIC_CH_TXFIFO_Configure
  .text.XMC_USIC_CH_RXFIFO_Configure
-                0x08002ff8       0x54 ./xmclib/src/xmc_usic.o
-                0x08002ff8                XMC_USIC_CH_RXFIFO_Configure
+                0x0800303c       0x54 ./xmclib/src/xmc_usic.o
+                0x0800303c                XMC_USIC_CH_RXFIFO_Configure
  .text.XMC_USIC_CH_RXFIFO_SetInterruptNodePointer
-                0x0800304c       0x3c ./xmclib/src/xmc_usic.o
-                0x0800304c                XMC_USIC_CH_RXFIFO_SetInterruptNodePointer
+                0x08003090       0x3c ./xmclib/src/xmc_usic.o
+                0x08003090                XMC_USIC_CH_RXFIFO_SetInterruptNodePointer
  .text.XMC_USIC_Enable
-                0x08003088       0x54 ./xmclib/src/xmc_usic.o
-                0x08003088                XMC_USIC_Enable
- *fill*         0x080030dc        0x4 
- .text.atan     0x080030e0      0x340 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
-                0x080030e0                atan
- .text.fabs     0x08003420        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
-                0x08003420                fabs
- .text.sqrt     0x08003428       0xb8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
-                0x08003428                sqrt
+                0x080030cc       0x54 ./xmclib/src/xmc_usic.o
+                0x080030cc                XMC_USIC_Enable
+ .text.atan     0x08003120      0x340 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
+                0x08003120                atan
+ .text.fabs     0x08003460        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
+                0x08003460                fabs
+ .text.sqrt     0x08003468       0xb8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
+                0x08003468                sqrt
  .text.__ieee754_sqrt
-                0x080034e0      0x184 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
-                0x080034e0                __ieee754_sqrt
- .text.matherr  0x08003664        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
-                0x08003664                matherr
- .text          0x08003668      0x370 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_addsubdf3.o)
-                0x08003668                __aeabi_drsub
-                0x08003670                __aeabi_dsub
-                0x08003670                __subdf3
-                0x08003674                __adddf3
-                0x08003674                __aeabi_dadd
-                0x080038ec                __aeabi_ui2d
-                0x080038ec                __floatunsidf
-                0x0800390c                __floatsidf
-                0x0800390c                __aeabi_i2d
-                0x08003930                __extendsfdf2
-                0x08003930                __aeabi_f2d
-                0x0800396c                __aeabi_ul2d
-                0x0800396c                __floatundidf
-                0x0800397c                __floatdidf
-                0x0800397c                __aeabi_l2d
- .text          0x080039d8      0x424 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_muldivdf3.o)
-                0x080039d8                __aeabi_dmul
-                0x080039d8                __muldf3
-                0x08003c2c                __aeabi_ddiv
-                0x08003c2c                __divdf3
- .text          0x08003dfc      0x110 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_cmpdf2.o)
-                0x08003dfc                __gtdf2
-                0x08003dfc                __gedf2
-                0x08003e04                __ltdf2
-                0x08003e04                __ledf2
-                0x08003e0c                __cmpdf2
-                0x08003e0c                __eqdf2
-                0x08003e0c                __nedf2
-                0x08003e88                __aeabi_cdrcmple
-                0x08003e98                __aeabi_cdcmple
-                0x08003e98                __aeabi_cdcmpeq
-                0x08003ea8                __aeabi_dcmpeq
-                0x08003ebc                __aeabi_dcmplt
-                0x08003ed0                __aeabi_dcmple
-                0x08003ee4                __aeabi_dcmpge
-                0x08003ef8                __aeabi_dcmpgt
- .text          0x08003f0c       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_unorddf2.o)
-                0x08003f0c                __aeabi_dcmpun
-                0x08003f0c                __unorddf2
- .text          0x08003f38       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixdfsi.o)
-                0x08003f38                __fixdfsi
-                0x08003f38                __aeabi_d2iz
- .text          0x08003f88       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixunsdfsi.o)
-                0x08003f88                __fixunsdfsi
-                0x08003f88                __aeabi_d2uiz
- .text.__errno  0x08003fc8        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
-                0x08003fc8                __errno
+                0x08003520      0x184 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
+                0x08003520                __ieee754_sqrt
+ .text.matherr  0x080036a4        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
+                0x080036a4                matherr
+ .text          0x080036a8      0x370 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_addsubdf3.o)
+                0x080036a8                __aeabi_drsub
+                0x080036b0                __aeabi_dsub
+                0x080036b0                __subdf3
+                0x080036b4                __adddf3
+                0x080036b4                __aeabi_dadd
+                0x0800392c                __aeabi_ui2d
+                0x0800392c                __floatunsidf
+                0x0800394c                __floatsidf
+                0x0800394c                __aeabi_i2d
+                0x08003970                __extendsfdf2
+                0x08003970                __aeabi_f2d
+                0x080039ac                __aeabi_ul2d
+                0x080039ac                __floatundidf
+                0x080039bc                __floatdidf
+                0x080039bc                __aeabi_l2d
+ .text          0x08003a18      0x424 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_muldivdf3.o)
+                0x08003a18                __aeabi_dmul
+                0x08003a18                __muldf3
+                0x08003c6c                __aeabi_ddiv
+                0x08003c6c                __divdf3
+ .text          0x08003e3c      0x110 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_cmpdf2.o)
+                0x08003e3c                __gtdf2
+                0x08003e3c                __gedf2
+                0x08003e44                __ltdf2
+                0x08003e44                __ledf2
+                0x08003e4c                __cmpdf2
+                0x08003e4c                __eqdf2
+                0x08003e4c                __nedf2
+                0x08003ec8                __aeabi_cdrcmple
+                0x08003ed8                __aeabi_cdcmple
+                0x08003ed8                __aeabi_cdcmpeq
+                0x08003ee8                __aeabi_dcmpeq
+                0x08003efc                __aeabi_dcmplt
+                0x08003f10                __aeabi_dcmple
+                0x08003f24                __aeabi_dcmpge
+                0x08003f38                __aeabi_dcmpgt
+ .text          0x08003f4c       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_unorddf2.o)
+                0x08003f4c                __aeabi_dcmpun
+                0x08003f4c                __unorddf2
+ .text          0x08003f78       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixdfsi.o)
+                0x08003f78                __fixdfsi
+                0x08003f78                __aeabi_d2iz
+ .text          0x08003fc8       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixunsdfsi.o)
+                0x08003fc8                __fixunsdfsi
+                0x08003fc8                __aeabi_d2uiz
+ .text.__errno  0x08004008        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
+                0x08004008                __errno
  .text.__libc_init_array
-                0x08003fd4       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
-                0x08003fd4                __libc_init_array
- .text          0x08004024      0x134 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
-                0x08004024                memcpy
- .text.memset   0x08004158       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
-                0x08004158                memset
- .text.printf   0x080041f4       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
-                0x080041f4                printf
- .text._puts_r  0x0800421c       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
-                0x0800421c                _puts_r
- .text.puts     0x08004284       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
-                0x08004284                puts
- .text.sprintf  0x08004294       0x4c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sprintf.o)
-                0x08004294                sprintf
- *fill*         0x080042e0       0x20 
- .text          0x08004300       0xdc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strlen.o)
-                0x08004300                strlen
- .text.strncmp  0x080043dc       0xa0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strncmp.o)
-                0x080043dc                strncmp
- *fill*         0x0800447c        0x4 
+                0x08004014       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
+                0x08004014                __libc_init_array
+ .text          0x08004064      0x134 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
+                0x08004064                memcpy
+ .text.memset   0x08004198       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
+                0x08004198                memset
+ .text.printf   0x08004234       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
+                0x08004234                printf
+ .text._puts_r  0x0800425c       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
+                0x0800425c                _puts_r
+ .text.puts     0x080042c4       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
+                0x080042c4                puts
+ .text.sprintf  0x080042d4       0x4c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sprintf.o)
+                0x080042d4                sprintf
+ *fill*         0x08004320       0x20 
+ .text          0x08004340       0xdc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strlen.o)
+                0x08004340                strlen
+ .text.strncmp  0x0800441c       0xa0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strncmp.o)
+                0x0800441c                strncmp
+ *fill*         0x080044bc        0x4 
  .text._svfprintf_r
-                0x08004480     0x16f4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
-                0x08004480                _svfprintf_r
- *fill*         0x08005b74        0x4 
+                0x080044c0     0x16f4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
+                0x080044c0                _svfprintf_r
+ *fill*         0x08005bb4        0x4 
  .text._vfprintf_r
-                0x08005b78     0x1738 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
-                0x08005b78                _vfprintf_r
+                0x08005bb8     0x1738 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
+                0x08005bb8                _vfprintf_r
  .text.__sbprintf
-                0x080072b0       0x6c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
+                0x080072f0       0x6c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
  .text._vsprintf_r
-                0x0800731c       0x34 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
-                0x0800731c                _vsprintf_r
+                0x0800735c       0x34 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
+                0x0800735c                _vsprintf_r
  .text.vsprintf
-                0x08007350       0x18 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
-                0x08007350                vsprintf
+                0x08007390       0x18 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
+                0x08007390                vsprintf
  .text.__swsetup_r
-                0x08007368       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wsetup.o)
-                0x08007368                __swsetup_r
- .text.quorem   0x08007430      0x128 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
- .text._dtoa_r  0x08007558      0xe2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
-                0x08007558                _dtoa_r
+                0x080073a8       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wsetup.o)
+                0x080073a8                __swsetup_r
+ .text.quorem   0x08007470      0x128 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x08007598      0xe2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
+                0x08007598                _dtoa_r
  .text.__sflush_r
-                0x08008384      0x148 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
-                0x08008384                __sflush_r
+                0x080083c4      0x148 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
+                0x080083c4                __sflush_r
  .text._fflush_r
-                0x080084cc       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
-                0x080084cc                _fflush_r
+                0x0800850c       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
+                0x0800850c                _fflush_r
  .text._cleanup_r
-                0x080084f8        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
-                0x080084f8                _cleanup_r
+                0x08008538        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
+                0x08008538                _cleanup_r
  .text.__sinit.part.1
-                0x08008504       0xf0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
- .text.__sinit  0x080085f4        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
-                0x080085f4                __sinit
+                0x08008544       0xf0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
+ .text.__sinit  0x08008634        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
+                0x08008634                __sinit
  .text.__sfp_lock_acquire
-                0x08008600        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
-                0x08008600                __sfp_lock_acquire
+                0x08008640        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
+                0x08008640                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x08008604        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
-                0x08008604                __sfp_lock_release
+                0x08008644        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
+                0x08008644                __sfp_lock_release
  .text._malloc_trim_r
-                0x08008608       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
-                0x08008608                _malloc_trim_r
- .text._free_r  0x080086a4      0x1d0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
-                0x080086a4                _free_r
+                0x08008648       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
+                0x08008648                _malloc_trim_r
+ .text._free_r  0x080086e4      0x1d0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
+                0x080086e4                _free_r
  .text.__sfvwrite_r
-                0x08008874      0x304 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fvwrite.o)
-                0x08008874                __sfvwrite_r
+                0x080088b4      0x304 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fvwrite.o)
+                0x080088b4                __sfvwrite_r
  .text._fwalk_reent
-                0x08008b78       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fwalk.o)
-                0x08008b78                _fwalk_reent
+                0x08008bb8       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fwalk.o)
+                0x08008bb8                _fwalk_reent
  .text.__locale_mb_cur_max
-                0x08008bcc       0x1c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
-                0x08008bcc                __locale_mb_cur_max
+                0x08008c0c       0x1c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
+                0x08008c0c                __locale_mb_cur_max
  .text._localeconv_r
-                0x08008be8       0x1c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-localeconv.o)
-                0x08008be8                _localeconv_r
+                0x08008c28       0x1c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-localeconv.o)
+                0x08008c28                _localeconv_r
  .text.__swhatbuf_r
-                0x08008c04       0x60 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
-                0x08008c04                __swhatbuf_r
+                0x08008c44       0x60 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
+                0x08008c44                __swhatbuf_r
  .text.__smakebuf_r
-                0x08008c64       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
-                0x08008c64                __smakebuf_r
+                0x08008ca4       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
+                0x08008ca4                __smakebuf_r
  .text._malloc_r
-                0x08008cec      0x570 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mallocr.o)
-                0x08008cec                _malloc_r
+                0x08008d2c      0x570 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mallocr.o)
+                0x08008d2c                _malloc_r
  .text.__ascii_mbtowc
-                0x0800925c       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mbtowc_r.o)
-                0x0800925c                __ascii_mbtowc
- *fill*         0x08009288        0x8 
- .text          0x08009290       0xa0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memchr.o)
-                0x08009290                memchr
- .text.memmove  0x08009330       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memmove.o)
-                0x08009330                memmove
+                0x0800929c       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mbtowc_r.o)
+                0x0800929c                __ascii_mbtowc
+ *fill*         0x080092c8        0x8 
+ .text          0x080092d0       0xa0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memchr.o)
+                0x080092d0                memchr
+ .text.memmove  0x08009370       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memmove.o)
+                0x08009370                memmove
  .text.__malloc_lock
-                0x080093f8        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
-                0x080093f8                __malloc_lock
+                0x08009438        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
+                0x08009438                __malloc_lock
  .text.__malloc_unlock
-                0x080093fc        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
-                0x080093fc                __malloc_unlock
- .text._Balloc  0x08009400       0x4c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009400                _Balloc
- .text._Bfree   0x0800944c       0x14 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x0800944c                _Bfree
+                0x0800943c        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
+                0x0800943c                __malloc_unlock
+ .text._Balloc  0x08009440       0x4c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x08009440                _Balloc
+ .text._Bfree   0x0800948c       0x14 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x0800948c                _Bfree
  .text.__multadd
-                0x08009460       0x80 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009460                __multadd
+                0x080094a0       0x80 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x080094a0                __multadd
  .text.__hi0bits
-                0x080094e0       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x080094e0                __hi0bits
+                0x08009520       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x08009520                __hi0bits
  .text.__lo0bits
-                0x08009520       0x5c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009520                __lo0bits
- .text.__i2b    0x0800957c       0x14 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x0800957c                __i2b
+                0x08009560       0x5c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x08009560                __lo0bits
+ .text.__i2b    0x080095bc       0x14 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x080095bc                __i2b
  .text.__multiply
-                0x08009590      0x130 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009590                __multiply
+                0x080095d0      0x130 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x080095d0                __multiply
  .text.__pow5mult
-                0x080096c0       0xa0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x080096c0                __pow5mult
+                0x08009700       0xa0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x08009700                __pow5mult
  .text.__lshift
-                0x08009760       0xb0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009760                __lshift
- .text.__mcmp   0x08009810       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009810                __mcmp
- .text.__mdiff  0x08009854      0x114 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009854                __mdiff
- .text.__d2b    0x08009968       0xb8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x08009968                __d2b
+                0x080097a0       0xb0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x080097a0                __lshift
+ .text.__mcmp   0x08009850       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x08009850                __mcmp
+ .text.__mdiff  0x08009894      0x114 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x08009894                __mdiff
+ .text.__d2b    0x080099a8       0xb8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x080099a8                __d2b
  .text._realloc_r
-                0x08009a20      0x3e0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reallocr.o)
-                0x08009a20                _realloc_r
- .text._sbrk_r  0x08009e00       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sbrkr.o)
-                0x08009e00                _sbrk_r
- .text.__sread  0x08009e24       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
-                0x08009e24                __sread
+                0x08009a60      0x3e0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reallocr.o)
+                0x08009a60                _realloc_r
+ .text._sbrk_r  0x08009e40       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sbrkr.o)
+                0x08009e40                _sbrk_r
+ .text.__sread  0x08009e64       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
+                0x08009e64                __sread
  .text.__swrite
-                0x08009e48       0x3c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
-                0x08009e48                __swrite
- .text.__sseek  0x08009e84       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
-                0x08009e84                __sseek
+                0x08009e88       0x3c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
+                0x08009e88                __swrite
+ .text.__sseek  0x08009ec4       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
+                0x08009ec4                __sseek
  .text.__sclose
-                0x08009ea4        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
-                0x08009ea4                __sclose
+                0x08009ee4        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
+                0x08009ee4                __sclose
  .text.__ssprint_r
-                0x08009eac      0x100 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfiprintf.o)
-                0x08009eac                __ssprint_r
+                0x08009eec      0x100 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfiprintf.o)
+                0x08009eec                __ssprint_r
  .text.__sprint_r.part.0
-                0x08009fac       0x78 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
+                0x08009fec       0x78 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
  .text.__sprint_r
-                0x0800a024       0x14 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
-                0x0800a024                __sprint_r
+                0x0800a064       0x14 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
+                0x0800a064                __sprint_r
  .text.__ascii_wctomb
-                0x0800a038       0x1c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wctomb_r.o)
-                0x0800a038                __ascii_wctomb
+                0x0800a078       0x1c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wctomb_r.o)
+                0x0800a078                __ascii_wctomb
  .text._write_r
-                0x0800a054       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-writer.o)
-                0x0800a054                _write_r
+                0x0800a094       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-writer.o)
+                0x0800a094                _write_r
  .text._calloc_r
-                0x0800a080       0x60 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-callocr.o)
-                0x0800a080                _calloc_r
+                0x0800a0c0       0x60 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-callocr.o)
+                0x0800a0c0                _calloc_r
  .text._close_r
-                0x0800a0e0       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-closer.o)
-                0x0800a0e0                _close_r
+                0x0800a120       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-closer.o)
+                0x0800a120                _close_r
  .text._fclose_r
-                0x0800a104       0x84 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fclose.o)
-                0x0800a104                _fclose_r
+                0x0800a144       0x84 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fclose.o)
+                0x0800a144                _fclose_r
  .text.__fputwc
-                0x0800a188       0x98 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
-                0x0800a188                __fputwc
+                0x0800a1c8       0x98 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
+                0x0800a1c8                __fputwc
  .text._fputwc_r
-                0x0800a220       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
-                0x0800a220                _fputwc_r
+                0x0800a260       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
+                0x0800a260                _fputwc_r
  .text._fstat_r
-                0x0800a248       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fstatr.o)
-                0x0800a248                _fstat_r
+                0x0800a288       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fstatr.o)
+                0x0800a288                _fstat_r
  .text._isatty_r
-                0x0800a270       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-isattyr.o)
-                0x0800a270                _isatty_r
+                0x0800a2b0       0x24 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-isattyr.o)
+                0x0800a2b0                _isatty_r
  .text._lseek_r
-                0x0800a294       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-lseekr.o)
-                0x0800a294                _lseek_r
- .text._read_r  0x0800a2c0       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-readr.o)
-                0x0800a2c0                _read_r
+                0x0800a2d4       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-lseekr.o)
+                0x0800a2d4                _lseek_r
+ .text._read_r  0x0800a300       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-readr.o)
+                0x0800a300                _read_r
  .text.__swbuf_r
-                0x0800a2ec       0xac /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wbuf.o)
-                0x0800a2ec                __swbuf_r
+                0x0800a32c       0xac /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wbuf.o)
+                0x0800a32c                __swbuf_r
  .text._wcrtomb_r
-                0x0800a398       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wcrtomb.o)
-                0x0800a398                _wcrtomb_r
- .text          0x0800a3ec       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_aeabi_uldivmod.o)
-                0x0800a3ec                __aeabi_uldivmod
- .text          0x0800a41c      0x2e4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
-                0x0800a41c                __udivmoddi4
- .text          0x0800a700        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_dvmd_tls.o)
-                0x0800a700                __aeabi_ldiv0
-                0x0800a700                __aeabi_idiv0
+                0x0800a3d8       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wcrtomb.o)
+                0x0800a3d8                _wcrtomb_r
+ .text          0x0800a42c       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_aeabi_uldivmod.o)
+                0x0800a42c                __aeabi_uldivmod
+ .text          0x0800a45c      0x2e4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
+                0x0800a45c                __udivmoddi4
+ .text          0x0800a740        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_dvmd_tls.o)
+                0x0800a740                __aeabi_ldiv0
+                0x0800a740                __aeabi_idiv0
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -6313,70 +6426,70 @@ END GROUP
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata .rodata.*)
- .rodata        0x0800a704       0x78 src/3Daccel_out_library.o
- .rodata        0x0800a77c      0x116 src/lis3dh_library.o
- *fill*         0x0800a892        0x2 
- .rodata        0x0800a894       0x2e src/3Daccel_app.o
- *fill*         0x0800a8c2        0x6 
+ .rodata        0x0800a744       0x78 src/3Daccel_out_library.o
+ .rodata        0x0800a7bc      0x116 src/lis3dh_library.o
+ *fill*         0x0800a8d2        0x2 
+ .rodata        0x0800a8d4       0x2e src/3Daccel_app.o
+ *fill*         0x0800a902        0x6 
  .rodata.atanlo
-                0x0800a8c8       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
+                0x0800a908       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .rodata.atanhi
-                0x0800a8e8       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
+                0x0800a928       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .rodata.str1.4
-                0x0800a908        0x5 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
- *fill*         0x0800a90d        0x3 
+                0x0800a948        0x5 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
+ *fill*         0x0800a94d        0x3 
  .rodata.str1.4
-                0x0800a910        0x2 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
- *fill*         0x0800a912        0x2 
+                0x0800a950        0x2 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
+ *fill*         0x0800a952        0x2 
  .rodata.zeroes.7258
-                0x0800a914       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
+                0x0800a954       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0800a924       0x42 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
- *fill*         0x0800a966        0x2 
+                0x0800a964       0x42 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
+ *fill*         0x0800a9a6        0x2 
  .rodata.blanks.7257
-                0x0800a968       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
+                0x0800a9a8       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
  .rodata.zeroes.7273
-                0x0800a978       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
+                0x0800a9b8       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
  .rodata.str1.4
-                0x0800a988       0x42 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
+                0x0800a9c8       0x42 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
  .rodata.blanks.7272
-                0x0800a988       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
+                0x0800a9c8       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
  .rodata.str1.4
-                0x0800a998       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
+                0x0800a9d8       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
                                  0x12 (size before relaxing)
  .rodata.str1.4
-                0x0800a9a8       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
+                0x0800a9e8       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
                                  0x12 (size before relaxing)
  .rodata.__mprec_tens
-                0x0800a9b8       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x0800a9b8                __mprec_tens
+                0x0800a9f8       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x0800a9f8                __mprec_tens
  .rodata.__mprec_bigtens
-                0x0800aa80       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
-                0x0800aa80                __mprec_bigtens
+                0x0800aac0       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x0800aac0                __mprec_bigtens
  .rodata.p05.6087
-                0x0800aaa8        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x0800aae8        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
  .rodata._ctype_
-                0x0800aab4      0x101 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-ctype_.o)
-                0x0800aab4                _ctype_
+                0x0800aaf4      0x101 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-ctype_.o)
+                0x0800aaf4                _ctype_
  *(.gnu.linkonce.r*)
  *(vtable)
-                0x0800abb8                . = ALIGN (0x4)
- *fill*         0x0800abb5        0x3 
+                0x0800abf8                . = ALIGN (0x4)
+ *fill*         0x0800abf5        0x3 
 
-.glue_7         0x0800abb8        0x0 load address 0x0c00abb8
- .glue_7        0x0800abb8        0x0 linker stubs
+.glue_7         0x0800abf8        0x0 load address 0x0c00abf8
+ .glue_7        0x0800abf8        0x0 linker stubs
 
-.glue_7t        0x0800abb8        0x0 load address 0x0c00abb8
- .glue_7t       0x0800abb8        0x0 linker stubs
+.glue_7t        0x0800abf8        0x0 load address 0x0c00abf8
+ .glue_7t       0x0800abf8        0x0 linker stubs
 
-.vfp11_veneer   0x0800abb8        0x0 load address 0x0c00abb8
- .vfp11_veneer  0x0800abb8        0x0 linker stubs
+.vfp11_veneer   0x0800abf8        0x0 load address 0x0c00abf8
+ .vfp11_veneer  0x0800abf8        0x0 linker stubs
 
-.v4_bx          0x0800abb8        0x0 load address 0x0c00abb8
- .v4_bx         0x0800abb8        0x0 linker stubs
+.v4_bx          0x0800abf8        0x0 load address 0x0c00abf8
+ .v4_bx         0x0800abf8        0x0 linker stubs
 
-.iplt           0x0800abb8        0x0 load address 0x0c00abb8
- .iplt          0x0800abb8        0x0 src/xmc4500_uart_lib.o
+.iplt           0x0800abf8        0x0 load address 0x0c00abf8
+ .iplt          0x0800abf8        0x0 src/xmc4500_uart_lib.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
@@ -6386,17 +6499,17 @@ END GROUP
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800abb8                . = ALIGN (0x4)
-                0x0800abb8                __exidx_start = .
+                0x0800abf8                . = ALIGN (0x4)
+                0x0800abf8                __exidx_start = .
 
-.ARM.exidx      0x0800abb8        0x8 load address 0x0c00abb8
+.ARM.exidx      0x0800abf8        0x8 load address 0x0c00abf8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0800abb8        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
-                0x0800abc0                __exidx_end = .
+ .ARM.exidx     0x0800abf8        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
+                0x0800ac00                __exidx_end = .
 
-.rel.dyn        0x0800abc0        0x0 load address 0x0c00abc0
- .rel.iplt      0x0800abc0        0x0 src/xmc4500_uart_lib.o
-                0x0800abc0                . = ALIGN (0x4)
+.rel.dyn        0x0800ac00        0x0 load address 0x0c00ac00
+ .rel.iplt      0x0800ac00        0x0 src/xmc4500_uart_lib.o
+                0x0800ac00                . = ALIGN (0x4)
 
 Stack           0x10000000      0x800
                 0x10000000                __stack_start = .
@@ -6405,25 +6518,25 @@ Stack           0x10000000      0x800
                 0x10000800                __stack_end = .
                 0x10000800                __initial_sp = .
 
-.ram_code       0x10000800        0x0 load address 0x0c00abc0
+.ram_code       0x10000800        0x0 load address 0x0c00ac00
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __ram_code_start = .
  *(.ram_code)
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __ram_code_end = .
-                0x0c00abc0                __ram_code_load = LOADADDR (.ram_code)
+                0x0c00ac00                __ram_code_load = LOADADDR (.ram_code)
                 0x00000000                __ram_code_size = (__ram_code_end - __ram_code_start)
 
-PSRAM_DATA      0x10000800        0x0 load address 0x0c00abc0
+PSRAM_DATA      0x10000800        0x0 load address 0x0c00ac00
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __data3_start = .
  *(PSRAM_DATA)
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __data3_end = .
-                0x0c00abc0                __data3_load = LOADADDR (PSRAM_DATA)
+                0x0c00ac00                __data3_load = LOADADDR (PSRAM_DATA)
                 0x00000000                __data3_size = (__data3_end - __data3_start)
 
-PSRAM_BSS       0x10000800        0x0 load address 0x0c00abc0
+PSRAM_BSS       0x10000800        0x0 load address 0x0c00ac00
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __bss3_start = .
  *(PSRAM_BSS)
@@ -6433,7 +6546,7 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c00abc0
                 0x10000800                Heap_Bank3_Start = .
                 0x00000000                __bss3_size = (__bss3_end - __bss3_start)
 
-.data           0x20000000      0x9e8 load address 0x0c00abc0
+.data           0x20000000      0x9e8 load address 0x0c00ac00
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                __data_start = .
  *(.data)
@@ -6488,13 +6601,13 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c00abc0
                 [!provide]                PROVIDE (__fini_array_end, .)
                 0x200009e8                . = ALIGN (0x4)
                 0x200009e8                __data_end = .
-                0x0c00abc0                __data_load = LOADADDR (.data)
+                0x0c00ac00                __data_load = LOADADDR (.data)
                 0x000009e8                __data_size = (__data_end - __data_start)
 
-.igot.plt       0x200009e8        0x0 load address 0x0c00b5a8
+.igot.plt       0x200009e8        0x0 load address 0x0c00b5e8
  .igot.plt      0x200009e8        0x0 src/xmc4500_uart_lib.o
 
-.bss            0x200009e8       0xe8 load address 0x0c00b5a8
+.bss            0x200009e8       0xe8 load address 0x0c00b5e8
                 0x200009e8                . = ALIGN (0x4)
                 0x200009e8                __bss_start = .
  *(.bss)
@@ -6510,16 +6623,16 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c00abc0
                 0x20000a2c                uart_rx
  .bss.rx_ctr.7958
                 0x20000a38        0x1 src/xmc4500_uart_lib.o
- .bss.buttonIDpressed.10334
+ .bss.buttonIDpressed.10339
                 0x20000a39        0x1 src/3Daccel_out_library.o
  *fill*         0x20000a3a        0x2 
- .bss.ticks.10333
+ .bss.ticks.10338
                 0x20000a3c        0x4 src/3Daccel_out_library.o
- .bss.smoothSignal1.10336
+ .bss.smoothSignal1.10341
                 0x20000a40        0x8 src/3Daccel_out_library.o
- .bss.smoothSignal2.10337
+ .bss.smoothSignal2.10342
                 0x20000a48        0x8 src/3Daccel_out_library.o
- .bss.i.10335   0x20000a50        0x1 src/3Daccel_out_library.o
+ .bss.i.10340   0x20000a50        0x1 src/3Daccel_out_library.o
  .bss.ODR_old_value.8483
                 0x20000a51        0x1 src/lis3dh_driver.o
  *fill*         0x20000a52        0x2 
@@ -6576,18 +6689,18 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c00abc0
                 0x2000ffc0                SystemCoreClock
                 0x2000ffc4                g_chipid
 
-DSRAM2_DATA     0x30000000        0x0 load address 0x0c00b5a8
+DSRAM2_DATA     0x30000000        0x0 load address 0x0c00b5e8
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __data2_start = .
  *(DSRAM2_DATA)
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __data2_end = .
-                0x0c00b5a8                __data2_load = LOADADDR (DSRAM2_DATA)
+                0x0c00b5e8                __data2_load = LOADADDR (DSRAM2_DATA)
                 0x00000000                __data2_size = (__data2_end - __data2_start)
-                0x0000b5a8                __text_size = (((((__exidx_end - sText) + __data_size) + __ram_code_size) + __data2_size) + __data3_size)
-                0x0800b5a8                eText = (sText + __text_size)
+                0x0000b5e8                __text_size = (((((__exidx_end - sText) + __data_size) + __ram_code_size) + __data2_size) + __data3_size)
+                0x0800b5e8                eText = (sText + __text_size)
 
-DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b5a8
+DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b5e8
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __bss2_start = .
  *(ETH_RAM)
@@ -6624,42 +6737,44 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b5a8
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xaf8
+.debug_aranges  0x00000000      0xb30
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x88 src/xmc4500_uart_lib.o
  .debug_aranges
                 0x00000088       0x28 src/servo_library.o
  .debug_aranges
-                0x000000b0       0x58 src/servo_driver.o
+                0x000000b0       0x70 src/3Daccel_out_library.o
  .debug_aranges
-                0x00000108       0x90 src/3Daccel_out_library.o
+                0x00000120       0x58 src/servo_driver.o
  .debug_aranges
-                0x00000198       0x50 src/debug_lib.o
+                0x00000178       0x58 src/3Daccel_out_driver.o
  .debug_aranges
-                0x000001e8       0x60 src/xmc4500_i2c_lib.o
+                0x000001d0       0x50 src/debug_lib.o
  .debug_aranges
-                0x00000248       0x38 src/lis3dh_library.o
+                0x00000220       0x60 src/xmc4500_i2c_lib.o
  .debug_aranges
-                0x00000280      0x1a8 src/lis3dh_driver.o
+                0x00000280       0x38 src/lis3dh_library.o
  .debug_aranges
-                0x00000428       0x30 src/3Daccel_app.o
+                0x000002b8      0x1a8 src/lis3dh_driver.o
  .debug_aranges
-                0x00000458       0xa0 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x00000460       0x30 src/3Daccel_app.o
  .debug_aranges
-                0x000004f8       0x48 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x00000490       0xa0 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .debug_aranges
-                0x00000540       0x28 ./xmclib/src/xmc4_gpio.o
+                0x00000530       0x48 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .debug_aranges
-                0x00000568       0x70 ./xmclib/src/xmc_uart.o
+                0x00000578       0x28 ./xmclib/src/xmc4_gpio.o
  .debug_aranges
-                0x000005d8       0xa8 ./xmclib/src/xmc_i2c.o
+                0x000005a0       0x70 ./xmclib/src/xmc_uart.o
  .debug_aranges
-                0x00000680      0x3c8 ./xmclib/src/xmc4_scu.o
+                0x00000610       0xa8 ./xmclib/src/xmc_i2c.o
  .debug_aranges
-                0x00000a48       0x90 ./xmclib/src/xmc_usic.o
+                0x000006b8      0x3c8 ./xmclib/src/xmc4_scu.o
  .debug_aranges
-                0x00000ad8       0x20 /tmp/ccwRlX3y.o
+                0x00000a80       0x90 ./xmclib/src/xmc_usic.o
+ .debug_aranges
+                0x00000b10       0x20 /tmp/ccEUeJSH.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -6667,168 +6782,174 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b5a8
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_info     0x00000000     0xa84f
+.debug_info     0x00000000     0xab4d
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x113a src/xmc4500_uart_lib.o
  .debug_info    0x0000113a       0xfe src/servo_library.o
- .debug_info    0x00001238      0x8cf src/servo_driver.o
- .debug_info    0x00001b07      0x931 src/3Daccel_out_library.o
- .debug_info    0x00002438      0xfd4 src/debug_lib.o
- .debug_info    0x0000340c      0xa62 src/xmc4500_i2c_lib.o
- .debug_info    0x00003e6e      0x3c2 src/lis3dh_library.o
- .debug_info    0x00004230      0xf75 src/lis3dh_driver.o
- .debug_info    0x000051a5      0x927 src/3Daccel_app.o
- .debug_info    0x00005acc      0x636 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_info    0x00006102      0x7fb ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_info    0x000068fd      0x409 ./xmclib/src/xmc4_gpio.o
- .debug_info    0x00006d06      0x815 ./xmclib/src/xmc_uart.o
- .debug_info    0x0000751b      0x9d7 ./xmclib/src/xmc_i2c.o
- .debug_info    0x00007ef2     0x1de4 ./xmclib/src/xmc4_scu.o
- .debug_info    0x00009cd6      0xade ./xmclib/src/xmc_usic.o
- .debug_info    0x0000a7b4       0x9b /tmp/ccwRlX3y.o
+ .debug_info    0x00001238      0x58a src/3Daccel_out_library.o
+ .debug_info    0x000017c2      0x8cf src/servo_driver.o
+ .debug_info    0x00002091      0x6a5 src/3Daccel_out_driver.o
+ .debug_info    0x00002736      0xfd4 src/debug_lib.o
+ .debug_info    0x0000370a      0xa62 src/xmc4500_i2c_lib.o
+ .debug_info    0x0000416c      0x3c2 src/lis3dh_library.o
+ .debug_info    0x0000452e      0xf75 src/lis3dh_driver.o
+ .debug_info    0x000054a3      0x927 src/3Daccel_app.o
+ .debug_info    0x00005dca      0x636 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_info    0x00006400      0x7fb ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_info    0x00006bfb      0x409 ./xmclib/src/xmc4_gpio.o
+ .debug_info    0x00007004      0x815 ./xmclib/src/xmc_uart.o
+ .debug_info    0x00007819      0x9d7 ./xmclib/src/xmc_i2c.o
+ .debug_info    0x000081f0     0x1de4 ./xmclib/src/xmc4_scu.o
+ .debug_info    0x00009fd4      0xade ./xmclib/src/xmc_usic.o
+ .debug_info    0x0000aab2       0x9b /tmp/ccEUeJSH.o
 
-.debug_abbrev   0x00000000     0x1d4c
+.debug_abbrev   0x00000000     0x1e88
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x2b7 src/xmc4500_uart_lib.o
  .debug_abbrev  0x000002b7       0xa0 src/servo_library.o
- .debug_abbrev  0x00000357      0x13f src/servo_driver.o
- .debug_abbrev  0x00000496      0x24f src/3Daccel_out_library.o
- .debug_abbrev  0x000006e5      0x27a src/debug_lib.o
- .debug_abbrev  0x0000095f      0x242 src/xmc4500_i2c_lib.o
- .debug_abbrev  0x00000ba1       0xe0 src/lis3dh_library.o
- .debug_abbrev  0x00000c81      0x121 src/lis3dh_driver.o
- .debug_abbrev  0x00000da2      0x1c6 src/3Daccel_app.o
- .debug_abbrev  0x00000f68      0x14a ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_abbrev  0x000010b2      0x1c0 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_abbrev  0x00001272      0x127 ./xmclib/src/xmc4_gpio.o
- .debug_abbrev  0x00001399      0x233 ./xmclib/src/xmc_uart.o
- .debug_abbrev  0x000015cc      0x2ac ./xmclib/src/xmc_i2c.o
- .debug_abbrev  0x00001878      0x2a0 ./xmclib/src/xmc4_scu.o
- .debug_abbrev  0x00001b18      0x220 ./xmclib/src/xmc_usic.o
- .debug_abbrev  0x00001d38       0x14 /tmp/ccwRlX3y.o
+ .debug_abbrev  0x00000357      0x1b5 src/3Daccel_out_library.o
+ .debug_abbrev  0x0000050c      0x13f src/servo_driver.o
+ .debug_abbrev  0x0000064b      0x1d6 src/3Daccel_out_driver.o
+ .debug_abbrev  0x00000821      0x27a src/debug_lib.o
+ .debug_abbrev  0x00000a9b      0x242 src/xmc4500_i2c_lib.o
+ .debug_abbrev  0x00000cdd       0xe0 src/lis3dh_library.o
+ .debug_abbrev  0x00000dbd      0x121 src/lis3dh_driver.o
+ .debug_abbrev  0x00000ede      0x1c6 src/3Daccel_app.o
+ .debug_abbrev  0x000010a4      0x14a ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_abbrev  0x000011ee      0x1c0 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_abbrev  0x000013ae      0x127 ./xmclib/src/xmc4_gpio.o
+ .debug_abbrev  0x000014d5      0x233 ./xmclib/src/xmc_uart.o
+ .debug_abbrev  0x00001708      0x2ac ./xmclib/src/xmc_i2c.o
+ .debug_abbrev  0x000019b4      0x2a0 ./xmclib/src/xmc4_scu.o
+ .debug_abbrev  0x00001c54      0x220 ./xmclib/src/xmc_usic.o
+ .debug_abbrev  0x00001e74       0x14 /tmp/ccEUeJSH.o
 
-.debug_line     0x00000000     0x5985
+.debug_line     0x00000000     0x5eb2
  *(.debug_line)
  .debug_line    0x00000000      0x56f src/xmc4500_uart_lib.o
  .debug_line    0x0000056f      0x2d6 src/servo_library.o
- .debug_line    0x00000845      0x360 src/servo_driver.o
- .debug_line    0x00000ba5      0x68f src/3Daccel_out_library.o
- .debug_line    0x00001234      0x3f8 src/debug_lib.o
- .debug_line    0x0000162c      0x4ec src/xmc4500_i2c_lib.o
- .debug_line    0x00001b18      0x4c8 src/lis3dh_library.o
- .debug_line    0x00001fe0      0xa51 src/lis3dh_driver.o
- .debug_line    0x00002a31      0x51f src/3Daccel_app.o
- .debug_line    0x00002f50      0x3fa ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_line    0x0000334a      0x43a ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_line    0x00003784      0x3a4 ./xmclib/src/xmc4_gpio.o
- .debug_line    0x00003b28      0x498 ./xmclib/src/xmc_uart.o
- .debug_line    0x00003fc0      0x545 ./xmclib/src/xmc_i2c.o
- .debug_line    0x00004505      0xe92 ./xmclib/src/xmc4_scu.o
- .debug_line    0x00005397      0x53f ./xmclib/src/xmc_usic.o
- .debug_line    0x000058d6       0xaf /tmp/ccwRlX3y.o
+ .debug_line    0x00000845      0x603 src/3Daccel_out_library.o
+ .debug_line    0x00000e48      0x360 src/servo_driver.o
+ .debug_line    0x000011a8      0x5a1 src/3Daccel_out_driver.o
+ .debug_line    0x00001749      0x3f8 src/debug_lib.o
+ .debug_line    0x00001b41      0x4ec src/xmc4500_i2c_lib.o
+ .debug_line    0x0000202d      0x4c8 src/lis3dh_library.o
+ .debug_line    0x000024f5      0xa51 src/lis3dh_driver.o
+ .debug_line    0x00002f46      0x537 src/3Daccel_app.o
+ .debug_line    0x0000347d      0x3fa ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_line    0x00003877      0x43a ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_line    0x00003cb1      0x3a4 ./xmclib/src/xmc4_gpio.o
+ .debug_line    0x00004055      0x498 ./xmclib/src/xmc_uart.o
+ .debug_line    0x000044ed      0x545 ./xmclib/src/xmc_i2c.o
+ .debug_line    0x00004a32      0xe92 ./xmclib/src/xmc4_scu.o
+ .debug_line    0x000058c4      0x53f ./xmclib/src/xmc_usic.o
+ .debug_line    0x00005e03       0xaf /tmp/ccEUeJSH.o
 
-.debug_frame    0x00000000     0x3e1c
+.debug_frame    0x00000000     0x3ea4
  *(.debug_frame)
  .debug_frame   0x00000000      0x234 src/xmc4500_uart_lib.o
  .debug_frame   0x00000234       0x50 src/servo_library.o
- .debug_frame   0x00000284      0x134 src/servo_driver.o
- .debug_frame   0x000003b8      0x258 src/3Daccel_out_library.o
- .debug_frame   0x00000610      0x10c src/debug_lib.o
- .debug_frame   0x0000071c      0x164 src/xmc4500_i2c_lib.o
- .debug_frame   0x00000880       0xa0 src/lis3dh_library.o
- .debug_frame   0x00000920      0x71c src/lis3dh_driver.o
- .debug_frame   0x0000103c       0x7c src/3Daccel_app.o
- .debug_frame   0x000010b8      0x28c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_frame   0x00001344       0xe0 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_frame   0x00001424       0x60 ./xmclib/src/xmc4_gpio.o
- .debug_frame   0x00001484      0x1b8 ./xmclib/src/xmc_uart.o
- .debug_frame   0x0000163c      0x2b8 ./xmclib/src/xmc_i2c.o
- .debug_frame   0x000018f4     0x10cc ./xmclib/src/xmc4_scu.o
- .debug_frame   0x000029c0      0x254 ./xmclib/src/xmc_usic.o
- .debug_frame   0x00002c14       0x38 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
- .debug_frame   0x00002c4c       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
- .debug_frame   0x00002c6c       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
- .debug_frame   0x00002cb0       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
- .debug_frame   0x00002ce0       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
- .debug_frame   0x00002d00       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
- .debug_frame   0x00002d20       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
- .debug_frame   0x00002d4c       0x34 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
- .debug_frame   0x00002d80       0x74 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
- .debug_frame   0x00002df4       0x48 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
- .debug_frame   0x00002e3c       0x84 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sprintf.o)
- .debug_frame   0x00002ec0       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strncmp.o)
- .debug_frame   0x00002f14       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
- .debug_frame   0x00002f58       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
- .debug_frame   0x00002fe0       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
- .debug_frame   0x00003030       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wsetup.o)
- .debug_frame   0x0000305c       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
- .debug_frame   0x000030e4       0x6c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
- .debug_frame   0x00003150      0x124 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
- .debug_frame   0x00003274       0x74 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
- .debug_frame   0x000032e8       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fvwrite.o)
- .debug_frame   0x00003350       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fwalk.o)
- .debug_frame   0x000033a4       0x84 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
- .debug_frame   0x00003428       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-localeconv.o)
- .debug_frame   0x00003468       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
- .debug_frame   0x000034d0       0x58 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mallocr.o)
- .debug_frame   0x00003528       0x4c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mbtowc_r.o)
- .debug_frame   0x00003574       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memmove.o)
- .debug_frame   0x000035a4       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
- .debug_frame   0x000035d4      0x264 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
- .debug_frame   0x00003838       0x60 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reallocr.o)
- .debug_frame   0x00003898       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sbrkr.o)
- .debug_frame   0x000038c4       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
- .debug_frame   0x0000394c       0x78 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfiprintf.o)
- .debug_frame   0x000039c4       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
- .debug_frame   0x00003a8c       0x3c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wctomb_r.o)
- .debug_frame   0x00003ac8       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-writer.o)
- .debug_frame   0x00003af4       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-callocr.o)
- .debug_frame   0x00003b1c       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-closer.o)
- .debug_frame   0x00003b48       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fclose.o)
- .debug_frame   0x00003b8c       0x8c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
- .debug_frame   0x00003c18       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fstatr.o)
- .debug_frame   0x00003c44       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-isattyr.o)
- .debug_frame   0x00003c70       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-lseekr.o)
- .debug_frame   0x00003c9c       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-readr.o)
- .debug_frame   0x00003cc8       0x58 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reent.o)
- .debug_frame   0x00003d20       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wbuf.o)
- .debug_frame   0x00003d60       0x5c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wcrtomb.o)
- .debug_frame   0x00003dbc       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00003de8       0x34 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00000284      0x1a8 src/3Daccel_out_library.o
+ .debug_frame   0x0000042c      0x134 src/servo_driver.o
+ .debug_frame   0x00000560      0x138 src/3Daccel_out_driver.o
+ .debug_frame   0x00000698      0x10c src/debug_lib.o
+ .debug_frame   0x000007a4      0x164 src/xmc4500_i2c_lib.o
+ .debug_frame   0x00000908       0xa0 src/lis3dh_library.o
+ .debug_frame   0x000009a8      0x71c src/lis3dh_driver.o
+ .debug_frame   0x000010c4       0x7c src/3Daccel_app.o
+ .debug_frame   0x00001140      0x28c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_frame   0x000013cc       0xe0 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_frame   0x000014ac       0x60 ./xmclib/src/xmc4_gpio.o
+ .debug_frame   0x0000150c      0x1b8 ./xmclib/src/xmc_uart.o
+ .debug_frame   0x000016c4      0x2b8 ./xmclib/src/xmc_i2c.o
+ .debug_frame   0x0000197c     0x10cc ./xmclib/src/xmc4_scu.o
+ .debug_frame   0x00002a48      0x254 ./xmclib/src/xmc_usic.o
+ .debug_frame   0x00002c9c       0x38 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
+ .debug_frame   0x00002cd4       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
+ .debug_frame   0x00002cf4       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
+ .debug_frame   0x00002d38       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
+ .debug_frame   0x00002d68       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
+ .debug_frame   0x00002d88       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
+ .debug_frame   0x00002da8       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
+ .debug_frame   0x00002dd4       0x34 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
+ .debug_frame   0x00002e08       0x74 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
+ .debug_frame   0x00002e7c       0x48 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
+ .debug_frame   0x00002ec4       0x84 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sprintf.o)
+ .debug_frame   0x00002f48       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strncmp.o)
+ .debug_frame   0x00002f9c       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
+ .debug_frame   0x00002fe0       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
+ .debug_frame   0x00003068       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
+ .debug_frame   0x000030b8       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wsetup.o)
+ .debug_frame   0x000030e4       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
+ .debug_frame   0x0000316c       0x6c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
+ .debug_frame   0x000031d8      0x124 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
+ .debug_frame   0x000032fc       0x74 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
+ .debug_frame   0x00003370       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fvwrite.o)
+ .debug_frame   0x000033d8       0x54 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fwalk.o)
+ .debug_frame   0x0000342c       0x84 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
+ .debug_frame   0x000034b0       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-localeconv.o)
+ .debug_frame   0x000034f0       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
+ .debug_frame   0x00003558       0x58 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mallocr.o)
+ .debug_frame   0x000035b0       0x4c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x000035fc       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memmove.o)
+ .debug_frame   0x0000362c       0x30 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
+ .debug_frame   0x0000365c      0x264 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+ .debug_frame   0x000038c0       0x60 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reallocr.o)
+ .debug_frame   0x00003920       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000394c       0x88 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
+ .debug_frame   0x000039d4       0x78 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfiprintf.o)
+ .debug_frame   0x00003a4c       0xc8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
+ .debug_frame   0x00003b14       0x3c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00003b50       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-writer.o)
+ .debug_frame   0x00003b7c       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-callocr.o)
+ .debug_frame   0x00003ba4       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-closer.o)
+ .debug_frame   0x00003bd0       0x44 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fclose.o)
+ .debug_frame   0x00003c14       0x8c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
+ .debug_frame   0x00003ca0       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fstatr.o)
+ .debug_frame   0x00003ccc       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-isattyr.o)
+ .debug_frame   0x00003cf8       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-lseekr.o)
+ .debug_frame   0x00003d24       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-readr.o)
+ .debug_frame   0x00003d50       0x58 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reent.o)
+ .debug_frame   0x00003da8       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wbuf.o)
+ .debug_frame   0x00003de8       0x5c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wcrtomb.o)
+ .debug_frame   0x00003e44       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00003e70       0x34 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
 
-.debug_str      0x00000000    0x7ddf1
+.debug_str      0x00000000    0x7de60
  *(.debug_str)
  .debug_str     0x00000000    0x74deb src/xmc4500_uart_lib.o
                               0x75101 (size before relaxing)
  .debug_str     0x00074deb      0x216 src/servo_library.o
                               0x6bd61 (size before relaxing)
- .debug_str     0x00075001      0x2aa src/servo_driver.o
+ .debug_str     0x00075001     0x1b88 src/3Daccel_out_library.o
+                              0x75844 (size before relaxing)
+ .debug_str     0x00076b89      0x2aa src/servo_driver.o
                               0x6c047 (size before relaxing)
- .debug_str     0x000752ab     0x1be0 src/3Daccel_out_library.o
-                              0x75db6 (size before relaxing)
- .debug_str     0x00076e8b      0x4e7 src/debug_lib.o
+ .debug_str     0x00076e33       0xc7 src/3Daccel_out_driver.o
+                              0x75cc1 (size before relaxing)
+ .debug_str     0x00076efa      0x4e7 src/debug_lib.o
                               0x6f31d (size before relaxing)
- .debug_str     0x00077372      0x550 src/xmc4500_i2c_lib.o
+ .debug_str     0x000773e1      0x550 src/xmc4500_i2c_lib.o
                               0x74953 (size before relaxing)
- .debug_str     0x000778c2      0x2da src/lis3dh_library.o
+ .debug_str     0x00077931      0x2da src/lis3dh_library.o
                               0x750d2 (size before relaxing)
- .debug_str     0x00077b9c      0x8cc src/lis3dh_driver.o
+ .debug_str     0x00077c0b      0x8cc src/lis3dh_driver.o
                               0x7573c (size before relaxing)
- .debug_str     0x00078468       0x5f src/3Daccel_app.o
-                              0x75dff (size before relaxing)
- .debug_str     0x000784c7     0x15bc ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_str     0x000784d7       0x5f src/3Daccel_app.o
+                              0x75e16 (size before relaxing)
+ .debug_str     0x00078536     0x15bc ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
                                0x6c37 (size before relaxing)
- .debug_str     0x00079a83      0xc75 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_str     0x00079af2      0xc75 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
                               0x6f431 (size before relaxing)
- .debug_str     0x0007a6f8       0x96 ./xmclib/src/xmc4_gpio.o
+ .debug_str     0x0007a767       0x96 ./xmclib/src/xmc4_gpio.o
                               0x72ce9 (size before relaxing)
- .debug_str     0x0007a78e      0xa67 ./xmclib/src/xmc_uart.o
+ .debug_str     0x0007a7fd      0xa67 ./xmclib/src/xmc_uart.o
                               0x70527 (size before relaxing)
- .debug_str     0x0007b1f5      0x40b ./xmclib/src/xmc_i2c.o
+ .debug_str     0x0007b264      0x40b ./xmclib/src/xmc_i2c.o
                               0x701e2 (size before relaxing)
- .debug_str     0x0007b600     0x21ac ./xmclib/src/xmc4_scu.o
+ .debug_str     0x0007b66f     0x21ac ./xmclib/src/xmc4_scu.o
                               0x7155f (size before relaxing)
- .debug_str     0x0007d7ac      0x645 ./xmclib/src/xmc_usic.o
+ .debug_str     0x0007d81b      0x645 ./xmclib/src/xmc_usic.o
                               0x709b4 (size before relaxing)
 
 .debug_loc
@@ -6837,24 +6958,25 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b5a8
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0x9d8
+.debug_ranges   0x00000000      0xa00
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x78 src/xmc4500_uart_lib.o
  .debug_ranges  0x00000078       0x18 src/servo_library.o
- .debug_ranges  0x00000090       0x48 src/servo_driver.o
- .debug_ranges  0x000000d8       0x80 src/3Daccel_out_library.o
- .debug_ranges  0x00000158       0x40 src/debug_lib.o
- .debug_ranges  0x00000198       0x50 src/xmc4500_i2c_lib.o
- .debug_ranges  0x000001e8       0x28 src/lis3dh_library.o
- .debug_ranges  0x00000210      0x198 src/lis3dh_driver.o
- .debug_ranges  0x000003a8       0x20 src/3Daccel_app.o
- .debug_ranges  0x000003c8       0x90 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_ranges  0x00000458       0x38 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_ranges  0x00000490       0x18 ./xmclib/src/xmc4_gpio.o
- .debug_ranges  0x000004a8       0x60 ./xmclib/src/xmc_uart.o
- .debug_ranges  0x00000508       0x98 ./xmclib/src/xmc_i2c.o
- .debug_ranges  0x000005a0      0x3b8 ./xmclib/src/xmc4_scu.o
- .debug_ranges  0x00000958       0x80 ./xmclib/src/xmc_usic.o
+ .debug_ranges  0x00000090       0x60 src/3Daccel_out_library.o
+ .debug_ranges  0x000000f0       0x48 src/servo_driver.o
+ .debug_ranges  0x00000138       0x48 src/3Daccel_out_driver.o
+ .debug_ranges  0x00000180       0x40 src/debug_lib.o
+ .debug_ranges  0x000001c0       0x50 src/xmc4500_i2c_lib.o
+ .debug_ranges  0x00000210       0x28 src/lis3dh_library.o
+ .debug_ranges  0x00000238      0x198 src/lis3dh_driver.o
+ .debug_ranges  0x000003d0       0x20 src/3Daccel_app.o
+ .debug_ranges  0x000003f0       0x90 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_ranges  0x00000480       0x38 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_ranges  0x000004b8       0x18 ./xmclib/src/xmc4_gpio.o
+ .debug_ranges  0x000004d0       0x60 ./xmclib/src/xmc_uart.o
+ .debug_ranges  0x00000530       0x98 ./xmclib/src/xmc_i2c.o
+ .debug_ranges  0x000005c8      0x3b8 ./xmclib/src/xmc4_scu.o
+ .debug_ranges  0x00000980       0x80 ./xmclib/src/xmc_usic.o
 
 .debug_weaknames
  *(.debug_weaknames)
@@ -6869,171 +6991,173 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b5a8
  *(.debug_varnames)
 
 .build_attributes
-                0x00000000      0xf2d
+                0x00000000      0xf64
  *(.ARM.attributes)
  .ARM.attributes
                 0x00000000       0x37 src/xmc4500_uart_lib.o
  .ARM.attributes
                 0x00000037       0x37 src/servo_library.o
  .ARM.attributes
-                0x0000006e       0x37 src/servo_driver.o
+                0x0000006e       0x37 src/3Daccel_out_library.o
  .ARM.attributes
-                0x000000a5       0x37 src/3Daccel_out_library.o
+                0x000000a5       0x37 src/servo_driver.o
  .ARM.attributes
-                0x000000dc       0x37 src/debug_lib.o
+                0x000000dc       0x37 src/3Daccel_out_driver.o
  .ARM.attributes
-                0x00000113       0x37 src/xmc4500_i2c_lib.o
+                0x00000113       0x37 src/debug_lib.o
  .ARM.attributes
-                0x0000014a       0x37 src/lis3dh_library.o
+                0x0000014a       0x37 src/xmc4500_i2c_lib.o
  .ARM.attributes
-                0x00000181       0x37 src/lis3dh_driver.o
+                0x00000181       0x37 src/lis3dh_library.o
  .ARM.attributes
-                0x000001b8       0x37 src/3Daccel_app.o
+                0x000001b8       0x37 src/lis3dh_driver.o
  .ARM.attributes
-                0x000001ef       0x37 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x000001ef       0x37 src/3Daccel_app.o
  .ARM.attributes
-                0x00000226       0x37 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x00000226       0x37 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
  .ARM.attributes
-                0x0000025d       0x37 ./xmclib/src/xmc4_gpio.o
+                0x0000025d       0x37 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .ARM.attributes
-                0x00000294       0x37 ./xmclib/src/xmc_uart.o
+                0x00000294       0x37 ./xmclib/src/xmc4_gpio.o
  .ARM.attributes
-                0x000002cb       0x37 ./xmclib/src/xmc_i2c.o
+                0x000002cb       0x37 ./xmclib/src/xmc_uart.o
  .ARM.attributes
-                0x00000302       0x37 ./xmclib/src/xmc4_scu.o
+                0x00000302       0x37 ./xmclib/src/xmc_i2c.o
  .ARM.attributes
-                0x00000339       0x37 ./xmclib/src/xmc_usic.o
+                0x00000339       0x37 ./xmclib/src/xmc4_scu.o
  .ARM.attributes
-                0x00000370       0x25 /tmp/ccwRlX3y.o
+                0x00000370       0x37 ./xmclib/src/xmc_usic.o
  .ARM.attributes
-                0x00000395       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
+                0x000003a7       0x25 /tmp/ccEUeJSH.o
  .ARM.attributes
-                0x000003c7       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
+                0x000003cc       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .ARM.attributes
-                0x000003f9       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
+                0x000003fe       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
  .ARM.attributes
-                0x0000042b       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
+                0x00000430       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
  .ARM.attributes
-                0x0000045d       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_lib_ver.o)
+                0x00000462       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
  .ARM.attributes
-                0x0000048f       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
+                0x00000494       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_lib_ver.o)
  .ARM.attributes
-                0x000004c1       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_addsubdf3.o)
+                0x000004c6       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
  .ARM.attributes
-                0x000004e3       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_muldivdf3.o)
+                0x000004f8       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000505       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_cmpdf2.o)
+                0x0000051a       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00000527       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_unorddf2.o)
+                0x0000053c       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x00000549       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixdfsi.o)
+                0x0000055e       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_unorddf2.o)
  .ARM.attributes
-                0x0000056b       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixunsdfsi.o)
+                0x00000580       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixdfsi.o)
  .ARM.attributes
-                0x0000058d       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
+                0x000005a2       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixunsdfsi.o)
  .ARM.attributes
-                0x000005bf       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-impure.o)
+                0x000005c4       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
  .ARM.attributes
-                0x000005f1       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
+                0x000005f6       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000623       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
+                0x00000628       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
  .ARM.attributes
-                0x00000643       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
+                0x0000065a       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x00000675       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
+                0x0000067a       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
  .ARM.attributes
-                0x000006a7       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
+                0x000006ac       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
  .ARM.attributes
-                0x000006d9       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sprintf.o)
+                0x000006de       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
  .ARM.attributes
-                0x0000070b       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strlen.o)
+                0x00000710       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sprintf.o)
  .ARM.attributes
-                0x0000072b       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strncmp.o)
+                0x00000742       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strlen.o)
  .ARM.attributes
-                0x0000075d       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
+                0x00000762       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strncmp.o)
  .ARM.attributes
-                0x0000078f       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
+                0x00000794       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfprintf.o)
  .ARM.attributes
-                0x000007c1       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
+                0x000007c6       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfprintf.o)
  .ARM.attributes
-                0x000007f3       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wsetup.o)
+                0x000007f8       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vsprintf.o)
  .ARM.attributes
-                0x00000825       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
+                0x0000082a       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wsetup.o)
  .ARM.attributes
-                0x00000857       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
+                0x0000085c       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-dtoa.o)
  .ARM.attributes
-                0x00000889       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
+                0x0000088e       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fflush.o)
  .ARM.attributes
-                0x000008bb       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
+                0x000008c0       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-findfp.o)
  .ARM.attributes
-                0x000008ed       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fvwrite.o)
+                0x000008f2       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-freer.o)
  .ARM.attributes
-                0x0000091f       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fwalk.o)
+                0x00000924       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fvwrite.o)
  .ARM.attributes
-                0x00000951       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
+                0x00000956       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fwalk.o)
  .ARM.attributes
-                0x00000983       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-localeconv.o)
+                0x00000988       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-locale.o)
  .ARM.attributes
-                0x000009b5       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
+                0x000009ba       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-localeconv.o)
  .ARM.attributes
-                0x000009e7       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mallocr.o)
+                0x000009ec       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-makebuf.o)
  .ARM.attributes
-                0x00000a19       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mbtowc_r.o)
+                0x00000a1e       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x00000a4b       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memchr.o)
+                0x00000a50       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mbtowc_r.o)
  .ARM.attributes
-                0x00000a6b       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memmove.o)
+                0x00000a82       0x20 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memchr.o)
  .ARM.attributes
-                0x00000a9d       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
+                0x00000aa2       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memmove.o)
  .ARM.attributes
-                0x00000acf       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
+                0x00000ad4       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mlock.o)
  .ARM.attributes
-                0x00000b01       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reallocr.o)
+                0x00000b06       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-mprec.o)
  .ARM.attributes
-                0x00000b33       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sbrkr.o)
+                0x00000b38       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reallocr.o)
  .ARM.attributes
-                0x00000b65       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
+                0x00000b6a       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x00000b97       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfiprintf.o)
+                0x00000b9c       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-stdio.o)
  .ARM.attributes
-                0x00000bc9       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
+                0x00000bce       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-svfiprintf.o)
  .ARM.attributes
-                0x00000bfb       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wctomb_r.o)
+                0x00000c00       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-vfiprintf.o)
  .ARM.attributes
-                0x00000c2d       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-writer.o)
+                0x00000c32       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wctomb_r.o)
  .ARM.attributes
-                0x00000c5f       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-callocr.o)
+                0x00000c64       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-writer.o)
  .ARM.attributes
-                0x00000c91       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-closer.o)
+                0x00000c96       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-callocr.o)
  .ARM.attributes
-                0x00000cc3       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-ctype_.o)
+                0x00000cc8       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-closer.o)
  .ARM.attributes
-                0x00000cf5       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fclose.o)
+                0x00000cfa       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-ctype_.o)
  .ARM.attributes
-                0x00000d27       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
+                0x00000d2c       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fclose.o)
  .ARM.attributes
-                0x00000d59       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fstatr.o)
+                0x00000d5e       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fputwc.o)
  .ARM.attributes
-                0x00000d8b       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-isattyr.o)
+                0x00000d90       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-fstatr.o)
  .ARM.attributes
-                0x00000dbd       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-lseekr.o)
+                0x00000dc2       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-isattyr.o)
  .ARM.attributes
-                0x00000def       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-readr.o)
+                0x00000df4       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-lseekr.o)
  .ARM.attributes
-                0x00000e21       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reent.o)
+                0x00000e26       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-readr.o)
  .ARM.attributes
-                0x00000e53       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wbuf.o)
+                0x00000e58       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-reent.o)
  .ARM.attributes
-                0x00000e85       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wcrtomb.o)
+                0x00000e8a       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wbuf.o)
  .ARM.attributes
-                0x00000eb7       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_aeabi_uldivmod.o)
+                0x00000ebc       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-wcrtomb.o)
  .ARM.attributes
-                0x00000ed9       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
+                0x00000eee       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x00000f0b       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_dvmd_tls.o)
+                0x00000f10       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x00000f42       0x22 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_dvmd_tls.o)
 OUTPUT(./bin/main.elf elf32-littlearm)
 
-.debug_macro    0x00000000    0x1ae51
+.debug_macro    0x00000000    0x1b23e
  .debug_macro   0x00000000      0x257 src/xmc4500_uart_lib.o
  .debug_macro   0x00000257      0x88c src/xmc4500_uart_lib.o
  .debug_macro   0x00000ae3       0x22 src/xmc4500_uart_lib.o
@@ -7083,36 +7207,41 @@ OUTPUT(./bin/main.elf elf32-littlearm)
  .debug_macro   0x00018180       0x44 src/servo_library.o
  .debug_macro   0x000181c4       0x9a src/servo_library.o
  .debug_macro   0x0001825e       0x10 src/servo_library.o
- .debug_macro   0x0001826e       0xbc src/servo_driver.o
- .debug_macro   0x0001832a      0x2bd src/3Daccel_out_library.o
- .debug_macro   0x000185e7       0x16 src/3Daccel_out_library.o
- .debug_macro   0x000185fd       0x22 src/3Daccel_out_library.o
- .debug_macro   0x0001861f       0x2e src/3Daccel_out_library.o
- .debug_macro   0x0001864d       0x10 src/3Daccel_out_library.o
- .debug_macro   0x0001865d      0x503 src/3Daccel_out_library.o
- .debug_macro   0x00018b60       0xa0 src/3Daccel_out_library.o
- .debug_macro   0x00018c00       0xde src/3Daccel_out_library.o
- .debug_macro   0x00018cde       0x82 src/3Daccel_out_library.o
- .debug_macro   0x00018d60      0x19b src/debug_lib.o
- .debug_macro   0x00018efb       0x52 src/debug_lib.o
- .debug_macro   0x00018f4d      0x24c src/xmc4500_i2c_lib.o
- .debug_macro   0x00019199      0x265 src/lis3dh_library.o
- .debug_macro   0x000193fe      0x25b src/lis3dh_driver.o
- .debug_macro   0x00019659      0x2c7 src/3Daccel_app.o
- .debug_macro   0x00019920      0x163 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019a83      0x16d ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019bf0       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019c00       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019c10       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019c20       0x2e ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019c4e       0xf5 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019d43       0x16 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x00019d59      0x4f7 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_macro   0x0001a250      0x2f4 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_macro   0x0001a544       0x10 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_macro   0x0001a554       0x22 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_macro   0x0001a576      0x1b1 ./xmclib/src/xmc4_gpio.o
- .debug_macro   0x0001a727      0x1c3 ./xmclib/src/xmc_uart.o
- .debug_macro   0x0001a8ea      0x1bd ./xmclib/src/xmc_i2c.o
- .debug_macro   0x0001aaa7      0x1fc ./xmclib/src/xmc4_scu.o
- .debug_macro   0x0001aca3      0x1ae ./xmclib/src/xmc_usic.o
+ .debug_macro   0x0001826e      0x2d2 src/3Daccel_out_library.o
+ .debug_macro   0x00018540      0x16d src/3Daccel_out_library.o
+ .debug_macro   0x000186ad       0x52 src/3Daccel_out_library.o
+ .debug_macro   0x000186ff       0x10 src/3Daccel_out_library.o
+ .debug_macro   0x0001870f       0x22 src/3Daccel_out_library.o
+ .debug_macro   0x00018731       0x22 src/3Daccel_out_library.o
+ .debug_macro   0x00018753       0x1c src/3Daccel_out_library.o
+ .debug_macro   0x0001876f       0x16 src/3Daccel_out_library.o
+ .debug_macro   0x00018785       0x22 src/3Daccel_out_library.o
+ .debug_macro   0x000187a7       0x93 src/3Daccel_out_library.o
+ .debug_macro   0x0001883a       0x2e src/3Daccel_out_library.o
+ .debug_macro   0x00018868       0x10 src/3Daccel_out_library.o
+ .debug_macro   0x00018878      0x503 src/3Daccel_out_library.o
+ .debug_macro   0x00018d7b       0xa0 src/3Daccel_out_library.o
+ .debug_macro   0x00018e1b       0xde src/3Daccel_out_library.o
+ .debug_macro   0x00018ef9       0x7c src/3Daccel_out_library.o
+ .debug_macro   0x00018f75       0xbc src/servo_driver.o
+ .debug_macro   0x00019031      0x2d6 src/3Daccel_out_driver.o
+ .debug_macro   0x00019307      0x19b src/debug_lib.o
+ .debug_macro   0x000194a2      0x24c src/xmc4500_i2c_lib.o
+ .debug_macro   0x000196ee      0x265 src/lis3dh_library.o
+ .debug_macro   0x00019953      0x25b src/lis3dh_driver.o
+ .debug_macro   0x00019bae      0x2dc src/3Daccel_app.o
+ .debug_macro   0x00019e8a      0x163 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x00019fed       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x00019ffd       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x0001a00d       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x0001a01d       0x2e ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x0001a04b       0xf5 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x0001a140       0x16 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x0001a156      0x4f7 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_macro   0x0001a64d      0x2f4 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_macro   0x0001a941       0x22 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_macro   0x0001a963      0x1b1 ./xmclib/src/xmc4_gpio.o
+ .debug_macro   0x0001ab14      0x1c3 ./xmclib/src/xmc_uart.o
+ .debug_macro   0x0001acd7      0x1bd ./xmclib/src/xmc_i2c.o
+ .debug_macro   0x0001ae94      0x1fc ./xmclib/src/xmc4_scu.o
+ .debug_macro   0x0001b090      0x1ae ./xmclib/src/xmc_usic.o

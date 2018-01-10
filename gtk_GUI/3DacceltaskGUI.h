@@ -12,18 +12,9 @@
 #define _3DACCELTASKGUI_
 
 #include "menucallbacks.h"
+#include "rs232.h"
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <glib.h>
-#include <glib/gprintf.h>
-#include <gio/gio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
 
 #define PI 3.14159265
 #define G 9.81

@@ -1,3 +1,4 @@
 <map id="readButtonDebounce" name="readButtonDebounce">
-<area shape="rect" id="node2" href="$3Daccel__out__library_8c.html#ac4a2bd867b9d2802d1e21f9417df0c43" title="add element to circular buffer " alt="" coords="212,5,307,32"/>
+<area shape="rect" id="node2" href="$3Daccel__out__driver_8c.html#a1aaf11e4a49eb08b0b1b2d9d5868e675" title="read buttons debounce " alt="" coords="212,5,400,32"/>
+<area shape="rect" id="node3" href="$3Daccel__out__library_8c.html#ac4a2bd867b9d2802d1e21f9417df0c43" title="add element to circular buffer " alt="" coords="448,5,543,32"/>
 </map>

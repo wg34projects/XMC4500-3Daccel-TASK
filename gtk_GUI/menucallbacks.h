@@ -19,6 +19,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <time.h>
+#include <sys/time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,8 +47,10 @@ guint waitSendPython(gpointer data);
 guint safeStop(gpointer data);
 guint safeEnd(gpointer data);
 guint safeClose(gpointer data);
+guint quitButton(gpointer data);
 guint buttonFeedback(gpointer data);
 guint freeFallLabel(gpointer data);
+guint wait(gpointer data);
 
 // connection callbacks
 

@@ -20,7 +20,9 @@
 #define G 9.81
 #define GDIVIDER 8190.0	// 2G = 16380 4G = 8190 8G = 4096 16G = 1365
 #define UARTWAIT 100
-#define BUTTONWAIT 100
+#define QUITWAIT 1000
+#define BUTTONWAIT 250
+#define WAIT 2000
 #define POLLMIN 10
 #define POLLMAX 1000
 #define GMIN -4.0
@@ -38,7 +40,7 @@ typedef struct
 	GtkApplication *app;
 	GMenu *appmenu, *gearmenu;
 	GtkWidget *window, *headerbar, *grid, *gearicon, *gearmenubutton, *terminalwindow, *statusBar;
-	GtkWidget *button[11], *label[16], *image[2], *box[2], *entry[5], *radioUSB[5];
+	GtkWidget *button[9], *label[18], *image[2], *box[2], *entry[5], *radioUSB[5];
 	GtkWidget *view, *scroll;
 	GtkTextIter iter, start, end;
 	GtkTextBuffer *buffer;
@@ -46,9 +48,10 @@ typedef struct
 	gchar accelerationXout[25], accelerationYout[1525], accelerationZout[25], tempOut[25];
 	gchar tiltXout[25], tiltYout[25], tiltZout[25], pitchOut[25], rollOut[25];
 	gchar packagesOut[15], errorOut[9], restartPackagesOut[15], fileName[100];
-	gboolean sendSerial, safeWaitStep, safeWaitStop, safeWaitClose, safeEnd, transmission, buttonXMC, freeFallLabel;
- 	guint id, servoState, saveOutgoing, average;
-	gint pollTimeSensor, radioButtonUSBstate, position6Dint;
+	gboolean sendSerial, safeWaitStep, safeWaitStop, safeWaitClose, safeEnd;
+	gboolean transmission, quitButton, freeFallLabel, buttonXMC, wait;
+ 	guint id, servoState, saveOutgoing, average, buttonID;
+	gint pollTimeSensor, radioButtonUSBstate, position6Dint, status, connectionStatus;
 	gdouble accelerationXdouble, accelerationYdouble, accelerationZdouble;
 	gdouble tiltX, tiltY, tiltZ, pitch, roll;
 	gdouble acceltriggerX, acceltriggerY, acceltriggerZ;
@@ -56,6 +59,7 @@ typedef struct
 } widgets;
 
 typedef struct tm TM;
+typedef struct timeval TIMEVAL;
 
 // function prototypes
 

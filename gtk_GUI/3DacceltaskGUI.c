@@ -41,8 +41,11 @@ void constructGUI(gpointer data)
 	a->servoState = 0;
 	a->average = 0;
 	a->transmission = FALSE;
+	a->sendSerial = FALSE;
+	a->wait = FALSE;
 	a->radioButtonUSBstate = 16;
 	a->pollTimeSensor = 100;
+	a->connectionStatus = 0;
 
 	// flush cache
 
@@ -177,6 +180,16 @@ void constructGUI(gpointer data)
 	gtk_label_set_use_markup (GTK_LABEL (a->label[15]), TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[15], 4, 8, 1, 1);
 
+    a->label[16] = gtk_label_new ("<span foreground='white' weight='ultrabold' font='16'> BUTTON 1 </span>");
+	gtk_label_set_use_markup (GTK_LABEL (a->label[16]), TRUE);
+	gtk_label_set_xalign(GTK_LABEL(a->label[16]), 0.5);
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[16], 1, 8, 1, 1);
+
+    a->label[17] = gtk_label_new ("<span foreground='white' weight='ultrabold' font='16'> BUTTON 2 </span>");
+	gtk_label_set_use_markup (GTK_LABEL (a->label[17]), TRUE);
+	gtk_label_set_xalign(GTK_LABEL(a->label[17]), 0.5);
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[17], 2, 8, 1, 1);
+
 	// button section
 
 	a->button[0] = gtk_toggle_button_new_with_label("CONNECTION off");
@@ -246,32 +259,14 @@ void constructGUI(gpointer data)
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[6], 0, 7, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[6]), FALSE);
 
-    a->button[10] = gtk_toggle_button_new_with_label("PWM average");
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[10]), FALSE);
-	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[10]), "toggle average control");
-	gtk_widget_set_hexpand(a->button[10], TRUE);
-	gtk_widget_set_vexpand(a->button[10], TRUE);
-    g_signal_connect(a->button[10], "toggled", G_CALLBACK(average), (gpointer) a);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[10], 0, 8, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[10]), FALSE);
-
-    a->button[8] = gtk_toggle_button_new_with_label("B 1 SERVO");
+    a->button[8] = gtk_toggle_button_new_with_label("PWM average");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
-	a->context = gtk_widget_get_style_context (a->button[8]);
-	gtk_style_context_add_class (a->context, "suggested-action");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[8]), "toggle average control");
 	gtk_widget_set_hexpand(a->button[8], TRUE);
 	gtk_widget_set_vexpand(a->button[8], TRUE);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[8], 1, 8, 1, 1);
+    g_signal_connect(a->button[8], "toggled", G_CALLBACK(average), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[8], 0, 8, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), FALSE);
-
-    a->button[9] = gtk_toggle_button_new_with_label("B 2 STATISTIC");
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[9]), FALSE);
-	a->context = gtk_widget_get_style_context (a->button[9]);
-	gtk_style_context_add_class (a->context, "suggested-action");
-	gtk_widget_set_hexpand(a->button[9], TRUE);
-	gtk_widget_set_vexpand(a->button[9], TRUE);
-	gtk_grid_attach(GTK_GRID (a->grid), a->button[9], 2, 8, 1, 1);
-	gtk_widget_set_sensitive (GTK_WIDGET (a->button[9]), FALSE);
 
 	// statusbar section
 
@@ -331,6 +326,7 @@ void activate(GtkApplication *app, gpointer data)
 	gtk_window_set_title(GTK_WINDOW (a->window), "GNOME Menu");
 	gtk_window_set_position(GTK_WINDOW (a->window), GTK_WIN_POS_CENTER);
 	gtk_window_set_resizable(GTK_WINDOW (a->window), FALSE);
+	gtk_window_set_deletable(GTK_WINDOW (a->window), FALSE);
 
 	constructMenu(app,(gpointer)a);
 	constructGUI((gpointer)a);
@@ -347,6 +343,7 @@ void startup(GApplication *app, gpointer data)
 	widgets *a = (widgets *)data;
 
 	g_action_map_add_action_entries(G_ACTION_MAP(app), appActions, G_N_ELEMENTS(appActions), (gpointer)a);
+
 }
 
 /**
@@ -355,18 +352,18 @@ void startup(GApplication *app, gpointer data)
  */
 int main(int argc, char **argv)
 {
-	gint status;
 	widgets *a = g_malloc(sizeof(widgets));
 
-	a->app = gtk_application_new("org.gtk.example", G_APPLICATION_FLAGS_NONE);
+	a->app = gtk_application_new("org.accel.bel3", G_APPLICATION_FLAGS_NONE);
 	g_signal_connect(a->app, "activate", G_CALLBACK (activate), (gpointer)a);
 	g_signal_connect(a->app, "startup", G_CALLBACK (startup), (gpointer)a);
-	status = g_application_run(G_APPLICATION (a->app), argc, argv);
-	
+
+	a->status = g_application_run(G_APPLICATION (a->app), argc, argv);
+
 	g_object_unref(a->app);
 	g_free(a);
 
-	return status;
+	return a->status;
 }
 
 /** EOF **/

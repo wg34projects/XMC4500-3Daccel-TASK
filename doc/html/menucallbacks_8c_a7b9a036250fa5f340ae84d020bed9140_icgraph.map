@@ -1,9 +1,0 @@
-<map id="rawProtocolDataTimed" name="rawProtocolDataTimed">
-<area shape="rect" id="node2" href="$menucallbacks_8h.html#a3418cf8ecbe0e481b120dad820ba4ed2" title="timer for output and request function " alt="" coords="224,5,379,32"/>
-<area shape="rect" id="node7" href="$menucallbacks_8h.html#a95f8b20505793417cf0b0bd5e36d4fc2" title="timer for output and request terminal function " alt="" coords="232,56,371,83"/>
-<area shape="rect" id="node3" href="$menucallbacks_8h.html#a8638a16b53befe09a4383644825bc04b" title="function for timed data request " alt="" coords="427,5,563,32"/>
-<area shape="rect" id="node4" href="$3DacceltaskGUI_8h.html#a39bb15ce2c31b859d7ac5dd857f86b57" title="main function to describe GUI " alt="" coords="611,31,717,57"/>
-<area shape="rect" id="node5" href="$3DacceltaskGUI_8h.html#a7cd4d905a4d5afd543eee488a3cb37bc" title="main function to activate GUI " alt="" coords="765,31,840,57"/>
-<area shape="rect" id="node6" href="$3DacceltaskGUI_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main routine " alt="" coords="888,31,943,57"/>
-<area shape="rect" id="node8" href="$menucallbacks_8h.html#a46c955a21dcbc010847ab3010fa0deb1" title="function to show data in terminal window " alt="" coords="429,56,560,83"/>
-</map>

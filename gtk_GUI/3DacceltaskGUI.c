@@ -39,6 +39,7 @@ void constructGUI(gpointer data)
 	a->acceltriggerY = 1.5;
 	a->acceltriggerZ = 1.5;
 	a->servoState = 0;
+	a->average = 0;
 	a->transmission = FALSE;
 	a->radioButtonUSBstate = 16;
 	a->pollTimeSensor = 100;
@@ -95,7 +96,7 @@ void constructGUI(gpointer data)
 
 	a->entry[0] = gtk_entry_new();
     gtk_entry_set_placeholder_text(GTK_ENTRY (a->entry[0]), "enter poll time in ms");
-	gtk_grid_attach(GTK_GRID (a->grid), a->entry[0], 2, 5, 1, 1);
+	gtk_grid_attach(GTK_GRID (a->grid), a->entry[0], 1, 4, 1, 1);
 	g_signal_connect (a->entry[0], "activate", G_CALLBACK (entryPollTime), (gpointer) a);
 
 	a->entry[1] = gtk_entry_new();
@@ -133,9 +134,9 @@ void constructGUI(gpointer data)
 	a->label[3] = gtk_label_new("Z-VALUE");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[3], 1, 3, 1, 1);
 
-	a->label[4] = gtk_label_new("LED");
-	gtk_label_set_use_markup (GTK_LABEL (a->label[4]), TRUE);
-	gtk_grid_attach(GTK_GRID (a->grid), a->label[4], 1, 4, 1, 1);
+	a->label[4] = gtk_label_new("sensor readings");
+	gtk_label_set_xalign(GTK_LABEL(a->label[4]), 0.0);
+	gtk_grid_attach(GTK_GRID (a->grid), a->label[4], 2, 5, 1, 1);
 
 	a->label[5] = gtk_label_new("TILT X");
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[5], 2, 0, 1, 1);
@@ -164,10 +165,12 @@ void constructGUI(gpointer data)
 	gtk_label_set_use_markup (GTK_LABEL (a->label[12]), TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[12], 4, 7, 1, 1);
 
-	a->label[13] = gtk_label_new("Packages XMC");
+	a->label[13] = gtk_label_new("sent by XMC since reset");
+	gtk_label_set_xalign(GTK_LABEL(a->label[13]), 0.0);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[13], 2, 6, 1, 1);
 
-	a->label[14] = gtk_label_new("Errors XMC");
+	a->label[14] = gtk_label_new("errors XMC");
+	gtk_label_set_xalign(GTK_LABEL(a->label[14]), 0.0);
 	gtk_grid_attach(GTK_GRID (a->grid), a->label[14], 2, 7, 1, 1);
 
 	a->label[15] = gtk_label_new ("<span foreground='white' weight='ultrabold' font='20'> SAFE </span>");
@@ -176,7 +179,7 @@ void constructGUI(gpointer data)
 
 	// button section
 
-	a->button[0] = gtk_toggle_button_new_with_label("CONNECTION");
+	a->button[0] = gtk_toggle_button_new_with_label("CONNECTION off");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[0]), FALSE);
 	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[0]), "toggle RS232 connection on / off");
 	gtk_widget_set_hexpand(a->button[0], TRUE);
@@ -209,7 +212,7 @@ void constructGUI(gpointer data)
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[2], 0, 3, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 
-	a->button[3] = gtk_toggle_button_new_with_label("TRANSMISSION");
+	a->button[3] = gtk_toggle_button_new_with_label("TRANSMISSION off");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[3]), FALSE);
 	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[3]), "toggle data transmission");
 	gtk_widget_set_hexpand(a->button[3], TRUE);
@@ -234,7 +237,7 @@ void constructGUI(gpointer data)
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[5], 0, 6, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[5]), FALSE);
 
-    a->button[6] = gtk_toggle_button_new_with_label("SERVO");
+    a->button[6] = gtk_toggle_button_new_with_label("SERVO off");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[6]), FALSE);
 	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[6]), "toggle servo control");
 	gtk_widget_set_hexpand(a->button[6], TRUE);
@@ -243,15 +246,28 @@ void constructGUI(gpointer data)
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[6], 0, 7, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[6]), FALSE);
 
-    a->button[8] = gtk_toggle_button_new_with_label("BUTTON 1");
+    a->button[10] = gtk_toggle_button_new_with_label("PWM average");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[10]), FALSE);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(a->button[10]), "toggle average control");
+	gtk_widget_set_hexpand(a->button[10], TRUE);
+	gtk_widget_set_vexpand(a->button[10], TRUE);
+    g_signal_connect(a->button[10], "toggled", G_CALLBACK(average), (gpointer) a);
+	gtk_grid_attach(GTK_GRID (a->grid), a->button[10], 0, 8, 1, 1);
+	gtk_widget_set_sensitive (GTK_WIDGET (a->button[10]), FALSE);
+
+    a->button[8] = gtk_toggle_button_new_with_label("B 1 SERVO");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
+	a->context = gtk_widget_get_style_context (a->button[8]);
+	gtk_style_context_add_class (a->context, "suggested-action");
 	gtk_widget_set_hexpand(a->button[8], TRUE);
 	gtk_widget_set_vexpand(a->button[8], TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[8], 1, 8, 1, 1);
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), FALSE);
 
-    a->button[9] = gtk_toggle_button_new_with_label("BUTTON 2");
+    a->button[9] = gtk_toggle_button_new_with_label("B 2 STATISTIC");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[9]), FALSE);
+	a->context = gtk_widget_get_style_context (a->button[9]);
+	gtk_style_context_add_class (a->context, "suggested-action");
 	gtk_widget_set_hexpand(a->button[9], TRUE);
 	gtk_widget_set_vexpand(a->button[9], TRUE);
 	gtk_grid_attach(GTK_GRID (a->grid), a->button[9], 2, 8, 1, 1);

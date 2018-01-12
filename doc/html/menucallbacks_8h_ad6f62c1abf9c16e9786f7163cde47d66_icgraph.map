@@ -1,8 +1,0 @@
-<map id="getDouble" name="getDouble">
-<area shape="rect" id="node2" href="$menucallbacks_8h.html#a165d61d4e6afc27ecb28e18bb8c5ac09" title="get X trigger from entry " alt="" coords="143,5,251,32"/>
-<area shape="rect" id="node6" href="$menucallbacks_8h.html#a92ed58bc6d05b11c72846365294c34c8" title="get Y trigger from entry " alt="" coords="143,56,250,83"/>
-<area shape="rect" id="node7" href="$menucallbacks_8h.html#aa71183cc2903d0e212f0c132b122411b" title="get Z trigger from entry " alt="" coords="143,107,251,133"/>
-<area shape="rect" id="node3" href="$3DacceltaskGUI_8h.html#a39bb15ce2c31b859d7ac5dd857f86b57" title="main function to describe GUI " alt="" coords="299,56,405,83"/>
-<area shape="rect" id="node4" href="$3DacceltaskGUI_8h.html#a7cd4d905a4d5afd543eee488a3cb37bc" title="main function to activate GUI " alt="" coords="453,56,528,83"/>
-<area shape="rect" id="node5" href="$3DacceltaskGUI_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main routine " alt="" coords="576,56,631,83"/>
-</map>

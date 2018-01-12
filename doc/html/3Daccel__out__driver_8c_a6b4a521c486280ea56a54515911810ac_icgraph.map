@@ -1,5 +1,0 @@
-<map id="ledSettingXMC" name="ledSettingXMC">
-<area shape="rect" id="node2" href="$3Daccel__out__library_8h.html#a923fb698e5e6806825e2cf45cc4960c5" title="function to set LED " alt="" coords="171,5,259,32"/>
-<area shape="rect" id="node3" href="$3Daccel__app_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main routine " alt="" coords="493,5,548,32"/>
-<area shape="rect" id="node4" href="$3Daccel__out__library_8h.html#a3a765df13ada6a922af636a79e2ddf07" title="send data to PC and GUI " alt="" coords="307,31,445,57"/>
-</map>

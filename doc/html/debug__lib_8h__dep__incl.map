@@ -1,8 +1,0 @@
-<map id="inc/debug_lib.h" name="inc/debug_lib.h">
-<area shape="rect" id="node2" href="$debug__lib_8c.html" title="This library retargets the printf() function to generate output via the SWD DEBUG interface..." alt="" coords="65,80,184,107"/>
-<area shape="rect" id="node3" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="209,80,393,107"/>
-<area shape="rect" id="node4" href="$3Daccel__out__driver_8c.html" title="3Daccel out driver " alt="" coords="5,155,185,181"/>
-<area shape="rect" id="node5" href="$3Daccel__out__library_8c.html" title="3Daccel out library " alt="" coords="209,155,392,181"/>
-<area shape="rect" id="node6" href="$3Daccel__app_8h.html" title="3Daccel app header " alt="" coords="416,155,556,181"/>
-<area shape="rect" id="node7" href="$3Daccel__app_8c.html" title="3Daccel app " alt="" coords="417,229,555,256"/>
-</map>

@@ -34,9 +34,11 @@
 #define BUTTON2INT 15
 #define SENSORTICKS 10
 #define PWMAVERAGE 5
+#define ANGAVERAGE 3.5
 #define RNDFACTOR 100.0
 #define SYSTEMTICKDIVIDER 1000
-#define DEBUG 0
+#define DEBUG 1
+
 
 void initGlobals();
 void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ);
@@ -56,6 +58,9 @@ uint8_t inix, outix;
 uint8_t cb[CBSIZE];
 uint8_t statisticSend, servoEnable;
 uint8_t buttonSend;
+uint8_t connection;
+uint8_t averageChoice;
+uint32_t startup;
 uint32_t packagesSent;
 double signal1, signal2;
 

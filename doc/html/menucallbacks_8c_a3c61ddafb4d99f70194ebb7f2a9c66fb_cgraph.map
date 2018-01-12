@@ -1,7 +1,0 @@
-<map id="safeEnd" name="safeEnd">
-<area shape="rect" id="node2" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="135,5,253,32"/>
-<area shape="rect" id="node3" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="132,56,256,83"/>
-<area shape="rect" id="node4" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="128,107,260,133"/>
-<area shape="rect" id="node5" href="$menucallbacks_8c.html#a46eab465044ba2c5b593056a957bfe21" title="timer for safe UART close " alt="" coords="151,157,237,184"/>
-<area shape="rect" id="node6" href="$rs232_8c.html#a2af3e3f582823e7dce5a8b351ff4395e" title="RS232_CloseComport" alt="" coords="308,157,471,184"/>
-</map>

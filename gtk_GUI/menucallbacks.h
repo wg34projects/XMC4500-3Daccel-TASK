@@ -54,6 +54,8 @@ guint freeFallLabel(gpointer data);
 void connectSerial(GtkButton *button, gpointer data);
 void requestData(gpointer data);
 void servoConnector (gpointer data);
+void averageConnector (gpointer data);
+void average(GtkWidget *button, gpointer data);
 void statisticConnector (GtkButton *button, gpointer data);
 void servo(GtkWidget *checkbutton, gpointer data);
 void dataTransmission(GtkButton *button, gpointer data);

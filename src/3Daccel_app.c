@@ -105,11 +105,15 @@ int main (void)
         {
             // LED off - connection END
             ledSetting(0);
+			startup = 0;
+			connection = 0;
         }
         else if (strncmp(rxBuff, "#CON,", strlen(rxBuff)) == 0)
         {
             // LED on - connection established
             ledSetting(1);
+			startup = 0;
+			connection = 1;
         }
         else if (strncmp(rxBuff, "#SER,f", strlen(rxBuff)) == 0)
         {
@@ -120,11 +124,22 @@ int main (void)
         {
             // Servos on
             servoEnable = 1;
+			startup = 0;
         }
         else if (strncmp(rxBuff, "#STA,", strlen(rxBuff)) == 0)
         {
             // send statistic package
             statisticSend = 1;
+        }
+        else if (strncmp(rxBuff, "#AVG,a", strlen(rxBuff)) == 0)
+        {
+            // average Angle
+            averageChoice = 0;
+        }
+        else if (strncmp(rxBuff, "#AVG,p", strlen(rxBuff)) == 0)
+        {
+            // average PWM
+            averageChoice = 1;
         }
         else
         {

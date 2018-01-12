@@ -1,6 +1,0 @@
-<map id="waitSendPython" name="waitSendPython">
-<area shape="rect" id="node2" href="$menucallbacks_8c.html#ad1ea06c96755e6377c58360efd74ac3a" title="function request data from XMC UART " alt="" coords="180,56,283,83"/>
-<area shape="rect" id="node3" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="337,5,456,32"/>
-<area shape="rect" id="node4" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="335,56,459,83"/>
-<area shape="rect" id="node5" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="331,107,463,133"/>
-</map>

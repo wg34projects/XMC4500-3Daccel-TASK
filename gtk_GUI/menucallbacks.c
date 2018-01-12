@@ -401,11 +401,11 @@ guint safeClose(gpointer data)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[3]), FALSE);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[6]), FALSE);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[7]), FALSE);
-	gtk_label_set_label((GtkLabel*)a->label[4], "LED OFF");
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[10]), FALSE);
 
 	gtk_widget_set_sensitive (GTK_WIDGET (a->button[0]), TRUE);
 
-	for (i = 1; i < BUTTONS; i++) 
+	for (i = 1; i < 7; i++) 
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
 	}
@@ -438,6 +438,7 @@ void connectSerial(GtkButton *button, gpointer data)
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
     {
         g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_button_set_label(GTK_BUTTON(a->button[0]), "CONNECTION on");
 		if(RS232_OpenComport(a->radioButtonUSBstate, BAUD, mode))
 		{
 			snprintf(a->bufferStatusBar, sizeof(openComPortError)+1, "%s", openComPortError);
@@ -447,9 +448,8 @@ void connectSerial(GtkButton *button, gpointer data)
 		{
 			snprintf(a->bufferStatusBar, sizeof(openComPortSuccess)+1, "%s", openComPortSuccess);
 			gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, a->bufferStatusBar);
-			gtk_label_set_label((GtkLabel*)a->label[4], "<span foreground='white' background='red' weight='ultrabold' font='12'> LED ON  </span>");
 
-			for (i = 1; i < BUTTONS; i++) 
+			for (i = 1; i < 7; i++) 
 			{
 				gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), TRUE);
 			}
@@ -469,6 +469,7 @@ void connectSerial(GtkButton *button, gpointer data)
     else
     {
         g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_button_set_label(GTK_BUTTON(a->button[0]), "CONNECTION off");
 		a->sendSerial = FALSE;
 		a->safeWaitStop = FALSE;
 		g_timeout_add (UARTWAIT, (GSourceFunc) safeStop, (gpointer) a);
@@ -509,11 +510,46 @@ void servoConnector (gpointer data)
 	{
 		a->servoState = 1;
 		RS232_SendBuf(a->radioButtonUSBstate, requestServoOn, (int)sizeof(requestServoOn));
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[10]), TRUE);
 	}
 	else if (a->servoState == 1)
 	{
 		a->servoState = 0;
 		RS232_SendBuf(a->radioButtonUSBstate, requestServoOff, (int)sizeof(requestServoOff));
+		gtk_widget_set_sensitive (GTK_WIDGET (a->button[10]), FALSE);
+	}
+
+	RS232_SendByte(a->radioButtonUSBstate, '\r');
+
+	if (a->transmission == TRUE)
+	{
+		a->sendSerial = TRUE;
+	}
+}
+
+/**
+ * @brief	function average choose
+ *
+ */
+void averageConnector (gpointer data)
+{
+	widgets *a = (widgets *) data;
+	unsigned char requestAveragePWM[] = "#AVG,p";
+	unsigned char requestAverageANGLE[] = "#AVG,a";
+
+	a->sendSerial = FALSE;
+
+	RS232_flushTX(a->radioButtonUSBstate);
+
+	if (a->average == 0)
+	{
+		a->average = 1;
+		RS232_SendBuf(a->radioButtonUSBstate, requestAveragePWM, (int)sizeof(requestAveragePWM));
+	}
+	else if (a->average == 1)
+	{
+		a->average = 0;
+		RS232_SendBuf(a->radioButtonUSBstate, requestAverageANGLE, (int)sizeof(requestAverageANGLE));
 	}
 
 	RS232_SendByte(a->radioButtonUSBstate, '\r');
@@ -556,15 +592,37 @@ void servo(GtkWidget *button, gpointer data)
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
     {
         g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[10]), FALSE);
+		gtk_button_set_label(GTK_BUTTON(a->button[6]), "SERVO on");
 		a->servoState = 0;
     }
     else
     {
         g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[10]), FALSE);
+		gtk_button_set_label(GTK_BUTTON(a->button[6]), "SERVO off");
 		a->servoState = 1;
     }
 
 	servoConnector((gpointer) a);
+}
+
+void average(GtkWidget *button, gpointer data)
+{
+	widgets *a = (widgets *) data;
+
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
+    {
+        g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_button_set_label(GTK_BUTTON(a->button[10]), "ANGLE average");
+    }
+    else
+    {
+        g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_button_set_label(GTK_BUTTON(a->button[10]), "PWM average");
+    }
+
+	averageConnector((gpointer) a);
 }
 
 /**
@@ -576,7 +634,7 @@ void dataTransmission(GtkButton *button, gpointer data)
 	widgets *a = (widgets *) data;
 	gint i = 0;
 	
-	for (i = 2; i < BUTTONS-2; i++) 
+	for (i = 2; i < 5; i++) 
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[i]), FALSE);
 	}
@@ -585,6 +643,7 @@ void dataTransmission(GtkButton *button, gpointer data)
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
     {
         g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_button_set_label(GTK_BUTTON(a->button[3]), "TRANSMISSION on");
 		a->transmission = TRUE;
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[1]), TRUE);
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[4]), FALSE);
@@ -598,6 +657,7 @@ void dataTransmission(GtkButton *button, gpointer data)
     else
     {
         g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
+		gtk_button_set_label(GTK_BUTTON(a->button[3]), "TRANSMISSION off");
 		a->transmission = FALSE;
 		a->sendSerial = FALSE;
 		gtk_widget_set_sensitive (GTK_WIDGET (a->button[7]), FALSE);
@@ -729,8 +789,8 @@ void rawProtocolDataTimed(gpointer data)
 	unsigned char buf[OSBUFFER] = { 0 };
 	int n = 0, i = 0;
 	FILE *saveFile = NULL;
-	gchar accelerationX[8], accelerationY[8], accelerationZ[8], packages[11], error[4];
-	gint accelerationXint, accelerationYint, accelerationZint, packagesInt, errorInt;
+	gchar accelerationX[8], accelerationY[8], accelerationZ[8], packages[11], error[4], packagesOut[11];
+	gint accelerationXint, accelerationYint, accelerationZint, packagesInt, packagesOutInt, errorInt;
 	TM *timeStamp, timeTemp;
 	time_t timeEpoch;
 	gchar timeZone[100];
@@ -747,7 +807,7 @@ void rawProtocolDataTimed(gpointer data)
 		g_print ("strftime returned 0");
 		return;
 	}
-
+	
 	memset (&buf, 0, sizeof (buf));
 	n = RS232_PollComport(a->radioButtonUSBstate, buf, (OSBUFFER-1));
 	RS232_flushRX(a->radioButtonUSBstate);
@@ -780,7 +840,7 @@ void rawProtocolDataTimed(gpointer data)
 		}
 		packages[10] = '\0';
 		getInteger(packages, &packagesInt);
-		g_sprintf(a->packagesOut, "data %d", packagesInt);
+		g_sprintf(a->packagesOut, "total\t%d", packagesInt);
 		
 		if (strncpy(error, a->line+16, 3) != error)
 		{
@@ -788,8 +848,17 @@ void rawProtocolDataTimed(gpointer data)
 		}
 		error[3] = '\0';
 		getInteger(error, &errorInt);
-		g_sprintf(a->errorOut, "error %d", errorInt);
+		g_sprintf(a->errorOut, "errors\t%d", errorInt);
 
+		if (strncpy(packagesOut, a->line+20, 10) != packagesOut)
+		{
+			g_print("strncpy error\n");
+		}
+		packagesOut[10] = '\0';
+		getInteger(packagesOut, &packagesOutInt);
+		g_sprintf(a->restartPackagesOut, "sensor\t%d", packagesOutInt);
+
+		gtk_label_set_label((GtkLabel*)a->label[4], a->restartPackagesOut);
 		gtk_label_set_label((GtkLabel*)a->label[13], a->packagesOut);
 		gtk_label_set_label((GtkLabel*)a->label[14], a->errorOut);
 		return;
@@ -799,12 +868,25 @@ void rawProtocolDataTimed(gpointer data)
 		if(a->line[5] == '1')
 		{
 		    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), TRUE);
+
+			if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(a->button[6])) == TRUE)
+			{
+				gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[6]), FALSE);
+				a->servoState = 0;
+			}
+			else
+			{
+				gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[6]), TRUE);
+				a->servoState = 1;
+			}
+			
 			a->buttonXMC = FALSE;
 			g_timeout_add (BUTTONWAIT, (GSourceFunc) buttonFeedback, (gpointer) a);
 		}
 		else if(a->line[5] == '2')
 		{
 		    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[9]), TRUE);
+			statisticConnector (NULL, (gpointer) a);
 			a->buttonXMC = FALSE;
 			g_timeout_add (BUTTONWAIT, (GSourceFunc) buttonFeedback, (gpointer) a);
 		}				

@@ -1,5 +1,0 @@
-<map id="requestData" name="requestData">
-<area shape="rect" id="node2" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="163,5,281,32"/>
-<area shape="rect" id="node3" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="160,56,284,83"/>
-<area shape="rect" id="node4" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="156,107,288,133"/>
-</map>

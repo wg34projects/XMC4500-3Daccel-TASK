@@ -36,6 +36,9 @@ void initGlobals()
     outix = 0;
     full = 0;
     empty = 1;
+	startup = 0;
+	connection = 0;
+	averageChoice = 0;
 }
 
 /**
@@ -94,9 +97,11 @@ void SysTick_Handler (void)
         }
     }
 
-    ticks++;
-    if(ticks == SENSORTICKS)
-    {
+	if (connection == 1)
+	{
+	    ticks++;
+    	if(ticks == SENSORTICKS)
+		{
         // get 6D Position
         direction = get6Dposition();
         // get raw data
@@ -105,31 +110,40 @@ void SysTick_Handler (void)
         pwmAngleCalc(readAxes.axisX, readAxes.axisY, readAxes.axisZ);
 
         ticks = 0;
-    }
-
-    if (servoEnable == 1)
-    {
-		smoothSignal1 += signal1;
-		smoothSignal2 += signal2;
-		i++;
-		if (i == PWMAVERAGE)
-		{
-	        // set servo
-			smoothSignal1 /= PWMAVERAGE;
-			smoothSignal2 /= PWMAVERAGE;
-    	    pwm(smoothSignal1, 0);
-    	    pwm(smoothSignal2, 1);
-			smoothSignal1 = 0.0;
-			smoothSignal2 = 0.0;
-			i = 0;
 		}
-    }
-    else
-    {
-        // reset servo
-        pwm(SERVOUPCENTER, 0);
-        pwm(SERVOLOCENTER, 1);
-    }
+
+	    if (servoEnable == 1)
+	    {
+			if (averageChoice == 0)
+			{
+				smoothSignal1 += signal1;
+				smoothSignal2 += signal2;
+				i++;
+				if (i == PWMAVERAGE)
+				{
+				    // set servo
+					smoothSignal1 /= PWMAVERAGE;
+					smoothSignal2 /= PWMAVERAGE;
+				    pwm(smoothSignal1, 0);
+				    pwm(smoothSignal2, 1);
+					smoothSignal1 = 0.0;
+					smoothSignal2 = 0.0;
+					i = 0;
+				}
+			}
+			else if (averageChoice == 1)
+			{
+		   	    pwm(signal1, 0);
+		   	    pwm(signal2, 1);
+			}
+	    }
+		else
+		{
+		    // reset servo
+		    pwm(SERVOUPCENTER, 0);
+		    pwm(SERVOLOCENTER, 1);
+		}
+	}
 }
 
 /**
@@ -152,7 +166,7 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
     if (statisticSend == 1)
     {
         // send statistic package if requested
-        if (sprintf(send, "#STA,%10lu,%3d$\n", packagesSent, errorcount) < 0)
+        if (sprintf(send, "#STA,%10lu,%3d,%10lu$\n", packagesSent, errorcount, startup) < 0)
         {
             errorcount++;
         }
@@ -269,22 +283,53 @@ void ledSetting(uint8_t ledState)
  */
 void pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
 {
-    double pi = PI;
-    double divider = GDIVIDER;
-    double roll, pitch;
-    double gX, gY, gZ;
+    double roll = 0.0, pitch = 0.0;
+    double gX = 0, gY = 0, gZ = 0;
+	static double rollStored = 0.0;
+	static double pitchStored = 0.0;
 
-    gX = positionX / divider;
-    gY = positionY / divider;
-    gZ = positionZ / divider;
+    gX = positionX / GDIVIDER;
+    gY = positionY / GDIVIDER;
+    gZ = positionZ / GDIVIDER;
 
-    roll = atan(gY/(sqrt((gX*gX)+(gZ*gZ)))) * 180 / pi;
-    pitch = atan(gX/(sqrt((gY*gY)+(gZ*gZ)))) * 180 / pi;
+    roll = atan(gY/(sqrt((gX*gX)+(gZ*gZ)))) * 180 / PI;
+    pitch = atan(gX/(sqrt((gY*gY)+(gZ*gZ)))) * 180 / PI;
 
 	if (pitch >= 0.0)
 	{
 		pitch += pitch * PITCHCORRECTPOS;
 	}
+
+	if (startup == 0)
+	{
+		pitchStored = pitch;
+		rollStored = roll;
+	}
+	else
+	{
+		if (averageChoice == 1)
+		{
+			if (fabs(pitch - pitchStored) < ANGAVERAGE)
+			{
+				pitch = pitchStored;
+			}
+			else
+			{
+				pitchStored = pitch;
+			}
+
+			if (fabs(roll - rollStored) < ANGAVERAGE)
+			{
+				roll = rollStored;
+			}
+			else
+			{
+				pitchStored = pitch;
+			}
+		}
+	}
+
+	startup++;
 
     signal1 = (90.00+roll) * SERVOUOLINEAR + SERUPLO0;
     signal2 = (90.00+pitch) * SERVOLOLINEAR + SERVOLO0;

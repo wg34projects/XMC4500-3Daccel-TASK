@@ -8,7 +8,7 @@ https://cis.technikum-wien.at/documents/bel/3/ess/semesterplan/tasks/tasks.html
 
 | screenshot task description |
 |------------------------------------|
-| ![alt text](./pictures/taskdescriptionCIS.png "PWM calculations") |
+| ![alt text](../../pictures/taskdescriptionCIS.png "PWM calculations") |
 
 # realized task
 
@@ -57,19 +57,19 @@ The graph shows the app > library > driver structure of the uC source code.
 
 | dependency graph |
 |------------------|
-| ![alt text](./pictures/dependency_graph_XMC.png "XMC software") |
+| ![alt text](../../pictures/dependency_graph_XMC.png "XMC software") |
 
 The graph shows the function calls of the uC source code.
 
 | functions graph |
 |-----------------|
-| ![alt text](./pictures/function_graph_uc.png "uC software") |
+| ![alt text](../../pictures/function_graph_uc.png "uC software") |
 
 ## settings for the hardware PWM and angle correction of sensor
 
 | calculations for PWM signal servos and necessary settings for counter and prescaler |
 |------------------------------------|
-| ![alt text](./pictures/PWM_servo_calc.png "PWM calculations") |
+| ![alt text](../../pictures/PWM_servo_calc.png "PWM calculations") |
 
 | calculation for angle correction sensor |
 |-----------------------------------------|
@@ -184,13 +184,13 @@ splint +posixlib -unrecog -standard +trytorecover -preproc -predboolint +matchan
 
 | sensor |
 |--------|
-| ![alt text](./pictures/sensor.png "picture sensor") |
+| ![alt text](../../pictures/sensor.png "picture sensor") |
 
 - XMC connector includes 4k7 pullup resistors for I2C, signal and power connections, terminal blocks for external 5V power source (for servos) and terminal blocks to connected signals and power.
 
 | XMC connector |
 |---------------|
-| ![alt text](./pictures/XMCconnector.png "XMC connector") |
+| ![alt text](../../pictures/XMCconnector.png "XMC connector") |
 
 - external power source
 
@@ -198,7 +198,7 @@ The servos are supplied by an external 5V power source.
 
 | power |
 |-------|
-| ![alt text](./pictures/power.png "power") |
+| ![alt text](../../pictures/power.png "power") |
 
 - servos
 
@@ -206,7 +206,7 @@ Simple analog servos from Conrad used for the hardware.
 
 | servos |
 |--------|
-| ![alt text](./pictures/servo.png "servos") |
+| ![alt text](../../pictures/servo.png "servos") |
 
 - big picture
 
@@ -214,7 +214,7 @@ Simple wooden construction for the servos.
 
 | big picture |
 |-------------|
-| ![alt text](./pictures/viewall.png "bigpicture") |
+| ![alt text](../../pictures/viewall.png "bigpicture") |
 
 ## testing
 
@@ -222,7 +222,7 @@ Oscilloscope screenshots of PWM signal.
 
 | -90° / 0° | 0° | +90° / 180° |
 |-----------|----|-------------|
-| ![alt text](./pictures/PWM3.png "PWM 3%") | ![alt text](./pictures/PWM7.png "PWM 7%") | ![alt text](./pictures/PWM12.png "PWM 12%") |
+| ![alt text](../../pictures/PWM3.png "PWM 3%") | ![alt text](../../pictures/PWM7.png "PWM 7%") | ![alt text](../../pictures/PWM12.png "PWM 12%") |
 
 # PC GUI software
 
@@ -242,17 +242,17 @@ Graph of all GUI function calls.
 
 | functions graph |
 |-----------------|
-| ![alt text](./pictures/function_graph_GUI.png "GUI software") |
+| ![alt text](../../pictures/function_graph_GUI.png "GUI software") |
 
 ## GUI overview
 
 | GUI overview after start |
 |--------------------------|
-| ![alt text](./pictures/GUI_screenshot_start.png "GUI view start") |
+| ![alt text](../../pictures/GUI_screenshot_start.png "GUI view start") |
 
 | GUI description |
 |-----------------|
-| ![alt text](./pictures/GUI_screenshot_commented.png "GUI view commented") |
+| ![alt text](../../pictures/GUI_screenshot_commented.png "GUI view commented") |
 
 (0) Highlights values which have to be set before connection...
 

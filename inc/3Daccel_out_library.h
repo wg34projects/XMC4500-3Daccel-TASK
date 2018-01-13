@@ -17,31 +17,32 @@
 #include "xmc4500_uart_lib.h"
 #include <math.h>
 
-#define CBSIZE 10
-#define RXBUFFERSIZE 64
-#define GDIVIDER 8190.0
+#define CBSIZE 10					// size of ringbuffer
+#define RXBUFFERSIZE 64				// size of UART receive buffer
+#define GDIVIDER 8190.0				// divider to convert raw sensor values, presetting 4G
 #define PI 3.141592654
-#define SERUPLO0 3.00
-#define SERVOUPCENTER 7.50
-#define SERVOUOLINEAR 0.050
-#define SERVOLO0 3.00
-#define SERVOLOCENTER 7.50
-#define SERVOLOLINEAR 0.050
-#define PITCHCORRECTPOS 0.05294
-#define BUTTON1 P1_14
-#define BUTTON2 P1_15
-#define BUTTON1INT 14
-#define BUTTON2INT 15
-#define SENSORTICKS 10
-#define PWMAVERAGE 5
-#define ANGAVERAGE 3.5
-#define RNDFACTOR 100.0
-#define SYSTEMTICKDIVIDER 1000
-#define DEBUG 1
 
+// see README.md for description of the values as defined below
+				
+#define SERUPLO0 3.00				// upper servo -90° PWM dutycycle
+#define SERVOUPCENTER 7.50			// upper servo 0° PWM dutycycle
+#define SERVOUOLINEAR 0.050			// upper servo linear factor
+#define SERVOLO0 3.00				// lower servo -90° PWM dutycycle
+#define SERVOLOCENTER 7.50			// lower servo 0° PWM dutycycle
+#define SERVOLOLINEAR 0.050			// lower servo linear factor
+#define PITCHCORRECTPOS 0.05294		// pitch angle correction value
+
+#define SENSORTICKS 10				// every 10 ticks - with presetting systemtick every 10ms sensor request
+#define PWMAVERAGE 5				// averaging value
+#define ANGAVERAGE 3.5				// threshold value
+#define RNDFACTOR 100.0				// round to 0.01
+#define SYSTEMTICKDIVIDER 1000		// systick every ms
+#define DEBUG 0						// debug messages
+
+// function prototypes
 
 void initGlobals();
-void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ);
+void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ);
 void outputInit(void);
 void ledSetting(uint8_t ledState);
 void getDouble(char *input, double *numDouble);
@@ -51,6 +52,8 @@ uint8_t circularAdd (uint8_t item);
 uint8_t circularGet (uint8_t *pItem);
 void readButtonDebounce();
 void inputInit();
+
+// globals
 
 AXESRAWDATA readAxes;
 uint8_t full, empty;

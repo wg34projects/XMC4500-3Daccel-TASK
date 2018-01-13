@@ -36,9 +36,9 @@ void initGlobals()
     outix = 0;
     full = 0;
     empty = 1;
-	startup = 0;
-	connection = 0;
-	averageChoice = 0;
+    startup = 0;
+    connection = 0;
+    averageChoice = 0;
 }
 
 /**
@@ -62,8 +62,8 @@ void SysTick_Handler (void)
 {
     static uint32_t ticks = 0;
     static uint8_t buttonIDpressed;
-	static uint8_t i = 0;
-	static double smoothSignal1 = 0.0, smoothSignal2 = 0.0;
+    static uint8_t i = 0;
+    static double smoothSignal1 = 0.0, smoothSignal2 = 0.0;
 
     // read buttons and fill circular buffer
 
@@ -97,53 +97,75 @@ void SysTick_Handler (void)
         }
     }
 
-	if (connection == 1)
-	{
-	    ticks++;
-    	if(ticks == SENSORTICKS)
-		{
-        // get 6D Position
-        direction = get6Dposition();
-        // get raw data
-        readAxes = getAxesRawData();
-        // calculate servo output
-        pwmAngleCalc(readAxes.axisX, readAxes.axisY, readAxes.axisZ);
+	// ticks acction only when connected
+    if (connection == 1)
+    {
+        ticks++;
+        if(ticks == SENSORTICKS)
+        {
+            // get 6D Position
+            direction = get6Dposition();
+            // get raw data
+            readAxes = getAxesRawData();
+            // calculate servo output
+            pwmAngleCalc(readAxes.axisX, readAxes.axisY, readAxes.axisZ);
 
-        ticks = 0;
-		}
+            ticks = 0;
+        }
 
-	    if (servoEnable == 1)
-	    {
-			if (averageChoice == 0)
-			{
-				smoothSignal1 += signal1;
-				smoothSignal2 += signal2;
-				i++;
-				if (i == PWMAVERAGE)
-				{
-				    // set servo
-					smoothSignal1 /= PWMAVERAGE;
-					smoothSignal2 /= PWMAVERAGE;
-				    pwm(smoothSignal1, 0);
-				    pwm(smoothSignal2, 1);
-					smoothSignal1 = 0.0;
-					smoothSignal2 = 0.0;
-					i = 0;
-				}
-			}
-			else if (averageChoice == 1)
-			{
-		   	    pwm(signal1, 0);
-		   	    pwm(signal2, 1);
-			}
-	    }
-		else
-		{
-		    // reset servo
-		    pwm(SERVOUPCENTER, 0);
-		    pwm(SERVOLOCENTER, 1);
-		}
-	}
+		// servo action only when connected
+        if (servoEnable == 1)
+        {
+            if (averageChoice == 0)
+            {
+				// PWM averaging
+                smoothSignal1 += signal1;
+                smoothSignal2 += signal2;
+                i++;
+                if (i == PWMAVERAGE)
+                {
+                    // set servo
+                    smoothSignal1 /= PWMAVERAGE;
+                    smoothSignal2 /= PWMAVERAGE;
+                    if (pwm(smoothSignal1, 0) != 0)
+                    {
+                        errorcount++;
+                    }
+                    if (pwm(smoothSignal2, 1) != 0)
+                    {
+                        errorcount++;
+                    }
+                    smoothSignal1 = 0.0;
+                    smoothSignal2 = 0.0;
+                    i = 0;
+                }
+            }
+            else if (averageChoice == 1)
+            {
+				// angle thresholding
+                if (pwm(signal1, 0) != 0)
+                {
+                    errorcount++;
+                }
+                if (pwm(signal2, 1) != 0)
+                {
+                    errorcount++;
+                }
+            }
+        }
+        else
+        {
+            // reset servo
+            if (pwm(SERVOUPCENTER, 0) != 0)
+            {
+                errorcount++;
+            }
+            if (pwm(SERVOLOCENTER, 1) != 0)
+            {
+                errorcount++;
+            }
+        }
+    }
 }
 
 /**
@@ -156,7 +178,7 @@ void SysTick_Handler (void)
  * @return	none
  *
  */
-void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ)
+void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ)
 {
     char string6D[8][6] = {"#USX,", "#UDX,", "#DSX,", "#DDX,", "#TOP,", "#BOT,", "#XXX,", "#FAL,"};
     char send[RXBUFFERSIZE];
@@ -166,7 +188,7 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
     if (statisticSend == 1)
     {
         // send statistic package if requested
-        if (sprintf(send, "#STA,%10lu,%3d,%10lu$\n", packagesSent, errorcount, startup) < 0)
+        if (snprintf(send, 31, "#STA,%10lu,%3d,%10lu$\n", packagesSent, errorcount, startup) < 0)
         {
             errorcount++;
         }
@@ -175,7 +197,10 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
 #if DEBUG
             printf("send %s", send);
 #endif
-            _uart_printf("%s", send);
+            if (_uart_printf("%s", send) != 0)
+            {
+                errorcount++;
+            }
             packagesSent++;
         }
         statisticSend = 0;
@@ -184,7 +209,7 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
     else if (buttonSend == 1)
     {
         // send button 1 pressed
-        if (sprintf(send, "#BUT,1$\n") < 0)
+        if (snprintf(send, 7, "#BUT,1$\n") < 0)
         {
             errorcount++;
         }
@@ -193,7 +218,10 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
 #if DEBUG
             printf("send %s", send);
 #endif
-            _uart_printf("%s", send);
+            if(_uart_printf("%s", send) != 0)
+            {
+                errorcount++;
+            }
             packagesSent++;
         }
         buttonSend = 0;
@@ -202,7 +230,7 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
     else if (buttonSend == 2)
     {
         // send button 2 pressed
-        if (sprintf(send, "#BUT,2$\n") < 0)
+        if (snprintf(send, 7, "#BUT,2$\n") < 0)
         {
             errorcount++;
         }
@@ -211,7 +239,10 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
 #if DEBUG
             printf("send %s", send);
 #endif
-            _uart_printf("%s", send);
+            if(_uart_printf("%s", send) != 0)
+            {
+                errorcount++;
+            }
             packagesSent++;
         }
         buttonSend = 0;
@@ -220,7 +251,7 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
     else
     {
         // send acceleration data
-        if (sprintf(send, "%s%7d%s%7d%s%7d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ) < 0)
+        if (snprintf(send, 29,"%s%7d%s%7d%s%7d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ) < 0)
         {
             errorcount++;
         }
@@ -229,7 +260,10 @@ void protocolComplete(int16_t position6D, int16_t positionX, int16_t positionY, 
 #if DEBUG
             printf("send %s", send);
 #endif
-            _uart_printf("%s", send);
+            if(_uart_printf("%s", send) != 0)
+            {
+                errorcount++;
+            }
             ledSetting(3);
             packagesSent++;
         }
@@ -270,7 +304,7 @@ void getDouble(char *input, double *numDouble)
  */
 void ledSetting(uint8_t ledState)
 {
-	ledSettingXMC(ledState);
+    ledSettingXMC(ledState);
 }
 
 /**
@@ -283,53 +317,59 @@ void ledSetting(uint8_t ledState)
  */
 void pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
 {
-    double roll = 0.0, pitch = 0.0;
+    double roll, pitch;
     double gX = 0, gY = 0, gZ = 0;
-	static double rollStored = 0.0;
-	static double pitchStored = 0.0;
+    static double rollStored = 0.0;
+    static double pitchStored = 0.0;
 
+	// calculate acceleration values from raw values
     gX = positionX / GDIVIDER;
     gY = positionY / GDIVIDER;
     gZ = positionZ / GDIVIDER;
 
+	// calculate angles for servos
     roll = atan(gY/(sqrt((gX*gX)+(gZ*gZ)))) * 180 / PI;
     pitch = atan(gX/(sqrt((gY*gY)+(gZ*gZ)))) * 180 / PI;
 
-	if (pitch >= 0.0)
-	{
-		pitch += pitch * PITCHCORRECTPOS;
-	}
+	// angle correction as documented
+    if (pitch >= 0.0)
+    {
+        pitch += pitch * PITCHCORRECTPOS;
+    }
 
-	if (startup == 0)
-	{
-		pitchStored = pitch;
-		rollStored = roll;
-	}
-	else
-	{
-		if (averageChoice == 1)
-		{
-			if (fabs(pitch - pitchStored) < ANGAVERAGE)
-			{
-				pitch = pitchStored;
-			}
-			else
-			{
-				pitchStored = pitch;
-			}
+	// angle thresholding
+    if (startup == 0)
+    {
+        pitchStored = pitch;
+        rollStored = roll;
+    }
+    else
+    {
+        if (averageChoice == 1)
+        {
+            if (fabs(pitch - pitchStored) < ANGAVERAGE)
+            {
+                pitch = pitchStored;
+            }
+            else
+            {
+                pitchStored = pitch;
+            }
 
-			if (fabs(roll - rollStored) < ANGAVERAGE)
-			{
-				roll = rollStored;
-			}
-			else
-			{
-				pitchStored = pitch;
-			}
-		}
-	}
+            if (fabs(roll - rollStored) < ANGAVERAGE)
+            {
+                roll = rollStored;
+            }
+            else
+            {
+                pitchStored = pitch;
+            }
+        }
+    }
 
-	startup++;
+    startup++;
+
+	// final signal values 
 
     signal1 = (90.00+roll) * SERVOUOLINEAR + SERUPLO0;
     signal2 = (90.00+pitch) * SERVOLOLINEAR + SERVOLO0;

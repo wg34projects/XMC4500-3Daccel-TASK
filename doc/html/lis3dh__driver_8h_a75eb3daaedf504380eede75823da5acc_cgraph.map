@@ -1,0 +1,4 @@
+<map id="LIS3DH_ResetInt1Latch" name="LIS3DH_ResetInt1Latch">
+<area shape="rect" id="node2" href="$lis3dh__driver_8c.html#a34bf2e408596452f55618e57e8ba6233" title="LIS3DH_ReadReg" alt="" coords="225,5,357,32"/>
+<area shape="rect" id="node3" href="$xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02" title="This function writes/reads data to a specific I2C channel. " alt="" coords="405,5,487,32"/>
+</map>

@@ -118,37 +118,6 @@ uint8_t configMEMSsensor()
         errorcount++;
     }
 
-    // internal temperature sensor
-    if (LIS3DH_SetADCAux(MEMS_ENABLE) == 1)
-    {
-        printf("LIS3DH_SetADCAux done...");
-    }
-    else
-    {
-        error++;
-        errorcount++;
-    }
-
-    if (LIS3DH_SetBDU(MEMS_ENABLE) == 1)
-    {
-        printf("LIS3DH_SetBDU done...\n");
-    }
-    else
-    {
-        error++;
-        errorcount++;
-    }
-
-    if (LIS3DH_SetTemperature(MEMS_ENABLE) == 1)
-    {
-        printf("LIS3DH_SetTemperature done...\n");
-    }
-    else
-    {
-        error++;
-        errorcount++;
-    }
-
     return error;
 }
 
@@ -161,6 +130,8 @@ uint8_t configMEMSsensor()
 uint8_t get6Dposition()
 {
     uint8_t response = 0;
+
+	// request 6D position and set global variable
 
     response = LIS3DH_Get6DPosition(&position);
 
@@ -229,6 +200,8 @@ AXESRAWDATA getAxesRawData()
     dataOut.axisX = 0;
     dataOut.axisY = 0;
     dataOut.axisZ = 0;
+
+	// request sensor data and add to struct
 
     response = LIS3DH_GetAccAxesRaw(&data);
     if(response != 1)

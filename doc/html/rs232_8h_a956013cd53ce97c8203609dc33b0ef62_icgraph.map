@@ -1,0 +1,6 @@
+<map id="RS232_OpenComport" name="RS232_OpenComport">
+<area shape="rect" id="node2" href="$menucallbacks_8h.html#afb5e0da082f7af4b6ce5e85012b8fe18" title="function connect UART " alt="" coords="213,5,324,32"/>
+<area shape="rect" id="node3" href="$3DacceltaskGUI_8h.html#a39bb15ce2c31b859d7ac5dd857f86b57" title="main function to describe GUI " alt="" coords="372,5,479,32"/>
+<area shape="rect" id="node4" href="$3DacceltaskGUI_8h.html#a7cd4d905a4d5afd543eee488a3cb37bc" title="main function to activate GUI " alt="" coords="527,5,601,32"/>
+<area shape="rect" id="node5" href="$3DacceltaskGUI_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main routine " alt="" coords="649,5,704,32"/>
+</map>

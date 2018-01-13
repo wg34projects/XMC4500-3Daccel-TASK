@@ -18,6 +18,8 @@
  */
 void outputInitXMC(void)
 {
+	// config LED output
+
     XMC_GPIO_CONFIG_t config_out;
     config_out.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL;
     config_out.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW;
@@ -33,6 +35,8 @@ void outputInitXMC(void)
  */
 void readButtonDebounceXMC()
 {
+	// read both onboard buttons with debounce
+
     if ((XMC_GPIO_GetInput(BUTTON1) == 0) && (button1pressed == 0))
     {
         button1pressed = 1;
@@ -77,6 +81,8 @@ void readButtonDebounceXMC()
  */
 void ledSettingXMC(uint8_t ledState)
 {
+	// LED settings
+
     if (ledState == 0)
     {
         XMC_GPIO_SetOutputLow(XMC_GPIO_PORT1, 0);
@@ -99,6 +105,8 @@ void ledSettingXMC(uint8_t ledState)
  */
 void inputInitXMC()
 {
+	// init onboard buttons
+
     XMC_GPIO_CONFIG_t config_in;
     config_in.mode = XMC_GPIO_MODE_INPUT_INVERTED_PULL_UP;
     XMC_GPIO_Init(BUTTON1, &config_in);

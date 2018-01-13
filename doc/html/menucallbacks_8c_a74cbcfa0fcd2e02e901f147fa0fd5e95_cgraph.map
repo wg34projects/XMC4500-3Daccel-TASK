@@ -1,0 +1,6 @@
+<map id="average" name="average">
+<area shape="rect" id="node2" href="$menucallbacks_8c.html#a0f2531a07a3cdccf2ae0edfa9045f98f" title="function average choose " alt="" coords="128,56,269,83"/>
+<area shape="rect" id="node3" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="324,5,443,32"/>
+<area shape="rect" id="node4" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="321,56,445,83"/>
+<area shape="rect" id="node5" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="317,107,449,133"/>
+</map>

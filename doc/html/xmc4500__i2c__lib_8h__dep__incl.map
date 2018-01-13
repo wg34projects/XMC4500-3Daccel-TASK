@@ -1,0 +1,12 @@
+<map id="inc/xmc4500_i2c_lib.h" name="inc/xmc4500_i2c_lib.h">
+<area shape="rect" id="node2" href="$xmc4500__i2c__lib_8c.html" title="src/xmc4500_i2c_lib.c" alt="" coords="5,80,171,107"/>
+<area shape="rect" id="node3" href="$lis3dh__driver_8h.html" title="lis3dh driver header " alt="" coords="195,80,335,107"/>
+<area shape="rect" id="node4" href="$lis3dh__driver_8c.html" title="lis3dh driver " alt="" coords="113,155,252,181"/>
+<area shape="rect" id="node5" href="$lis3dh__library_8h.html" title="lis3dh library header " alt="" coords="277,155,419,181"/>
+<area shape="rect" id="node6" href="$lis3dh__library_8c.html" title="lis3dh library " alt="" coords="183,229,326,256"/>
+<area shape="rect" id="node7" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="351,229,535,256"/>
+<area shape="rect" id="node8" href="$3Daccel__out__driver_8c.html" title="3Daccel out driver " alt="" coords="147,304,327,331"/>
+<area shape="rect" id="node9" href="$3Daccel__out__library_8c.html" title="3Daccel out library " alt="" coords="351,304,534,331"/>
+<area shape="rect" id="node10" href="$3Daccel__app_8h.html" title="3Daccel app header " alt="" coords="558,304,698,331"/>
+<area shape="rect" id="node11" href="$3Daccel__app_8c.html" title="3Daccel app " alt="" coords="559,379,697,405"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="configMEMSsensor" name="configMEMSsensor">
+<area shape="rect" id="node2" href="$lis3dh__driver_8c.html#acb37136225c72c1dac3af64315ae9b8a" title="LIS3DH_SetInt1Threshold" alt="" coords="203,5,390,32"/>
+<area shape="rect" id="node5" href="$lis3dh__driver_8c.html#a59c9591aa1404868087b3efc9ac9806b" title="LIS3DH_SetIntConfiguration" alt="" coords="196,107,397,133"/>
+<area shape="rect" id="node7" href="$lis3dh__driver_8c.html#a214f47b26e15c16c2845729287743726" title="LIS3DH_SetIntMode" alt="" coords="222,56,371,83"/>
+<area shape="rect" id="node3" href="$lis3dh__driver_8c.html#a2f92d64d542d03ac8c1ce4800a04f2ed" title="LIS3DH_WriteReg" alt="" coords="445,56,580,83"/>
+<area shape="rect" id="node4" href="$xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02" title="This function writes/reads data to a specific I2C channel. " alt="" coords="628,81,709,108"/>
+<area shape="rect" id="node6" href="$lis3dh__driver_8c.html#a34bf2e408596452f55618e57e8ba6233" title="LIS3DH_ReadReg" alt="" coords="447,107,579,133"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="LIS3DH_SetClickTHS" name="LIS3DH_SetClickTHS">
+<area shape="rect" id="node2" href="$lis3dh__driver_8c.html#a2f92d64d542d03ac8c1ce4800a04f2ed" title="LIS3DH_WriteReg" alt="" coords="208,5,343,32"/>
+<area shape="rect" id="node3" href="$xmc4500__i2c__lib_8c.html#a2a45dae52742cfe324e10177c67d1b02" title="This function writes/reads data to a specific I2C channel. " alt="" coords="391,5,472,32"/>
+</map>

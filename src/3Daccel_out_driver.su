@@ -3,6 +3,6 @@ xmc_gpio.h:282:22:XMC_GPIO_SetOutputLow	16	static
 xmc_gpio.h:308:22:XMC_GPIO_ToggleOutput	16	static
 xmc_gpio.h:333:26:XMC_GPIO_GetInput	16	static
 3Daccel_out_driver.c:19:6:outputInitXMC	24	static
-3Daccel_out_driver.c:34:6:readButtonDebounceXMC	8	static
-3Daccel_out_driver.c:78:6:ledSettingXMC	16	static
-3Daccel_out_driver.c:100:6:inputInitXMC	24	static
+3Daccel_out_driver.c:36:6:readButtonDebounceXMC	8	static
+3Daccel_out_driver.c:82:6:ledSettingXMC	16	static
+3Daccel_out_driver.c:106:6:inputInitXMC	24	static

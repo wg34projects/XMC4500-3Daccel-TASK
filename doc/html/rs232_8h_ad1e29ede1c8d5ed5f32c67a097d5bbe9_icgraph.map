@@ -1,0 +1,23 @@
+<map id="RS232_SendByte" name="RS232_SendByte">
+<area shape="rect" id="node2" href="$menucallbacks_8h.html#a0f2531a07a3cdccf2ae0edfa9045f98f" title="function average choose " alt="" coords="185,82,327,108"/>
+<area shape="rect" id="node7" href="$menucallbacks_8h.html#afb5e0da082f7af4b6ce5e85012b8fe18" title="function connect UART " alt="" coords="607,302,718,328"/>
+<area shape="rect" id="node8" href="$menucallbacks_8h.html#ad1ea06c96755e6377c58360efd74ac3a" title="function request data from XMC UART " alt="" coords="205,162,307,188"/>
+<area shape="rect" id="node16" href="$rs232_8h.html#a083e54a3f0258596eddb1d4fe5456bbf" title="RS232_cputs" alt="" coords="203,212,309,239"/>
+<area shape="rect" id="node17" href="$menucallbacks_8h.html#a3c61ddafb4d99f70194ebb7f2a9c66fb" title="timer for safe UART end " alt="" coords="219,364,293,391"/>
+<area shape="rect" id="node18" href="$menucallbacks_8h.html#afe388228b226b7e7d83068124529d497" title="timer for safe UART stop " alt="" coords="413,327,491,354"/>
+<area shape="rect" id="node20" href="$menucallbacks_8h.html#a81104c1bb1ba5cae90e56a14a61206b1" title="function servo connector " alt="" coords="194,415,318,442"/>
+<area shape="rect" id="node22" href="$menucallbacks_8h.html#a472cfadc5832233611ca52593f525a68" title="function statistic request from XMC " alt="" coords="186,31,326,58"/>
+<area shape="rect" id="node3" href="$menucallbacks_8h.html#a74cbcfa0fcd2e02e901f147fa0fd5e95" title="function toggle signal averaging " alt="" coords="415,54,489,80"/>
+<area shape="rect" id="node4" href="$3DacceltaskGUI_8h.html#a39bb15ce2c31b859d7ac5dd857f86b57" title="main function to describe GUI " alt="" coords="796,175,903,202"/>
+<area shape="rect" id="node5" href="$3DacceltaskGUI_8h.html#a7cd4d905a4d5afd543eee488a3cb37bc" title="main function to activate GUI " alt="" coords="951,175,1025,202"/>
+<area shape="rect" id="node6" href="$3DacceltaskGUI_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main routine " alt="" coords="1073,175,1128,202"/>
+<area shape="rect" id="node9" href="$menucallbacks_8h.html#a3418cf8ecbe0e481b120dad820ba4ed2" title="timer for output and request function " alt="" coords="375,212,529,239"/>
+<area shape="rect" id="node11" href="$menucallbacks_8h.html#aafaae82bcca495dedcd3362b3f416577" title="timer for output and request function Python " alt="" coords="389,111,515,138"/>
+<area shape="rect" id="node14" href="$menucallbacks_8h.html#a95f8b20505793417cf0b0bd5e36d4fc2" title="timer for output and request terminal function " alt="" coords="383,162,521,188"/>
+<area shape="rect" id="node10" href="$menucallbacks_8h.html#a8638a16b53befe09a4383644825bc04b" title="function for timed data request " alt="" coords="595,251,731,278"/>
+<area shape="rect" id="node12" href="$menucallbacks_8h.html#a162d8a6161e80cea565f7b43bb23cb8b" title="function to start python script plotter " alt="" coords="596,150,729,176"/>
+<area shape="rect" id="node13" href="$menucallbacks_8h.html#a3a87fd3ab8d225f5a316686563bbc582" title="function to start python sprite " alt="" coords="577,99,748,126"/>
+<area shape="rect" id="node15" href="$menucallbacks_8h.html#a46c955a21dcbc010847ab3010fa0deb1" title="function to show data in terminal window " alt="" coords="597,200,728,227"/>
+<area shape="rect" id="node19" href="$menucallbacks_8h.html#a9dee1967dde5d68fd9bcabde90264417" title="quit dialog " alt="" coords="639,352,686,379"/>
+<area shape="rect" id="node21" href="$menucallbacks_8h.html#a85afcedeb77dd524b4e4d0afab93059d" title="function toggle servo on off " alt="" coords="423,403,481,430"/>
+</map>

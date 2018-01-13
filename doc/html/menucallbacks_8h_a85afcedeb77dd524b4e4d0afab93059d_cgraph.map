@@ -1,0 +1,6 @@
+<map id="servo" name="servo">
+<area shape="rect" id="node2" href="$menucallbacks_8c.html#a81104c1bb1ba5cae90e56a14a61206b1" title="function servo connector " alt="" coords="112,56,236,83"/>
+<area shape="rect" id="node3" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="291,5,409,32"/>
+<area shape="rect" id="node4" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="288,56,412,83"/>
+<area shape="rect" id="node5" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="284,107,416,133"/>
+</map>

@@ -15,7 +15,7 @@
 // function prototypes
 
 void initServoPWM();
-void pwm(double dutycycle, uint8_t out);
+uint8_t pwm(double dutycycle, uint8_t out);
 
 #endif
 

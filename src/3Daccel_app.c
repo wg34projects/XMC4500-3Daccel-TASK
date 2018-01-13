@@ -18,8 +18,9 @@ int main (void)
 {
     char rxBuff[RXBUFFERSIZE];
 
-    // init receive buffer
+    // init receive buffer and ring buffer
     memset (&rxBuff, 0, sizeof (rxBuff));
+    memset (&cb[inix], 0, sizeof (cb[inix]));
 
     // init values for globals
     initGlobals();
@@ -27,12 +28,39 @@ int main (void)
     // init DEBUG, UART, I2C, PWM
     initRetargetSwo();
     _init_uart0_ch0();
-    _init_i2c1_ch0();
+
+    while (1)
+    {
+        if (_init_i2c1_ch0() == 0)
+        {
+#if DEBUG
+            printf("I2C init done...\n");
+#endif
+            break;
+        }
+        else
+        {
+#if DEBUG
+            printf("Error I2C init, retry...\n");
+#endif
+        }
+    }
+
     initServoPWM();
 
     // center both servo
-    pwm(SERVOUPCENTER, 0);
-    pwm(SERVOLOCENTER, 1);
+    if (pwm(SERVOUPCENTER, 0) != 0)
+    {
+#if DEBUG
+        printf("error centering servo...\n");
+#endif
+    }
+    if (pwm(SERVOLOCENTER, 1) != 0)
+    {
+#if DEBUG
+        printf("error centering servo...\n");
+#endif
+    }
 
     // init LED output
     outputInit();
@@ -89,7 +117,13 @@ int main (void)
     {
         // clear buffer and receive incoming data
         memset (&rxBuff, 0, sizeof (rxBuff));
-        _uart_get_string (rxBuff);
+        if (_uart_get_string (rxBuff) != 0)
+        {
+#if DEBUG
+            printf("error receiving from UART...\n");
+#endif
+            continue;
+        }
 
 #if DEBUG
         printf("received %s\n", rxBuff);
@@ -103,17 +137,19 @@ int main (void)
         }
         else if (strncmp(rxBuff, "#END,", strlen(rxBuff)) == 0)
         {
-            // LED off - connection END
+            // connection END
             ledSetting(0);
-			startup = 0;
-			connection = 0;
+            startup = 0;
+            connection = 0;
+            memset (&cb[inix], 0, sizeof (cb[inix]));
         }
         else if (strncmp(rxBuff, "#CON,", strlen(rxBuff)) == 0)
         {
-            // LED on - connection established
+            // connection established
             ledSetting(1);
-			startup = 0;
-			connection = 1;
+            startup = 0;
+            connection = 1;
+            memset (&cb[inix], 0, sizeof (cb[inix]));
         }
         else if (strncmp(rxBuff, "#SER,f", strlen(rxBuff)) == 0)
         {
@@ -124,7 +160,7 @@ int main (void)
         {
             // Servos on
             servoEnable = 1;
-			startup = 0;
+            startup = 0;
         }
         else if (strncmp(rxBuff, "#STA,", strlen(rxBuff)) == 0)
         {
@@ -133,7 +169,7 @@ int main (void)
         }
         else if (strncmp(rxBuff, "#AVG,a", strlen(rxBuff)) == 0)
         {
-            // average Angle
+            // average angle
             averageChoice = 0;
         }
         else if (strncmp(rxBuff, "#AVG,p", strlen(rxBuff)) == 0)
@@ -146,6 +182,8 @@ int main (void)
             continue;
         }
     }
+
+    return 0;
 }
 
 /** EOF **/

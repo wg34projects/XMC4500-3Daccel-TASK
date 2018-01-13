@@ -1,0 +1,10 @@
+<map id="quit" name="quit">
+<area shape="rect" id="node2" href="$menucallbacks_8c.html#a875dbbb6bcd9497babdd7a96ccf65b27" title="timer to quit app safely " alt="" coords="100,31,191,57"/>
+<area shape="rect" id="node3" href="$menucallbacks_8c.html#afe388228b226b7e7d83068124529d497" title="timer for safe UART stop " alt="" coords="106,81,185,108"/>
+<area shape="rect" id="node4" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="368,5,487,32"/>
+<area shape="rect" id="node5" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="365,56,489,83"/>
+<area shape="rect" id="node6" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="361,157,493,184"/>
+<area shape="rect" id="node7" href="$menucallbacks_8c.html#a3c61ddafb4d99f70194ebb7f2a9c66fb" title="timer for safe UART end " alt="" coords="239,107,313,133"/>
+<area shape="rect" id="node8" href="$menucallbacks_8c.html#a46eab465044ba2c5b593056a957bfe21" title="timer for safe UART close " alt="" coords="384,107,471,133"/>
+<area shape="rect" id="node9" href="$rs232_8c.html#a2af3e3f582823e7dce5a8b351ff4395e" title="RS232_CloseComport" alt="" coords="541,107,704,133"/>
+</map>

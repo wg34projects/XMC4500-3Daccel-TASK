@@ -13,16 +13,20 @@
 #include <stdint.h>
 #include <xmc_gpio.h>
 
-#define LED1 P1_0
-#define BUTTON1 P1_14
-#define BUTTON2 P1_15
+#define LED1 P1_0			// LED GPIO
+#define BUTTON1 P1_14		// BUTTON1 GPIO
 #define BUTTON1INT 14
+#define BUTTON2 P1_15		// BUTTON2 GPIO^
 #define BUTTON2INT 15
+
+// function prototypes
 
 void outputInitXMC(void);
 void ledSettingXMC(uint8_t ledState);
 void readButtonDebounceXMC();
 void inputInitXMC();
+
+// globals
 
 uint8_t button1pressed, button2pressed;
 

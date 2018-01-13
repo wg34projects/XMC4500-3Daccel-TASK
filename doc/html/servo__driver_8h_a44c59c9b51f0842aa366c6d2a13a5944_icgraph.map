@@ -1,0 +1,5 @@
+<map id="pwmXMC" name="pwmXMC">
+<area shape="rect" id="node2" href="$servo__library_8h.html#aefde9e41861405dcfd489719bba27be6" title="set PWM for servos " alt="" coords="136,31,191,57"/>
+<area shape="rect" id="node3" href="$3Daccel__app_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main routine " alt="" coords="277,5,331,32"/>
+<area shape="rect" id="node4" href="$3Daccel__out__library_8h.html#ab5e09814056d617c521549e542639b7e" title="SysTick. " alt="" coords="239,56,369,83"/>
+</map>

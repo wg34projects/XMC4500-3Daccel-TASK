@@ -20,9 +20,9 @@ typedef struct axesRawdata AXESRAWDATA;
 
 struct axesRawdata
 {
-    uint16_t axisX;
-    uint16_t axisY;
-    uint16_t axisZ;
+    int16_t axisX;
+    int16_t axisY;
+    int16_t axisZ;
 };
 
 // global variables

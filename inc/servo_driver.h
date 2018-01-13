@@ -13,10 +13,10 @@
 #include <stdint.h>
 #include "GPIO.h"
 
-// see documentation for prescaler calculation
+// see README.md for prescaler calculation
 
-#define PRESCALER 8
-#define COUNTER 9375
+#define PRESCALER 8			// prescaler
+#define COUNTER 9375		// PWM counter value
 
 // function prototypes
 

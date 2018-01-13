@@ -1,0 +1,12 @@
+<map id="src/3Daccel_app.c" name="src/3Daccel_app.c">
+<area shape="rect" id="node2" href="$3Daccel__app_8h.html" title="3Daccel app header " alt="" coords="414,80,531,107"/>
+<area shape="rect" id="node3" href="$3Daccel__out__library_8h.html" title="3Daccel out library header " alt="" coords="392,155,553,181"/>
+<area shape="rect" id="node4" href="$3Daccel__out__driver_8h.html" title="3Daccel out driver header " alt="" coords="5,304,164,331"/>
+<area shape="rect" id="node7" href="$lis3dh__library_8h.html" title="lis3dh library header " alt="" coords="365,229,485,256"/>
+<area shape="rect" id="node14" href="$servo__library_8h.html" title="servo library header " alt="" coords="199,229,317,256"/>
+<area shape="rect" id="node17" href="$debug__lib_8h.html" title="This library retargets the printf() function to generate output via the SWD DEBUG interface..." alt="" coords="571,304,668,331"/>
+<area shape="rect" id="node20" href="$xmc4500__uart__lib_8h.html" title="xmc4500_uart_lib.h" alt="" coords="560,229,711,256"/>
+<area shape="rect" id="node8" href="$lis3dh__driver_8h.html" title="lis3dh driver header " alt="" coords="378,304,495,331"/>
+<area shape="rect" id="node9" href="$xmc4500__i2c__lib_8h.html" title="xmc4500_i2c_lib.h" alt="" coords="352,379,495,405"/>
+<area shape="rect" id="node15" href="$servo__driver_8h.html" title="servo driver header " alt="" coords="189,304,303,331"/>
+</map>

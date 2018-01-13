@@ -78,18 +78,25 @@ $(function() {
  </td></tr>
 </table>
 <h1>realized task</h1>
-<p>The realized task is generic and a "proof of concept" for some possibilities with the chosen <b>Adafruit LIS3DH Triple-Axis Accelerometer</b>.</p>
+<p>The realized task is generic and a "proof of concept" for possibilities with the <b>Adafruit LIS3DH Triple-Axis Accelerometer</b> sensor.</p>
 <p>As described in the definition the task is split into 2 major parts, the uC software for the Infineon XMC4500 and the GUI for the PC realized with GTK-3 + C and Python 3 + Pygame + Matplotlib.</p>
-<p>The uC software includes a simple (bidirectional) UART communication protocol, libraries + drivers for</p>
+<p>The uC software includes a simple (bidirectional) UART communication protocol, libraries + drivers for:</p>
 <ul>
 <li>I2C communication</li>
 <li>sensor communication</li>
 <li>servocontrol</li>
 <li>buttons + LED control</li>
 </ul>
-<p>The raw data from the accelerometer, the 6D position and statistics can be requested by the PC application and the values are shown on the GUI. The rotation angles for all 3 axes and the pitch and roll angle are calculated within the PC application and shown on the GUI, also a simple frefall detection is include.</p>
-<p>Within the GUI a statistic package (sent sensor readings, data packages, errors) can be requested, the data can be logged to harddisk, triggers for acceleration can be set and various settings like activating UART connection, requesting data from sensors, activating servos, changing between measurement averaging and "thresholding" for servo settings can be done.</p>
-<p>BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averaging/thersholding.</p>
+<p>Raw data from the accelerometer, 6D position and statistics can be requested by the PC application. The values are shown on the GUI. The rotation angles for all 3 axes and the pitch and roll angle are calculated within the PC application and shown on the GUI, also a simple freefall detection is included.</p>
+<p>Within the GUI a statistic package (sent sensor readings, data packages, errors) can be requested, the data can be logged to harddisk, triggers for acceleration can be set and various settings like:</p>
+<ul>
+<li>activating UART connection</li>
+<li>requesting data from sensors</li>
+<li>activating servos</li>
+<li>changing between measurement averaging and "thresholding" for servo</li>
+</ul>
+<p>can be done.</p>
+<p>BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averaging / thersholding of sensor values for servo setting.</p>
 <p>LED1 represents the PWM "percentage" of one servo, LED2 is on when GUI and XMC are connected, and toggles according when data is requested by the GUI.</p>
 <p>2 python scripts can be started from the GUI, one to show possibilities for sprite rotation with the pygame library and one to show a graph for the accelerations.</p>
 <h1>XMC software</h1>
@@ -99,15 +106,25 @@ $(function() {
 <li>/src/ - all C source files</li>
 <li>/inc/ - all C header files</li>
 </ul>
-<p>Details find in section "Files" in the doxygen documentation and further details inside the source code.</p>
-<h2>dependency graph XMC software</h2>
-<p>The graph shows the app &gt; library &gt; driver structure of all source code.</p>
+<p>Details find in section "Files" in the doxygen documentation and further details are commented inside the source code.</p>
+<h2>description</h2>
+<p>The graph shows the app &gt; library &gt; driver structure of the uC source code.</p>
 <table class="doxtable">
 <tr>
 <th>dependency graph  </th></tr>
 <tr>
 <td><div class="image">
 <img src="../../pictures/dependency_graph_XMC.png" alt="alt text" title="XMC software"/>
+</div>
+ </td></tr>
+</table>
+<p>The graph shows the function calls of the uC source code.</p>
+<table class="doxtable">
+<tr>
+<th>functions graph  </th></tr>
+<tr>
+<td><div class="image">
+<img src="../../pictures/function_graph_uc.png" alt="alt text" title="uC software"/>
 </div>
  </td></tr>
 </table>
@@ -126,6 +143,10 @@ $(function() {
 <th>calculation for angle correction sensor  </th></tr>
 <tr>
 <td>sensor „Resch“ shows pitch angle up to maximum 85° - other direction seems ok with minimum -89° </td></tr>
+<tr>
+<td>correction value linear from 0 to +85° &gt;&gt; 0 up to +4.5 &gt;&gt; pitch = pitch + pitch * (4.5/85) </td></tr>
+<tr>
+<td>after calibration of servo and correction of sensor the pulse length and the frequency are stable </td></tr>
 </table>
 <h2>external code</h2>
 <ul>
@@ -195,7 +216,7 @@ src/lis3dh_library.c:233:37: Passed storage data contains 3 undefined fields:
   (Use -compdef to inhibit warning)
 
 Finished checking --- 4 code warnings
-</pre><p>2 function in 3D_accel_out_driver.c had to be excluded for splint to avoid parse errors </p><pre class="fragment">void outputInitXMC(void)
+</pre><p>2 functions in 3D_accel_out_driver.c had to be excluded for splint to avoid parse errors </p><pre class="fragment">void outputInitXMC(void)
 {
     XMC_GPIO_CONFIG_t config_out;
     config_out.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL;
@@ -214,12 +235,12 @@ void inputInitXMC()
 </pre><h1>XMC hardware</h1>
 <h2>description</h2>
 <ul>
-<li>/sensordocu/ - all available documentation from ST Microelectronics</li>
+<li>/sensordocu/ - available documentation from ST Microelectronics</li>
 </ul>
 <p><br />
 </p>
 <ul>
-<li>sensor is connected via I2C and 3V3 to XMC, see <a class="el" href="lis3dh__driver_8c.html" title="lis3dh driver ">lis3dh_driver.c</a> and <a class="el" href="lis3dh__driver_8h.html" title="lis3dh driver header ">lis3dh_driver.h</a> regarding used pins and hardware adress.</li>
+<li>sensor is connected via I2C and 3V3 to XMC, see lis3dh driver.c and lis3dh driver.h regarding used pins and hardware adress.</li>
 </ul>
 <table class="doxtable">
 <tr>
@@ -231,7 +252,7 @@ void inputInitXMC()
  </td></tr>
 </table>
 <ul>
-<li>XMC connector includes 4k7 pullup resistors for I2C, signal and power connections, terminal blocks for external 5V power source servos and terminal blocks to connected signals and power</li>
+<li>XMC connector includes 4k7 pullup resistors for I2C, signal and power connections, terminal blocks for external 5V power source (for servos) and terminal blocks to connected signals and power.</li>
 </ul>
 <table class="doxtable">
 <tr>
@@ -258,7 +279,7 @@ void inputInitXMC()
 <ul>
 <li>servos</li>
 </ul>
-<p>Simple analog servos from Conrad used for the hardware</p>
+<p>Simple analog servos from Conrad used for the hardware.</p>
 <table class="doxtable">
 <tr>
 <th>servos  </th></tr>
@@ -271,7 +292,7 @@ void inputInitXMC()
 <ul>
 <li>big picture</li>
 </ul>
-<p>Simple wooden construction for the servos</p>
+<p>Simple wooden construction for the servos.</p>
 <table class="doxtable">
 <tr>
 <th>big picture  </th></tr>
@@ -282,7 +303,7 @@ void inputInitXMC()
  </td></tr>
 </table>
 <h2>testing</h2>
-<p>oscilloscope screenshots of PWM signal</p>
+<p>Oscilloscope screenshots of PWM signal.</p>
 <table class="doxtable">
 <tr>
 <th>-90° / 0° </th><th>0° </th><th>+90° / 180°  </th></tr>
@@ -306,7 +327,7 @@ void inputInitXMC()
 <li>/python/ - all PYTHON scripts as mentiond in the description and all necessary pictures</li>
 <li>/pictures/ - all pictures for <a class="el" href="README_8md.html">README.md</a> file</li>
 </ul>
-<p>Details find in section "Files" in the doxygen documentation and further details inside the source code.</p>
+<p>Details find in section "Files" in the doxygen documentation and further details are commented inside the source code.</p>
 <h2>description</h2>
 <p>Graph of all GUI function calls.</p>
 <table class="doxtable">
@@ -337,9 +358,9 @@ void inputInitXMC()
 </div>
  </td></tr>
 </table>
-<p>(0) highlights values which have to be set before connection</p>
-<p>(1) connect</p>
-<p>(2) start transmission</p>
+<p>(0) Highlights values which have to be set before connection...</p>
+<p>(1) Connect...</p>
+<p>(2) Start transmission...</p>
 <p>GTK buttons are set active or inactive as needed, feel free to experiment!</p>
 <h2>external code</h2>
 <ul>
@@ -368,7 +389,32 @@ Checking menucallbacks.h: __FreeBSD__;__linux__...
 4/4 files checked 100% done
 :: information: Cppcheck cannot find all the include files (use --check-config for details)
 </pre><h1>Conclusion</h1>
-<p>Interesting and demanding task - especially the GUI. </p>
+<p>Interesting and demanding task - especially the GUI.</p>
+<p>Statistic of source code - total 3177 code lines without external code as mentioned above. </p><pre class="fragment">wc ./inc/3Daccel_app.h ./inc/3Daccel_out_driver.h ./inc/3Daccel_out_library.h ./inc/lis3dh_library.h ./inc/servo_driver.h ./inc/servo_library.h ./src/3Daccel_app.c ./src/3Daccel_out_driver.c ./src/3Daccel_out_library.c ./src/lis3dh_library.c ./src/servo_driver.c ./src/servo_library.c ./gtk_GUI/3DacceltaskGUI.c ./gtk_GUI/3DacceltaskGUI.h ./gtk_GUI/menucallbacks.c ./gtk_GUI/menucallbacks.h -l
+   17 ./inc/3Daccel_app.h
+   35 ./inc/3Daccel_out_driver.h
+   72 ./inc/3Daccel_out_library.h
+   43 ./inc/lis3dh_library.h
+   28 ./inc/servo_driver.h
+   22 ./inc/servo_library.h
+  189 ./src/3Daccel_app.c
+  116 ./src/3Daccel_out_driver.c
+  445 ./src/3Daccel_out_library.c
+  219 ./src/lis3dh_library.c
+  100 ./src/servo_driver.c
+   62 ./src/servo_library.c
+  369 ./gtk_GUI/3DacceltaskGUI.c
+   83 ./gtk_GUI/3DacceltaskGUI.h
+ 1289 ./gtk_GUI/menucallbacks.c
+   88 ./gtk_GUI/menucallbacks.h
+ 3177 insgesamt
+</pre><h1>Improvements</h1>
+<ul>
+<li>GUI GTK code enhancement with respect to memory leaks</li>
+<li>uC code enhancement for example with Interrupts instead of SysTick_Handler</li>
+<li>better and more stable hardware setup - for example with acrylic glas instead wooden construction</li>
+<li>... and 1000 other ideas ... </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

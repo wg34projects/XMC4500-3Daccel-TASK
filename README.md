@@ -12,38 +12,33 @@ https://cis.technikum-wien.at/documents/bel/3/ess/semesterplan/tasks/tasks.html
 
 # realized task
 
-The realized task is generic and a "proof of concept" for some possibilities with
-the chosen **Adafruit LIS3DH Triple-Axis Accelerometer**.
+The realized task is generic and a "proof of concept" for possibilities with the **Adafruit LIS3DH Triple-Axis Accelerometer** sensor.
 
-As described in the definition the task is split into 2 major parts, the uC 
-software for the Infineon XMC4500 and the GUI for the PC realized with GTK-3 + C
-and Python 3 + Pygame + Matplotlib.
+As described in the definition the task is split into 2 major parts, the uC software for the Infineon XMC4500 and the GUI for the PC realized with GTK-3 + C and Python 3 + Pygame + Matplotlib.
 
-The uC software includes a simple (bidirectional) UART communication protocol,
-libraries + drivers for 
+The uC software includes a simple (bidirectional) UART communication protocol, libraries + drivers for:
 
 - I2C communication
 - sensor communication
 - servocontrol
 - buttons + LED control
 
-The raw data from the accelerometer, the 6D position and statistics can be requested by
-the PC application and the values are shown on the GUI. The rotation angles for all 
-3 axes and the pitch and roll angle are calculated within the PC application and shown on the GUI,
-also a simple frefall detection is include.
+Raw data from the accelerometer, 6D position and statistics can be requested by the PC application. The values are shown on the GUI. The rotation angles for all 3 axes and the pitch and roll angle are calculated within the PC application and shown on the GUI, also a simple freefall detection is included.
 
-Within the GUI a statistic package (sent sensor readings, data packages, errors) can be requested,
-the data can be logged to harddisk, triggers for acceleration can be set and various settings
-like activating UART connection, requesting data from sensors, activating servos, 
-changing between measurement averaging and "thresholding" for servo settings can be done.
+Within the GUI a statistic package (sent sensor readings, data packages, errors) can be requested, the data can be logged to harddisk, triggers for acceleration can be set and various settings like:
 
-BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averaging/thersholding.
+- activating UART connection
+- requesting data from sensors
+- activating servos
+- changing between measurement averaging and "thresholding" for servo 
 
-LED1 represents the PWM "percentage" of one servo, LED2 is on when GUI and XMC are connected, and toggles according
-when data is requested by the GUI.
+can be done.
 
-2 python scripts can be started from the GUI, one to show possibilities for
-sprite rotation with the pygame library and one to show a graph for the accelerations.
+BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averaging / thersholding of sensor values for servo setting.
+
+LED1 represents the PWM "percentage" of one servo, LED2 is on when GUI and XMC are connected, and toggles according when data is requested by the GUI.
+
+2 python scripts can be started from the GUI, one to show possibilities for sprite rotation with the pygame library and one to show a graph for the accelerations.
 
 # XMC software
 
@@ -54,16 +49,21 @@ The code is located in the folders
 * /src/ - all C source files
 * /inc/ - all C header files
 
-Details find in section "Files" in the doxygen documentation and further details
-inside the source code.
+Details find in section "Files" in the doxygen documentation and further details are commented inside the source code.
 
-## dependency graph XMC software
+## description
 
-The graph shows the app > library > driver structure of all source code.
+The graph shows the app > library > driver structure of the uC source code.
 
 | dependency graph |
 |------------------|
 | ![alt text](../../pictures/dependency_graph_XMC.png "XMC software") |
+
+The graph shows the function calls of the uC source code.
+
+| functions graph |
+|-----------------|
+| ![alt text](../../pictures/function_graph_uc.png "uC software") |
 
 ## settings for the hardware PWM and angle correction of sensor
 
@@ -74,6 +74,8 @@ The graph shows the app > library > driver structure of all source code.
 | calculation for angle correction sensor |
 |-----------------------------------------|
 | sensor „Resch“ shows pitch angle up to maximum 85° - other direction seems ok with minimum -89° |
+| correction value linear from 0 to +85° >> 0 up to +4.5 >> pitch = pitch + pitch * (4.5/85) |
+| after calibration of servo and correction of sensor the pulse length and the frequency are stable |
 
 ## external code
 
@@ -151,7 +153,7 @@ splint +posixlib -unrecog -standard +trytorecover -preproc -predboolint +matchan
 
 	Finished checking --- 4 code warnings
 
-2 function in 3D_accel_out_driver.c had to be excluded for splint to avoid parse errors
+2 functions in 3D_accel_out_driver.c had to be excluded for splint to avoid parse errors
 
 	void outputInitXMC(void)
 	{
@@ -174,20 +176,17 @@ splint +posixlib -unrecog -standard +trytorecover -preproc -predboolint +matchan
 
 ## description
 
-* /sensordocu/ - all available documentation from ST Microelectronics
+* /sensordocu/ - available documentation from ST Microelectronics
 
 <br>
 
-- sensor is connected via I2C and 3V3 to XMC, see lis3dh_driver.c and lis3dh_driver.h
-regarding used pins and hardware adress.
+- sensor is connected via I2C and 3V3 to XMC, see lis3dh driver.c and lis3dh driver.h regarding used pins and hardware adress.
 
 | sensor |
 |--------|
 | ![alt text](../../pictures/sensor.png "picture sensor") |
 
-- XMC connector includes 4k7 pullup resistors for I2C, signal and power connections,
-terminal blocks for external 5V power source servos and terminal blocks to connected
-signals and power
+- XMC connector includes 4k7 pullup resistors for I2C, signal and power connections, terminal blocks for external 5V power source (for servos) and terminal blocks to connected signals and power.
 
 | XMC connector |
 |---------------|
@@ -203,7 +202,7 @@ The servos are supplied by an external 5V power source.
 
 - servos
 
-Simple analog servos from Conrad used for the hardware
+Simple analog servos from Conrad used for the hardware.
 
 | servos |
 |--------|
@@ -211,7 +210,7 @@ Simple analog servos from Conrad used for the hardware
 
 - big picture
 
-Simple wooden construction for the servos
+Simple wooden construction for the servos.
 
 | big picture |
 |-------------|
@@ -219,7 +218,7 @@ Simple wooden construction for the servos
 
 ## testing
 
-oscilloscope screenshots of PWM signal
+Oscilloscope screenshots of PWM signal.
 
 | -90° / 0° | 0° | +90° / 180° |
 |-----------|----|-------------|
@@ -235,8 +234,7 @@ The code is located in the folders
 * /python/ - all PYTHON scripts as mentiond in the description and all necessary pictures
 * /pictures/ - all pictures for README.md file
 
-Details find in section "Files" in the doxygen documentation and further details
-inside the source code.
+Details find in section "Files" in the doxygen documentation and further details are commented inside the source code.
 
 ## description
 
@@ -256,11 +254,11 @@ Graph of all GUI function calls.
 |-----------------|
 | ![alt text](../../pictures/GUI_screenshot_commented.png "GUI view commented") |
 
-(0) highlights values which have to be set before connection
+(0) Highlights values which have to be set before connection...
 
-(1) connect
+(1) Connect...
 
-(2) start transmission
+(2) Start transmission...
 
 GTK buttons are set active or inactive as needed, feel free to experiment!
 
@@ -299,4 +297,30 @@ For the GTK GUI only cppcheck done.
 
 Interesting and demanding task - especially the GUI.
 
+Statistic of source code - total 3177 code lines without external code as mentioned above.
 
+	wc ./inc/3Daccel_app.h ./inc/3Daccel_out_driver.h ./inc/3Daccel_out_library.h ./inc/lis3dh_library.h ./inc/servo_driver.h ./inc/servo_library.h ./src/3Daccel_app.c ./src/3Daccel_out_driver.c ./src/3Daccel_out_library.c ./src/lis3dh_library.c ./src/servo_driver.c ./src/servo_library.c ./gtk_GUI/3DacceltaskGUI.c ./gtk_GUI/3DacceltaskGUI.h ./gtk_GUI/menucallbacks.c ./gtk_GUI/menucallbacks.h -l
+	   17 ./inc/3Daccel_app.h
+	   35 ./inc/3Daccel_out_driver.h
+	   72 ./inc/3Daccel_out_library.h
+	   43 ./inc/lis3dh_library.h
+	   28 ./inc/servo_driver.h
+	   22 ./inc/servo_library.h
+	  189 ./src/3Daccel_app.c
+	  116 ./src/3Daccel_out_driver.c
+	  445 ./src/3Daccel_out_library.c
+	  219 ./src/lis3dh_library.c
+	  100 ./src/servo_driver.c
+	   62 ./src/servo_library.c
+	  369 ./gtk_GUI/3DacceltaskGUI.c
+	   83 ./gtk_GUI/3DacceltaskGUI.h
+	 1289 ./gtk_GUI/menucallbacks.c
+	   88 ./gtk_GUI/menucallbacks.h
+	 3177 insgesamt
+
+# Improvements
+
+- GUI GTK code enhancement with respect to memory leaks
+- uC code enhancement for example with Interrupts instead of SysTick_Handler
+- better and more stable hardware setup - for example with acrylic glas instead wooden construction
+- ... and 1000 other ideas ...

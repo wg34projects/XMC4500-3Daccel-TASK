@@ -73,7 +73,7 @@ uint8_t pwmXMC(double dutycycle, uint8_t out)
     double dcCalc = 0;
     uint32_t intdcCalc = 0;
 
-	// calculate and set PWM dutycycle
+    // calculate and set PWM dutycycle
 
     if (dutycycle < 0 || dutycycle > 100)
     {

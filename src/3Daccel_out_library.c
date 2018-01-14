@@ -97,7 +97,7 @@ void SysTick_Handler (void)
         }
     }
 
-	// ticks acction only when connected
+    // ticks acction only when connected
     if (connection == 1)
     {
         ticks++;
@@ -113,12 +113,12 @@ void SysTick_Handler (void)
             ticks = 0;
         }
 
-		// servo action only when connected
+        // servo action only when connected
         if (servoEnable == 1)
         {
             if (averageChoice == 0)
             {
-				// PWM averaging
+                // PWM averaging
                 smoothSignal1 += signal1;
                 smoothSignal2 += signal2;
                 i++;
@@ -142,7 +142,7 @@ void SysTick_Handler (void)
             }
             else if (averageChoice == 1)
             {
-				// angle thresholding
+                // angle thresholding
                 if (pwm(signal1, 0) != 0)
                 {
                     errorcount++;
@@ -181,8 +181,8 @@ void SysTick_Handler (void)
 void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ)
 {
     char string6D[8][6] = {"#USX,", "#UDX,", "#DSX,", "#DDX,", "#TOP,", "#BOT,", "#XXX,", "#FAL,"};
-	char button[2][8] = {"#BUT,1$", "#BUT,2$"};
-	
+    char button[2][8] = {"#BUT,1$", "#BUT,2$"};
+
     char send[RXBUFFERSIZE];
 
     memset (&send, 0, sizeof (send));
@@ -273,29 +273,6 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
 }
 
 /**
- * @brief	safe function to make double value from string
- * @param	input string <br>
- *			output double <br>
- * @return	none
- *
- */
-void getDouble(char *input, double *numDouble)
-{
-    long double number = 0;
-    char *pointToEnd = NULL;
-
-    number = strtod(input, &pointToEnd);
-    if(*pointToEnd != '\0')
-    {
-        return;
-    }
-    else
-    {
-        *numDouble = (double)number;
-    }
-}
-
-/**
  * @brief	function to set LED
  * @param	LED state <br>
  *			0 for LED off <br>
@@ -324,22 +301,22 @@ void pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
     static double rollStored = 0.0;
     static double pitchStored = 0.0;
 
-	// calculate acceleration values from raw values
+    // calculate acceleration values from raw values
     gX = positionX / GDIVIDER;
     gY = positionY / GDIVIDER;
     gZ = positionZ / GDIVIDER;
 
-	// calculate angles for servos
+    // calculate angles for servos
     roll = atan(gY/(sqrt((gX*gX)+(gZ*gZ)))) * 180 / PI;
     pitch = atan(gX/(sqrt((gY*gY)+(gZ*gZ)))) * 180 / PI;
 
-	// angle correction as documented
+    // angle correction as documented
     if (pitch >= 0.0)
     {
         pitch += pitch * PITCHCORRECTPOS;
     }
 
-	// angle thresholding
+    // angle thresholding
     if (startup == 0)
     {
         pitchStored = pitch;
@@ -371,7 +348,7 @@ void pwmAngleCalc(int16_t positionX, int16_t positionY, int16_t positionZ)
 
     startup++;
 
-	// final signal values 
+    // final signal values
 
     signal1 = (90.00+roll) * SERVOUOLINEAR + SERUPLO0;
     signal2 = (90.00+pitch) * SERVOLOLINEAR + SERVOLO0;

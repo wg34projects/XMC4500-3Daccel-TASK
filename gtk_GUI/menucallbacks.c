@@ -275,6 +275,8 @@ guint wait(gpointer data)
 {
     widgets *a = (widgets *) data;
 
+    a->sendSerial = FALSE;
+
     if(a->buttonID == 1)
     {
         if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(a->button[6])) == TRUE)
@@ -288,17 +290,19 @@ guint wait(gpointer data)
     }
     else if(a->buttonID == 2)
     {
-        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(a->button[6])) == TRUE)
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(a->button[8])) == TRUE)
         {
-            if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(a->button[8])) == TRUE)
-            {
-                gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
-            }
-            else
-            {
-                gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), TRUE);
-            }
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
         }
+        else
+        {
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), TRUE);
+        }
+    }
+
+    if (a->transmission == TRUE)
+    {
+        a->sendSerial = TRUE;
     }
 
     return a->wait;
@@ -567,17 +571,17 @@ void servoConnector (gpointer data)
     if (a->servoState == 0)
     {
         a->servoState = 1;
-		RS232_flushTX(a->radioButtonUSBstate);
+        RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestServoOn, (int)sizeof(requestServoOn));
-		RS232_SendByte(a->radioButtonUSBstate, '\r');
+        RS232_SendByte(a->radioButtonUSBstate, '\r');
         gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), TRUE);
     }
     else if (a->servoState == 1)
     {
         a->servoState = 0;
-		RS232_flushTX(a->radioButtonUSBstate);
+        RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestServoOff, (int)sizeof(requestServoOff));
-		RS232_SendByte(a->radioButtonUSBstate, '\r');
+        RS232_SendByte(a->radioButtonUSBstate, '\r');
         gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), FALSE);
     }
 
@@ -602,16 +606,16 @@ void averageConnector (gpointer data)
     if (a->average == 0)
     {
         a->average = 1;
-		RS232_flushTX(a->radioButtonUSBstate);
+        RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestAveragePWM, (int)sizeof(requestAveragePWM));
-		RS232_SendByte(a->radioButtonUSBstate, '\r');
+        RS232_SendByte(a->radioButtonUSBstate, '\r');
     }
     else if (a->average == 1)
     {
         a->average = 0;
-		RS232_flushTX(a->radioButtonUSBstate);
+        RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestAverageANGLE, (int)sizeof(requestAverageANGLE));
-		RS232_SendByte(a->radioButtonUSBstate, '\r');
+        RS232_SendByte(a->radioButtonUSBstate, '\r');
     }
 
     if (a->transmission == TRUE)
@@ -652,14 +656,12 @@ void servo(GtkWidget *button, gpointer data)
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
     {
         g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
         gtk_button_set_label(GTK_BUTTON(a->button[6]), "SERVO on");
         a->servoState = 0;
     }
     else
     {
         g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(a->button[8]), FALSE);
         gtk_button_set_label(GTK_BUTTON(a->button[6]), "SERVO off");
         a->servoState = 1;
     }
@@ -679,13 +681,13 @@ void average(GtkWidget *button, gpointer data)
     {
         g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
         gtk_button_set_label(GTK_BUTTON(a->button[8]), "ANGLE average");
-		a->average = 1;
+        a->average = 1;
     }
     else
     {
         g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
         gtk_button_set_label(GTK_BUTTON(a->button[8]), "PWM average");
-		a->average = 0;
+        a->average = 0;
     }
 
     averageConnector((gpointer) a);
@@ -870,12 +872,12 @@ void rawProtocolDataTimed(gpointer data)
         g_print ("strftime returned 0");
         return;
     }
-	
-	// add milliseconds
+
+    // add milliseconds
 
     g_sprintf(timeZone, "%s.%06d", timeZoneTemp, (int)tmnow.tv_usec);
 
-	// read data from UART
+    // read data from UART
 
     memset (&buf, 0, sizeof (buf));
     n = RS232_PollComport(a->radioButtonUSBstate, buf, (OSBUFFER-1));
@@ -895,7 +897,7 @@ void rawProtocolDataTimed(gpointer data)
         }
     }
 
-	// cut 6D position from received string
+    // cut 6D position from received string
 
     if (strncpy(a->position6D, a->line+1, 3) != a->position6D)
     {
@@ -904,7 +906,7 @@ void rawProtocolDataTimed(gpointer data)
 
     if (strncmp(a->position6D, "STA", 3) == 0)
     {
-		// decode statistic package
+        // decode statistic package
 
         if (strncpy(packages, a->line+5, 10) != packages)
         {
@@ -938,7 +940,9 @@ void rawProtocolDataTimed(gpointer data)
     }
     else if (strncmp(a->position6D, "BUT", 3) == 0)
     {
-		// decode button from XMC
+        // decode button from XMC
+
+        a->wait = FALSE;
 
         if(a->line[5] == '1')
         {
@@ -961,7 +965,7 @@ void rawProtocolDataTimed(gpointer data)
     {
         gtk_label_set_label((GtkLabel*)a->label[0], a->position6D);
 
-		// decode acceleration raw data
+        // decode acceleration raw data
 
         if (strncpy(accelerationX, a->line+5, 6) != accelerationX)
         {
@@ -993,7 +997,7 @@ void rawProtocolDataTimed(gpointer data)
         g_sprintf(a->accelerationZout, "accelZ %7.3f g", a->accelerationZdouble);
         gtk_label_set_label((GtkLabel*)a->label[3], a->accelerationZout);
 
-		// calculate all angles
+        // calculate all angles
 
         a->tiltX = asin(a->accelerationXdouble/G) * 180 / PI;
         a->tiltY = asin(a->accelerationYdouble/G) * 180 / PI;
@@ -1001,7 +1005,7 @@ void rawProtocolDataTimed(gpointer data)
         a->pitch = atan(a->accelerationXdouble/(sqrt((a->accelerationYdouble*a->accelerationYdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
         a->roll = atan(a->accelerationYdouble/(sqrt((a->accelerationXdouble*a->accelerationXdouble)+(a->accelerationZdouble*a->accelerationZdouble)))) * 180 / PI;
 
-		// save if requested
+        // save if requested
 
         if (a->saveOutgoing == 1)
         {
@@ -1015,7 +1019,7 @@ void rawProtocolDataTimed(gpointer data)
             fclose(saveFile);
         }
 
-		// show values on GUI
+        // show values on GUI
 
         g_sprintf(a->tiltXout, "tiltX %6.2f °", a->tiltX);
         g_sprintf(a->tiltYout, "tiltY %6.2f °", a->tiltY);
@@ -1029,7 +1033,7 @@ void rawProtocolDataTimed(gpointer data)
         gtk_label_set_label((GtkLabel*)a->label[8], a->pitchOut);
         gtk_label_set_label((GtkLabel*)a->label[9], a->rollOut);
 
-		// change picture for 6D
+        // change picture for 6D
 
         if (strncmp(a->position6D, "TOP", 3) == 0)
         {
@@ -1060,59 +1064,59 @@ void rawProtocolDataTimed(gpointer data)
             a->position6Dint = 0;
         }
 
-		switch (a->position6Dint)
-		{
-			case (0):
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
-				break;
-			}
-			case (1):
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/TOP.png");
-				break;
-			}
-			case (2):
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/BOT.png");
-				break;
-			}
-			case (3):
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/DDX.png");
-				break;
-			}
-			case (4):
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/DSX.png");
-				break;
-			}
-			case (5):
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/UDX.png");
-				break;
-			}
-			case (6):
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/USX.png");
-				break;
-			}
-			default:
-			{
-				a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
-				break;
-			}
-		}
+        switch (a->position6Dint)
+        {
+        case (0):
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
+            break;
+        }
+        case (1):
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/TOP.png");
+            break;
+        }
+        case (2):
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/BOT.png");
+            break;
+        }
+        case (3):
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/DDX.png");
+            break;
+        }
+        case (4):
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/DSX.png");
+            break;
+        }
+        case (5):
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/UDX.png");
+            break;
+        }
+        case (6):
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/USX.png");
+            break;
+        }
+        default:
+        {
+            a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
+            break;
+        }
+        }
 
-		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-		gtk_widget_show_all(a->grid);
+        gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+        a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+        gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+        gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+        gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+        gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+        gtk_widget_show_all(a->grid);
 
-		// set trigger labels
+        // set trigger labels
 
         if (fabs(a->accelerationXdouble) > a->acceltriggerX)
         {
@@ -1141,7 +1145,7 @@ void rawProtocolDataTimed(gpointer data)
             gtk_label_set_label((GtkLabel*)a->label[12], "<span foreground='white' background='green' weight='ultrabold' font='20'> Z TRIGGER </span>");
         }
 
-		// simple freefall detection
+        // simple freefall detection
 
         if (((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) > FREEHI)) || ((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) > FREEHI) && (fabs(a->accelerationZdouble) < FREELO)) || ((fabs(a->accelerationXdouble) > FREEHI) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) < FREELO)))
         {
@@ -1219,7 +1223,7 @@ void quit(GSimpleAction *action, GVariant *parameter, gpointer data)
     g_printf("shutting down connection to XMC...\n");
     gtk_statusbar_push (GTK_STATUSBAR (a->statusBar), a->id, "shutting down connection to XMC for safe exit...");
 
-	// necessary shutdown procedure
+    // necessary shutdown procedure
 
     if (a->connectionStatus == 1)
     {

@@ -23,7 +23,7 @@
 #define PI 3.141592654
 
 // see README.md for description of the values as defined below
-				
+
 #define SERUPLO0 3.00				// upper servo -90° PWM dutycycle
 #define SERVOUPCENTER 7.50			// upper servo 0° PWM dutycycle
 #define SERVOUOLINEAR 0.050			// upper servo linear factor

@@ -131,7 +131,7 @@ uint8_t get6Dposition()
 {
     uint8_t response = 0;
 
-	// request 6D position and set global variable
+    // request 6D position and set global variable
 
     response = LIS3DH_Get6DPosition(&position);
 
@@ -201,7 +201,7 @@ AXESRAWDATA getAxesRawData()
     dataOut.axisY = 0;
     dataOut.axisZ = 0;
 
-	// request sensor data and add to struct
+    // request sensor data and add to struct
 
     response = LIS3DH_GetAccAxesRaw(&data);
     if(response != 1)

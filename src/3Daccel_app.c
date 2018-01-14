@@ -133,10 +133,10 @@ int main (void)
         if (strncmp(rxBuff, "#CON,", strlen(rxBuff)) == 0)
         {
             // connection established
+            memset (&cb[inix], 0, sizeof (cb[inix]));
             ledSetting(1);
             startup = 0;
             connection = 1;
-            memset (&cb[inix], 0, sizeof (cb[inix]));
         }
         else if (strncmp(rxBuff, "#END,", strlen(rxBuff)) == 0)
         {
@@ -144,14 +144,6 @@ int main (void)
             ledSetting(0);
             startup = 0;
             connection = 0;
-            memset (&cb[inix], 0, sizeof (cb[inix]));
-        }
-        else if (strncmp(rxBuff, "#CON,", strlen(rxBuff)) == 0)
-        {
-            // connection established
-            ledSetting(1);
-            startup = 0;
-            connection = 1;
             memset (&cb[inix], 0, sizeof (cb[inix]));
         }
         else if (strncmp(rxBuff, "#SER,f", strlen(rxBuff)) == 0)
@@ -180,7 +172,7 @@ int main (void)
             // average PWM
             averageChoice = 0;
         }
-		else if (strncmp(rxBuff, "#REQ,", strlen(rxBuff)) == 0)
+        else if (strncmp(rxBuff, "#REQ,", strlen(rxBuff)) == 0)
         {
             // send data to PC GUI
             protocolComplete(direction, readAxes.axisX, readAxes.axisY, readAxes.axisZ);

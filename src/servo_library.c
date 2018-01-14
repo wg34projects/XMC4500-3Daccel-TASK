@@ -17,7 +17,7 @@
  */
 void initServoPWM()
 {
-	// init servos
+    // init servos
 
     initServoPWMXMC();
 }
@@ -32,7 +32,7 @@ void initServoPWM()
  */
 uint8_t pwm(double dutycycle, uint8_t out)
 {
-	// call pwm driver
+    // call pwm driver
 
     if (out == 0)
     {

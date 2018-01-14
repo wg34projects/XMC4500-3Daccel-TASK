@@ -54,7 +54,7 @@ u8_t LIS3DH_ReadReg(u8_t Reg, u8_t* Data) {
     //To be completed with either I2c or SPI reading function
     //i.e. *Data = SPI_Mems_Read_Reg( Reg );
 
-	// added i2c xfer function FHTW
+    // added i2c xfer function FHTW
 
     *Data = _i2c_xfer (0, Reg, 0, 1);
 
@@ -75,7 +75,7 @@ u8_t LIS3DH_WriteReg(u8_t WriteAddr, u8_t Data) {
     //To be completed with either I2c or SPI writing function
     //i.e. SPI_Mems_Write_Reg(WriteAddr, Data);
 
-	// added i2c xfer function FHTW
+    // added i2c xfer function FHTW
 
     _i2c_xfer (0, WriteAddr, Data, 0);
 

@@ -529,7 +529,7 @@ void connectSerial(GtkButton *button, gpointer data)
         g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
         a->connectionStatus = 0;
         gtk_button_set_label(GTK_BUTTON(a->button[0]), "CONNECTION off");
-        gtk_label_set_label((GtkLabel*)a->label[16], "<span foreground='white' weight='ultrabold' font='16'>BUTTON 1 off</span>");
+        gtk_label_set_label((GtkLabel*)a->label[16], "<span foreground='white' weight='ultrabold' font='16'> BUTTON 1 </span>");
         a->sendSerial = FALSE;
         a->safeWaitStop = FALSE;
         g_timeout_add (UARTWAIT, (GSourceFunc) safeStop, (gpointer) a);
@@ -564,22 +564,22 @@ void servoConnector (gpointer data)
 
     gtk_widget_set_sensitive (GTK_WIDGET (a->button[2]), FALSE);
 
-    RS232_flushTX(a->radioButtonUSBstate);
-
     if (a->servoState == 0)
     {
         a->servoState = 1;
+		RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestServoOn, (int)sizeof(requestServoOn));
+		RS232_SendByte(a->radioButtonUSBstate, '\r');
         gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), TRUE);
     }
     else if (a->servoState == 1)
     {
         a->servoState = 0;
+		RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestServoOff, (int)sizeof(requestServoOff));
+		RS232_SendByte(a->radioButtonUSBstate, '\r');
         gtk_widget_set_sensitive (GTK_WIDGET (a->button[8]), FALSE);
     }
-
-    RS232_SendByte(a->radioButtonUSBstate, '\r');
 
     if (a->transmission == TRUE)
     {
@@ -599,20 +599,20 @@ void averageConnector (gpointer data)
 
     a->sendSerial = FALSE;
 
-    RS232_flushTX(a->radioButtonUSBstate);
-
     if (a->average == 0)
     {
         a->average = 1;
+		RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestAveragePWM, (int)sizeof(requestAveragePWM));
+		RS232_SendByte(a->radioButtonUSBstate, '\r');
     }
     else if (a->average == 1)
     {
         a->average = 0;
+		RS232_flushTX(a->radioButtonUSBstate);
         RS232_SendBuf(a->radioButtonUSBstate, requestAverageANGLE, (int)sizeof(requestAverageANGLE));
+		RS232_SendByte(a->radioButtonUSBstate, '\r');
     }
-
-    RS232_SendByte(a->radioButtonUSBstate, '\r');
 
     if (a->transmission == TRUE)
     {
@@ -679,11 +679,13 @@ void average(GtkWidget *button, gpointer data)
     {
         g_print("%s toggled on\n", gtk_button_get_label(GTK_BUTTON(button)));
         gtk_button_set_label(GTK_BUTTON(a->button[8]), "ANGLE average");
+		a->average = 1;
     }
     else
     {
         g_print("%s toggled off\n", gtk_button_get_label(GTK_BUTTON(button)));
         gtk_button_set_label(GTK_BUTTON(a->button[8]), "PWM average");
+		a->average = 0;
     }
 
     averageConnector((gpointer) a);
@@ -878,7 +880,6 @@ void rawProtocolDataTimed(gpointer data)
     memset (&buf, 0, sizeof (buf));
     n = RS232_PollComport(a->radioButtonUSBstate, buf, (OSBUFFER-1));
     RS232_flushRX(a->radioButtonUSBstate);
-    RS232_flushTX(a->radioButtonUSBstate);
 
     if (n > 0)
     {
@@ -962,31 +963,31 @@ void rawProtocolDataTimed(gpointer data)
 
 		// decode acceleration raw data
 
-        if (strncpy(accelerationX, a->line+5, 7) != accelerationX)
+        if (strncpy(accelerationX, a->line+5, 6) != accelerationX)
         {
             g_print("strncpy2 error\n");
         }
-        accelerationX[7] = '\0';
+        accelerationX[6] = '\0';
         getInteger(accelerationX, &accelerationXint);
         a->accelerationXdouble = accelerationXint / GDIVIDER;
         g_sprintf(a->accelerationXout, "accelX %7.3f g", a->accelerationXdouble);
         gtk_label_set_label((GtkLabel*)a->label[1], a->accelerationXout);
 
-        if (strncpy(accelerationY, a->line+13, 7) != accelerationY)
+        if (strncpy(accelerationY, a->line+12, 6) != accelerationY)
         {
             g_print("strncpy3 error\n");
         }
-        accelerationY[7] = '\0';
+        accelerationY[6] = '\0';
         getInteger(accelerationY, &accelerationYint);
         a->accelerationYdouble = accelerationYint / GDIVIDER;
         g_sprintf(a->accelerationYout, "accelY %7.3f g", a->accelerationYdouble);
         gtk_label_set_label((GtkLabel*)a->label[2], a->accelerationYout);
 
-        if (strncpy(accelerationZ, a->line+21, 7) != accelerationZ)
+        if (strncpy(accelerationZ, a->line+19, 6) != accelerationZ)
         {
             g_print("strncpy4 error\n");
         }
-        accelerationZ[7] = '\0';
+        accelerationZ[6] = '\0';
         getInteger(accelerationZ, &accelerationZint);
         a->accelerationZdouble = accelerationZint / GDIVIDER;
         g_sprintf(a->accelerationZout, "accelZ %7.3f g", a->accelerationZdouble);
@@ -1016,11 +1017,11 @@ void rawProtocolDataTimed(gpointer data)
 
 		// show values on GUI
 
-        g_sprintf(a->tiltXout, "tiltX %7.2f °", a->tiltX);
-        g_sprintf(a->tiltYout, "tiltY %7.2f °", a->tiltY);
-        g_sprintf(a->tiltZout, "tiltZ %7.2f °", a->tiltZ);
-        g_sprintf(a->pitchOut, "pitch %7.2f °", a->pitch);
-        g_sprintf(a->rollOut, "roll  %7.2f °", a->roll);
+        g_sprintf(a->tiltXout, "tiltX %6.2f °", a->tiltX);
+        g_sprintf(a->tiltYout, "tiltY %6.2f °", a->tiltY);
+        g_sprintf(a->tiltZout, "tiltZ %6.2f °", a->tiltZ);
+        g_sprintf(a->pitchOut, "pitch %6.2f °", a->pitch);
+        g_sprintf(a->rollOut, "roll  %6.2f °", a->roll);
 
         gtk_label_set_label((GtkLabel*)a->label[5], a->tiltXout);
         gtk_label_set_label((GtkLabel*)a->label[6], a->tiltYout);
@@ -1032,88 +1033,84 @@ void rawProtocolDataTimed(gpointer data)
 
         if (strncmp(a->position6D, "TOP", 3) == 0)
         {
-            gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-            a->image[1] = gtk_image_new_from_file("./pictures/TOP.png");
-            a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-            gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-            gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_show_all(a->grid);
             a->position6Dint = 1;
         }
         else if (strncmp(a->position6D, "BOT", 3) == 0)
         {
-            gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-            a->image[1] = gtk_image_new_from_file("./pictures/BOT.png");
-            a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-            gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-            gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_show_all(a->grid);
             a->position6Dint = 2;
         }
         else if (strncmp(a->position6D, "DDX", 3) == 0)
         {
-            gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-            a->image[1] = gtk_image_new_from_file("./pictures/DDX.png");
-            a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-            gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-            gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_show_all(a->grid);
             a->position6Dint = 3;
         }
         else if (strncmp(a->position6D, "DSX", 3) == 0)
         {
-            gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-            a->image[1] = gtk_image_new_from_file("./pictures/DSX.png");
-            a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-            gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-            gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_show_all(a->grid);
             a->position6Dint = 4;
         }
         else if (strncmp(a->position6D, "UDX", 3) == 0)
         {
-            gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-            a->image[1] = gtk_image_new_from_file("./pictures/UDX.png");
-            a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-            gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-            gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_show_all(a->grid);
             a->position6Dint = 5;
         }
         else if (strncmp(a->position6D, "USX", 3) == 0)
         {
-            gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-            a->image[1] = gtk_image_new_from_file("./pictures/USX.png");
-            a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-            gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-            gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_show_all(a->grid);
             a->position6Dint = 6;
         }
         else
         {
-            gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
-            a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
-            a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
-            gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
-            gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
-            gtk_widget_show_all(a->grid);
             a->position6Dint = 0;
         }
+
+		switch (a->position6Dint)
+		{
+			case (0):
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
+				break;
+			}
+			case (1):
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/TOP.png");
+				break;
+			}
+			case (2):
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/BOT.png");
+				break;
+			}
+			case (3):
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/DDX.png");
+				break;
+			}
+			case (4):
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/DSX.png");
+				break;
+			}
+			case (5):
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/UDX.png");
+				break;
+			}
+			case (6):
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/USX.png");
+				break;
+			}
+			default:
+			{
+				a->image[1] = gtk_image_new_from_file("./pictures/ALL.png");
+				break;
+			}
+		}
+
+		gtk_container_remove(GTK_CONTAINER(a->grid), a->box[0]);
+		a->box[0] = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+		gtk_grid_attach(GTK_GRID (a->grid), a->box[0], 3, 0, 2, 5);
+		gtk_box_pack_start(GTK_BOX(a->box[0]), a->image[1], FALSE, FALSE, 0);
+		gtk_widget_set_halign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+		gtk_widget_set_valign(GTK_WIDGET(a->box[0]), GTK_ALIGN_CENTER);
+		gtk_widget_show_all(a->grid);
 
 		// set trigger labels
 

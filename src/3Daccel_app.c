@@ -130,10 +130,13 @@ int main (void)
 #endif
 
         // check received command and react accodingly
-        if (strncmp(rxBuff, "#REQ,", strlen(rxBuff)) == 0)
+        if (strncmp(rxBuff, "#CON,", strlen(rxBuff)) == 0)
         {
-            // send data to PC GUI
-            protocolComplete(direction, readAxes.axisX, readAxes.axisY, readAxes.axisZ);
+            // connection established
+            ledSetting(1);
+            startup = 0;
+            connection = 1;
+            memset (&cb[inix], 0, sizeof (cb[inix]));
         }
         else if (strncmp(rxBuff, "#END,", strlen(rxBuff)) == 0)
         {
@@ -170,12 +173,17 @@ int main (void)
         else if (strncmp(rxBuff, "#AVG,a", strlen(rxBuff)) == 0)
         {
             // average angle
-            averageChoice = 0;
+            averageChoice = 1;
         }
         else if (strncmp(rxBuff, "#AVG,p", strlen(rxBuff)) == 0)
         {
             // average PWM
-            averageChoice = 1;
+            averageChoice = 0;
+        }
+		else if (strncmp(rxBuff, "#REQ,", strlen(rxBuff)) == 0)
+        {
+            // send data to PC GUI
+            protocolComplete(direction, readAxes.axisX, readAxes.axisY, readAxes.axisZ);
         }
         else
         {

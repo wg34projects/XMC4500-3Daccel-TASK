@@ -37,7 +37,7 @@
 #define ANGAVERAGE 3.5				// threshold value
 #define RNDFACTOR 100.0				// round to 0.01
 #define SYSTEMTICKDIVIDER 1000		// systick every ms
-#define DEBUG 0						// debug messages
+#define DEBUG 1						// debug messages
 
 // function prototypes
 

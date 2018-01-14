@@ -306,21 +306,23 @@ Statistic of source code - total 3177 code lines without external code as mentio
 	   43 ./inc/lis3dh_library.h
 	   28 ./inc/servo_driver.h
 	   22 ./inc/servo_library.h
-	  189 ./src/3Daccel_app.c
+	  197 ./src/3Daccel_app.c
 	  116 ./src/3Daccel_out_driver.c
-	  445 ./src/3Daccel_out_library.c
+	  447 ./src/3Daccel_out_library.c
 	  219 ./src/lis3dh_library.c
 	  100 ./src/servo_driver.c
 	   62 ./src/servo_library.c
 	  369 ./gtk_GUI/3DacceltaskGUI.c
 	   83 ./gtk_GUI/3DacceltaskGUI.h
-	 1289 ./gtk_GUI/menucallbacks.c
+	 1286 ./gtk_GUI/menucallbacks.c
 	   88 ./gtk_GUI/menucallbacks.h
-	 3177 insgesamt
+	 3184 insgesamt
+
 
 # Improvements
 
 - GUI GTK code enhancement with respect to memory leaks
 - uC code enhancement for example with Interrupts instead of SysTick_Handler
 - better and more stable hardware setup - for example with acrylic glas instead wooden construction
+- implementation of Python scripts
 - ... and 1000 other ideas ...

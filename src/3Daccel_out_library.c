@@ -181,21 +181,23 @@ void SysTick_Handler (void)
 void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY, int16_t positionZ)
 {
     char string6D[8][6] = {"#USX,", "#UDX,", "#DSX,", "#DDX,", "#TOP,", "#BOT,", "#XXX,", "#FAL,"};
+	char button[2][8] = {"#BUT,1$", "#BUT,2$"};
+	
     char send[RXBUFFERSIZE];
 
     memset (&send, 0, sizeof (send));
 
     if (statisticSend == 1)
     {
-        // send statistic package if requested
-        if (snprintf(send, 31, "#STA,%10lu,%3d,%10lu$\n", packagesSent, errorcount, startup) < 0)
+        // send statistic package if requested - all together constant 32 chars
+        if (snprintf(send, 32, "#STA,%10lu,%3d,%10lu$\n", packagesSent, errorcount, startup) < 0)
         {
             errorcount++;
         }
         else
         {
 #if DEBUG
-            printf("send %s", send);
+            printf("send %s\n", send);
 #endif
             if (_uart_printf("%s", send) != 0)
             {
@@ -208,8 +210,8 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
     }
     else if (buttonSend == 1)
     {
-        // send button 1 pressed
-        if (snprintf(send, 7, "#BUT,1$\n") < 0)
+        // send button 1 pressed - constant 9 chars
+        if (snprintf(send, 9, "%s\n", button[0]) < 0)
         {
             errorcount++;
         }
@@ -229,8 +231,8 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
     }
     else if (buttonSend == 2)
     {
-        // send button 2 pressed
-        if (snprintf(send, 7, "#BUT,2$\n") < 0)
+        // send button 2 pressed - constant 9 chars
+        if (snprintf(send, 9, "%s\n", button[1]) < 0)
         {
             errorcount++;
         }
@@ -250,8 +252,8 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
     }
     else
     {
-        // send acceleration data
-        if (snprintf(send, 29,"%s%7d%s%7d%s%7d$\n", string6D[position6D], positionX, ",", positionY, ",", positionZ) < 0)
+        // send acceleration data - all together constant 29 chars
+        if (snprintf(send, 29,"%s%6d,%6d,%6d$\n", string6D[position6D], positionX, positionY, positionZ) < 0)
         {
             errorcount++;
         }

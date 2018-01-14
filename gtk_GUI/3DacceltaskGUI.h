@@ -25,7 +25,7 @@
 #define UARTWAIT 100
 #define QUITWAIT 1000
 #define BUTTONWAIT 250
-#define WAIT 250
+#define WAIT 100
 
 #define POLLMIN 10				// minimum sensor poll time
 #define POLLMAX 1000			// maximum sensor poll time

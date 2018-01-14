@@ -7,7 +7,7 @@ var searchData=
   ['readaxes',['readAxes',['../3Daccel__out__library_8h.html#a924691e5ae31fa5c7e327378fbf769cf',1,'3Daccel_out_library.h']]],
   ['readbuttondebounce',['readButtonDebounce',['../3Daccel__out__library_8c.html#ab63eeeff79d56285f05b054717dc8694',1,'readButtonDebounce():&#160;3Daccel_out_library.c'],['../3Daccel__out__library_8h.html#ab63eeeff79d56285f05b054717dc8694',1,'readButtonDebounce():&#160;3Daccel_out_library.c']]],
   ['readbuttondebouncexmc',['readButtonDebounceXMC',['../3Daccel__out__driver_8c.html#a1aaf11e4a49eb08b0b1b2d9d5868e675',1,'readButtonDebounceXMC():&#160;3Daccel_out_driver.c'],['../3Daccel__out__driver_8h.html#a1aaf11e4a49eb08b0b1b2d9d5868e675',1,'readButtonDebounceXMC():&#160;3Daccel_out_driver.c']]],
-  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
+  ['readme_5fdoxygen_2emd',['README_doxygen.md',['../README__doxygen_8md.html',1,'']]],
   ['readradiousb',['readRadioUSB',['../menucallbacks_8c.html#a57ab95342ed8a96992d491e245492868',1,'readRadioUSB(GtkWidget *button, gpointer *data):&#160;menucallbacks.c'],['../menucallbacks_8h.html#a57ab95342ed8a96992d491e245492868',1,'readRadioUSB(GtkWidget *button, gpointer *data):&#160;menucallbacks.c']]],
   ['rect',['rect',['../classdirection_1_1Roll.html#a9b0f8cec6d35f667ff18dc36dfb4ba0e',1,'direction.Roll.rect()'],['../classdirection_1_1Pitch.html#afa2299c6070f056a68676185911a4b09',1,'direction.Pitch.rect()']]],
   ['requestdata',['requestData',['../menucallbacks_8c.html#ad1ea06c96755e6377c58360efd74ac3a',1,'requestData(gpointer data):&#160;menucallbacks.c'],['../menucallbacks_8h.html#ad1ea06c96755e6377c58360efd74ac3a',1,'requestData(gpointer data):&#160;menucallbacks.c']]],

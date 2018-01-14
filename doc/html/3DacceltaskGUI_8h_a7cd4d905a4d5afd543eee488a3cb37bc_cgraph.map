@@ -4,7 +4,7 @@
 <area shape="rect" id="node3" href="$menucallbacks_8c.html#a74cbcfa0fcd2e02e901f147fa0fd5e95" title="function toggle signal averaging " alt="" coords="555,293,629,319"/>
 <area shape="rect" id="node8" href="$menucallbacks_8c.html#afb5e0da082f7af4b6ce5e85012b8fe18" title="function connect UART " alt="" coords="323,166,434,193"/>
 <area shape="rect" id="node14" href="$menucallbacks_8c.html#a8638a16b53befe09a4383644825bc04b" title="function for timed data request " alt="" coords="311,495,447,522"/>
-<area shape="rect" id="node24" href="$menucallbacks_8c.html#a22f7aba2a2fecfe26865f6c9625559c3" title="get poll time from entry " alt="" coords="749,919,862,946"/>
+<area shape="rect" id="node24" href="$menucallbacks_8c.html#a22f7aba2a2fecfe26865f6c9625559c3" title="get poll time from entry " alt="" coords="749,938,862,965"/>
 <area shape="rect" id="node25" href="$menucallbacks_8c.html#a165d61d4e6afc27ecb28e18bb8c5ac09" title="get X trigger from entry " alt="" coords="325,597,433,623"/>
 <area shape="rect" id="node27" href="$menucallbacks_8c.html#a92ed58bc6d05b11c72846365294c34c8" title="get Y trigger from entry " alt="" coords="325,647,432,674"/>
 <area shape="rect" id="node28" href="$menucallbacks_8c.html#aa71183cc2903d0e212f0c132b122411b" title="get Z trigger from entry " alt="" coords="325,698,433,725"/>
@@ -18,8 +18,8 @@
 <area shape="rect" id="node38" href="$menucallbacks_8c.html#a75ee05ef6564b56baa8afcb37df7ade4" title="function toggle servo on off " alt="" coords="563,394,621,421"/>
 <area shape="rect" id="node40" href="$menucallbacks_8c.html#a472cfadc5832233611ca52593f525a68" title="function statistic request from XMC " alt="" coords="735,242,875,269"/>
 <area shape="rect" id="node4" href="$menucallbacks_8c.html#a0f2531a07a3cdccf2ae0edfa9045f98f" title="function average choose " alt="" coords="735,293,876,319"/>
-<area shape="rect" id="node5" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="955,369,1073,395"/>
-<area shape="rect" id="node6" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="952,267,1076,294"/>
+<area shape="rect" id="node5" href="$rs232_8c.html#a7cd4c74adad03f50db2dc9601eb42238" title="RS232_flushTX" alt="" coords="955,267,1073,294"/>
+<area shape="rect" id="node6" href="$rs232_8c.html#ab8cee54fcc772fe76bd457787b737349" title="RS232_SendBuf" alt="" coords="952,343,1076,370"/>
 <area shape="rect" id="node7" href="$rs232_8c.html#ad8d4dbe7691e53e178360403228d650b" title="RS232_SendByte" alt="" coords="948,217,1080,243"/>
 <area shape="rect" id="node9" href="$rs232_8c.html#ae4f75620fd02add18316050d652d311e" title="RS232_OpenComport" alt="" coords="512,141,672,167"/>
 <area shape="rect" id="node10" href="$menucallbacks_8c.html#afe388228b226b7e7d83068124529d497" title="timer for safe UART stop " alt="" coords="553,90,631,117"/>
@@ -28,15 +28,15 @@
 <area shape="rect" id="node13" href="$rs232_8c.html#a2af3e3f582823e7dce5a8b351ff4395e" title="RS232_CloseComport" alt="" coords="1137,90,1300,117"/>
 <area shape="rect" id="node15" href="$menucallbacks_8c.html#a3418cf8ecbe0e481b120dad820ba4ed2" title="timer for output and request function " alt="" coords="515,495,669,522"/>
 <area shape="rect" id="node16" href="$menucallbacks_8c.html#ad1ea06c96755e6377c58360efd74ac3a" title="function request data from XMC UART " alt="" coords="754,495,857,522"/>
-<area shape="rect" id="node17" href="$menucallbacks_8c.html#a7b9a036250fa5f340ae84d020bed9140" title="main function to receive timed data from XMC and handle protocol etc. " alt="" coords="720,578,891,605"/>
-<area shape="rect" id="node18" href="$rs232_8c.html#af66e3a0fc5eb7defb43aa61487a0b895" title="RS232_PollComport" alt="" coords="939,679,1089,706"/>
-<area shape="rect" id="node19" href="$rs232_8c.html#a41da1bd1b0a017849daf985e619f7dac" title="RS232_flushRX" alt="" coords="955,477,1073,503"/>
-<area shape="rect" id="node20" href="$menucallbacks_8c.html#ae7c2bd7023c2d571565b7653d032a01b" title="function to convert string to integer " alt="" coords="969,793,1059,819"/>
-<area shape="rect" id="node21" href="$menucallbacks_8c.html#ae4e222df7deb65f18f4a19fd836a76bf" title="timer to highlight pressed button " alt="" coords="951,527,1077,554"/>
-<area shape="rect" id="node22" href="$menucallbacks_8c.html#ab208fa5f816569e842446565be2a57b0" title="simple wait function button feedback XMC " alt="" coords="989,578,1039,605"/>
-<area shape="rect" id="node23" href="$menucallbacks_8c.html#ab322c4401e1bcc8773bc75d919f795ff" title="timer to highlight freefall label " alt="" coords="961,629,1067,655"/>
-<area shape="rect" id="node26" href="$menucallbacks_8c.html#ad6f62c1abf9c16e9786f7163cde47d66" title="function to convert string to double " alt="" coords="547,622,637,649"/>
+<area shape="rect" id="node17" href="$menucallbacks_8c.html#a7b9a036250fa5f340ae84d020bed9140" title="main function to receive timed data from XMC and handle protocol etc. " alt="" coords="720,749,891,775"/>
+<area shape="rect" id="node18" href="$rs232_8c.html#af66e3a0fc5eb7defb43aa61487a0b895" title="RS232_PollComport" alt="" coords="939,850,1089,877"/>
+<area shape="rect" id="node19" href="$rs232_8c.html#a41da1bd1b0a017849daf985e619f7dac" title="RS232_flushRX" alt="" coords="955,647,1073,674"/>
+<area shape="rect" id="node20" href="$menucallbacks_8c.html#ae7c2bd7023c2d571565b7653d032a01b" title="function to convert string to integer " alt="" coords="969,913,1059,939"/>
+<area shape="rect" id="node21" href="$menucallbacks_8c.html#ae4e222df7deb65f18f4a19fd836a76bf" title="timer to highlight pressed button " alt="" coords="951,698,1077,725"/>
+<area shape="rect" id="node22" href="$menucallbacks_8c.html#ab208fa5f816569e842446565be2a57b0" title="simple wait function button feedback XMC " alt="" coords="989,749,1039,775"/>
+<area shape="rect" id="node23" href="$menucallbacks_8c.html#ab322c4401e1bcc8773bc75d919f795ff" title="timer to highlight freefall label " alt="" coords="961,799,1067,826"/>
+<area shape="rect" id="node26" href="$menucallbacks_8c.html#ad6f62c1abf9c16e9786f7163cde47d66" title="function to convert string to double " alt="" coords="547,647,637,674"/>
 <area shape="rect" id="node31" href="$menucallbacks_8c.html#aafaae82bcca495dedcd3362b3f416577" title="timer for output and request function Python " alt="" coords="529,445,655,471"/>
-<area shape="rect" id="node34" href="$menucallbacks_8c.html#a95f8b20505793417cf0b0bd5e36d4fc2" title="timer for output and request terminal function " alt="" coords="523,673,661,699"/>
+<area shape="rect" id="node34" href="$menucallbacks_8c.html#a95f8b20505793417cf0b0bd5e36d4fc2" title="timer for output and request terminal function " alt="" coords="523,749,661,775"/>
 <area shape="rect" id="node39" href="$menucallbacks_8c.html#a81104c1bb1ba5cae90e56a14a61206b1" title="function servo connector " alt="" coords="743,343,867,370"/>
 </map>

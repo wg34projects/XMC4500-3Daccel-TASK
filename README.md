@@ -326,8 +326,7 @@ Statistic of source code - total 3177 code lines without external code as mentio
 - GUI GTK code enhancement with respect to memory leaks
 - uC code enhancement for example with Interrupts instead of SysTick_Handler and Watchdog
 - better and more stable hardware setup - for example with acrylic glas instead wooden construction
-- implementation of Python scripts start / end
-- custom icon GTK GUI
+- better implementation of Python scripts start - end
 - sometimes troubles when GUI is started via doubleklick in filemanager
 - improving shutdown possibility with GTK shutdown signal (not working!?!)
 - including updated I2C driver as provided in CIS

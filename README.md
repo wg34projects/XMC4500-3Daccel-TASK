@@ -1,5 +1,9 @@
 # XMC4500 acceleration sensor task - Werner Egermann, Helmut Resch - BEL3
 
+| XMC uC Infinineon |
+|--------------------|
+| ![alt text](./pictures/xmc.png "XMC") |
+
 # project description
 
 ## definition of task

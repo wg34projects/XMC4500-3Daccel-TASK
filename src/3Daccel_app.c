@@ -137,6 +137,7 @@ int main (void)
             ledSetting(1);
             startup = 0;
             connection = 1;
+			averageChoice = 0;
         }
         else if (strncmp(rxBuff, "#END,", strlen(rxBuff)) == 0)
         {
@@ -144,6 +145,7 @@ int main (void)
             ledSetting(0);
             startup = 0;
             connection = 0;
+			averageChoice = 0;
             memset (&cb[inix], 0, sizeof (cb[inix]));
         }
         else if (strncmp(rxBuff, "#SER,f", strlen(rxBuff)) == 0)

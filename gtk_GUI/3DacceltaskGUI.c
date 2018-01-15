@@ -319,7 +319,6 @@ void constructMenu(GtkApplication *app, gpointer data)
 void activate(GtkApplication *app, gpointer data)
 {
     widgets *a = (widgets *) data;
-	GError *error = NULL;
 
     a->window = gtk_application_window_new(app);
 
@@ -328,14 +327,6 @@ void activate(GtkApplication *app, gpointer data)
     gtk_window_set_position(GTK_WINDOW (a->window), GTK_WIN_POS_CENTER);
     gtk_window_set_resizable(GTK_WINDOW (a->window), FALSE);
     gtk_window_set_deletable(GTK_WINDOW (a->window), FALSE);
-
-	gtk_window_set_icon_from_file(GTK_WINDOW (a->window), "./pictures/xmc.png", &error);
-
-	if (error != NULL)
-	{
-		g_print ("%s\n", error->message);	
-		g_error_free(error);
-	}
 
     constructMenu(app,(gpointer)a);
     constructGUI((gpointer)a);

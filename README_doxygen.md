@@ -1,5 +1,9 @@
 # XMC4500 acceleration sensor task - Werner Egermann, Helmut Resch - BEL3
 
+| XMC uC Infinineon |
+|--------------------|
+| ![alt text](../../pictures/xmc.png "XMC") |
+
 # project description
 
 ## definition of task
@@ -10,7 +14,7 @@ https://cis.technikum-wien.at/documents/bel/3/ess/semesterplan/tasks/tasks.html
 |------------------------------------|
 | ![alt text](../../pictures/taskdescriptionCIS.png "PWM calculations") |
 
-# realized task
+## realized task
 
 The realized task is generic and a "proof of concept" for possibilities with the **Adafruit LIS3DH Triple-Axis Accelerometer** sensor.
 
@@ -39,6 +43,57 @@ BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averag
 LED1 represents the PWM "percentage" of one servo, LED2 is on when GUI and XMC are connected, and toggles according when data is requested by the GUI.
 
 2 python scripts can be started from the GUI, one to show possibilities for sprite rotation with the pygame library and one to show a graph for the accelerations.
+
+## communication protocol
+
+A simple UART protocol has been implemented, all control can also be done via a terminal like CuteCom
+
+| command PC to XMC | description |
+| ----------------- | ----------- |
+| #CON,             | connect to XMC - LED2 is ON |
+| #END,             | disconnect XMC - LED2 is OFF |
+| #REQ,             | request data package from XMC, this can be acceleration, statistics or buttonpress |
+| #SER,n		    | turns servos ON |
+| #SER,f		    | turns servos OFF |
+| #AVG,p		    | servo average value averaging (PWM) |
+| #AVG,a		    | servo average value thresholding (angle) |
+| #STA,			    | request statistic package from XMC
+
+<br>
+
+| command XMC to PC | description |
+| ----------------- | ----------- |
+| #XXX,-12345,-12345,-12345$ | standard answer tor #REQ, with raw values acceleration |
+| #STA,1000,0,10000$ | answer on #REQ, if #STA, was requested, sent packages, errors, sensor readings |
+| #BUT,1$, | answer on #REQ, if Button1 or Button2 has been pressed |
+
+<br>
+
+| screenshot cutecom |
+|--------------------|
+| ![alt text](../../pictures/cutecom.png "cutecom") |
+
+## logging function
+
+When data is transmitted and a description of logfile is given in the correct entry, the SAVE button will appear.
+
+Data is stored in the attached format
+
+| epoch time | day | day | month | year | time HH.MM.SS.US | 6D diretion | accel X | accel Y | accel Z | angle X | angle Y | angle Z | pitch angle | roll angle |
+|----------- | --- | --- | ----- | ---- | ---------------- | ----------- | ------- | ------- | ------- | ------- | ------- | ------- | ----------- | -----------|
+| 1516031796 | Montag | 15 | Jänner | 2018 | 16:56:36.930526 | BOT | -0,283272 | 0,634921 | -0,650549 | -1,654695 | 3,710879 | -3,802356 | -17,308067 | 41,822962 |
+
+## 6D direction description and calculation of angles
+
+| tri-axis tilt sensing |
+|-----------------------|
+| ![alt text](../../pictures/tilt.png "tilt") |
+
+<br>
+
+| 6D positions |
+|-----------------------|
+| ![alt text](../../pictures/6D.png "6D") |
 
 # XMC software
 

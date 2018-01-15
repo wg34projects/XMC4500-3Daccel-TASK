@@ -29,7 +29,7 @@ Archive member included to satisfy reference by file (symbol)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-impure.o)
                               /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o) (_impure_ptr)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
-                              /tmp/ccKJQIHi.o (__libc_init_array)
+                              /tmp/ccgg5mDM.o (__libc_init_array)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
                               src/xmc4500_uart_lib.o (memcpy)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
@@ -5329,9 +5329,9 @@ Discarded input sections
  .comment       0x00000000       0x6f ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
  .ARM.attributes
                 0x00000000       0x37 ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
- .text          0x00000000        0x0 /tmp/ccKJQIHi.o
- .data          0x00000000        0x0 /tmp/ccKJQIHi.o
- .bss           0x00000000        0x0 /tmp/ccKJQIHi.o
+ .text          0x00000000        0x0 /tmp/ccgg5mDM.o
+ .data          0x00000000        0x0 /tmp/ccgg5mDM.o
+ .bss           0x00000000        0x0 /tmp/ccgg5mDM.o
  .text          0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .data          0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .bss           0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
@@ -5670,7 +5670,7 @@ LOAD ./xmclib/src/xmc_common.o
 LOAD ./xmclib/src/xmc_math.o
 LOAD ./xmclib/src/xmc_dma.o
 LOAD ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
-LOAD /tmp/ccKJQIHi.o
+LOAD /tmp/ccgg5mDM.o
 LOAD ./system/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a
 LOAD ./system/CMSIS/Infineon/Lib/libxmclibcstubs.a
 LOAD /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a
@@ -5685,7 +5685,7 @@ END GROUP
 .text           0x08000000     0xafa8 load address 0x0c000000
                 0x08000000                sText = .
  *(.reset)
- .reset         0x08000000      0x2b2 /tmp/ccKJQIHi.o
+ .reset         0x08000000      0x2b2 /tmp/ccgg5mDM.o
                 0x08000000                __Vectors
                 0x08000200                Reset_Handler
                 0x080002b0                VADC0_C0_3_IRQHandler
@@ -5979,188 +5979,187 @@ END GROUP
                 0x08002224       0x54 src/3Daccel_app.o
  .text.SysTick_Config
                 0x08002278       0x44 src/3Daccel_app.o
- .text.main     0x080022bc      0x2f4 src/3Daccel_app.o
+ .text.main     0x080022bc      0x300 src/3Daccel_app.o
                 0x080022bc                main
- .text._lseek   0x080025b0       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x080025b0                _lseek
- .text._read    0x080025cc       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x080025cc                _read
- .text._close   0x080025e8       0x14 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x080025e8                _close
- .text._fstat   0x080025fc       0x28 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x080025fc                _fstat
- .text._sbrk    0x08002624       0x70 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x08002624                _sbrk
- .text._init    0x08002694       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x08002694                _init
- .text._isatty  0x080026a4       0x18 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
-                0x080026a4                _isatty
- .text.delay    0x080026bc       0x2c ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .text._lseek   0x080025bc       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x080025bc                _lseek
+ .text._read    0x080025d8       0x1c ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x080025d8                _read
+ .text._close   0x080025f4       0x14 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x080025f4                _close
+ .text._fstat   0x08002608       0x28 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x08002608                _fstat
+ .text._sbrk    0x08002630       0x70 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x08002630                _sbrk
+ .text._init    0x080026a0       0x10 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x080026a0                _init
+ .text._isatty  0x080026b0       0x18 ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+                0x080026b0                _isatty
+ .text.delay    0x080026c8       0x2c ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
  .text.SystemInit
-                0x080026e8       0x24 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x080026e8                SystemInit
+                0x080026f4       0x24 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x080026f4                SystemInit
  .text.SystemCoreSetup
-                0x0800270c       0x70 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x0800270c                SystemCoreSetup
+                0x08002718       0x70 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002718                SystemCoreSetup
  .text.SystemCoreClockSetup
-                0x0800277c      0x208 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x0800277c                SystemCoreClockSetup
+                0x08002788      0x208 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002788                SystemCoreClockSetup
  .text.SystemCoreClockUpdate
-                0x08002984       0xd4 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x08002984                SystemCoreClockUpdate
+                0x08002990       0xd4 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002990                SystemCoreClockUpdate
  .text.OSCHP_GetFrequency
-                0x08002a58       0x14 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
-                0x08002a58                OSCHP_GetFrequency
+                0x08002a64       0x14 ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+                0x08002a64                OSCHP_GetFrequency
  .text.XMC_GPIO_Init
-                0x08002a6c      0x144 ./xmclib/src/xmc4_gpio.o
-                0x08002a6c                XMC_GPIO_Init
+                0x08002a78      0x144 ./xmclib/src/xmc4_gpio.o
+                0x08002a78                XMC_GPIO_Init
  .text.XMC_USIC_CH_GetTransmitBufferStatus
-                0x08002bb0       0x20 ./xmclib/src/xmc_uart.o
+                0x08002bbc       0x20 ./xmclib/src/xmc_uart.o
  .text.XMC_UART_CH_ClearStatusFlag
-                0x08002bd0       0x1c ./xmclib/src/xmc_uart.o
+                0x08002bdc       0x1c ./xmclib/src/xmc_uart.o
  .text.XMC_UART_CH_Init
-                0x08002bec       0xb0 ./xmclib/src/xmc_uart.o
-                0x08002bec                XMC_UART_CH_Init
+                0x08002bf8       0xb0 ./xmclib/src/xmc_uart.o
+                0x08002bf8                XMC_UART_CH_Init
  .text.XMC_UART_CH_Transmit
-                0x08002c9c       0x4c ./xmclib/src/xmc_uart.o
-                0x08002c9c                XMC_UART_CH_Transmit
+                0x08002ca8       0x4c ./xmclib/src/xmc_uart.o
+                0x08002ca8                XMC_UART_CH_Transmit
  .text.XMC_UART_CH_GetReceivedData
-                0x08002ce8       0x34 ./xmclib/src/xmc_uart.o
-                0x08002ce8                XMC_UART_CH_GetReceivedData
+                0x08002cf4       0x34 ./xmclib/src/xmc_uart.o
+                0x08002cf4                XMC_UART_CH_GetReceivedData
  .text.XMC_USIC_CH_GetTransmitBufferStatus
-                0x08002d1c       0x20 ./xmclib/src/xmc_i2c.o
+                0x08002d28       0x20 ./xmclib/src/xmc_i2c.o
  .text.XMC_I2C_CH_ClearStatusFlag
-                0x08002d3c       0x24 ./xmclib/src/xmc_i2c.o
+                0x08002d48       0x24 ./xmclib/src/xmc_i2c.o
  .text.XMC_I2C_CH_Init
-                0x08002d60       0x50 ./xmclib/src/xmc_i2c.o
-                0x08002d60                XMC_I2C_CH_Init
+                0x08002d6c       0x50 ./xmclib/src/xmc_i2c.o
+                0x08002d6c                XMC_I2C_CH_Init
  .text.XMC_I2C_CH_SetSlaveAddress
-                0x08002db0       0x40 ./xmclib/src/xmc_i2c.o
-                0x08002db0                XMC_I2C_CH_SetSlaveAddress
+                0x08002dbc       0x40 ./xmclib/src/xmc_i2c.o
+                0x08002dbc                XMC_I2C_CH_SetSlaveAddress
  .text.XMC_I2C_CH_SetBaudrate
-                0x08002df0       0x78 ./xmclib/src/xmc_i2c.o
-                0x08002df0                XMC_I2C_CH_SetBaudrate
+                0x08002dfc       0x78 ./xmclib/src/xmc_i2c.o
+                0x08002dfc                XMC_I2C_CH_SetBaudrate
  .text.XMC_I2C_CH_MasterStart
-                0x08002e68       0x68 ./xmclib/src/xmc_i2c.o
-                0x08002e68                XMC_I2C_CH_MasterStart
+                0x08002e74       0x68 ./xmclib/src/xmc_i2c.o
+                0x08002e74                XMC_I2C_CH_MasterStart
  .text.XMC_I2C_CH_MasterRepeatedStart
-                0x08002ed0       0x68 ./xmclib/src/xmc_i2c.o
-                0x08002ed0                XMC_I2C_CH_MasterRepeatedStart
+                0x08002edc       0x68 ./xmclib/src/xmc_i2c.o
+                0x08002edc                XMC_I2C_CH_MasterRepeatedStart
  .text.XMC_I2C_CH_MasterStop
-                0x08002f38       0x4c ./xmclib/src/xmc_i2c.o
-                0x08002f38                XMC_I2C_CH_MasterStop
+                0x08002f44       0x4c ./xmclib/src/xmc_i2c.o
+                0x08002f44                XMC_I2C_CH_MasterStop
  .text.XMC_I2C_CH_MasterTransmit
-                0x08002f84       0x4c ./xmclib/src/xmc_i2c.o
-                0x08002f84                XMC_I2C_CH_MasterTransmit
+                0x08002f90       0x4c ./xmclib/src/xmc_i2c.o
+                0x08002f90                XMC_I2C_CH_MasterTransmit
  .text.XMC_I2C_CH_MasterReceiveNack
-                0x08002fd0       0x4c ./xmclib/src/xmc_i2c.o
-                0x08002fd0                XMC_I2C_CH_MasterReceiveNack
+                0x08002fdc       0x4c ./xmclib/src/xmc_i2c.o
+                0x08002fdc                XMC_I2C_CH_MasterReceiveNack
  .text.XMC_I2C_CH_GetReceivedData
-                0x0800301c       0x34 ./xmclib/src/xmc_i2c.o
-                0x0800301c                XMC_I2C_CH_GetReceivedData
+                0x08003028       0x34 ./xmclib/src/xmc_i2c.o
+                0x08003028                XMC_I2C_CH_GetReceivedData
  .text.XMC_SCU_CLOCK_GetCpuClockFrequency
-                0x08003050       0x18 ./xmclib/src/xmc4_scu.o
+                0x0800305c       0x18 ./xmclib/src/xmc4_scu.o
  .text.XMC_SCU_RESET_DeassertPeripheralReset
-                0x08003068       0x3c ./xmclib/src/xmc4_scu.o
-                0x08003068                XMC_SCU_RESET_DeassertPeripheralReset
+                0x08003074       0x3c ./xmclib/src/xmc4_scu.o
+                0x08003074                XMC_SCU_RESET_DeassertPeripheralReset
  .text.XMC_SCU_CLOCK_GetPeripheralClockFrequency
-                0x080030a4       0x20 ./xmclib/src/xmc4_scu.o
-                0x080030a4                XMC_SCU_CLOCK_GetPeripheralClockFrequency
+                0x080030b0       0x20 ./xmclib/src/xmc4_scu.o
+                0x080030b0                XMC_SCU_CLOCK_GetPeripheralClockFrequency
  .text.XMC_USIC_CH_Enable
-                0x080030c4       0x9c ./xmclib/src/xmc_usic.o
-                0x080030c4                XMC_USIC_CH_Enable
+                0x080030d0       0x9c ./xmclib/src/xmc_usic.o
+                0x080030d0                XMC_USIC_CH_Enable
  .text.XMC_USIC_CH_SetBaudrate
-                0x08003160       0xe0 ./xmclib/src/xmc_usic.o
-                0x08003160                XMC_USIC_CH_SetBaudrate
+                0x0800316c       0xe0 ./xmclib/src/xmc_usic.o
+                0x0800316c                XMC_USIC_CH_SetBaudrate
  .text.XMC_USIC_CH_TXFIFO_Configure
-                0x08003240       0x50 ./xmclib/src/xmc_usic.o
-                0x08003240                XMC_USIC_CH_TXFIFO_Configure
+                0x0800324c       0x50 ./xmclib/src/xmc_usic.o
+                0x0800324c                XMC_USIC_CH_TXFIFO_Configure
  .text.XMC_USIC_CH_RXFIFO_Configure
-                0x08003290       0x54 ./xmclib/src/xmc_usic.o
-                0x08003290                XMC_USIC_CH_RXFIFO_Configure
+                0x0800329c       0x54 ./xmclib/src/xmc_usic.o
+                0x0800329c                XMC_USIC_CH_RXFIFO_Configure
  .text.XMC_USIC_CH_RXFIFO_SetInterruptNodePointer
-                0x080032e4       0x3c ./xmclib/src/xmc_usic.o
-                0x080032e4                XMC_USIC_CH_RXFIFO_SetInterruptNodePointer
+                0x080032f0       0x3c ./xmclib/src/xmc_usic.o
+                0x080032f0                XMC_USIC_CH_RXFIFO_SetInterruptNodePointer
  .text.XMC_USIC_Enable
-                0x08003320       0x54 ./xmclib/src/xmc_usic.o
-                0x08003320                XMC_USIC_Enable
- *fill*         0x08003374        0x4 
- .text.atan     0x08003378      0x340 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
-                0x08003378                atan
- .text.fabs     0x080036b8        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
-                0x080036b8                fabs
- .text.sqrt     0x080036c0       0xb8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
-                0x080036c0                sqrt
+                0x0800332c       0x54 ./xmclib/src/xmc_usic.o
+                0x0800332c                XMC_USIC_Enable
+ .text.atan     0x08003380      0x340 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
+                0x08003380                atan
+ .text.fabs     0x080036c0        0x8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_fabs.o)
+                0x080036c0                fabs
+ .text.sqrt     0x080036c8       0xb8 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-w_sqrt.o)
+                0x080036c8                sqrt
  .text.__ieee754_sqrt
-                0x08003778      0x184 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
-                0x08003778                __ieee754_sqrt
- .text.matherr  0x080038fc        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
-                0x080038fc                matherr
- .text          0x08003900      0x370 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_addsubdf3.o)
-                0x08003900                __aeabi_drsub
-                0x08003908                __aeabi_dsub
-                0x08003908                __subdf3
-                0x0800390c                __adddf3
-                0x0800390c                __aeabi_dadd
-                0x08003b84                __aeabi_ui2d
-                0x08003b84                __floatunsidf
-                0x08003ba4                __floatsidf
-                0x08003ba4                __aeabi_i2d
-                0x08003bc8                __extendsfdf2
-                0x08003bc8                __aeabi_f2d
-                0x08003c04                __aeabi_ul2d
-                0x08003c04                __floatundidf
-                0x08003c14                __floatdidf
-                0x08003c14                __aeabi_l2d
- .text          0x08003c70      0x424 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_muldivdf3.o)
-                0x08003c70                __aeabi_dmul
-                0x08003c70                __muldf3
-                0x08003ec4                __aeabi_ddiv
-                0x08003ec4                __divdf3
- .text          0x08004094      0x110 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_cmpdf2.o)
-                0x08004094                __gtdf2
-                0x08004094                __gedf2
-                0x0800409c                __ltdf2
-                0x0800409c                __ledf2
-                0x080040a4                __cmpdf2
-                0x080040a4                __eqdf2
-                0x080040a4                __nedf2
-                0x08004120                __aeabi_cdrcmple
-                0x08004130                __aeabi_cdcmple
-                0x08004130                __aeabi_cdcmpeq
-                0x08004140                __aeabi_dcmpeq
-                0x08004154                __aeabi_dcmplt
-                0x08004168                __aeabi_dcmple
-                0x0800417c                __aeabi_dcmpge
-                0x08004190                __aeabi_dcmpgt
- .text          0x080041a4       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_unorddf2.o)
-                0x080041a4                __aeabi_dcmpun
-                0x080041a4                __unorddf2
- .text          0x080041d0       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixdfsi.o)
-                0x080041d0                __fixdfsi
-                0x080041d0                __aeabi_d2iz
- .text          0x08004220       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixunsdfsi.o)
-                0x08004220                __fixunsdfsi
-                0x08004220                __aeabi_d2uiz
- .text.__errno  0x08004260        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
-                0x08004260                __errno
+                0x08003780      0x184 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-e_sqrt.o)
+                0x08003780                __ieee754_sqrt
+ .text.matherr  0x08003904        0x4 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_matherr.o)
+                0x08003904                matherr
+ .text          0x08003908      0x370 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_addsubdf3.o)
+                0x08003908                __aeabi_drsub
+                0x08003910                __aeabi_dsub
+                0x08003910                __subdf3
+                0x08003914                __adddf3
+                0x08003914                __aeabi_dadd
+                0x08003b8c                __aeabi_ui2d
+                0x08003b8c                __floatunsidf
+                0x08003bac                __floatsidf
+                0x08003bac                __aeabi_i2d
+                0x08003bd0                __extendsfdf2
+                0x08003bd0                __aeabi_f2d
+                0x08003c0c                __aeabi_ul2d
+                0x08003c0c                __floatundidf
+                0x08003c1c                __floatdidf
+                0x08003c1c                __aeabi_l2d
+ .text          0x08003c78      0x424 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_muldivdf3.o)
+                0x08003c78                __aeabi_dmul
+                0x08003c78                __muldf3
+                0x08003ecc                __aeabi_ddiv
+                0x08003ecc                __divdf3
+ .text          0x0800409c      0x110 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_cmpdf2.o)
+                0x0800409c                __gtdf2
+                0x0800409c                __gedf2
+                0x080040a4                __ltdf2
+                0x080040a4                __ledf2
+                0x080040ac                __cmpdf2
+                0x080040ac                __eqdf2
+                0x080040ac                __nedf2
+                0x08004128                __aeabi_cdrcmple
+                0x08004138                __aeabi_cdcmple
+                0x08004138                __aeabi_cdcmpeq
+                0x08004148                __aeabi_dcmpeq
+                0x0800415c                __aeabi_dcmplt
+                0x08004170                __aeabi_dcmple
+                0x08004184                __aeabi_dcmpge
+                0x08004198                __aeabi_dcmpgt
+ .text          0x080041ac       0x2c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_unorddf2.o)
+                0x080041ac                __aeabi_dcmpun
+                0x080041ac                __unorddf2
+ .text          0x080041d8       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixdfsi.o)
+                0x080041d8                __fixdfsi
+                0x080041d8                __aeabi_d2iz
+ .text          0x08004228       0x40 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/softfp/libgcc.a(_arm_fixunsdfsi.o)
+                0x08004228                __fixunsdfsi
+                0x08004228                __aeabi_d2uiz
+ .text.__errno  0x08004268        0xc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o)
+                0x08004268                __errno
  .text.__libc_init_array
-                0x0800426c       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
-                0x0800426c                __libc_init_array
- .text          0x080042bc      0x134 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
-                0x080042bc                memcpy
- .text.memset   0x080043f0       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
-                0x080043f0                memset
- .text.printf   0x0800448c       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
-                0x0800448c                printf
- .text._puts_r  0x080044b4       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
-                0x080044b4                _puts_r
- .text.puts     0x0800451c       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
-                0x0800451c                puts
+                0x08004274       0x50 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
+                0x08004274                __libc_init_array
+ .text          0x080042c4      0x134 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
+                0x080042c4                memcpy
+ .text.memset   0x080043f8       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
+                0x080043f8                memset
+ .text.printf   0x08004494       0x28 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-printf.o)
+                0x08004494                printf
+ .text._puts_r  0x080044bc       0x68 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
+                0x080044bc                _puts_r
+ .text.puts     0x08004524       0x10 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-puts.o)
+                0x08004524                puts
  .text.snprintf
-                0x0800452c       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-snprintf.o)
-                0x0800452c                snprintf
- *fill*         0x080045c8       0x38 
+                0x08004534       0x9c /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-snprintf.o)
+                0x08004534                snprintf
+ *fill*         0x080045d0       0x30 
  .text          0x08004600       0xdc /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strlen.o)
                 0x08004600                strlen
  .text.strncmp  0x080046dc       0xa0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-strncmp.o)
@@ -6712,7 +6711,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_aranges
                 0x00000a78       0x90 ./xmclib/src/xmc_usic.o
  .debug_aranges
-                0x00000b08       0x20 /tmp/ccKJQIHi.o
+                0x00000b08       0x20 /tmp/ccgg5mDM.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -6739,7 +6738,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_info    0x00007873      0x9d7 ./xmclib/src/xmc_i2c.o
  .debug_info    0x0000824a     0x1de4 ./xmclib/src/xmc4_scu.o
  .debug_info    0x0000a02e      0xade ./xmclib/src/xmc_usic.o
- .debug_info    0x0000ab0c       0x9b /tmp/ccKJQIHi.o
+ .debug_info    0x0000ab0c       0x9b /tmp/ccgg5mDM.o
 
 .debug_abbrev   0x00000000     0x1e8a
  *(.debug_abbrev)
@@ -6760,9 +6759,9 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_abbrev  0x0000170a      0x2ac ./xmclib/src/xmc_i2c.o
  .debug_abbrev  0x000019b6      0x2a0 ./xmclib/src/xmc4_scu.o
  .debug_abbrev  0x00001c56      0x220 ./xmclib/src/xmc_usic.o
- .debug_abbrev  0x00001e76       0x14 /tmp/ccKJQIHi.o
+ .debug_abbrev  0x00001e76       0x14 /tmp/ccgg5mDM.o
 
-.debug_line     0x00000000     0x5edc
+.debug_line     0x00000000     0x5ede
  *(.debug_line)
  .debug_line    0x00000000      0x56f src/xmc4500_uart_lib.o
  .debug_line    0x0000056f      0x2d9 src/servo_library.o
@@ -6773,15 +6772,15 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_line    0x00001b5b      0x4ec src/xmc4500_i2c_lib.o
  .debug_line    0x00002047      0x4bc src/lis3dh_library.o
  .debug_line    0x00002503      0xa51 src/lis3dh_driver.o
- .debug_line    0x00002f54      0x553 src/3Daccel_app.o
- .debug_line    0x000034a7      0x3fa ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
- .debug_line    0x000038a1      0x43a ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
- .debug_line    0x00003cdb      0x3a4 ./xmclib/src/xmc4_gpio.o
- .debug_line    0x0000407f      0x498 ./xmclib/src/xmc_uart.o
- .debug_line    0x00004517      0x545 ./xmclib/src/xmc_i2c.o
- .debug_line    0x00004a5c      0xe92 ./xmclib/src/xmc4_scu.o
- .debug_line    0x000058ee      0x53f ./xmclib/src/xmc_usic.o
- .debug_line    0x00005e2d       0xaf /tmp/ccKJQIHi.o
+ .debug_line    0x00002f54      0x555 src/3Daccel_app.o
+ .debug_line    0x000034a9      0x3fa ./system/CMSIS/Infineon/Lib/System_LibcStubs.o
+ .debug_line    0x000038a3      0x43a ./system/CMSIS/Infineon/XMC4500_series/Source/system_XMC4500.o
+ .debug_line    0x00003cdd      0x3a4 ./xmclib/src/xmc4_gpio.o
+ .debug_line    0x00004081      0x498 ./xmclib/src/xmc_uart.o
+ .debug_line    0x00004519      0x545 ./xmclib/src/xmc_i2c.o
+ .debug_line    0x00004a5e      0xe92 ./xmclib/src/xmc4_scu.o
+ .debug_line    0x000058f0      0x53f ./xmclib/src/xmc_usic.o
+ .debug_line    0x00005e2f       0xaf /tmp/ccgg5mDM.o
 
 .debug_frame    0x00000000     0x3ed0
  *(.debug_frame)
@@ -6966,7 +6965,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .ARM.attributes
                 0x00000370       0x37 ./xmclib/src/xmc_usic.o
  .ARM.attributes
-                0x000003a7       0x25 /tmp/ccKJQIHi.o
+                0x000003a7       0x25 /tmp/ccgg5mDM.o
  .ARM.attributes
                 0x000003cc       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .ARM.attributes

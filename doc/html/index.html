@@ -65,7 +65,16 @@ $(function() {
 <div class="title">XMC4500 acceleration sensor task - Werner Egermann, Helmut Resch - BEL3 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1>project description</h1>
+<div class="textblock"><table class="doxtable">
+<tr>
+<th>XMC uC Infinineon  </th></tr>
+<tr>
+<td><div class="image">
+<img src="../../pictures/xmc.png" alt="alt text" title="XMC"/>
+</div>
+ </td></tr>
+</table>
+<h1>project description</h1>
 <h2>definition of task</h2>
 <p><a href="https://cis.technikum-wien.at/documents/bel/3/ess/semesterplan/tasks/tasks.html">https://cis.technikum-wien.at/documents/bel/3/ess/semesterplan/tasks/tasks.html</a></p>
 <table class="doxtable">
@@ -77,7 +86,7 @@ $(function() {
 </div>
  </td></tr>
 </table>
-<h1>realized task</h1>
+<h2>realized task</h2>
 <p>The realized task is generic and a "proof of concept" for possibilities with the <b>Adafruit LIS3DH Triple-Axis Accelerometer</b> sensor.</p>
 <p>As described in the definition the task is split into 2 major parts, the uC software for the Infineon XMC4500 and the GUI for the PC realized with GTK-3 + C and Python 3 + Pygame + Matplotlib.</p>
 <p>The uC software includes a simple (bidirectional) UART communication protocol, libraries + drivers for:</p>
@@ -99,6 +108,81 @@ $(function() {
 <p>BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averaging / thersholding of sensor values for servo setting.</p>
 <p>LED1 represents the PWM "percentage" of one servo, LED2 is on when GUI and XMC are connected, and toggles according when data is requested by the GUI.</p>
 <p>2 python scripts can be started from the GUI, one to show possibilities for sprite rotation with the pygame library and one to show a graph for the accelerations.</p>
+<h2>communication protocol</h2>
+<p>A simple UART protocol has been implemented, all control can also be done via a terminal like CuteCom</p>
+<table class="doxtable">
+<tr>
+<th>command PC to XMC </th><th>description  </th></tr>
+<tr>
+<td>#CON, </td><td>connect to XMC - LED2 is ON </td></tr>
+<tr>
+<td>#END, </td><td>disconnect XMC - LED2 is OFF </td></tr>
+<tr>
+<td>#REQ, </td><td>request data package from XMC, this can be acceleration, statistics or buttonpress </td></tr>
+<tr>
+<td>#SER,n </td><td>turns servos ON </td></tr>
+<tr>
+<td>#SER,f </td><td>turns servos OFF </td></tr>
+<tr>
+<td>#AVG,p </td><td>servo average value averaging (PWM) </td></tr>
+<tr>
+<td>#AVG,a </td><td>servo average value thresholding (angle) </td></tr>
+<tr>
+<td>#STA, </td><td>request statistic package from XMC </td></tr>
+</table>
+<p><br />
+</p>
+<table class="doxtable">
+<tr>
+<th>command XMC to PC </th><th>description  </th></tr>
+<tr>
+<td>#XXX,-12345,-12345,-12345$ </td><td>standard answer tor #REQ, with raw values acceleration </td></tr>
+<tr>
+<td>#STA,1000,0,10000$ </td><td>answer on #REQ, if #STA, was requested, sent packages, errors, sensor readings </td></tr>
+<tr>
+<td>#BUT,1$, </td><td>answer on #REQ, if Button1 or Button2 has been pressed </td></tr>
+</table>
+<p><br />
+</p>
+<table class="doxtable">
+<tr>
+<th>screenshot cutecom  </th></tr>
+<tr>
+<td><div class="image">
+<img src="../../pictures/cutecom.png" alt="alt text" title="cutecom"/>
+</div>
+ </td></tr>
+</table>
+<h2>logging function</h2>
+<p>When data is transmitted and a description of logfile is given in the correct entry, the SAVE button will appear.</p>
+<p>Data is stored in the attached format</p>
+<table class="doxtable">
+<tr>
+<th>epoch time </th><th>day </th><th>day </th><th>month </th><th>year </th><th>time HH.MM.SS.US </th><th>6D diretion </th><th>accel X </th><th>accel Y </th><th>accel Z </th><th>angle X </th><th>angle Y </th><th>angle Z </th><th>pitch angle </th><th>roll angle  </th></tr>
+<tr>
+<td>1516031796 </td><td>Montag </td><td>15 </td><td>Jänner </td><td>2018 </td><td>16:56:36.930526 </td><td>BOT </td><td>-0,283272 </td><td>0,634921 </td><td>-0,650549 </td><td>-1,654695 </td><td>3,710879 </td><td>-3,802356 </td><td>-17,308067 </td><td>41,822962 </td></tr>
+</table>
+<h2>6D direction description and calculation of angles</h2>
+<table class="doxtable">
+<tr>
+<th>tri-axis tilt sensing  </th></tr>
+<tr>
+<td><div class="image">
+<img src="../../pictures/tilt.png" alt="alt text" title="tilt"/>
+</div>
+ </td></tr>
+</table>
+<p><br />
+</p>
+<table class="doxtable">
+<tr>
+<th>6D positions  </th></tr>
+<tr>
+<td><div class="image">
+<img src="../../pictures/6D.png" alt="alt text" title="6D"/>
+</div>
+ </td></tr>
+</table>
 <h1>XMC software</h1>
 <h2>folders and files</h2>
 <p>The code is located in the folders</p>
@@ -412,9 +496,12 @@ Checking menucallbacks.h: __FreeBSD__;__linux__...
 </pre><h1>Improvements</h1>
 <ul>
 <li>GUI GTK code enhancement with respect to memory leaks</li>
-<li>uC code enhancement for example with Interrupts instead of SysTick_Handler</li>
+<li>uC code enhancement for example with Interrupts instead of SysTick_Handler and Watchdog</li>
 <li>better and more stable hardware setup - for example with acrylic glas instead wooden construction</li>
-<li>implementation of Python scripts</li>
+<li>better implementation of Python scripts start - end</li>
+<li>sometimes troubles when GUI is started via doubleklick in filemanager</li>
+<li>improving shutdown possibility with GTK shutdown signal (not working!?!)</li>
+<li>including updated I2C driver as provided in CIS</li>
 <li>... and 1000 other ideas ... </li>
 </ul>
 </div></div><!-- contents -->

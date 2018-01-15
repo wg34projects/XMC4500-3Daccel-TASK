@@ -29,7 +29,7 @@ Archive member included to satisfy reference by file (symbol)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-impure.o)
                               /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-errno.o) (_impure_ptr)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-init.o)
-                              /tmp/ccUE1Uxj.o (__libc_init_array)
+                              /tmp/ccKJQIHi.o (__libc_init_array)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memcpy.o)
                               src/xmc4500_uart_lib.o (memcpy)
 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libg.a(lib_a-memset.o)
@@ -5329,9 +5329,9 @@ Discarded input sections
  .comment       0x00000000       0x6f ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
  .ARM.attributes
                 0x00000000       0x37 ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
- .text          0x00000000        0x0 /tmp/ccUE1Uxj.o
- .data          0x00000000        0x0 /tmp/ccUE1Uxj.o
- .bss           0x00000000        0x0 /tmp/ccUE1Uxj.o
+ .text          0x00000000        0x0 /tmp/ccKJQIHi.o
+ .data          0x00000000        0x0 /tmp/ccKJQIHi.o
+ .bss           0x00000000        0x0 /tmp/ccKJQIHi.o
  .text          0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .data          0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .bss           0x00000000        0x0 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
@@ -5670,7 +5670,7 @@ LOAD ./xmclib/src/xmc_common.o
 LOAD ./xmclib/src/xmc_math.o
 LOAD ./xmclib/src/xmc_dma.o
 LOAD ./xmclib/src/xmc_eth_phy_ksz8031rnl.o
-LOAD /tmp/ccUE1Uxj.o
+LOAD /tmp/ccKJQIHi.o
 LOAD ./system/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a
 LOAD ./system/CMSIS/Infineon/Lib/libxmclibcstubs.a
 LOAD /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a
@@ -5685,7 +5685,7 @@ END GROUP
 .text           0x08000000     0xafa8 load address 0x0c000000
                 0x08000000                sText = .
  *(.reset)
- .reset         0x08000000      0x2b2 /tmp/ccUE1Uxj.o
+ .reset         0x08000000      0x2b2 /tmp/ccKJQIHi.o
                 0x08000000                __Vectors
                 0x08000200                Reset_Handler
                 0x080002b0                VADC0_C0_3_IRQHandler
@@ -6712,7 +6712,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_aranges
                 0x00000a78       0x90 ./xmclib/src/xmc_usic.o
  .debug_aranges
-                0x00000b08       0x20 /tmp/ccUE1Uxj.o
+                0x00000b08       0x20 /tmp/ccKJQIHi.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -6739,7 +6739,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_info    0x00007873      0x9d7 ./xmclib/src/xmc_i2c.o
  .debug_info    0x0000824a     0x1de4 ./xmclib/src/xmc4_scu.o
  .debug_info    0x0000a02e      0xade ./xmclib/src/xmc_usic.o
- .debug_info    0x0000ab0c       0x9b /tmp/ccUE1Uxj.o
+ .debug_info    0x0000ab0c       0x9b /tmp/ccKJQIHi.o
 
 .debug_abbrev   0x00000000     0x1e8a
  *(.debug_abbrev)
@@ -6760,7 +6760,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_abbrev  0x0000170a      0x2ac ./xmclib/src/xmc_i2c.o
  .debug_abbrev  0x000019b6      0x2a0 ./xmclib/src/xmc4_scu.o
  .debug_abbrev  0x00001c56      0x220 ./xmclib/src/xmc_usic.o
- .debug_abbrev  0x00001e76       0x14 /tmp/ccUE1Uxj.o
+ .debug_abbrev  0x00001e76       0x14 /tmp/ccKJQIHi.o
 
 .debug_line     0x00000000     0x5edc
  *(.debug_line)
@@ -6781,7 +6781,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .debug_line    0x00004517      0x545 ./xmclib/src/xmc_i2c.o
  .debug_line    0x00004a5c      0xe92 ./xmclib/src/xmc4_scu.o
  .debug_line    0x000058ee      0x53f ./xmclib/src/xmc_usic.o
- .debug_line    0x00005e2d       0xaf /tmp/ccUE1Uxj.o
+ .debug_line    0x00005e2d       0xaf /tmp/ccKJQIHi.o
 
 .debug_frame    0x00000000     0x3ed0
  *(.debug_frame)
@@ -6966,7 +6966,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c00b998
  .ARM.attributes
                 0x00000370       0x37 ./xmclib/src/xmc_usic.o
  .ARM.attributes
-                0x000003a7       0x25 /tmp/ccUE1Uxj.o
+                0x000003a7       0x25 /tmp/ccKJQIHi.o
  .ARM.attributes
                 0x000003cc       0x32 /home/helmutresch/Bin/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/softfp/libm.a(lib_a-s_atan.o)
  .ARM.attributes

@@ -302,7 +302,6 @@ Interesting and demanding task - especially the GUI.
 Statistic of source code - total 3177 code lines without external code as mentioned above.
 
 	wc ./inc/3Daccel_app.h ./inc/3Daccel_out_driver.h ./inc/3Daccel_out_library.h ./inc/lis3dh_library.h ./inc/servo_driver.h ./inc/servo_library.h ./src/3Daccel_app.c ./src/3Daccel_out_driver.c ./src/3Daccel_out_library.c ./src/lis3dh_library.c ./src/servo_driver.c ./src/servo_library.c ./gtk_GUI/3DacceltaskGUI.c ./gtk_GUI/3DacceltaskGUI.h ./gtk_GUI/menucallbacks.c ./gtk_GUI/menucallbacks.h -l
-17 ./inc/3Daccel_app.h
 
 	   17 ./inc/3Daccel_app.h
 	   35 ./inc/3Daccel_out_driver.h
@@ -325,7 +324,11 @@ Statistic of source code - total 3177 code lines without external code as mentio
 # Improvements
 
 - GUI GTK code enhancement with respect to memory leaks
-- uC code enhancement for example with Interrupts instead of SysTick_Handler
+- uC code enhancement for example with Interrupts instead of SysTick_Handler and Watchdog
 - better and more stable hardware setup - for example with acrylic glas instead wooden construction
-- implementation of Python scripts
+- implementation of Python scripts start / end
+- custom icon GTK GUI
+- sometimes troubles when GUI is started via doubleklick in filemanager
+- improving shutdown possibility with GTK shutdown signal (not working!?!)
+- including updated I2C driver as provided in CIS
 - ... and 1000 other ideas ...

@@ -67,7 +67,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><table class="doxtable">
 <tr>
-<th>XMC uC Infinineon  </th></tr>
+<th>XMC uC Infineon  </th></tr>
 <tr>
 <td><div class="image">
 <img src="../../pictures/xmc.png" alt="alt text" title="XMC"/>
@@ -105,7 +105,10 @@ $(function() {
 <li>changing between measurement averaging and "thresholding" for servo</li>
 </ul>
 <p>can be done.</p>
+<p>A simple wooden construction with 2 servos reflect the pitch and roll angle of the sensor. Details therefor find below (calculation of angles according documents from ST Microelectronics).</p>
+<p>Both values are <b>calculated at the uC</b> and used to determine the PWM settings - find below more details.</p>
 <p>BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averaging / thersholding of sensor values for servo setting.</p>
+<p>Buttons are <b>not "linked" direct at the uC</b> with the functions - the entry is sent to the GUI via the protocol and a control command is sent back to the uC.</p>
 <p>LED1 represents the PWM "percentage" of one servo, LED2 is on when GUI and XMC are connected, and toggles according when data is requested by the GUI.</p>
 <p>2 python scripts can be started from the GUI, one to show possibilities for sprite rotation with the pygame library and one to show a graph for the accelerations.</p>
 <h2>communication protocol</h2>

@@ -1,6 +1,6 @@
 # XMC4500 acceleration sensor task - Werner Egermann, Helmut Resch - BEL3
 
-| XMC uC Infinineon |
+| XMC uC Infineon |
 |--------------------|
 | ![alt text](./pictures/xmc.png "XMC") |
 
@@ -38,7 +38,13 @@ Within the GUI a statistic package (sent sensor readings, data packages, errors)
 
 can be done.
 
+A simple wooden construction with 2 servos reflect the pitch and roll angle of the sensor. Details therefor find below (calculation of angles according documents from ST Microelectronics).
+
+Both values are **calculated at the uC** and used to determine the PWM settings - find below more details.
+
 BUTTON1 is used to switch on/off the servos and BUTTON2 is used to choose averaging / thersholding of sensor values for servo setting.
+
+Buttons are **not "linked" direct at the uC** with the functions - the entry is sent to the GUI via the protocol and a control command is sent back to the uC.
 
 LED1 represents the PWM "percentage" of one servo, LED2 is on when GUI and XMC are connected, and toggles according when data is requested by the GUI.
 

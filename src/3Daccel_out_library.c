@@ -189,7 +189,7 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
 
     if (statisticSend == 1)
     {
-        // send statistic package if requested - all together constant 32 chars
+        // send statistic package if requested >> #STA,       124,  0,         0$ >> 31 + 1 = 32 chars
         if (snprintf(send, 32, "#STA,%10lu,%3d,%10lu$\n", packagesSent, errorcount, startup) < 0)
         {
             errorcount++;
@@ -210,8 +210,8 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
     }
     else if (buttonSend == 1)
     {
-        // send button 1 pressed - constant 9 chars
-        if (snprintf(send, 9, "%s\n", button[0]) < 0)
+        // send button 1 pressed >>  // #BUT,1$ >> 7 + 1 = 8 chars
+        if (snprintf(send, 8, "%s\n", button[0]) < 0)
         {
             errorcount++;
         }
@@ -231,8 +231,8 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
     }
     else if (buttonSend == 2)
     {
-        // send button 2 pressed - constant 9 chars
-        if (snprintf(send, 9, "%s\n", button[1]) < 0)
+        // send button 2 pressed >> #BUT,2$ >> 7 + 1 = 8 chars
+        if (snprintf(send, 8, "%s\n", button[1]) < 0)
         {
             errorcount++;
         }
@@ -252,8 +252,8 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
     }
     else
     {
-        // send acceleration data - all together constant 29 chars
-        if (snprintf(send, 29,"%s%6d,%6d,%6d$\n", string6D[position6D], positionX, positionY, positionZ) < 0)
+        // send acceleration data #UDX,  6000,  4016, -2976$ >> 26 + 1 = 27 chars + 1 for matplotlib script (strange behaviour...)
+        if (snprintf(send, 28,"%s%6d,%6d,%6d$\n", string6D[position6D], positionX, positionY, positionZ) < 0)
         {
             errorcount++;
         }

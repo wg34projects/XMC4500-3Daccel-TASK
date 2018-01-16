@@ -28,7 +28,7 @@ const GActionEntry appActions[] =
 void constructGUI(gpointer data)
 {
     widgets *a = (widgets *) data;
-    const gchar initialinfo[] = "please choose your USB connection ID and poll time - standard is /dev/ttyUSB0 and 100ms";
+    const gchar initialinfo[] = "please choose your USB connection ID and poll time - standard is /dev/ttyUSB0 and 10ms";
     gchar stringUSB[15];
     gint i;
 
@@ -44,7 +44,7 @@ void constructGUI(gpointer data)
     a->sendSerial = FALSE;
     a->wait = FALSE;
     a->radioButtonUSBstate = 16;
-    a->pollTimeSensor = 100;
+    a->pollTimeSensor = 10;
     a->connectionStatus = 0;
 
     // flush cache

@@ -69,9 +69,10 @@ A simple UART protocol has been implemented, all control can also be done via a 
 
 | command XMC to PC | description |
 | ----------------- | ----------- |
-| #XXX,-12345,-12345,-12345$ | standard answer tor #REQ, with raw values acceleration |
-| #STA,1000,0,10000$ | answer on #REQ, if #STA, was requested, sent packages, errors, sensor readings |
-| #BUT,1$, | answer on #REQ, if Button1 or Button2 has been pressed |
+| #XXX,-16000,-16000,-16000$ | standard answer to #REQ, with raw values acceleration |
+| #STA,      1000,  0,      5000$ | answer on #REQ, if #STA, was requested, sent packages, errors, sensor readings |
+| #BUT,1$ | answer on #REQ, if Button1 has been pressed |
+| #BUT,2$ | answer on #REQ, if Button1 has been pressed |
 
 <br>
 
@@ -132,11 +133,47 @@ The graph shows the function calls of the uC source code.
 |------------------------------------|
 | ![alt text](./pictures/PWM_servo_calc.png "PWM calculations") |
 
+<br>
+
 | calculation for angle correction sensor |
 |-----------------------------------------|
 | sensor „Resch“ shows pitch angle up to maximum 85° - other direction seems ok with minimum -89° |
 | correction value linear from 0 to +85° >> 0 up to +4.5 >> pitch = pitch + pitch * (4.5/85) |
 | after calibration of servo and correction of sensor the pulse length and the frequency are stable |
+
+## used registers sensor
+
+I2C adress sensor (7 bit) = 0x18
+
+initialisation sensor
+
+| description | function | register adress | remark |
+| ----------- | -------- | --------------- | ------ |
+| set ODR (turn ON device) | LIS3DH_SetODR(LIS3DH_ODR_100Hz) | CTRL_REG1 0x20 | operation mode 100 Hz chosen |
+| set PowerMode | LIS3DH_SetMode(LIS3DH_NORMAL) | CTRL_REG4 0x20 and CTRL_REG4 0x23 | normal power mode chosen 10 bit |
+| set Fullscale | LIS3DH_SetFullScale(LIS3DH_FULLSCALE_4) | CTRL_REG4 0x23 | 4g maximum range chosen |
+| set axis Enable | LIS3DH_SetAxis(LIS3DH_X_ENABLE LIS3DH_Y_ENABLE LIS3DH_Z_ENABLE) | CTRL_REG1 0x20 | all axes active |
+
+
+interrupt configuration sensor 6D
+
+| description | function | register adress | remark |
+| ----------- | -------- | --------------- | ------ |
+| set Interrupt Threshold | LIS3DH_SetInt1Threshold(20) | INT1_THS 0x32 | threshold 20 for 6D sensing |
+| set Interrupt configuration (all enabled) | LIS3DH_SetIntConfiguration(LIS3DH_INT1_ZHIE_ENABLE LIS3DH_INT1_ZLIE_ENABLE LIS3DH_INT1_YHIE_ENABLE LIS3DH_INT1_YLIE_ENABLE LIS3DH_INT1_XHIE_ENABLE LIS3DH_INT1_XLIE_ENABLE ) | INT1_CFG 0x30 | 6D all axes |
+| set Interrupt Mode | LIS3DH_SetIntMode(LIS3DH_INT_MODE_6D_POSITION | INT1_CFG 0x30 | enable 6D sensing |
+
+
+data request from sensor
+
+| description | function | register adress | remark |
+| ----------- | -------- | --------------- | ------ |
+| request 6D position interrupt | LIS3DH_Get6DPosition(&position) | INT1_SRC 0x31 | interrupt register 6D sensing |
+| request raw acceleration data| LIS3DH_GetAccAxesRaw(&data) | OUT_X_L 0x28 OUT_X_H 0x29 OUT_Y_L 0x2A OUT_Y_H 0x2B OUT_Z_L 0x2C OUT_Z_H 0x2D | MSB and LSB of acceleration, concatenation results in 2's complement of acceleration |
+
+## various defines in header files
+
+Please refer to the comments inside the code of header files.
 
 ## external code
 
@@ -163,7 +200,7 @@ Thanks for this support!
 	Checking inc/lis3dh_library.h ...
 	4/12 files checked 13% done
 	Checking inc/servo_driver.h ...
-	5/12 files checked 15% done
+	5/12 files checked 14% done
 	Checking inc/servo_library.h ...
 	6/12 files checked 16% done
 	Checking src/3Daccel_app.c ...
@@ -187,10 +224,9 @@ Thanks for this support!
 	src/3Daccel_out_library.c:61: style: The function 'SysTick_Handler' is never used.
 	:: information: Cppcheck cannot find all the include files (use --check-config for details)
 
-
 ### Source code test with splint, only minor comments, external code excluded
 
-	splint +posixlib -unrecog -standard +trytorecover -preproc -predboolint +matchanyintegral -exportlocal ./inc/3Daccel_app.h ./inc/3Daccel_out_driver.h ./inc/3Daccel_out_library.h ./inc/lis3dh_library.h ./inc/servo_driver.h ./inc/servo_library.h ./src/3Daccel_app.c ./src/3Daccel_out_driver.c ./src/3Daccel_out_library.c ./src/lis3dh_library.c ./src/servo_driver.c ./src/servo_library.c 
+splint +posixlib -unrecog -standard +trytorecover -preproc -predboolint +matchanyintegral -exportlocal ./inc/3Daccel_app.h ./inc/3Daccel_out_driver.h ./inc/3Daccel_out_library.h ./inc/lis3dh_library.h ./inc/servo_driver.h ./inc/servo_library.h ./src/3Daccel_app.c ./src/3Daccel_out_driver.c ./src/3Daccel_out_library.c ./src/lis3dh_library.c ./src/servo_driver.c ./src/servo_library.c 
 
 	Splint 3.1.2 --- 04 Aug 2017
 
@@ -214,7 +250,6 @@ Thanks for this support!
 	  (Use -compdef to inhibit warning)
 
 	Finished checking --- 4 code warnings
-
 
 2 functions in 3D_accel_out_driver.c had to be excluded for splint to avoid parse errors
 
@@ -307,6 +342,10 @@ Graph of all GUI function calls.
 |-----------------|
 | ![alt text](./pictures/function_graph_GUI.png "GUI software") |
 
+## various defines in header files
+
+Please refer to the comments inside the code of header files.
+
 ## GUI overview
 
 | GUI overview after start |
@@ -324,6 +363,14 @@ Graph of all GUI function calls.
 (2) Start transmission...
 
 GTK buttons are set active or inactive as needed, feel free to experiment!
+
+## experimental freefall detection
+
+Within the PC application a simple freefall detection, following the graph shown below is included.
+
+| freefall algorithm  |
+| ------------------- |
+| ![alt text](./pictures/freefall.png "freefall") |
 
 ## external code
 
@@ -345,10 +392,10 @@ For the GTK GUI only cppcheck done.
 	Checking 3DacceltaskGUI.h: __FreeBSD__;__linux__...
 	2/4 files checked 29% done
 	Checking menucallbacks.c ...
-	menucallbacks.c:488: style: The scope of the variable 'mode' can be reduced.
-	menucallbacks.c:491: style: The scope of the variable 'requestConnection' can be reduced.
-	menucallbacks.c:560: style: The scope of the variable 'requestServoOn' can be reduced.
-	menucallbacks.c:597: style: The scope of the variable 'requestAveragePWM' can be reduced.
+	menucallbacks.c:496: style: The scope of the variable 'mode' can be reduced.
+	menucallbacks.c:499: style: The scope of the variable 'requestConnection' can be reduced.
+	menucallbacks.c:568: style: The scope of the variable 'requestServoOn' can be reduced.
+	menucallbacks.c:605: style: The scope of the variable 'requestAveragePWM' can be reduced.
 	Checking menucallbacks.c: __FreeBSD__;__linux__...
 	3/4 files checked 95% done
 	Checking menucallbacks.h ...
@@ -370,17 +417,17 @@ Statistic of source code - total 3177 code lines without external code as mentio
 	   43 ./inc/lis3dh_library.h
 	   28 ./inc/servo_driver.h
 	   22 ./inc/servo_library.h
-	  189 ./src/3Daccel_app.c
+	  191 ./src/3Daccel_app.c
 	  116 ./src/3Daccel_out_driver.c
 	  424 ./src/3Daccel_out_library.c
 	  219 ./src/lis3dh_library.c
 	  100 ./src/servo_driver.c
 	   62 ./src/servo_library.c
-	  369 ./gtk_GUI/3DacceltaskGUI.c
+	  372 ./gtk_GUI/3DacceltaskGUI.c
 	   83 ./gtk_GUI/3DacceltaskGUI.h
-	 1290 ./gtk_GUI/menucallbacks.c
+	 1308 ./gtk_GUI/menucallbacks.c
 	   88 ./gtk_GUI/menucallbacks.h
-	 3157 insgesamt
+	 3180 insgesamt
 
 # Improvements
 
@@ -388,7 +435,9 @@ Statistic of source code - total 3177 code lines without external code as mentio
 - uC code enhancement for example with Interrupts instead of SysTick_Handler and Watchdog
 - better and more stable hardware setup - for example with acrylic glas instead wooden construction
 - better implementation of Python scripts start - end
-- sometimes troubles when GUI is started via doubleklick in filemanager
+- sometimes troubles when GUI is started via doubleklick in filemanager - environment path - install
 - improving shutdown possibility with GTK shutdown signal (not working!?!)
+- adding CTRL-C feature GUI
 - including updated I2C driver as provided in CIS
+- usage of the hardware freefall detection instead software solution
 - ... and 1000 other ideas ...

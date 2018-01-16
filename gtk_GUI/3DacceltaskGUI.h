@@ -39,8 +39,7 @@
 
 // freefall functino settings
 
-#define FREELO 0.400
-#define FREEHI 1.050
+#define FREELO 0.200
 #define FREEFALLTIME 2000
 
 // main struct for all data
@@ -66,6 +65,7 @@ typedef struct
     gdouble tiltX, tiltY, tiltZ, pitch, roll;
     gdouble acceltriggerX, acceltriggerY, acceltriggerZ;
     GtkStyleContext *context;
+	guint xfree, yfree, zfree;
 } widgets;
 
 typedef struct tm TM;

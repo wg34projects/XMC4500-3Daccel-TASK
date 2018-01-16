@@ -351,6 +351,10 @@ guint freeFallLabel(gpointer data)
 
     gtk_label_set_label((GtkLabel*)a->label[15], "<span foreground='white' weight='ultrabold' font='20'> SAFE </span>");
 
+	a->xfree = 0;
+	a->yfree = 0;
+	a->zfree = 0;
+
     return a->freeFallLabel;
 }
 
@@ -1147,13 +1151,27 @@ void rawProtocolDataTimed(gpointer data)
 
         // simple freefall detection
 
-        if (((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) > FREEHI)) || ((fabs(a->accelerationXdouble) < FREELO) && (fabs(a->accelerationYdouble) > FREEHI) && (fabs(a->accelerationZdouble) < FREELO)) || ((fabs(a->accelerationXdouble) > FREEHI) && (fabs(a->accelerationYdouble) < FREELO) && (fabs(a->accelerationZdouble) < FREELO)))
+		if (fabs(a->accelerationXdouble) <= FREELO)
+		{
+			a->xfree = 1;
+		}
+
+		if (fabs(a->accelerationYdouble) <= FREELO)
+		{
+			a->yfree = 1;
+		}
+
+		if (fabs(a->accelerationZdouble) <= FREELO)
+		{
+			a->zfree = 1;
+		}
+
+		if (a->xfree == 1 && a->yfree == 1 && a->zfree == 1)
         {
             gtk_label_set_label((GtkLabel*)a->label[15], "<span foreground='white' background='red' weight='ultrabold' font='20'> FALL </span>");
             a->freeFallLabel = FALSE;
             g_timeout_add (FREEFALLTIME, (GSourceFunc) freeFallLabel, (gpointer) a);
         }
-
     }
 }
 

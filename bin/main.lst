@@ -1516,7 +1516,7 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
  8000a8a:	2b01      	cmp	r3, #1
  8000a8c:	d137      	bne.n	8000afe <protocolComplete+0xd6>
     {
-        // send statistic package if requested - all together constant 32 chars
+        // send statistic package if requested >> #STA,       124,  0,         0$ >> 31 + 1 = 32 chars
         if (snprintf(send, 32, "#STA,%10lu,%3d,%10lu$\n", packagesSent, errorcount, startup) < 0)
  8000a8e:	4b74      	ldr	r3, [pc, #464]	; (8000c60 <protocolComplete+0x238>)
  8000a90:	681a      	ldr	r2, [r3, #0]
@@ -1591,12 +1591,12 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
  8000b02:	2b01      	cmp	r3, #1
  8000b04:	d12f      	bne.n	8000b66 <protocolComplete+0x13e>
     {
-        // send button 1 pressed - constant 9 chars
-        if (snprintf(send, 9, "%s\n", button[0]) < 0)
+        // send button 1 pressed >>  // #BUT,1$ >> 7 + 1 = 8 chars
+        if (snprintf(send, 8, "%s\n", button[0]) < 0)
  8000b06:	f107 0348 	add.w	r3, r7, #72	; 0x48
  8000b0a:	f107 0008 	add.w	r0, r7, #8
  8000b0e:	4a5b      	ldr	r2, [pc, #364]	; (8000c7c <protocolComplete+0x254>)
- 8000b10:	2109      	movs	r1, #9
+ 8000b10:	2108      	movs	r1, #8
  8000b12:	f003 fd0f 	bl	8004534 <snprintf>
  8000b16:	4603      	mov	r3, r0
  8000b18:	2b00      	cmp	r3, #0
@@ -1657,13 +1657,13 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
  8000b6a:	2b02      	cmp	r3, #2
  8000b6c:	d130      	bne.n	8000bd0 <protocolComplete+0x1a8>
     {
-        // send button 2 pressed - constant 9 chars
-        if (snprintf(send, 9, "%s\n", button[1]) < 0)
+        // send button 2 pressed >> #BUT,2$ >> 7 + 1 = 8 chars
+        if (snprintf(send, 8, "%s\n", button[1]) < 0)
  8000b6e:	f107 0348 	add.w	r3, r7, #72	; 0x48
  8000b72:	3308      	adds	r3, #8
  8000b74:	f107 0008 	add.w	r0, r7, #8
  8000b78:	4a40      	ldr	r2, [pc, #256]	; (8000c7c <protocolComplete+0x254>)
- 8000b7a:	2109      	movs	r1, #9
+ 8000b7a:	2108      	movs	r1, #8
  8000b7c:	f003 fcda 	bl	8004534 <snprintf>
  8000b80:	4603      	mov	r3, r0
  8000b82:	2b00      	cmp	r3, #0
@@ -1720,8 +1720,8 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
     }
     else
     {
-        // send acceleration data - all together constant 29 chars
-        if (snprintf(send, 29,"%s%6d,%6d,%6d$\n", string6D[position6D], positionX, positionY, positionZ) < 0)
+        // send acceleration data #UDX,  6000,  4016, -2976$ >> 26 + 1 = 27 chars + 1 for matplotlib script (strange behaviour...)
+        if (snprintf(send, 28,"%s%6d,%6d,%6d$\n", string6D[position6D], positionX, positionY, positionZ) < 0)
  8000bd0:	88fa      	ldrh	r2, [r7, #6]
  8000bd2:	f107 0158 	add.w	r1, r7, #88	; 0x58
  8000bd6:	4613      	mov	r3, r2
@@ -1738,7 +1738,7 @@ void protocolComplete(uint16_t position6D, int16_t positionX, int16_t positionY,
  8000bf4:	9300      	str	r3, [sp, #0]
  8000bf6:	4623      	mov	r3, r4
  8000bf8:	4a22      	ldr	r2, [pc, #136]	; (8000c84 <protocolComplete+0x25c>)
- 8000bfa:	211d      	movs	r1, #29
+ 8000bfa:	211c      	movs	r1, #28
  8000bfc:	f003 fc9a 	bl	8004534 <snprintf>
  8000c00:	4603      	mov	r3, r0
  8000c02:	2b00      	cmp	r3, #0
